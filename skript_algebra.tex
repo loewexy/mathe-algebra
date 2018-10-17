@@ -1,0 +1,380 @@
+% !TeX spellcheck = de_DE
+\documentclass[12pt,parskip=full]{scrartcl}
+ 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{color}
+\usepackage{amsmath,amssymb,amstext,mathtools,amsthm}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{stmaryrd}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{bookmarksnumbered}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{enumitem}
+\setenumerate{label=\arabic*)}
+
+\newcommand{\setN}{\mathbb{N}}
+\newcommand{\setZ}{\mathbb{Z}}
+\newcommand{\setQ}{\mathbb{Q}}
+\newcommand{\setR}{\mathbb{R}}
+\newcommand{\setC}{\mathbb{C}}
+\newcommand{\setH}{\mathbb{H}}
+\newcommand{\setk}{\Bbbk}
+\newcommand{\ldot}{\,.\,}
+\newcommand{\Forall}{~\forall}
+\newcommand{\Exists}{~\exists}
+
+\newcommand{\abs}[1]{{\left| #1 \right|}}
+\newcommand{\dabs}[1]{{\left\lVert #1 \right\rVert}}
+\newcommand{\heading}{\underline}
+ 
+\DeclareMathOperator{\Kons}{Kons}
+\DeclareMathOperator{\grad}{grad}
+ 
+\theoremstyle{definition}
+\newtheorem{theorem}{Satz}[section]
+\newtheorem{corollary}[theorem]{Folgerung}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Beispiel}
+\newtheorem*{axiom}{Axiom}
+
+ 
+\theoremstyle{remark}
+\newtheorem*{remark}{Bemerkung}
+ 
+\hfuzz=5pt 
+ 
+\title{Skript Algebra}
+\author{Lukas Metzger}
+\date{\today}
+ 
+\begin{document}
+	\maketitle
+	
+	\setcounter{section}{-1}
+	\section{Konstruktion mit Zirkel und Lineal}
+	
+	\begin{example}[Konstruktion des regelmäßigen 5-Ecks]
+		Anleitung zur Konstruktion
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{bilder/bild1.png}
+		\end{center}
+	\end{example}
+
+	\heading{Erste Frage:} Gegeben $n \in \setN$, kann ich das regelmäßige $n$-Eck konstruieren?
+	
+	\heading{Beispielproblem:} Betrachte Das $5$-Eck, sei $a$ die Kantenkänge und $s$ die Sekantenlänge.
+	
+	Dann ist $\frac{s}{a} \notin \setQ$.
+	
+	\begin{proof}
+		Angenommen $\frac{s}{a}$ wäre in $\setQ$. Dann schreibe $\frac{s}{a} = \frac{p}{q}$ mit $p,q \in \setN$. Dann gibt es also eine Länge $d \in \setR$, so dass $s$ und $a$ beides ganzzahlige Vielfache von $d$ sind. $\exists n,m \in \setN$  $a = n \cdot d, s= m \cdot d$.
+		
+		Betrachte/Erweitere die Konstruktion des $5$-Ecks und erhalte kleines (blaues) $5$-Eck wie gezeichnet mit Sekantenlänge $s' = a$ und Kantenlänge $a' = s - a$.
+		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{bilder/bild2.png}
+		\end{center}
+	
+		Dann sind aber sowohl $a'$ als auch $s'$ wieder Vielfache von $d$. Das Verfahren kann ich wiederholen und erhalte immer kleinere $5$-Ecke, deren Größe nach $0$ konvergiert, wo Kanten- und Sekantenlänge ganzzahlige Vielfache von $d$ sind. $\lightning$
+	\end{proof}
+
+	\heading{Weitere Konstruktionsprobleme:}
+	\begin{itemize}
+		\item $3$-Teilung des Winkels
+		\item Verdoppelung des Würfels (d.h. Verdoppelung des Volumens)
+		\item Quadratur des Kreises (Gegeben ein Kreis, konstruiere Quadrat mit demselben Flächeninhalt)
+	\end{itemize}
+
+	\heading{Wiederholung:} Was kann ich mit Zirkel und Lineal eigentlich machen?
+	
+	Antwort: $3$ Konstruktionen
+	\begin{enumerate}
+		\item Gegeben Punkte $a_1, a_2, b_1, b_2$ der Ebene, betrachte die Geraden $\overline{a_1 a_2}$ und $b_1 b_2$ und erhalte Schnittpunkt $\overline{a_1 a_2} \cap \overline{b_1 b_2}$.
+		\item Gegeben Punkte $a_1, a_2, b_1, b_2, b_3$ der Ebene betrachte Kreis $K(b_1, \dabs{b_2 - b_3})$ um $b_1$ mit Radius $\dabs{b_2 - b_3}$ und erhalte die Schnittpunkte $\overline{a_1 a_2} \cap K(b_1, \dabs{b_2 - b_3})$
+		\item Gegeben Punkte $a_1, a_2, a_3, b_1, b_2, b_3$, erhalte Schnittpunkte $K(a_1, \dabs{a_2 - a_3}) \cap K(b_1, \dabs{b_2 - b_3})$
+	\end{enumerate}
+
+	\begin{definition}
+		Sei $M \subset \setR^2$ eine Menge, $p \in \setR^2$ ein Punkt.
+		
+		Sage: $p$ ist aus $M$ mit Zirkel und Lineal konstruierbar, falls es Kette von Mengen gibt
+		\begin{equation*}
+			M = M_1 \subseteq M_1 \subseteq \dots \subseteq M_n \ni p
+		\end{equation*}
+		Wobei $\forall i$ die Menge $M_i$ entsteht aus $M_{i-1}$ durch Hinzunahme der Punkte die durch einen Konstruktionsschritt entstehen.
+	\end{definition}
+
+	\heading{Historie:} Einen Durchbruch bei der Lösung dieser Probleme gab es erst, als man begann, die Punkte des $\setR^2$ mit komplexen Zahlen zu identifizieren.
+	
+	\begin{remark}
+		Frage nach der Konstruierbarkeit macht nur Sinn, wenn $M$ mindestens $2$ Punkte enthält $\leadsto$ Häufig $M = \{0,1\} \subset \setC$.
+	\end{remark}
+
+	\heading{In dieser Sprache}
+	\begin{itemize}
+		\item Konstruktionsproblem: $n$-Eck ist äquivalent zu, kann ich die $n$-ten Einheitswurzeln $e^{\frac{i 2 \pi}{n}}$ aus $M = \{ 0,1 \}$ konstruieren?
+		Ist $e^{\frac{2\pi i}{n}} \in \Kons(\{0,1\})$?
+		\item Verdopplung des Würfels $\Leftrightarrow$ Ist $\sqrt[3]{2} \in \Kons(\{0,1\})$
+		\item Quadratur des Kreises $\Leftrightarrow$ Ist $\sqrt{\pi} \in \Kons(\{0,1\})$
+		\item $3$-teilung des Winkels $\Leftrightarrow$ Ist für gegebenes $\varphi \in (0,2\pi)$ $e^{\frac{i \varphi}{3}} \in \Kons(\{ 0, 1, e^{i \varphi} \})$
+	\end{itemize}
+
+	\heading{Zentrale Beobachtung}
+	
+	Sei $M \subset \setC$ eine Menge die $0$ und $1$ enthält. Sei $\Kons(M)$ die Menge der aus $M$ konstruierbaren Punkte.
+	
+	Dann ist $\Kons(M) \subset \setC$ ein Unterkörper.
+	
+	\textit{Dazu zu prüfen:} Konstruierbarkeit von Summen, Differenzen, Produkten, Quotienten \dots.
+	
+	\heading{Zusammenfassung/zentrales Thema der Vorlesung}
+	
+	Körpererweiterung / wie können Körper ineinander enthalten sein?	
+	
+	\section{Körpererweiterungen}
+	
+	\subsection{Ultrakurzwiederholung zentraler Begriffe}
+	
+	\begin{definition}[Gruppe]
+		Eine Gruppe ist eine Menge $G$ zusammen mit einer Abbildung $m: G \times G \to G$ so dass folgendes gilt:
+		\begin{enumerate}
+			\item Assoziativ: $\forall a,b,c \in G \, m(m(a,b), c) = m(a, m(b,c))$
+			\item Neutrales Element: $\exists n \in G \forall a \in G: m(n,a) = m(a,n) = a$
+			\item Inverse Elemente: $\forall a \in G \exists b \in G: ab = ba$ und dieses Produkt ist neutrales Element wie in $2)$
+		\end{enumerate}
+	\end{definition}
+
+	\begin{lemma}[Elementare Eigenschaften von Gruppen]
+		Für jede Gruppe gilt:
+		\begin{itemize}
+			\item Das neutrale Element ist eindeutig
+			\item Inverse Elemente sind eindeutig
+		\end{itemize}
+	\end{lemma}
+
+	\begin{definition}[Abelsche Gruppe]
+		Nenne Gruppe $(G,m)$ Abelsch, falls $\forall a,b \in G: m(a,b) = m(b,a)$.
+	\end{definition}
+
+	\heading{Notation:} Statt $m$ schreibt man oft $+$ oder $\cdot$, wobei $+$ hauptsächlich für Abelsche Gruppen verwendet wird.
+	
+	\begin{example}
+		Beispiele für Gruppen:
+		\begin{itemize}
+			\item Abelsche Gruppen: $(\setZ, +)$, $(\setZ / p\setZ, +)$, $(Vektorraum, +)$
+			\item Nicht-Abelsche Gruppen: Sei $M$ eine Menge mit $>2$ Elementen. Die bijektiven Abbildungen $M \to M$ mit der Hintereinanderausführung ist eine nicht-Abelsche Gruppe.
+			
+			Sei $K$ ein Schiefkörper, z.B. $K = \setR, \setC, \setH$. Sei $K^* K \setminus \{0\}$. Dann ist $(K^*, \cdot)$ eine Gruppe.
+			\item Nicht-Beispiel: $G = \setR^3$. Ich erhalte durch das Kreuzprodukt keine Gruppenkonstruktion.
+		\end{itemize}
+	\end{example}
+
+	\begin{definition}[Gruppe]
+		Ein Ring ist eine Menge $R$ mit $2$ Verknüpfungen $+$ und $\cdot$ so dass gilt:
+		\begin{itemize}
+			\item $(R,+)$ ist eine Abelsche Gruppe
+			\item Distributivgesetz: $\forall a,b,c \in T (a+b) \cdot c = ac + bc$ und $a(b+c) = ab + ac$
+			\item $(R \setminus 0, \cdot)$ ist fast Gruppe nämlich assoziativ und es existiert ein neutrales Element
+		\end{itemize}
+	\end{definition}
+
+	\begin{example}
+		Beispiele für Ringe:
+		\begin{itemize}
+			\item $\setR, \setZ / n\setZ$, Polynome, $\setZ$
+			\item Funktionen auf $\setR / \setC$
+			\item holomorphe/stetige/$C^\infty$/reell analytische lokal quadratintegrierbare Funktionen bilden ebenfalls einen Ring
+		\end{itemize}
+	\end{example}
+
+	\begin{remark}
+		Mit Ringen kann ich fast rechnen wie mit Zahlen, aber ACHTUNG
+		\begin{itemize}
+			\item Nicht jedes Element in $R \setminus 0$ hat ein multiplikatives Inverses
+			\item Ich kann aus $a \cdot b = 0$ und $a \neq 0$ im Allgemeinen nicht folgern, dass $b = 0$
+			\item Ich kann aus $ab = ac$ und $a \neq 0$ im allgemeinen nicht folgern, dass $b = c$ ist
+		\end{itemize}
+	\end{remark}
+
+	\begin{definition}[Nullteiler]
+		Sei $R$ ein Ring, $a \in R \setminus \{0\}$. Falls $b \neq 0$ existiert mit $a \cdot b = 0$, nenne ich $a$ einen Nullteiler.
+		
+		Ringe ohne Nullteiler heißen Nullteilerfrei oder Integritätsringe.
+	\end{definition}
+
+	\begin{definition}[Abelscher Ring]
+		Ein Ring heißt Abelsch, falls $\forall a,b \in R \; ab = ba$.
+	\end{definition}
+
+	\begin{remark}
+		In der Literatur heißen unsere Ringe oft Ringe mit $1$.
+	\end{remark}
+
+	\begin{example}
+		Beispiele zu Nullteilern
+		\begin{itemize}
+			\item $\setR, \setZ$ sind nullteilerfrei
+			\item $\setZ / n \setZ$ ist nullteilerfrei $\Leftrightarrow$ $n$ ist Prim
+			\item Polynome sind nullteilerfrei
+			\item Stetige Funktionen sind nicht nullteilerfrei
+		\end{itemize}
+	\end{example}
+
+	\begin{remark}
+		Sei $R$ ein Ringe. Die Menge der Elemente, die ein multiplikatives Inverses haben, wir mit $R^*$ bezeichnet.
+		
+		\begin{itemize}
+			\item $\setZ^* = \{ 1, -1 \}$
+			\item $(\setZ / n \setZ)^* = \{ [x] \mid x \text{ ist teilerfremd zu } n \}$
+			\item $(C^\infty(\setR))^* = \{ f: \setR \to \setR \mid \text{$f$ ist $C^\infty$ und hat keine Nullstelle} \}$
+		\end{itemize}
+	\end{remark}
+
+	\begin{remark}
+		Sei $R$ ein Ring, $x$ eine Variable. Dann bezeichne mit $R[x]$ die Polynome mit Koeffizienten in $R$ und Variable $x$.
+		
+		\begin{itemize}
+			\item $1x + 2 \in \setZ[x]$
+			\item $\displaystyle\frac{\pi}{4} \cdot x^2 \notin \setZ[x]$
+		\end{itemize}
+	\end{remark}
+
+	\begin{definition}[Schiefkörper]
+		Schiefkörper sind Ringe $R$ wobei $R^* = R \setminus \{ 0 \}$
+	\end{definition}
+
+	\begin{definition}[Körper]
+		Ein Körper ist ein Schiefkörper, der auch noch kommutativ ist.
+	\end{definition}
+
+	\begin{example}
+		Beispiele für Körper und Schiefkörper
+		\begin{itemize}
+			\item Quaternionen sind Schiefkörper
+			\item $\setQ, \setR, \setC, \setZ / p \setZ$ sind Körper
+			\item $\Kons(\{ 0 , 1 \})$ ist Unterkörper von $\setC$
+			\item Die Menge der Rationale Funktionen über einem Körper bilden wieder einen Körper
+		\end{itemize}
+	\end{example}
+
+	\subsection{Algebraische und transzendente Elemente}
+	
+	Sei $L$ ein Körper und $k \subset L$ ein Unterkörper (z.B. $L = \setC, k \subset \setR$ oder $L = \setR, k = \setQ$).
+	
+	Im Fall $k = \setQ, L = \setR$ wissen wir, dass es in $\setR$ sehr unterschiedliche Elemente gibt.
+	
+	\begin{itemize}
+		\item $\sqrt{7}$ \textellipsis algebraisch
+		\item $\pi, e$ \textellipsis transzendent
+	\end{itemize}
+
+	\begin{definition}
+		Situation wie oben. Sei $a \in L$ gegeben. Nenne $a$ algebraisch über $k$ falls es ein Polynom gibt $f \in k[x]$ und $f \neq 0$ so dass $f(a) = 0$.
+	\end{definition}
+
+	\begin{remark}
+		Nicht algebraische Elemente heißen transzendent.
+	\end{remark}
+
+	\begin{example}
+		Beispiele für algebraische und transzendente Zahlen
+		\begin{itemize}
+			\item $\sqrt{7}$ ist algebraisch über $\setQ$, denn $f(\sqrt{7}) = 0$ mit $f(x) = x^2 - 7$
+			\item $\pi$ ist nicht algebraisch über $\setQ$ (Lindemann, 1844)
+		\end{itemize}
+	\end{example}
+
+	\begin{remark}
+		In $\setR$ gibt es praktisch keine Zahlen, die algebraisch über $\setQ$ sind.
+		
+		Wir wissen $\setQ$ ist abzählbar, also sind auch die Polynome mit Koeffizienten in $\setQ$ abzählbar. Jedes Polynom hat aber nur endlich viele Nullstellen. Das heißt die Menge der algebraischen Zahlen ist abzählbar, also eine Nullmenge im Sinne der Integrationstheorie.
+	\end{remark}
+
+	\begin{example}
+		Körpererweiterung $\setR \subset \setC$ - Beobachte: $i$ ist algebraisch über $\setR$, denn $f(i) = 0$ wobei $f(x) = x^2 + 1$
+		
+		$z = i + 1$ ist Algebraisch mit $f(x) = (x - 1)^2 + 1$
+		
+		$z = a + bi$ ist Algebraisch mit $f(x) = \left( \frac{(x - a)}{b} \right)^2 + 1$
+		
+		$\Rightarrow$ Jede komplexe Zahl ist algebraisch über $\setR$
+	\end{example}
+
+	\begin{definition}
+		Eine Körpererweiterung $k \subset L$ heißt algebraisch, falls jedes $a \in L$ algebraisch über $k$ ist.
+		
+		Ansonsten nenne Körpererweiterung transzendent.
+	\end{definition}
+
+	\begin{remark}
+		Sei $k \subset L$ eine Körpererweiterung, sei $a \in L$ algebraisch über $k$ und sei $f \in k[x]$ ein Polynom $\neq 0$ mit $f(a) = 0$.
+		
+		Solche Polynome gibt es viele, wir interessieren uns für $f$'s mit mimimalem Grad. Wenn so ein $f$ gegeben ist:
+		\begin{equation*}
+			f = a_n x^n + a_{n-1} x^{n-1} + \dots + a_0
+		\end{equation*}
+		dann dividiere durch $a_n$ und erhalte Polynom
+		\begin{equation*}
+			\hat{f} = x^n + \frac{a_{n-1}}{a_n} x^{n-1} + \dots + \frac{a_0}{a_n} \in k[x]
+		\end{equation*}
+		mit $a$ als Nullstelle.
+		
+		Falls $\hat{f}$ und $\overline{f}$ in $k[x]$ zwei normierte Polynome von minimalem Grad sind mit $\hat{f}(a) = \overline{f}(a) = 0$, dann betrachte Polynom $(\hat{f} - \overline{f}) \in k[x]$. Dann gilt
+		\begin{equation*}
+			(\hat{f} - \overline{f})(a) = \hat{f}(a) - \overline{f}(a) = 0 - 0 = 0
+		\end{equation*}
+		und der Grad von $(\hat{f} - \overline{f})$ ist kleiner als der Grad von $\hat{f}$. Weil aber der Grad von $\hat{f}$ minimal war, folgt: $\hat{f} = \overline{f}$.
+	\end{remark}
+
+	\begin{theorem}
+		Sei $k \subset L$ eine Körpererweiterung, sei $a \in L$ algebraisch über $k$. Dann gibt es genau ein Polynom $f \in k[x] \setminus \{ 0 \}$ so dass gilt:
+		\begin{enumerate}
+			\item $f(a) = 0$
+			\item $\grad f$ ist minimal unter den Graden der Polynome die $a$ als Nullstelle haben:
+			\begin{equation*}
+				\grad (f) = \min \{ \grad g \mid g \in k[x] \setminus \{0 \}, g(a) = 0 \}
+			\end{equation*}
+			\item $f$ ist normiert (d.h. Leitkoeffizient $= 1$)
+		\end{enumerate}
+		Nenne dieses $f$ das Minimalpolynom von $a$ über $k$.
+		
+		Die Zahl $\grad f$ wird als Grad von $a$ über $k$ bezeichnet, in Symbolen $[a: k]$
+	\end{theorem}
+
+	\begin{remark}
+		Sei $k \subset L$ Erweiterung, $a \in L$ algebraisch über $k$. Falls $[a:k] = 1$, dann $a \in k$.
+	\end{remark}
+
+	\heading{Mehr Beispiele für Körpererweiterungen}
+	
+	Sei $k \subset L$ eine Körpererweiterung, sei $(L_i)_{i \in I}$ eine Menge von Zwischenkörpern, d.h. $k \subseteq L_i \subseteq L$.
+	
+	Dann ist auch $K \coloneqq \bigcap_{i \in I} L_i$ ein Körper.
+	
+	\heading{Nutzanwendung:} Sei $A \subset L$ irgendeine Teilmenge. Sei $(L_i)_{i \in I}$ die Menge der Zwischenkörper $k \subseteq L_i \subseteq L$ so dass $\forall i: A \subset L_i$. Dann betrachte $K$ und es gilt:
+	\begin{itemize}
+		\item $k \subseteq K \subset L$, also $K$ ist Zwischenkörper
+		\item $A \subseteq K$
+		\item $K$ ist der kleinste Zwischenkörper der $A$ enthält
+	\end{itemize}
+
+	\begin{remark}
+		Bezeichne $K$ mit $k(A)$ und sage $k(A)$ entsteht aus $k$ durch Adjunktion der Elemente von A.
+	\end{remark}
+
+	\heading{Spezialfall:} $A = \{ a \}$ dann schreibe ich $k(a)$. Das ist dann der kleinste Unterkörper von $L$, der sowohl $k$ als auch $a$ enthält.
+	
+	\begin{definition}[Einfache Körpererweiterung]
+		Eine Körpererweiterung $k \subset L$ heißt einfach, falls $a$ existiert, so dass $L = k(a)$.
+	\end{definition}
+
+\end{document}
