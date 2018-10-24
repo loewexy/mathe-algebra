@@ -35,7 +35,6 @@
 \newcommand{\heading}{\underline}
  
 \DeclareMathOperator{\Kons}{Kons}
-\DeclareMathOperator{\grad}{grad}
 \DeclareMathOperator{\charac}{char}
  
 \theoremstyle{definition}
@@ -179,7 +178,7 @@
 		\end{itemize}
 	\end{example}
 
-	\begin{definition}[Gruppe]
+	\begin{definition}[Ring]
 		Ein Ring ist eine Menge $R$ mit $2$ Verknüpfungen $+$ und $\cdot$ so dass gilt:
 		\begin{itemize}
 			\item $(R,+)$ ist eine Abelsche Gruppe
@@ -213,7 +212,7 @@
 	\end{definition}
 
 	\begin{definition}[Abelscher Ring]
-		Ein Ring heißt Abelsch, falls $\forall a,b \in R \; ab = ba$.
+		Ein Ring heißt abelsch, falls $\forall a,b \in R \; ab = ba$.
 	\end{definition}
 
 	\begin{remark}
@@ -340,15 +339,15 @@
 		Sei $k \subset L$ eine Körpererweiterung, sei $a \in L$ algebraisch über $k$. Dann gibt es genau ein Polynom $f \in k[x] \setminus \{ 0 \}$ so dass gilt:
 		\begin{enumerate}
 			\item $f(a) = 0$
-			\item $\grad f$ ist minimal unter den Graden der Polynome die $a$ als Nullstelle haben:
+			\item $\deg f$ ist minimal unter den Graden der Polynome die $a$ als Nullstelle haben:
 			\begin{equation*}
-				\grad (f) = \min \{ \grad g \mid g \in k[x] \setminus \{0 \}, g(a) = 0 \}
+				\deg (f) = \min \{ \deg g \mid g \in k[x] \setminus \{0 \}, g(a) = 0 \}
 			\end{equation*}
 			\item $f$ ist normiert (d.h. Leitkoeffizient $= 1$)
 		\end{enumerate}
 		Nenne dieses $f$ das Minimalpolynom von $a$ über $k$.
 		
-		Die Zahl $\grad f$ wird als Grad von $a$ über $k$ bezeichnet, in Symbolen $[a: k]$
+		Die Zahl $\deg f$ wird als Grad von $a$ über $k$ bezeichnet, in Symbolen $[a: k]$
 	\end{theorem}
 
 	\begin{remark}
@@ -577,5 +576,205 @@
 	\begin{remark}
 		Achtung: Es gibt einen anderen Begriff von (absolutem) algebraischen Abschluss, der nicht von einem Oberkörper $L \supseteq k$ abhängt.
 	\end{remark}
+
+	\subsection{Lösungsformel für Polynome}
+	
+	\heading{Wissen aus der Schule:} Quadratische Gleichungen in einer Variable haben Lösungsformel.
+	
+	\heading{Wissen seit der Renaissance:} Haaben Formeln für Gleichungen von Grad 3 und 4.
+	
+	\heading{Beispiel:} $x^3 + a x^2 + bx + c = 0$ Setze:
+	\begin{equation*}
+		h = - \frac12 c + \frac16 a b - \frac{1}{24} a^3
+	\end{equation*}
+	\begin{align*}
+		w_1 &= \sqrt{-3 (a^2 b^2 - 4 a^3c - 4b^3 + 18abc - 27c^2)} \\
+		w_2 &= \sqrt[3]{h + \frac{1}{18} w_1} \\
+		w_2 &= \sqrt[3]{h - \frac{1}{18} w_1}
+	\end{align*}
+	
+	Dann ist
+	\begin{equation*}
+		x = - \frac13 a + w_2 - w_3
+	\end{equation*}
+	eine Lösung, wenn die Wurzeln $w_2, w_3$ so gewählt sind dass $w_2 w_3 = \frac18 a^2 - \frac13 b$.
+	
+	\heading{Frage:} Gibt es eine Lösungsformel für Gleichungen vom Grad 5?
+	
+	\heading{Bescheidener:} Kann ich die Lösung überhaupt hinschreiben? (als komplizierten Ausdruck in Wurzeln/Polynomen)
+	
+	\begin{definition}
+		Sei $L/k$ eine Körpererweiterung, nenne diese Erweiterung Radikalerweiterung, falls es $a_1, \dots, a_n$ und $m_1, \dots, m_n \in \setN$ gibt, so dass
+		\begin{enumerate}
+			\item $L = k(a_1, \dots, a_m)$
+			\item $\forall i a_i^{m_i} \in k(a_1, \dots, a_{i-1})$ also $a_i$ ist die $m_i$-te Wurzel eines Elementes aus $k(a_1, \dots a_{i-1})$.
+		\end{enumerate}
+	\end{definition}
+
+	\heading{Was bedeutet das?}
+	\begin{enumerate}
+		\item $a_1^{m_1} \in k$ Also $k(a_1) = \langle 1 , a_1, a_1^2, \dots, a_1^{m_1 - 1} \rangle_k$
+		\item $a_2^{m_2} \in k$ Also $k(a_1, a_2) = \langle 1 , a_2, a_2^2, \dots, a_2^{m_2 - 1} \rangle_{k(a_1)}$
+		\item \textellipsis
+	\end{enumerate}
+
+	\heading{Bescheidene Frage, präzise formuliert:} Gegeben ein Polynom
+	\begin{equation*}
+		f(x) = \sum_{i=1}^{n} a_i x^i \in \setQ[x] \text{ oder } \setR[x]
+	\end{equation*}
+	gibt es dann eine Radikalerweiterung $L/\setQ(a_0, \dots, a_n)$ (beziehungsweise $L/\setR$) so dass $f$ in $L$ eine Nullstelle hat? Gerne $L \subseteq \setC$.
+	
+	\section{Ringe}
+	
+	\heading{Warum Ringe betrachten?} Gegeben eine Körpererweiterung $L/k$ und $a \in L$ und ich suche das Minimalpolynom $f_a(x) \in k[x]$.
+	
+	Häufig findet man $g \in k[x]$ mit $g(a) = 0$ und muss dann entscheiden ob $g$ das Minimalpolynom ist. Das ist gar nicht leicht!
+	
+	\heading{Beobachtung:} Polynomdivision zeigt:
+	\begin{equation*}
+		g(x) = s(x) \cdot f_a(x) + \operatorname{rest}(x)
+	\end{equation*}
+	wobei $\deg \operatorname{rest}(x) < \deg f_a(x)$. $a$ einsetzen ergibt
+	\begin{equation*}
+		\underbrace{g(a)}_{= 0} = s(a) \cdot \underbrace{f_a(a)}_{=0} + \operatorname{rest}(a) \Rightarrow \operatorname{rest}(a) = 0
+ 	\end{equation*}
+ 	$\Rightarrow \operatorname{rest}(x) \equiv 0$
+ 	
+ 	$\Rightarrow g(x) = s(x) \cdot f_a(x)$.
+ 	
+ 	\heading{Wir sehen:} Das Minimalpolynom ist ein Teiler von $g$ im Ring der Polynome.
+ 	
+ 	\heading{Ziel:} Wir müssen Teilbarkeit verstehen!
+ 	
+ 	\subsection{Teilbarkeit}
+ 	
+ 	\begin{definition}
+ 		Sei $R$ ein Ring. Dann bezeichne mit $R[x]$ den Ring der Polynome mit Variable $x$ und Koeffizienten aus $R$.
+ 	\end{definition}
+ 
+ 	\heading{Warnung:} Polynome geben Funktionen $R \to R$ aber Polynome sind nicht Funktionen.
+ 	
+ 	\begin{definition}
+ 		Sei $f \in R[x]$ ein Polynom. Dann definiere den Grad von $f$ wie üblich.
+ 	\end{definition}
+ 
+ 	\begin{lemma}
+ 		Sei $R$ ein Integritätsring, $f,g \in R[x]$. Dann ist
+ 		\begin{equation*}
+	 		\deg(f \cdot g) = \deg(f) + \deg(g)
+ 		\end{equation*}
+ 	\end{lemma}
+ 
+ 	\begin{proof}
+ 		Sei $n_f = \deg(f)$ und $n_g = \deg(g)$ schreibe
+ 		\begin{align*}
+	 		f(x) &= a_f \cdot x^{n_f} + (\text{kleinere Terme}), a_f \neq 0 \\
+	 		g(x) &= a_g \cdot x^{n_g} + (\text{kleinere Terme})
+ 		\end{align*}
+ 		
+ 		Dann ist
+ 		\begin{equation*}
+ 			(f \cdot g)(x) = a_f \cdot a_g \cdot x^{n_f + n_g} + (\text{kleinere Terme})
+ 		\end{equation*}
+ 		und weil $R$ ein Integritätsring ist, ist $a_f \cdot a_g \neq 0$, also $\deg(f \cdot g) = n_f + n_g$.
+ 	\end{proof}
+ 
+ 	\begin{corollary}
+ 		Sei $R$ ein Integritätsring. Dann ist $R[x]$ selbts wieder ein Integritätsring.
+ 	\end{corollary}
+ 
+ 	\begin{proof}
+ 		Seien $f,g \in R[x] \setminus \{0\}$.
+ 		
+ 		Wir müssen zeigen: $f \cdot g \not\equiv 0 \in R[x]$ $(*)$.
+ 		
+ 		Falls $\deg f = \deg g = 0$, folgt $(*)$ weil $R$ ein Integritätsring ist.
+ 		
+ 		Ansonsten folgt $(*)$, weil $\deg f \cdot g = \deg f + \deg g > 0$.
+ 	\end{proof}
+ 
+ 	\heading{Ausblick:} Dann ist $(R[x])[y]$ auch wieder ein Integritätsring. Und natürlich ist $(R[x])[y] \simeq R[x,y]$.
+ 	
+ 	\begin{corollary}
+ 		Sei $R$ ein Integritätsring. Dann ist $(R[x])^* = R^*$.
+ 	\end{corollary}
+ 
+ 	\begin{proof}
+ 		Sei $f(x) \in (R[x])^*$, das heißt $\exists g(x) \in R[x]: f \cdot g \equiv 1$.
+ 		
+ 		$\Rightarrow \deg f + \deg g = \deg 1 = 0$
+ 		
+ 		$\Rightarrow \deg f = 0$, also ist Polynom $f$ konstant, ebenso für $g$. 
+ 	\end{proof}
+ 
+ 	\begin{remark}
+ 		Per Induktion folgt auch $(R[x_1, \dots, x_n])^* = R^*$
+ 	\end{remark}
+ 
+ 	\begin{definition}
+ 		Sei $R$ ein Ring, seien $s, r \in R$ Elemente. Ich sage: $s$ ist Teiler von $r$ (in Symbolen $s \mid r$), wenn es $a \in R$ gibt, so dass $s \cdot a = r$.
+ 	\end{definition}
+ 
+ 	\begin{lemma}
+ 		Sei $R$ ein Integritätsring, seien $s,r$ Elemente. Dann ist äquivalent
+ 		\begin{enumerate}
+ 			\item $\exists \varepsilon \in R^*, s = \varepsilon \cdot r$
+ 			\item $s \mid r$ und $r \mid s$
+ 		\end{enumerate}
+ 	
+ 	Wenn diese Bedingungen erfüllt sind, nenne ich $s$ und $r$ assoziiert (in Symbolen $s \sim r$).
+ 	\end{lemma}
+ 
+ 	\begin{proof}
+ 		$1) \Rightarrow 2) \checkmark$
+ 		
+ 		$2) \Rightarrow 1)$ Aus $s \mid r$ und $r \mid s$ $\Rightarrow a,b \in R: s \cdot a = r$ und $r \cdot b = s$.
+ 		
+ 		$\Rightarrow (r \cdot b) \cdot a \Rightarrow r(ba - 1) = 0$
+ 		
+ 		Da $R$ Integritätsring ist: $\Rightarrow ba = 1 \qquad \Rightarrow b,a, \in R^*$
+ 	\end{proof}
+ 
+ 	\begin{definition}
+ 		Sei $R$ ein Integritätsring, seien $s,r \in R$ Elemente. Dannn nenne $s$ einen echten Teiler von $r$ (in Symbolen $s \parallel r$) falls gilt:
+ 		\begin{enumerate}
+ 			\item $s \mid r$
+ 			\item $s \notin R^*$
+ 			\item $r$ und $s$ sind nicht assoziiert
+ 		\end{enumerate}
+ 	\end{definition}
+ 
+ 	\begin{definition}
+ 		Sei $R$ ein Integritätsring. Ein Element $r \in R$ heißt irreduzibel, falls $r \notin R^*$ und falls $r$ keine echten Teiler hat.
+ 	\end{definition}
+ 
+ 	\begin{example}
+ 		Die irreduziblen Elemente von $R = \setZ$ sind exakt $\pm(\text{Primzahl})$.
+ 	\end{example}
+ 
+ 	\begin{lemma}
+ 		Sei $R$ ein Integritätsring. Seien $r, s, t, s_1, s_2, u, v \in R$. Dann gilt:
+ 		\begin{enumerate}
+ 			\item $r \mid r$
+ 			\item $r \mid s$ und $s \mid t \Rightarrow r \mid t$
+ 			\item $r \mid s_1$ und $r \mid s_2 \Rightarrow r \mid (s_1 + s_2)$
+ 			\item $r \mid s_1$ und $r \mid (s_1 + s_2) \Rightarrow r \mid s_2$
+ 			\item $r \mid s$ und $u \mid v \Rightarrow ru \mid sv$
+ 		\end{enumerate}
+ 	\end{lemma}
+ 
+ 	\heading{Nächstes Ziel:} In $\setZ$ ist jede Zahl darstellbar als Produkt von Primzahlen und die Darstellung ist eindeutig bis auf Reihenfolge und Vorzeichen.
+ 	
+ 	\heading{Wunschtraum:} Sei $R$ ein Integritätsring. Dann ist jedes Element eindeutig darstellbar als Produkt von irreduziblen Elementen.
+ 	
+ 	\begin{example}
+ 		Betrachte $R = \setZ[\sqrt{-5}] = \{ a + b \cdot \sqrt{-5} \mid a,b \in \setZ \} \subset \setC$
+ 		
+ 		Dieser Ring ist ein Unterring von $\setC$ und deshalb Nullteilerfrei und
+ 		\begin{equation*}
+ 			9 = 3 \cdot 3 = \underbrace{(2 + \sqrt{-5})(2 - \sqrt{-5})}_{2^2 - (\sqrt{-5})^2}
+ 		\end{equation*}
+ 		Die Elemente $3, 2 \pm \sqrt{-5}$ sind irreduzibel und nicht zueinander assoziiert.
+ 	\end{example}
 
 \end{document}
