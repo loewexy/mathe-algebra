@@ -562,7 +562,7 @@
 	\begin{proposition}
 		Sei $k \subseteq L$ eine Körpererweiterung. Sei
 		\begin{equation*}
-			\overline{k} \coloneq \{ a \in L \mid a \text{ ist algebraisch über } k \}
+			\overline{k} \coloneqq \{ a \in L \mid a \text{ ist algebraisch über } k \}
 		\end{equation*}
 		Dann ist $\overline{k}$ ein Körper.
 		
@@ -776,5 +776,183 @@
  		\end{equation*}
  		Die Elemente $3, 2 \pm \sqrt{-5}$ sind irreduzibel und nicht zueinander assoziiert.
  	\end{example}
+ 
+ 	\begin{definition}
+ 		Sei $R$ ein Integritätsring. Eine Teilerkette ist eine Folge $(r_i)_{i \in \setN}$ von Elementen aus $R$, so dass $\forall i \; r_{i+1} \mid r_i$. Ich sage, im Ring $R$ gilt der Teilerkettensatz für Elemente, falls in jeder Teilerkette die stärkere Bedigung $r_{i+1} \parallel r_i$ nur endlich oft gilt.
+ 	\end{definition}
+ 
+ 	\begin{example}
+ 		Im Ring $\setZ$ gilt der Teilerkettensatz für Elemente, denn falls $r_{i+1} \parallel r_i$ ist, dann gilt $\abs{r_{i+1} < \abs{r_i}}$.
+ 		
+ 		Analog im Polynomring mit $\deg$ statt $\abs{\cdot}$.
+ 	\end{example}
+ 
+ 	\begin{theorem}
+ 		Sei $R$ ein Integritätsring in dem der Teilerkettensatz für Elemente gilt. Dann ist jedes $r \in R, r \notin R^*, r \neq 0$ als Produkt von endliche vielen irreduziblen Elementen darstellbar.
+ 	\end{theorem}
+ 
+ 	\begin{proof}(Noether Rekursion)
+ 		Wir wollen zeigen, dass $M = \{ r \in R \mid r \notin R^*, r \neq 0 \text{ und $r$ nicht als Produkt von endlich vielen irreduziblen darstellbar} \}$ leer ist. Widerspruchsbeweis: angenommen $M \neq \emptyset$.
+ 		
+ 		Beobachtungen:
+ 		\begin{enumerate}
+ 			\item $\forall r \in M$ $r$ ist nicht irreduziblen (denn sonst wäre $r$ eine Darstellung), also hat $r$ echte Teiler
+ 			\item $\exists r \in M$, so dass alle echten Teiler von $r$ nicht mehr in $M$ liegen (denn sonst nehme echten Teiler aus $M$, widerhole das Verfahren, erhalte unendliche Teilerkette wo ich in jedem Schritt echte Teiler habe $\lightning$ zur Annahme)
+ 		\end{enumerate}
+ 	
+ 		Also gegeben $r$ wie in Beobachtung 2), dann ist jeder echte Teiler als Produkt von endlich vielen irreduziblen darstellbar, also auch $r$ selbst. (Schreibe $r = r_1 \cdot r_2$ mit $r_1, r_2$ echte Teiler. Dann $r_1 = a_1 \cdots a_n, r_2 = b_1 \dots b_m$ mit $\forall i,j a_i, b_j$ irreduzibel dann $r = a_1 \dots a_n b_1 \dots b_m$) $\lightning$.
+ 	\end{proof}
+ 
+ 	\begin{definition}
+ 		Sei $R$ ein Integritätsring, sei $r \in R, r \notin R^*, r \neq 0$. Seien
+ 		\begin{equation*}
+	 		r = a_1 \cdots a_n = b_1 \cdots b_m
+ 		\end{equation*}
+ 		zwei Darstellungen von $r$ als Produkt von endlich vielen Irreduziblen.
+ 		
+ 		Nenne die Darstellung äquivalent, falls gilt
+ 		\begin{enumerate}
+ 			\item gleich lang: $n = m$
+ 			\item $\exists$ Permutation $\sigma \in S_n$ und Einheiten $\varepsilon_1 \cdots \varepsilon_n \in R^*$ so dass $\forall i: a_i = \varepsilon_i \cdot b_{\sigma(i)}$
+ 		\end{enumerate}
+ 	\end{definition}
+ 
+ 	\begin{remark}
+ 		In Ringen, in denen der Teilerkettensatz gilt, sind Darstellungen nicht immer äquivalent! Zum Beispiel $R = \setZ{\sqrt{-5}}$.
+ 		
+ 		Das Problem ist, dass die irreduziblen Elemente in $\setZ[\sqrt{-5}]$ nicht unbedingt prim sind.
+ 	\end{remark}
+
+	\begin{definition}
+		Sei $R$ ein Integritätsring, $r \in R, r \neq 0$ ein Element. Nenne $r$ prim falls $\forall a,b \in R$
+		\begin{equation*}
+			r \mid (a \cdot b) \qquad \Longrightarrow \qquad r \mid a \text{ oder } r \mid b
+		\end{equation*}
+	\end{definition}
+
+	\begin{example}
+		In $R = \setZ[\sqrt{-5}]$ ist $(2 + \sqrt{-5})$ irreduzibel, aber  nicht prim, denn $(2 + \sqrt{-5}) \mid 3 \cdot 3$ aber $(2 + \sqrt{-5}) \nmid 3$.
+	\end{example}
+
+	\begin{lemma}[Elementare Rechenregeln für Prim-Elemente]
+		Sei $R$ ein Integritätsring, $p,q \in R$
+		\begin{enumerate}
+			\item $p$ prim $\Rightarrow$ $p$ irreduzibel
+			\item $p$ prim, $p \sim s$ $\Rightarrow$ $s$ prim
+			\item $p,q$ prim und $p \mid q \Rightarrow p \sim q$
+			\item $p$ prim und $p \mid a_1 \cdots a_n \Rightarrow \exists i \; p \mid a_i$
+		\end{enumerate}
+	\end{lemma}
+
+	\begin{proof}
+		zu 1)
+		
+		Sei $p$ prim. Angenommen $p$ habe echten Teiler $a \in R$. Dann sei $b \in R$ so dass $p = a \cdot b$, insbesondere $p \mid ab$. Also $p \mid a$ oder $p \mid b$. oBdA gelte $p \mid a$.
+		
+		Also $\exists h \in R, p \cdot h = a$. Einsetzen liefert
+		\begin{equation*}
+			p = p \cdot h \cdot b \qquad \Longleftrightarrow \qquad p(1-hb) = 0 \qquad \underset{\text{$R$ Integritätsring}}{\Longleftrightarrow} \qquad 1 = h \cdot b
+		\end{equation*}
+		$\Rightarrow$ $b$ ist eine Einheit, kein echter Teiler.
+	\end{proof}
+
+	\begin{theorem}
+		Im Ring $\setZ$ ist jedes irreduzible Element auch prim.
+	\end{theorem}
+
+	\begin{proof}
+		Angenommen es existiert in $\setZ$ ein irreduzibles Element $p$, das nicht prim ist. Dann ist $-p$ irreduzibel und auch nicht prim. Wir können also oBdA annehmen $p > 0$. Wir können auch annehmen das $p$ das kleinste positive, irreduzible Element ist, das nicht prim ist.
+		
+		Also $\exists a,b \in \setN: p \mid a \cdot b$ aber $p \nmid a$ und $p \nmid b$.
+		
+		Division mit Rest liefert
+		\begin{align*}
+		 	a &= x \cdot a + a' & \text{wobei $a' < p$}\\
+		 	b &= y \cdot p + b' & \text{wobei $b' < p$}
+		\end{align*}
+		Sehe sofort $p \nmid a'$ und $p \nmid b'$.
+		
+		Sehe auch $a \cdot b = x y p^2 + (x b' + a' y) p + a'b'$ also $p \mid a' b'$.
+		
+		Wähle also $a,b$ so, dass $ab$ minimal ist, und dann ist $a < p, b < p, ab < p^2$.
+		
+		Finde $h \in \setN: p \cdot h = a \cdot b$.
+		
+		Sei jetzt $p'$ ein irreduzibler Teiler von $h, p' > 0$. Dann existiert $h' > 0, h = p' \cdot h'$ und $p' \leq h < p$. Nach Wahl von $p$ (kleinstes irreduzibles das nicht prim ist) ist $p'$ prim und $p \cdot p' \cdot h' = a \cdot b$.
+		
+		Also gilt $p' \mid a \cdot b \underset{\text{$p' prim$}}{\Rightarrow} p' \mid a$ oder $p' \mid b$. oBdA gelte $p' \mid a$. Finde also $a' < a$ so dass $p' \cdot a' = a$. Einsetzen liefert 
+		\begin{equation*}
+			p \cdot p' \cdot h' = p' \cdot a' \cdot b \underset{\text{$\setZ$ Integritätsring}}{\Longrightarrow} p \cdot h' = a' b \qquad\Longrightarrow\qquad p \mid a' b
+		\end{equation*}
+		
+		Da $a' b < ab$ ist gilt nach Wahl von $a \cdot b$ ($a,b$ Gegenbeispiel zur Prim-Eigenschaft mit minimalem Produkt) also $p \mid a'$ oder $p \mid b$. Da $a' \mid a$ ist folgt $p \mid a$ oder $p \mid b$. $\lightning$
+	\end{proof}
+
+	\begin{theorem}
+		Sei $R$ ein Integritätsring. Dann ist äquivalent:
+		\begin{enumerate}
+			\item Jedes $r \in R, r \notin R^*, r \neq 0$ ist als Produkt von endlich vielen Irreduziblen darstellbar und je zwei Darstellungen sind äquivalent.
+			\item In $R$ gilt der Teilerkettensatz für Elemente und alle irreduziblen sind prim.
+		\end{enumerate}
+		Falls diese Eigenschaften gelten, nenne $R$ faktoriell oder UFD.
+	\end{theorem}
+
+	\begin{proof}
+		\heading{1) $\Rightarrow$ 2)}
+		
+		\textit{Teilerkettensatz}: Sei $(r_i)_{i \in \setN}$ eine Teilerkette. Sei $i$ so dass $r_{i+1} \parallel r_i$ das heißt $\exists h: h \notin R^*, h \neq 0: r_{i+1} \cdot h = r_i$.
+		
+		Nach Annahme, kann $r_i, r_{i+1},h$ als Produkt von endlich vielen irreduziblen geschrieben werden
+		\begin{align*}
+			r_i &= a_1 \cdot a_n \\
+			r_{i+1} &= b_1 \cdots b_m \\
+			h &= c_1 \cdots c_k
+		\end{align*}
+		Dann gilt
+		\begin{equation*}
+			\underbrace{b_1 \cdots b_m}_\text{Darstellung von $r_{i+1}$} \cdot c_1 \cdots c_k = \underbrace{a_1 \cdots a_n}_\text{Darstellung von $r_i$}
+		\end{equation*}
+		Da alle Darstellungen äquivalent sind, folgt $n = m + k > m$.
+		
+		Also in der Teilerkette gibt es höchstens endlich viele echte Teiler, nämlich höchstens so viele, wie eine (jede) Darstellung von $r_1$ lang ist. $\Rightarrow$ Teilerkettensatz gilt
+		
+		\textit{Irreduzibel $\Rightarrow$ Prim}: Sei $r$ irreduzibel und seien $a,b \in R \setminus \{ 0 \}$ so dass $r \mid ab$. Also existiert $h \in R \setminus \{ 0 \}$, so dass $r \cdot h = a \cdot b$. Wir wissen $h,a,b$ haben Darstellung
+		\begin{equation*}
+			a = a_1 \cdots a_n, \qquad b = b_1 \cdots b_m, \qquad h = h_1 \cdots h_k
+		\end{equation*}
+		Also
+		\begin{equation*}
+			r \cdot h_1 \cdots h_k = a_1 \cdots a_n \cdot b_1 \cdots b_m
+		\end{equation*}
+		zwei Darstellungen von $a \cdot b$. Per Annahme sind diese Darstellungen äquivalent also $\exists i: r \sim a_i$ oder $\exists j: r \sim b_j$
+		
+		$\Rightarrow r \mid a$ oder $r \mid b$. Also ist $r$ prim.
+		
+		\heading{2) $\Rightarrow 1)$}
+		
+		Wir haben schon bewiesen: Teilerkettensatz $\Rightarrow$ Darstellbarkeit, es fehlt noch die Äquivalenz $\forall r \in R, r \notin R^*, r \neq 0$ und für alle Darstellungen $r =  a_1 \cdots a_n \underset{(*)}{=} b_1 \cdots b_m$ mit $n \neq m$ gilt, dass beide Darstellungen äquivalent sind.
+		
+		\textit{Beweis per Induktion über $n$}
+		
+		Induktionsanfang: $n = 1: a_1 = b_1 \cdots b_m$
+		
+		Per Annahme ist $a_1$ prim, also $\exists j: a_1 \mid b_j$.
+		
+		Rechenregeln: $a_1 \sim b_j$, insbesondere sind alle $b_k, k \neq j$ schon Einheiten. $\Rightarrow m = 1 = j$ (da die Faktoren in der Darstellung irreduzibel und keine Einheiten sind).
+		
+		Induktionsschritt: Sei die Aussage für alle Zahlen $< n$ schon bewiesen.
+		
+		Wieder gilt $a_1 \mid b_1 \cdots b_m \Rightarrow \exists j: a_1 \sim b_j$. oBdA sei $j = 1$ also existiert eine Einheit $\varepsilon \in R^*$ so dass $a_1 = \varepsilon b_1$.
+		
+		$R$ ist also Integritätsring, kann also in $(*)$ kürzen, erhalte
+		\begin{equation*}
+			a_2 \cdots a_n = (\varepsilon b_2) \cdot b_3 \cdots b_m
+		\end{equation*}
+		Per Induktionsannahme sind diese Darstellungen äquivalent.
+	\end{proof}
+
+	\begin{corollary}
+		$\setZ$ ist faktoriell.
+	\end{corollary}
 
 \end{document}
