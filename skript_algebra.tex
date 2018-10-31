@@ -9,6 +9,7 @@
 \usepackage{amsmath,amssymb,amstext,mathtools,amsthm}
 \usepackage{subcaption}
 \usepackage{float}
+\usepackage{wasysym}
 \usepackage{stmaryrd}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{bookmarksnumbered}
@@ -680,7 +681,7 @@
  	\end{proof}
  
  	\begin{corollary}
- 		Sei $R$ ein Integritätsring. Dann ist $R[x]$ selbts wieder ein Integritätsring.
+ 		Sei $R$ ein Integritätsring. Dann ist $R[x]$ selbst wieder ein Integritätsring.
  	\end{corollary}
  
  	\begin{proof}
@@ -782,7 +783,7 @@
  	\end{definition}
  
  	\begin{example}
- 		Im Ring $\setZ$ gilt der Teilerkettensatz für Elemente, denn falls $r_{i+1} \parallel r_i$ ist, dann gilt $\abs{r_{i+1} < \abs{r_i}}$.
+ 		Im Ring $\setZ$ gilt der Teilerkettensatz für Elemente, denn falls $r_{i+1} \parallel r_i$ ist, dann gilt $\abs{r_{i+1}} < \abs{r_i}$.
  		
  		Analog im Polynomring mit $\deg$ statt $\abs{\cdot}$.
  	\end{example}
@@ -954,5 +955,180 @@
 	\begin{corollary}
 		$\setZ$ ist faktoriell.
 	\end{corollary}
+
+	\begin{corollary}
+		Alle Körper sind faktoriell.
+	\end{corollary}
+
+	\begin{theorem}[Gauß]
+		Wenn $R$ ein faktorieller Ring ist, dann auch $R[x]$.
+		
+		Und damit auch $(R[x])[y] = R[x,y]$ und auch $R[x_1, \dots, x_n] \; \forall n \in \setN$.
+	\end{theorem}
+
+	\begin{proof}
+		Wir müssen zeigen:
+		\begin{enumerate}
+			\item In $R[x]$ gilt der Teilerkettensatz
+			\item Je zwei Darstellungen sind äquivalent
+		\end{enumerate}
+	
+		\heading{zu 1):} Wenn $r(x),s(x) \in R[x]$ und $r(x) \parallel s(x)$, dann $\deg r(x) < \deg s(x)$ oder $\exists a \in R \setminus R^*, a \neq 0: a \cdot r(x) = s(x)$.
+		
+		$\Rightarrow$ alle Koeffizienten von $s$ werden von $a$ geteilt. In $R$ gilt aber der Teilerkettensatz!
+		
+		\textit{Hausaufgabe:} Also gilt der Teilerkettensatz auch in $R[x]$.
+		
+		\heading{zu 2):} Widerspruchsbeweis! Angenommen es gibt $r(x) \in R[x], r \neq 0, r \notin R[x]^* = R^*$ so dass $r$ zwei Darstellungen hat, die nicht äquivalent sind
+		\begin{equation*}
+			r(x) = p_1(x) \cdots p_\alpha(x) = q_1(x) \cdots q_\beta(x) \qquad\qquad\qquad (*)
+		\end{equation*}
+		Ich kann oBdA einige Annahmen treffen
+		\begin{itemize}
+			\item $\deg r(x)$ ist minimal unter allen Polynomen die nicht äquivalente Darstellungen haben
+			\item die irreduziblen Polynome $p_1, \dots, p_\alpha, q_1, \dots, q_\beta$ sind nach Graden sortiert also $\deg p_1 \geq \deg p_2 \geq \dots \geq \deg p_\alpha$ und $\deg q_1 \geq \deg q_2 \geq \dots \geq \deg q_\beta$
+			\item $\deg q_1 \geq \deg p_1$
+		\end{itemize}
+	
+		Sei $n \coloneqq \deg p_1, m = \deg q_1$. Seien $a,b$ die Leitkoeffizienten von $p_1$ beziehungsweise $q_1$. Das heißt:
+		\begin{align*}
+			p_1 &= a \cdot x^n + (\text{lot}) \\
+			p_1 &= b \cdot x^m + (\text{lot})
+		\end{align*}
+		
+		Beobachtungen:
+		\begin{itemize}
+			\item $\deg r(x) > 0$, denn sonst wären $r(x)$ und alle $q_i(x), p_j(x)$ konstant, also in $R$. Per Annahme das $R$ faktoriell ist müssten die Darstellungen dann äquivalent sein.
+			
+			$\Rightarrow$ $n > 0$ und $m > 0$
+			
+			\item Angenommen es gäbe $j$: $p_1 \sim q_j$. Dann könnte ich in $(*)$ auf beiden Seiten $p_1$ kürzen und erhielte Polynom von Grade $(\deg r(x)) - n < \deg r(x)$, das zwei nicht äquivalente Darstellungen hat $\lightning$ zur Minimalität von $\deg r(x)$.
+		\end{itemize}
+	
+		Betrachte Hilfspolynom:
+		\begin{equation*}
+			s(x) = \underbrace{\left[ b \cdot p_1(x) \cdot x^{m-n} - a \cdot q_1(x) \right]}_{\deg < \deg q_1(x)} \cdot q_2 \cdots q_\beta \tag{\sun}
+		\end{equation*}
+		
+		Wir erhalten zwei offensichtliche Fälle
+		\begin{enumerate}
+			\item $s(x) = 0$: Dann ist
+			\begin{equation*}
+				b \cdot p_1(x) \cdot x^{m-n} - a \cdot q_1(x)
+			\end{equation*}
+			\item $s(x) \neq 0$: Wir sehen $\deg s(x) < \deg r(x)$. Also sind je zwei Darstellungen von $s(x)$ äquivalent! Schreibe $s(x)$ um:
+			\begin{align*}
+				s(x) &= b \cdot p_1(X) x^{m-n} \cdot q_2 \cdots q_\beta - a \underbrace{q_1 \cdots q\beta}_{r(x)} \\
+				&= b \cdot p_1 x ^{m-n} \cdot q_2 \cdot q_\beta - a \cdot p_1 \cdots p_\alpha \\
+				&= p_1(x) \left[ b \cdot x^{m-n} \cdot q_2(x) \cdots q_\beta(x) - a \cdot p_2(x) \cdots p_\alpha(x) \right] \tag{\leftmoon}
+			\end{align*}
+		\end{enumerate}
+	
+		Wir können die Ausdrücke $(\sun)$ und $(\leftmoon)$ verfeinern zu Produkten von irreduziblen indem wir die Ausdrücke in $[\dots]$ als Produkt von irreduziblen schreiben. Diese Darstellungen von $s(x)$ müssen dann äquivalent sein.
+		
+		\textit{Konsequenz:} In der Darstellung von $(\sun)$ muss es einen Faktor geben, der zu $p_1$ assoziiert ist. Da $p_1 \nsim 1_2 \dots p_1 \nsim q_\beta$ muss $p_1$ ein Primfaktor vom $[\dots]$-Ausdruck in $(\sun)$ sein.
+		\begin{equation*}
+			\Rightarrow \qquad p_1 \mid (b p_1 \cdot x^{m-n} - a q_1) \qquad \Rightarrow p_1 \mid a q_1
+		\end{equation*}
+		
+		Insgesamt ergibt sich in jedem der beiden Fälle:
+		\begin{equation*}
+			\exists h \in R[x]: \quad p_1(x) \cdot h(x) = a \cdot q_1(x) \tag{\bell}
+		\end{equation*}
+		
+		\textit{Beobachte:} Wenn $a \in R^*$, dann $p_1 \mid q_1$ und $p_1 \sim q_1$ $\lightning$. Also ist $a \in R \setminus R^*, a \neq 0$.
+		
+		\textit{Zwischenbehauptung (Beweis später):} Sei $p \in R$ irreduzibel. Dann ist das konstante Polynom $p \in R[x]$ prim.
+		
+		\textit{Anwendung der Zwischenbehauptung:} Schreibe $a$ als Produkt von Irreduziblen. Wenn jetzt $p$ einer der irreduziblen Faktoren ist, dann $p \mid p_1 \cdot h$.
+		
+		$\Rightarrow p \mid p_1$ oder $p \mid h$. $p \mid p_1$ kann nicht sein, denn $p_1$ ist irreduzibel, hat also überhaupt keine echten Teiler.
+		
+		Also kann ich aus $(\bell)$ $p$ herausteilen und erhalte
+		\begin{equation*}
+			p_1 \cdot \frac{h}{p} = \frac{a}{p} q_1
+		\end{equation*}
+		Das geht mit jedem Primfaktor von $a$ erhalte also am Ende:
+		\begin{equation*}
+			p_1 \cdot \frac{h}{a} = q_1 \qquad\Rightarrow p_1 \mid q_1 \qquad\Rightarrow p_1 \sim q_1 \qquad\Rightarrow \lightning
+		\end{equation*}
+	
+		\textit{Zwischenbehauptung (jetzt der Beweis):} Sei $p \in R$ irreduzibel. Dann ist das konstante Polynom $p \in R[x]$ prim.
+		
+		Sei $p \in R$ irreduzibel. Ich zeige die Kontraposition: wenn $a(x), b(x) \in R[x]$ Polynome sind mit $p \nmid a(x)$ und $p \nmid b(x)$ $\Rightarrow p \nmid (a \cdot b)(x)$
+		
+		Seien also $a(x), b(x)$ gegeben. Schreibe
+		\begin{align*}
+			a(x) &= a_0 + a_1 x + \dots + a_n x^n \\
+			b(x) &= b_0 + b_1 x + \dots + b_m x^m
+		\end{align*}
+		
+		\textit{Erinnere:} $p \mid a(x) \Leftrightarrow \forall i: p \mid a_i$
+		
+		Kann also minimale Indizes $i$ und $j$ wählen, so dass $p \nmid a_i$ und $p \nmid b_j$. Betrachte Produktpolynom $(a \cdot b)(x)$ und rechne den Koeffizienten von $x^{i+j}$ im Produktpolynom aus. Dieser Koeffizient ist
+		\begin{equation*}
+			\gamma \coloneqq \sum_{\substack{\alpha + \beta = i + j \\ \alpha, \beta \in \setN}} a_\alpha \cdot b_\beta
+		\end{equation*}
+		
+		In dieser Summe sind alle Summanden durch $p$ teilbar, weil stets $\alpha < i$ oder $\beta < j$ mit der Ausnahme des Summanden $\alpha = i, \beta = j, (= a_i \cdot b_j)$.
+		
+		Weil $R$ faktoriell ist per Annahme und $p \in R$ deshalb prim ist $\Rightarrow p \nmid a_i \cdot b_j$
+		
+		$\Rightarrow p \nmid \gamma \qquad \Rightarrow p \nmid (a \cdot b)(x)$
+	\end{proof}
+
+	\heading{Was tun wir mit faktoriellen Ringen?}
+	
+	Sei $R$ ein faktorieller Ring, betrachte die Äquivalenzrelation $a \sim b \Leftrightarrow a \text{ assoziiert zu } b$
+	
+	Wähle Repräsentantensystem $P \subset R$ für die irreduziblen Elemente (= zu jedem irreduziblen $a \in R$ gibt es genau ein $b \in P$ mit $a \sim b$)
+	
+	Wenn dann irgendein $a \in R$ gegeben ist, dann kann ich schreiben
+	\begin{equation*}
+		a = \varepsilon \cdot \prod_{p \in P} p^{\alpha_p}
+	\end{equation*}
+	wobei $\varepsilon \in R^*, \alpha_p \in \setN$ und alle bis auf endlich viele $\alpha_p = 0$.
+	
+	Teilbarkeit wird dann ganz einfach. Seien $a, b \in R$
+	\begin{equation*}
+		a = \varepsilon_a \cdot \prod_{p \in P} p^{\alpha_{a,p}}, \qquad b = \varepsilon_b \cdot \prod_{p \in P} p^{\alpha_{b,p}}
+	\end{equation*}
+	und
+	\begin{align*}
+		a \mid b &\Leftrightarrow \forall p \in P: \alpha_{a,p} \leq \alpha_{b,p} \\
+		a \parallel b &\Leftrightarrow (\forall p \in P: \alpha_{a,p} \leq \alpha_{b,p}) \quad\&\quad (\exists p \in P: \alpha_{a,p} < \alpha_{b,p})\\
+		a \sim b &\Leftrightarrow \forall p \in P: \alpha_{a,p} = \alpha_{b,p}
+	\end{align*}
+	
+	\heading{Weiter mit Grundschulstoff:}
+	
+	Sei $R$ ein Integritätsring, seien $a,b \in R \setminus R^*, a \cdot b \neq 0$
+	
+	\begin{enumerate}
+		\item Ein Element $c \in R$ heißt größter Gemeinsamer Teiler wenn gilt $c \mid a$ und $c \mid b$ und wenn für jedes andere $c'$ mit $c' \mid a$ und $c' \mit b$ gilt $c' \mid c$.
+		\item Ein Element $c \in R$ heißt kleinstes gemeinsames Vielfaches, wenn $a \mid c$ und $b \mid c$ ist und für alle $c' \in R$ mit $a \mid c'$ und $b \mid c'$ gilt $c \mid c'$.
+	\end{enumerate}
+
+	\begin{theorem}
+		Sei $R$ faktoriell. Seien $a,b \in R$ dann existieren ggT und kgV.
+	\end{theorem}
+
+	\begin{proof}
+		Wähle Repräsentantensystem $P \subset R$. Schreibe
+		\begin{equation*}
+			a = \varepsilon_a \cdot \prod_{p \in P} p^{\alpha_{a,p}}, \qquad b = \varepsilon_b \cdot \prod_{p \in P} p^{\alpha_{b,p}}
+		\end{equation*}
+		
+		Setze
+		\begin{equation*}
+			\operatorname{ggT}(a,b) \coloneqq \prod_{p \in P} p^{\min(\alpha_{a,p}, \alpha_{b,p})}
+		\end{equation*}
+		und
+		\begin{equation*}
+			\operatorname{kgV}(a,b) \coloneqq \prod_{p \in P} p^{\max(\alpha_{a,p}, \alpha_{b,p})}
+		\end{equation*}
+		
+		Blick nach oben zeigt, dass dies exakt die Bedingungen erfüllt.
+	\end{proof}
 
 \end{document}
