@@ -11,6 +11,7 @@
 \usepackage{float}
 \usepackage{wasysym}
 \usepackage{stmaryrd}
+\usepackage{bbm}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{bookmarksnumbered}
 
@@ -1129,6 +1130,258 @@
 		\end{equation*}
 		
 		Blick nach oben zeigt, dass dies exakt die Bedingungen erfüllt.
+	\end{proof}
+
+	\begin{theorem}
+		Seien $f,g \in k[x]$ Polynome. Betrachte Divisionsreste
+		\begin{align*}
+			f &= q_1 \cdot g + r_1 \tag{1}\\
+			g &= q_2 \cdot r_1 + r_2 \tag{2}
+		\end{align*}
+		
+		Definiere dann induktiv Polynome $r_n$ als Divisionsrest
+		\begin{equation*}
+			r_{n-2} = q_n \cdot r_{n-1} + r_n \tag{n}
+		\end{equation*}
+		
+		\textit{Beobachtung:} Die Grade der Polynome $r_1, r_2, \dots$ werden immer kleiner. Der Prozess stoppt also nach endlich vielen Schritten das heißt irgendwann geht die Division auf. Es existiert also $n \in \setN$ so dass
+		\begin{equation*}
+			r_{n-1} = q_{n+1} \cdot r_n + 0 \tag{n+1}
+		\end{equation*}
+		
+		Dann ist $r_n = \operatorname{ggT}(f,g)$.
+	\end{theorem}
+
+	\begin{proof}
+		\begin{enumerate}
+			\item Wenn $t$ ein gemeinsamer Teiler von $f,g$ ist
+			\begin{align*}
+				\overset{(1)}{\Longrightarrow} t \mid r_1 && \dots && \overset{(n)}{\Longrightarrow} t \mid r_n \\
+				\overset{(2)}{\Longrightarrow} t \mid r_2
+			\end{align*}
+			\item Andere Richtung analog:
+			\begin{align*}
+				(n+1) &\Longrightarrow r_n \mid r_{n+1} \\
+				(n) &\Longrightarrow r_n \mid r_{n+1} \\
+				\vdots \\
+				(2) &\Longrightarrow r_n \mid g \\
+				(1) &\Longrightarrow r_n \mid f
+			\end{align*}
+			Da $k[t]$ faktoriell ist genügen 1) + 2) um $r_n = \operatorname{ggT}$ zu zeigen.
+		\end{enumerate}
+	\end{proof}
+
+	\subsection{Der Quotientenkörper eines Integritätsrings}
+	
+	\heading{Ziel:} Gegeben ein Ring $R$, suche einen möglichst kleinen Körper $k$ s.d. $R \subset k$ (besser: so dass es einen injektiven Ringmorphismus $R \hookrightarrow k$ gibt). Wir denken an $\setZ \hookrightarrow \setQ$.
+	
+	\heading{Beobachtung:} So etwas kann es nicht geben, wenn $R$ Nullteiler hat! Betrachte also nur Integritätsringe.
+	
+	\begin{definition}
+		Sei $R$ ein Integritätsring. Ein Quotientenkörper von $R$ ist ein Körper $k$ zusammen mit einem injektiven Ringmorphismus $\varphi: R \to k$ so dass folgende (universelle) Eigenschaft gilt: Wann immer $\Phi: R \to L$ ein injektiver Ringmorphismus in einen Körper ist, dann gibt es genau einen Körpermorphismus $\eta: k \to L$ so dass das folgende Diagramm kommutiert.
+		
+		\begin{center}
+			\begin{tikzpicture}
+				\node(R1) at (0,0){$R$};
+				\node[right = 2 of R1](k){$k$};
+				\node[below = 1 of R1](R2){$R$};
+				\node[below = 1 of k](L){$L$};
+				
+				\draw[->] (R1) -- (k) node[midway,above]{$\varphi$};
+				\draw (R1) -- (R2) node[midway,left]{$\mathbbm{1}_R$};
+				\draw[->] (R2) -- (L) node[midway,below]{$\Phi$};
+				\draw[->] (k) -- (L) node[midway,right]{$\exists ! \eta$};
+			\end{tikzpicture}
+		\end{center}
+	\end{definition}
+
+	\begin{remark}
+		Körpermorphismen $k \overset{\eta}{\to} L$ sind immer injektiv! Denn wäre $a \in k \setminus \{0\}, a \in \ker(\eta)$. Dann
+		\begin{equation*}
+			1_L = \eta(1_k) = \eta(a \cdot a^{-1}) = \underbrace{\eta(a)}_{= O_L} \cdot ?
+		\end{equation*} 
+		Widerspruch!
+	\end{remark}
+
+	\begin{theorem}
+		Sei $R$ ein Integritätsring. Dann existiert ein Quotientenkörper $(k, \varphi: R \to k)$. Dieser is eindeutig bis auf kanonische Isomorphie. Das bedeutet: Wenn $(k', \varphi': R \to k')$ ein weiterer Quotientenkörper ist, dann existiert genau ein Körperisomorphismus $\eta: k \to k'$ so das das folgende Diagramm kommutiert.
+		
+		\begin{center}
+			\begin{tikzpicture}
+				\node(R1) at (0,0){$R$};
+				\node[right = 2 of R1](k1){$k$};
+				\node[below = 1 of R1](R2){$R$};
+				\node[below = 1 of k1](k2){$k$};
+				
+				\draw[->] (R1) -- (k1) node[midway,above]{$\varphi$};
+				\draw (R1) -- (R2) node[midway,left]{$\mathbbm{1}_R$};
+				\draw[->] (R2) -- (k2) node[midway,below]{$\varphi'$};
+				\draw[->] (k1) -- (k2) node[midway,right]{$\exists ! \eta$};
+			\end{tikzpicture}
+		\end{center}
+	\end{theorem}
+
+	\begin{proof}		
+		\heading{Eindeutigkeit:} Seien Quotientenkörper $(k, \varphi: R \to k)$ sowie $(k', \varphi': R \to k')$ gegeben. Nach der universellen Eigenschaft existiert dann genau ein Körpermorphismus $\eta: k \to k'$ so dass das folgende Diagramm kommutiert:
+		\begin{center}
+			\begin{tikzpicture}
+				\node(R1) at (0,0){$R$};
+				\node[right = 2 of R1](k1){$k$};
+				\node[below = 1 of R1](R2){$R$};
+				\node[below = 1 of k1](k2){$k$};
+				
+				\draw[->] (R1) -- (k1) node[midway,above]{$\varphi$};
+				\draw (R1) -- (R2) node[midway,left]{$\mathbbm{1}_R$};
+				\draw[->] (R2) -- (k2) node[midway,below]{$\varphi'$};
+				\draw[->] (k1) -- (k2) node[midway,right]{$\eta$};
+			\end{tikzpicture}
+		\end{center}
+		Wir wissen auch: Weil $k'$ Quotientenkörper ist, existiert genau ein Körpermorphismus $\eta': k' \to k$ so dass das folgende Diagramm kommutiert:
+		\begin{center}
+			\begin{tikzpicture}
+				\node(R1) at (0,0){$R$};
+				\node[right = 2 of R1](k1){$k$};
+				\node[below = 1 of R1](R2){$R$};
+				\node[below = 1 of k1](k2){$k'$};
+				\node[below = 1 of R2](R3){$R$};
+				\node[below = 1 of k2](k3){$k$};
+				
+				\draw[->] (R1) -- (k1) node[midway,above]{$\varphi$};
+				\draw (R1) -- (R2) node[midway,left]{$\mathbbm{1}_R$};
+				\draw[->] (R2) -- (k2) node[midway,below]{$\varphi'$};
+				\draw[->] (k1) -- (k2) node[midway,right]{$\eta$};
+				\draw[->] (R3) -- (k3) node[midway,below]{$\varphi$};
+				\draw[->] (k2) -- (k3) node[midway,right]{$\eta'$};
+				\draw (R2) -- (R3) node[midway,left]{$\mathbbm{1}_R$};
+			\end{tikzpicture}
+		\end{center}
+	
+		Die universelle Eigenschaft angewandt auf
+		\begin{center}
+			\begin{tikzpicture}
+				\node(R1) at (0,0){$R$};
+				\node[right = 2 of R1](k1){$k$};
+				\node[below = 1 of R1](R2){$R$};
+				\node[below = 1 of R2](R3){$R$};
+				\node[right = 2 of R3](k3){$k$};
+				
+				\draw[->] (R1) -- (k1) node[midway,above]{$\varphi$};
+				\draw (R1) -- (R2) node[midway,left]{$\mathbbm{1}_R$};
+				\draw[->] (R3) -- (k3) node[midway,below]{$\varphi$};
+				\draw[->] (k1) -- (k3) node[midway,right]{$\eta' \circ \eta$} node[midway,left]{$\mathbbm{1}_k$};
+				\draw (R2) -- (R3) node[midway,left]{$\mathbbm{1}_R$};
+			\end{tikzpicture}
+		\end{center}
+		zeigt: $\eta' \circ \eta = \mathbbm{1}_k$.
+		
+		Genauso folgt $\eta \circ \eta'= \mathbbm{1}_{k'}$. Also ist der Körpermorphismus $\eta'$ die Umkehrung von $\eta$.
+		
+		\heading{Existenz:} Ich konstruiere den Quotientenkörper wie folgt:
+		\begin{enumerate}
+			\item Betrachte die Menge
+			\begin{equation*}
+				B = \{ (a,b) \in R \times R \mid b \neq 0 \}
+			\end{equation*}
+			und sage $(a,b)$ ist äquivalent zu $(a', b')$ wenn gilt $a b' = a' b$. Das ist eine Äquivalenzrelation. Symmetrie und Reflexivität sind klar per Definition. Wir müssen also noch die Transitivität zeigen: Seien also Tupel gegeben so dass
+			\begin{align*}
+				&&(a,b) &\sim (a', b') & (a', b') &\sim (a'',b'') \\
+				&\Leftrightarrow& ab' &= a'b & a'b'' &= a''b'
+			\end{align*}
+			Und damit dann
+			\begin{equation*}
+				\Rightarrow\quad ab' \cdot a'b'' = a' b \cdot a'' b'
+			\end{equation*}
+			Im Integritätsring falls $a' \neq 0$
+			\begin{equation*}
+				\Rightarrow\quad a b'' = a'' b \quad\Leftrightarrow\quad (a,b) \sim (a'',b'')
+			\end{equation*}
+			Falls $a' = 0$ ist der Beweis sowieso einfach.
+			
+			Definiere als Menge
+			\begin{equation*}
+				k \coloneqq B / \sim
+			\end{equation*}
+			
+			\textit{Notation:} Die Äquivalenzklasse von $(a,b)$ wird mit $\frac{a}{b}$ bezeichnet.
+			
+			Betrachte die Abbildung
+			\begin{equation*}
+				\varphi: R \to k, a \mapsto \frac{a}{1}
+			\end{equation*}
+			
+			Diese Abbildung ist injektiv, denn 
+			\begin{equation*}
+				\varphi(a) = \varphi(a') \quad\Leftrightarrow\quad \frac{a}{1} = \frac{a'}{1} \overset{\text{Def.}}{\quad\Leftrightarrow\quad} a \cdot 1 = a' \cdot 1 \quad\Leftrightarrow\quad a = a'
+			\end{equation*}
+			\item Definiere auf $k$ die Struktur eines Körpers mit Verknüpfungen
+			\begin{align*}
+				\cdot&: k \times k \to k, \quad \left(\frac{a}{b}, \frac{c}{d}\right) \mapsto \frac{ac}{bd} \\
+				+&: k \times k \to k, \quad \left(\frac{a}{b}, \frac{c}{d}\right) \mapsto \frac{ad + cb}{bd} \\
+			\end{align*}
+			Muss noch nachrechnen: Wohldefiniertheit
+			
+			Das bedeutet: Gegeben $\frac{a}{b}$ und $\frac{c}{d}$ sowie $\frac{a'}{b'}$ und $\frac{c'}{d'}$ mit $\frac{a}{b} = \frac{a'}{b'}$ sowie $\frac{c}{d} = \frac{c'}{d'}$, dann gilt $\frac{ad + cb}{bd} = \frac{a'd' + c'b'}{b'd'}$
+			\begin{align*}
+				&\Leftrightarrow& (ad + cb) \cdot b'd' &= (a'd' + c'b') \cdot bd \\
+				&\Leftrightarrow& adb'd' + cbb'd' &= a'd'bd + c'b'bd \\
+				\intertext{Wir wissen $ab' = a'b$ und $cd' = c'd$} \\
+				&\Leftrightarrow& 0 &= 0
+			\end{align*}
+			Die Addition ist wohldefiniert.
+			
+			\textit{Hausaufgabe:} Dasselbe für Multiplikation
+			
+			\textit{Lästige Rechnerei:} Diese Verknüpfungen definieren eine Körperstruktur auf $k$ so dass die Abbildung $\varphi: R \to k$ ein Ringmorphismus ist. Es gilt
+			\begin{equation*}
+				0_k = \frac01 \qquad 1_k = \frac11 \qquad \text{falls $a \neq 0$ dann} \left( \frac{a}{b} \right)^{-1} = \frac{b}{a}
+			\end{equation*}
+			
+			\item Beweis der universellen Eigenschaft
+			
+			Sei Körper $L$ gegeben und ein injektiver Ringmorphismus $\Phi: R \to L$, dann müssen wir zeigen $\exists! \eta: k \to L$ so dass \textellipsis
+			
+			\heading{Eindeutigkeit:} Angenommen wir hätten $\eta$ so dass das folgende Diagramm kommutiert
+			\begin{center}
+				\begin{tikzpicture}
+					\node(R1) at (0,0){$R$};
+					\node[right = 2 of R1](k){$k$};
+					\node[below = 1 of R1](R2){$R$};
+					\node[below = 1 of k](L){$L$};
+					
+					\draw[->] (R1) -- (k) node[midway,above]{$\varphi$};
+					\draw (R1) -- (R2) node[midway,left]{$\mathbbm{1}_R$};
+					\draw[->] (R2) -- (L) node[midway,below]{$\Phi$};
+					\draw[->] (k) -- (L) node[midway,right]{$\exists ! \eta$};
+				\end{tikzpicture}
+			\end{center}
+			dann gilt für alle $a \in R$
+			\begin{equation*}
+				\eta(\varphi(a)) = \Phi(\mathbbm{1}_R(a)) \Leftrightarrow \eta\left(\frac{a}{1}\right) = \Phi(a)
+			\end{equation*}
+			Falls $a \neq 0$ ist gilt
+			\begin{equation*}
+				\eta\left( \frac{1}{a} \right) = \eta\left( \left( \frac{a}{1} \right)^{-1} \right) \overset{\text{Körpermorphismus}}{=} \eta \left( \frac{a}{1} \right)^{-1}
+			\end{equation*}
+			also gilt für alle $\frac{a}{b} \in k$
+			\begin{equation*}
+				\eta \left( \frac{a}{b} \right) = \eta \left( \frac{a}{1} \cdot \frac{1}{b} \right) = \eta\left( \frac{a}{1} \right) \cdot \eta \left(
+				\frac{1}{b}\right) = \Phi(a) \cdot \left( \Phi(b) \right)^{-1}
+			\end{equation*}
+			also ist $\eta$ eindeutig.
+			
+			\heading{Existenz:} Definiere
+			\begin{equation*}
+				\eta: k \to L, \quad \frac{a}{b} \mapsto \Phi(a) \cdot \Phi(b)^{-1}
+			\end{equation*}
+			Wieder ist Wohldefiniertheit zu prüfen: Seien $\frac{a}{b} = \frac{a'}{b'}$. Wir müssen zeigen:
+			\begin{align*}
+				&& \Phi(a) \Phi(b)^{-1} &= \Phi(a') \Phi(b')^{-1} \\
+				&\Leftrightarrow& \Phi(a) \cdot \Phi(b') &= \Phi(a') \Phi(b) \\
+				&\Leftrightarrow& \Phi(ab') &= \Phi(a'b) \\
+				&\Leftrightarrow& \text{Wahr,}& \text{ wegen Annahme}
+			\end{align*}
+			Nachrechnen: das ist ein Körperisomorphismus.
+		\end{enumerate}
 	\end{proof}
 
 \end{document}
