@@ -1204,7 +1204,7 @@
 	\end{remark}
 
 	\begin{theorem}
-		Sei $R$ ein Integritätsring. Dann existiert ein Quotientenkörper $(k, \varphi: R \to k)$. Dieser is eindeutig bis auf kanonische Isomorphie. Das bedeutet: Wenn $(k', \varphi': R \to k')$ ein weiterer Quotientenkörper ist, dann existiert genau ein Körperisomorphismus $\eta: k \to k'$ so das das folgende Diagramm kommutiert.
+		Sei $R$ ein Integritätsring. Dann existiert ein Quotientenkörper $(k, \varphi: R \to k)$. Dieser ist eindeutig bis auf kanonische Isomorphie. Das bedeutet: Wenn $(k', \varphi': R \to k')$ ein weiterer Quotientenkörper ist, dann existiert genau ein Körperisomorphismus $\eta: k \to k'$ so das das folgende Diagramm kommutiert.
 		
 		\begin{center}
 			\begin{tikzpicture}
@@ -1383,5 +1383,119 @@
 			Nachrechnen: das ist ein Körperisomorphismus.
 		\end{enumerate}
 	\end{proof}
+
+	\begin{example}""
+		\begin{itemize}
+			\item $R = \setZ$ dann ist $Q(\setZ) = \setQ$
+			\item $R$ ein Körper, dann ist $Q(R) = R$
+			\item $R = \setZ[2 + \sqrt{-5}]$, dann ist $Q(R) = \setQ(2 + \sqrt{-5}) \subset \setC$
+			
+			Grund: Wir haben eine Inklusion $R \subset \setQ(2 + \sqrt{-5})$ deshalb gibt es Körpermorphismus $Q(R) \to \setQ(2 + \sqrt{-5})$.
+			
+			Dieser ist surjektiv, denn $Q(R)$ enthält das Element $a = 2 + \sqrt{-5}$. Wir wissen aber $\setQ(2 + \sqrt{-5})$ ist der kleinste Körper der dieses Element enthält.
+			\item Sei $R$ faktoriell. Wähle Repräsentantensystem $P \subset R$. Dann kann ich alle Elemente von $Q(R)$ auf eindeutige Weise schreiben als
+			\begin{equation*}
+				\varepsilon \cdot \prod_{p \in P} p^{\alpha_p}
+			\end{equation*}
+			wobei $\varepsilon \in R^*, \alpha_p \in \setZ$ und fast alle $\alpha_p = 0$.
+		\end{itemize}
+	\end{example}
+
+	\heading{Warum das alles?}
+	
+	Wenn $R$ faktoriell ist, kann ich manchmal entscheiden, ob Polynome in $R[x]$ irreduzibel sind.
+	
+	\textit{Beispiel:} $f(x) = x^3 - 2 \in \setZ[x]$
+	
+	Behauptung: $f$ ist irreduzibel in $\setZ[x]$
+	
+	Anbenommen es gäbe einen echten Teiler, dann gäbe es einen linearen Teiler das heißt
+	\begin{equation*}
+		\exists a,b \in \setZ, a \neq 0: f(x) = (ax + b) g(x)
+	\end{equation*}
+	wobei $g(x)$ quadratisch in $\setZ[x]$.
+	
+	Sehe sofort: $a \in \{ \pm 1 \}, b \in \{ \pm 1, \pm 2 \}$
+	
+	Nachrechnen: keine dieser Möglichkeiten ist ein Teiler
+	
+	Der folgende Satz zeigt, dass $f$ auch in $\setQ[x]$ irreduzibel ist.
+	
+	\begin{theorem}[Satz von Gauß]
+		Sei $R$ ein faktorieller Ring. Falls $f(x) \in R[x]$ irreduzibel als Element von $R[x]$, dann ist $f$ auch irreduzibel als Element von $Q(R)[x]$.
+	\end{theorem}
+
+	\heading{Vorbemerkung:} Sei $f \in Q(R)[x]$ irgendein Polynom. Dann existiert $a \in Q(R)$ so dass $a \cdot f(x) \subset R[x]$ und $\operatorname{ggT}(\text{Koeffizienten von } a \cdot f(x)) = 1$ (Koeffizienten sind Teilerfremd).
+	
+	Beweis dazu: Auf Hauptnenner bringen und durch größten gemeinsamen Teiler der Koeffizienten teilen.
+	
+	\begin{proof}
+		Angenommen wir haben $f(x) \in R[x]$ welches als Polynom in $Q(R)[x]$ reduzibel ist. Das heißt es existieren Polynome $q(x), p(x) \in Q(R)[x]$ mit $q,p$ nicht konstant, so dass $f(x) = q(x) \cdot p(x)$.
+		
+		\textit{Ziel:} Schreibe $f$ als Produkt $f = q'(x) \cdot p'(x)$ wobei $q',p' \in R[x]$ echte Teiler sind.
+		
+		\textit{Beobachtung:} Wenn $\gamma \in R$ jeden Koeffizienten von $f$ teilt und $\gamma \notin R^*, \gamma \neq 0$ dann ist $\gamma$ ein echter Teiler von $f$ und wir sind fertig. Wir nehmen also ab sofort an, dass die Koeffizienten von $f$ teilerfremd sind.
+		
+		Wende Vorbemerkung auf Polynome $p(x), q(x)$ an, erhalte $a,b \in Q(R)$ so dass $a \cdot p(x) \in R[x]$ und $b \cdot q(x) \in R[x]$ und Koeffizienten dieser Polynome jeweils Teilerfremd in $R$.
+		
+		Durch Multiplikation erhalte Gleichung
+		\begin{equation*}
+			a \cdot b \cdot f(x) = a \cdot p(x) \cdot b \cdot q(x) \in R[x] \tag{$*$}
+		\end{equation*}
+		Beachte die linke Seite ist in $R[x]$, weil beide Faktoren der rechten Seite in $R[x]$ sind.
+		
+		\textit{Behauptung:} Es ist $a \cdot b \in R$.
+		
+		\textit{Beweis:} Angenommen $a \cdot b \notin R$ das heißt es existiert Primelement $p \in R$, welches in der Darstellung von $a \cdot b$ mit negativem Exponenten auftritt. Da aber $a \cdot b \cdot f(x) \in R[x]$ muss die Darstellung jedes Koeffizienten das Element $p$ mit positivem Exponenten enthalten. Also $p \mid \text{Koeffizienten}$ $\lightning$ zu $\operatorname{ggT(\text{Koeffizienten})} = 1$
+		
+		\textit{Behauptung:} Es gilt sogar $a \cdot b \in R^*$
+		
+		\textit{Beweis:} Angenommen $a \cdot b \notin R^*$. Dann hätte ich einen echten irreduziblen Teiler $\gamma \in R$ irreduzibel mit $\gamma \mid a \cdot b$.
+		\begin{equation*}
+			\Rightarrow \gamma \mid a \cdot b \cdot f(x) \qquad \Rightarrow \gamma \mid [a \cdot p(x)][b \cdot q(x)]
+		\end{equation*}
+		
+		\textit{Erinnerung:} $\gamma \in R$ irreduzibel $\Rightarrow$ $\gamma$ prim in $R[x]$.
+		
+		Also gilt
+		\begin{equation*}
+			\gamma \mid a \cdot p(x) \qquad\text{oder}\qquad \gamma \mid b \cdot q(x)
+		\end{equation*}
+		oBdA sei $\gamma \mid a \cdot p(x)$ $\lightning$ zur Wahl von $a$.
+		
+		Damit kann ich $(*)$ umschreiben zu
+		\begin{equation*}
+			f(x) = \underbrace{\left[ (a \cdot b)^{-1} \cdot a \cdot p(x) \right]}_{\in R[x]} \cdot \underbrace{\left[ b \cdot q(x) \right]}_{\in R[x]}
+		\end{equation*}
+	\end{proof}
+
+	\heading{Zusammenfassung:} Wir sind jetzt inder Lage, für ganzzahlige Polynome zu entscheiden, ob sie in $\setQ[x]$ irreduzibel sind. (z.B. $x^3 - 2$ ist irreduzibel in $\setQ[x]$, Folgerung $[\setQ(\sqrt[3]{2}): \setQ] = 3$ denn wir wissen jetzt, dass $x^3 - 2$ das Minimalpolynom von $\sqrt[3]{2}$ ist)
+	
+	\heading{Erinnerung:} Das geht so:
+	
+	Lagrangesche Interpolationsformel (= Polynom von Grad $\leq n$ ist durch seine Werte an $n+1$ Stellen festgelegt) Sei $k$ Körper, $f(x) \in k[x]$ Polynome von Grad $\leq n$, seien $a_1, \dots, a_{n+1} \in k$ unterschiedliche Körperlementente. Dann ist $f$ durch die Werte $f(a_i)$ eindeutig festgelegt, nämlich
+	\begin{equation*}
+		f(x) = \sum_{j=1}^{n+1} f(a_j) \prod_{k \neq j} \frac{x - a_k}{a_j - a_k} \eqqcolon h(x) \in k[x]
+	\end{equation*}
+	Dann gilt für alle $i$
+	\begin{equation*}
+		h(a_i) = \sum_{j = 1}^{n+1} f(a_j) \prod_{k \neq j} \frac{a_i - a_k}{a_j - a_k} = f(a_i) \prod_{k \neq i} \frac{a_i - a_k}{a_i - a_k} = f(a_i)
+	\end{equation*}
+	
+	$\Rightarrow$ $h-f$ ist Polynom von Grad $\leq n$ mit Nullstellen $a_1, \dots, a_{n+1}$
+	
+	$\Rightarrow h - f = 0$
+	
+	Damit haben wir folgendes Verfahren, um irreduzibilität in $\setZ[x]$ und also auch in $\setQ[x]$ zu testen.
+	
+	Gegeben $f(x) \in \setZ[x]$ von Grad $\leq n$ so dass $\operatorname{ggT}(\text{Koeffizienten}) = 1$.
+	
+	Wähle $a_1, \dots, a_{n+1} \in \setZ$ so dass $f(a_i) \neq 0$ und betrachte $f(a_1), \dots, f(a_n) \in \setZ$.
+	
+	Wir wissen, wenn $g(x)$ ein Teiler von $f(x)$ in $\setZ[x]$ ist, dann gilt für alle $i$ $q(a_i) \mid f(a_i)$
+	
+	Für $g(a_i)$ gibt es also nur endlich viele Möglichkeiten.
+	
+	Nur endlich viele Polynome kommen als Teiler in Frage. Wir müssen also durch Polynomdivision testen, ob die Kandidatenpolynome tatsächlich Teiler sind.
 
 \end{document}
