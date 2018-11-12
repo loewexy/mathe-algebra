@@ -1106,7 +1106,7 @@
 	Sei $R$ ein Integritätsring, seien $a,b \in R \setminus R^*, a \cdot b \neq 0$
 	
 	\begin{enumerate}
-		\item Ein Element $c \in R$ heißt größter Gemeinsamer Teiler wenn gilt $c \mid a$ und $c \mid b$ und wenn für jedes andere $c'$ mit $c' \mid a$ und $c' \mit b$ gilt $c' \mid c$.
+		\item Ein Element $c \in R$ heißt größter Gemeinsamer Teiler wenn gilt $c \mid a$ und $c \mid b$ und wenn für jedes andere $c'$ mit $c' \mid a$ und $c' \mid b$ gilt $c' \mid c$.
 		\item Ein Element $c \in R$ heißt kleinstes gemeinsames Vielfaches, wenn $a \mid c$ und $b \mid c$ ist und für alle $c' \in R$ mit $a \mid c'$ und $b \mid c'$ gilt $c \mid c'$.
 	\end{enumerate}
 
@@ -1161,8 +1161,8 @@
 			\end{align*}
 			\item Andere Richtung analog:
 			\begin{align*}
-				(n+1) &\Longrightarrow r_n \mid r_{n+1} \\
-				(n) &\Longrightarrow r_n \mid r_{n+1} \\
+				(n+1) &\Longrightarrow r_n \mid r_{n-1} \\
+				(n) &\Longrightarrow r_n \mid r_{n-2} \\
 				\vdots \\
 				(2) &\Longrightarrow r_n \mid g \\
 				(1) &\Longrightarrow r_n \mid f
@@ -1497,5 +1497,200 @@
 	Für $g(a_i)$ gibt es also nur endlich viele Möglichkeiten.
 	
 	Nur endlich viele Polynome kommen als Teiler in Frage. Wir müssen also durch Polynomdivision testen, ob die Kandidatenpolynome tatsächlich Teiler sind.
+	
+	\begin{theorem}[Eisenstein-Kriterium]
+		Sei $R$ ein faktorieller Ring, sei\begin{equation*}
+			f(x) = a_0 + a_1 x + \dots + a_n x^n \in R[x]
+		\end{equation*}
+		mit $n > 0$ und $\operatorname{ggT}(a_0, \dots, a_n) = 1$. Falls es ein irreduzibles gibt $p \in R$ so dass $p \mid a_0, p \mid a_1, \dots, p \mid a_{n-1}$ und $p^2 \nmid a_0$. Dann ist $f$ irreduzibel in $R[x]$ und also auch in $Q(R)[x]$.
+	\end{theorem}
+
+	\begin{proof}
+		Sei $f$ wie im Satz gegeben. Angenommen ich kann $f$ schreiben als Produkt
+		\begin{equation*}
+		f(x) = \alpha(x) \cdot \beta(x)
+		\end{equation*}
+		wobei $\alpha, \beta \in R[x], \deg \alpha > 0, \deg \beta > 0$.
+		
+		Schreibe
+		\begin{align*}
+			\alpha(x) &= \alpha_0 + \alpha_1 x + \dots \\
+			\beta(x) &= \beta_0 + \beta_1 x + \dots
+		\end{align*}
+		
+		Beobachte: $a_0 = \alpha_0 \cdot \beta_0$
+		
+		Per Annahme gilt: $p \mid a_0 \underset{\text{$R$ faktoriell}}{\Rightarrow} p \mid \alpha_0$ oder $p \mid \beta_0$.
+		
+		Per Annahme $p^2 \nmid a_0$ kann $p$ nicht beide Elemente teilen. Wir nehmen also $p \mid \alpha_0$ und $p \nmid \beta_0$ an.
+		
+		Weil $\operatorname{ggT}(a_0, \dots, a_n) = 1$ wissen wir $p$ teilt nicht alle $\alpha_i$. Sei also $i$ minimal so dass $p \nmid \alpha_i$. Wir wissen schon mal $i < n$, insbesondere $p \mid a_i$.
+		
+		Es ist aber
+		\begin{equation*}
+			a_i = \underbrace{\alpha_0 \beta_i}_\text{Vielfaches von $p$} + \underbrace{\alpha_i \beta_{i-1}}_\text{Vielfaches von $p$} + \underbrace{\alpha_2 \beta_{i-2}}_\text{Vielfaches von $p$} + \dots + \underbrace{\alpha_i \beta_0}_\text{kein Vielfaches von $p$}
+		\end{equation*}
+		
+		$\lightning$ zu Teilbarkeitsregeln.
+	\end{proof}
+
+	\begin{remark}
+		Polynome welche die Annahmen des Satzes erfüllen heißen Eisensteinpolynome.
+		
+		Ein Beispiel dafür ist $R = \setZ, f(x) = x^3 - 2$.
+	\end{remark}
+
+	\subsection{Hilfe bei der Anwendung des Eisenstein-Kriteriums}
+	
+	Sei $R$ faktoriell und $\varphi: R[x] \to S$ ein Ringmorphismus in einen Integritätsring $S$. Angenommen $\varphi$ hat die Eigenschaft dass $\forall f \in R[x]: \deg f > 0 \Rightarrow \varphi(f) \notin S^*$.
+	
+	Wenn jetzt ein $f \in R[x]$ gegeben ist mit $f(x) = a_0 + a_1 x + \dots + a_n x^n$ mit $n > 0$ und $\operatorname{ggT}(a_0, \dots, a_n) = 1$ und $\varphi(f)$ irreduzibel ist, dann ist $f$ irreduzibel.
+	
+	\begin{proof}
+		Angenommen $f(x)$ sei reduzibel in $R[x]$ $\Rightarrow$ $\exists \alpha(x), \beta(x) \in R[x]$ mit $f(x) = \alpha(x) \cdot \beta(x)$ und $\deg \alpha > 0, \deg \beta > 0$. Dann gilt
+		\begin{equation*}
+			\varphi(f) = \varphi(\alpha \cdot \beta)  = \underbrace{\varphi(\alpha)}_{\notin S^*} \cdot \underbrace{\varphi(\beta)}_{\notin S^*}
+		\end{equation*}
+		Also hat $\varphi(f)$ echte Teiler in $S$ und ist damit nicht irreduzibel.
+	\end{proof}
+
+	\heading{Wie finde ich $\varphi$?}: Keine Ahnung wir müssen Rumprobieren
+	
+	\heading{Beispielhafte Konstruktionen}
+	
+	\begin{enumerate}
+		\item Gegeben ein Ringmorphismus $\phi: R \to S$ (z.B. $\setZ \to \setZ / p \setZ$ oder $\setZ / p \setZ \to \setZ / p \setZ, a \mapsto a^p$)
+		
+		Betrachte dann Morphismus von Polynomringen
+		\begin{equation*}
+			\varphi: R[x] \to S[x], \sum a_i x^i \mapsto \sum \phi(a_i) x^i
+		\end{equation*}
+		
+		\item Situation wie in 1), zusätzlich sei $s \in S$ gegeben. Betrachte
+		\begin{equation*}
+			\varphi^*: R[x] \to S, \sum a_i x^i \mapsto \sum \phi(a_i) s^i	
+		\end{equation*}
+		
+		\item Situation wie in 2). Betrachte Morphismus
+		\begin{equation*}
+			\varphi^{\leftmoon}: R[x] \to s[x], \sum a_i x^i \mapsto \sum \varphi(a_i) (x - s)^i
+		\end{equation*}
+	\end{enumerate}
+
+	\heading{Beispielhafte Nutzanwendung:} Betrachte $p \in \setN$ prim und
+	\begin{equation*}
+		f(x) = x^{p-1} + x^{p-2} + \dots + x + 1 \in \setZ[x]
+	\end{equation*}
+	Das ist kein Eisenstein Polynom.
+	
+	Beobachte aber auch $(x-1)f(x) = x^p -1$.
+	
+	Das legt nahe folgenden Morphismus zu probieren
+	\begin{equation*}
+		\varphi: \setZ[x] \to \setZ[x], g(x) \mapsto g(x + 1)
+	\end{equation*}
+	
+	was ist $\varphi(f)$?
+	
+	\begin{equation*}
+		\varphi(x^p - 1) = \varphi((x-1)f) = \underbrace{\varphi(x-1)}_{=x} \cdot \varphi(f)
+	\end{equation*}
+	und außerdem
+	\begin{equation*}
+		\varphi(x^p - 1) = (x+1)^p - 1 = \sum_{i=1}^{p} \binom{p}{i} x^i - 1
+	\end{equation*}
+	
+	\begin{equation*}
+		\Rightarrow \varphi(f) = \sum_{i = 1}^p \binom{p}{i} \cdot x^{i-1}
+	\end{equation*}
+	das ist ein Eisenstein Polynom.
+	
+	Also ist $f(x)$ irreduzibel in $\setZ[x]$, also auch in $\setQ[x]$.
+	
+	\heading{Ernte einfahren:} Wir können mit unseren Methoden einige Fragen beantworten.
+	
+	\heading{Erinnerung:} Gegeben $M \subset \setC$, eine Menge die $0,1$ enthält. $\operatorname{Konst}(M) =$ Menge der aus $M$ konstruierbaren Punkte.
+	
+	\begin{enumerate}
+		\item $\operatorname{Kons}(M)$ ist ein Unterkörper von $\setC$
+		\item Wenn $z \in \operatorname{Kons}(M) \subset \setC$, dann gibt es $n \in \setN$ so dass $[k(z): k] = 2^n$ wobei $k = \setQ(M \cup \overline{M})$ und $M = \{ \overline{m} \mid m \in M \}$.
+	\end{enumerate}
+	
+	\begin{example}
+		$z = \sqrt[3]{2}$. Ist nicht aus $M = \{ 0, 1 \}$ konstruierbar, denn in diesem Fall wäre $\overline{M} = M$ und $k = \setQ(0,1) = \setQ$ aber $[\setQ(\sqrt[3]{2}: \setQ)] = 3$, denn wir wissen: $x^3 - 2$ ist das Minimalpolynom.
+	\end{example}
+
+	Dieselbe Argumentation liefert mehr!
+	
+	\begin{theorem}
+		Sei $\varphi \in (0,2\pi)$ so dass $e^{i \varphi} \in \setC$ transzendent ist. Dann ist der Winkel
+		
+		TODO winkel durch $e^{i\varphi}$
+		
+		nicht durch Zirkel und Lineal $3$-teilbar.
+	\end{theorem}
+
+	\begin{remark}
+		Die Abbildung
+		\begin{equation*}
+			(0, 2\pi) \to \setC, \varphi \mapsto e^{i \varphi}
+		\end{equation*}
+		ist injektiv hat also überabzählbar viele Bildpunkte, es gibt aber nur abzählbar viele algebraische Zahlen. Also ist $e^{i \varphi}$ transzendent für fast alle $\varphi$.
+	\end{remark}
+
+	Für dieses Problem betrachte bei gegebenem $\varphi$ die Menge $M = \{ 0, 1, e^{i \varphi} \}$. Ist $e^{i \frac{\varphi}{3}} \in \operatorname{Kons(M)}$? Also betrachte ich
+	\begin{equation*}
+		k = \setQ(M \cup \overline{M}) = \setQ(z) = \setQ(e^{i \varphi})
+	\end{equation*}
+	Muss diskutieren: $[k(e^{i \frac{\varphi}{3}}): k]$ das ist eine $2$-er Potenz falls $e^{i \frac{\varphi}{3}}$ konstruierbar ist.
+	
+	Wir sehen $e^{i \frac{\varphi}{3}}$ ist Nullstelle des Polynoms $f(x) = x^3 - e^{i \varphi} \in k[x]$. Falls $f$ das Minimalpolynom ist, ist $[k(e^{i \frac{\varphi}{3}}): k] = 3$, also $e^{i \frac{\varphi}{3}} \notin \operatorname{Kons}(M)$.
+	
+	Um zu sehen, dass $f \in k[x]$ tatsächlich irreduzibel ist, müssen wir $k$ verstehen!
+	
+	\heading{Behauptung:} $k$ ist isomorph zum Körper der rationalen Funktionen $\setQ(y)$
+	
+	\begin{proof}
+		Ich betrachte einen Ringmorphismus
+		\begin{equation*}
+			\setQ[y] \to k = \setQ(e^{i \varphi}), f(y) \mapsto f(e^{i \varphi})
+		\end{equation*}
+		Die Funktion ist injektiv weil $e^{i \varphi}$ transzendent ist.
+		
+		Außerdem gilt
+		\begin{equation*}
+			\setQ[y] \to Q(\setQ[y]) = \setQ(y)
+		\end{equation*}
+		
+		Die universelle Eigenschaft liefert einen Isomorphismus $\eta: \setQ(y) \to k$.
+		
+		$\eta$ ist surjektiv weil $e^{i \varphi} = \eta(y)$ im Bild liegt und $k$ der kleinste Körper ist, der $e^{i \varphi}$ enthält.
+	\end{proof}
+
+	Wir wollen entscheiden ob $f(x) = x^3 - e^{i \varphi} \in k[x]$ irreduzibel ist. Wir können also auch untersuchen ob $x^3 - y$ in $(\setQ(y))[x]$ irreduzibel ist.
+	
+	$\Leftrightarrow$ Ist $x^3 - y \in (\setQ[y])[x]$ irreduzibel?
+	
+	$-y$ ist prim = irreduzibel in $\setQ[y]$ und damit ist $x^3 - y$ ein Eisenstein-Polynom.
+	
+	\begin{example}
+		Falls $p$ prim ist und das regelmäßige $p$-Eck konstruierbar ist, ist $p - 1$ von der Form $2^n$.
+	\end{example}
+
+	\begin{proof}
+		Betrachte $M = \overline{M} = \{ 0, 1 \}$ und $k = \setQ(M \cup \overline{M}) = \setQ$.
+		
+		Das regelmäßige $p$-Eck ist konstruierbar $\Leftrightarrow$ $e^{\frac{2 \pi i}{p}} \in \operatorname{Kons}(M)$.
+		
+		Falls das so ist, ist
+		\begin{equation*}
+			\left[ \setQ(e^{\frac{2 \pi i}{p}}) : \setQ \right] = 2^n
+		\end{equation*}
+		für ein $n \in \setN$.
+		
+		Wir wissen $e^{\frac{2 \pi i}{p}}$ ist Nullstelle von $x^p - 1 \in \setQ[x]$.
+		
+		Aber $x^p - 1 = (x-1)(x^{p-1} + \dots + 1)$. Das Minimalpolynom ist also $x^{p-1} + \dots + 1$. Und damit $\left[ \setQ(e^{\frac{2 \pi i}{p}}) : \setQ \right] = p - 1$.
+	\end{proof}
 
 \end{document}
