@@ -1693,4 +1693,214 @@
 		Aber $x^p - 1 = (x-1)(x^{p-1} + \dots + 1)$. Das Minimalpolynom ist also $x^{p-1} + \dots + 1$. Und damit $\left[ \setQ(e^{\frac{2 \pi i}{p}}) : \setQ \right] = p - 1$.
 	\end{proof}
 
+	\subsection{Ringe und Ideale}
+	
+	\begin{definition}
+		Sei $R$ ein Ring (kommutativ, mit $1$). Sei $I \subset R$ eine nicht-leere Teilmenge. Nenne $I$ ein Ideal, falls gilt:
+		\begin{enumerate}
+			\item $\forall a,b, \in I: a + b \in I$
+			\item $\forall a \in I, \forall r \in R: r a \in I$
+		\end{enumerate}
+	\end{definition}
+
+	\begin{remark}
+		Für nicht-kommutative Ringe definiert man Linksideale (wie oben) und Rechtsideale (mit $ar$ statt $ra$ in 2)).
+	\end{remark}
+
+	\begin{remark}
+		\begin{itemize}
+			\item Die $0$ ist in jedem Ideal enthalten
+			\item $\{ 0 \}, R$ sind immer Ideale
+			\item Fall $R$ ein Körper ist, sind $\{ 0 \}$ und $R$ die einzigen Ideale, denn
+			
+			Sei $k$ ein Körper, $I \subset k$ ein Ideal. Angenommen $\exists a \in I \setminus \{ 0 \}$. Sei $b \in k$ gegeben dann ist $b = (b \cdot a^{-1}). a \in I$.
+			
+			\item Falls $I \subset R$ ein Ideal und $1 \in I \Rightarrow I = R$
+		\end{itemize}
+	\end{remark}
+
+	\begin{example}
+		\begin{itemize}
+			\item $R = \setZ, a \in \setZ$ ein Element $I = \{ \text{alle Vielfachen von $a$} \}$
+			\item Besonders einfache Ideale: sei $R$ ein Ring, $I \subset R$ ein Ideal. Nenne $I$ ein Hauptideal falls $\exists a \in I: I = (a)$. Nenne $R$ Hauptidealring falls alle Ideale Hauptideale sind. z.B. $\setZ$ ist ein Hauptidealring.
+			
+			Sei $I \subset \setZ$ ein Ideal, $I \neq (0)$. Wir wissen: $I$ enthält positive Elemente. Sei $a \in I$ das kleinste positive Element. Will zeigen $I = (a)$. Inklusion $\supset$ ist klar. Sei also $b \in I \setminus \{ 0 \}$ irgendein Element. oBdA sei $b > 0$. Division mit Rest:
+			\begin{equation*}
+				\underbrace{b}_{\in I} = \underbrace{* \cdot a}_{\in I} + c, \text{ wobei } 0 \leq c < a.
+			\end{equation*}
+			Damit ist $c \in I$ aber auch $c < a \Rightarrow c = 0$ und damit $b \in (a)$.
+			
+			Das gleiche gilt falls $k$ ein Körper und $R = k[x]$ ist.
+			
+			$R = k[x,y]$ ist kein Hauptidealring, denn $I = (x,y)$ ist kein Hauptideal, denn
+			\begin{enumerate}
+				\item $I \neq R$ Genauer $1 \notin I$, denn alle Elemente von $I$ außer $0$ haben positiven Grad.
+				\item Wenn $I$ ein Hauptideal wäre, $I = (a)$, dann $a \mid x$ und $a \mid y$, Aber $\operatorname{ggT}(x,y) = 1$. Also wäre $a$ Einheit, $I = R$ $\lightning$.
+			\end{enumerate}
+		
+			Einige Rechenregeln
+			\begin{itemize}
+				\item $(a) \subset (b) \quad\Leftrightarrow\quad b \mid a$
+				\item $(a) = (b) \quad\Leftrightarrow\quad a \sim b$
+			\end{itemize}
+						
+			\item $R$ beliebiger Ring, $(a_\lambda)_{\lambda \in \Lambda}$ eine Familie von Elementen
+			\begin{equation*}
+				I = \{ r_1 \cdot a_{\lambda_1} + \dots + r_n \cdot a_{\lambda_n} \mid n \in N, r_1, \dots, r_n \in R, \lambda_1, \dots, \lambda_n \in \Lambda \}
+			\end{equation*}
+			
+			Wir sagen das Ideal ist von $(a_\lambda)_{\lambda \in \Lambda}$ erzeugt und schreibe
+			\begin{equation*}
+				I = ((a_\lambda)_{\lambda \in \Lambda}) = (a_\lambda \mid \lambda \in \Lambda)
+			\end{equation*}
+			Falls die Familie endlich ist, schreibt man auch
+			\begin{equation*}
+				I = (a_1, \dots, a_n)
+			\end{equation*}
+		\end{itemize}
+	\end{example}
+
+	\begin{definition}
+		Sei $R$ ein Ring und $I \subset R$ ein Ideal. Nenne $I$ endlich erzeugt, falls es endlich viele $a_1, \dots, a_n \in I$ gibt, so dass
+		\begin{equation*}
+			I = (a_1, \dots, a_n)
+		\end{equation*}
+	\end{definition}
+
+	\begin{remark}
+		Die Ähnlichkeit zwischen Erzeugendensystemen von Idealen und Untervektorräumen geht nicht sehr weit!
+	\end{remark}
+
+	\begin{example}
+		Sei $k$ ein Körper (z.b. $\setR$) und $X \subset k^n$ eine Teilmenge (z.B. $X$ = Einheitskreis in $\setR^2$)
+		
+		Betrachte $R = k[x_1, \dots, x_n]$ und
+		\begin{equation*}
+			I = \left\{ f \in k[x_1, \dots, x_n] \mid f(x_1, \dots, x_n) = 0 \;\forall \begin{pmatrix}
+				x_1 \\ \vdots \\ x_n
+			\end{pmatrix} \in X \right\}
+		\end{equation*}
+		Diese Konstruktion ist besonders interessant, falls $X$ die Lösungsmenge eines polynomiellen Gleichungssystems ist.
+	\end{example}
+
+	\begin{definition}
+		Sei $R$ ein Ring. Sage in $R$ gilt der Teilerkettensatz für Ideale, falls jede aufsteigende Kette von Idealen
+		\begin{equation*}
+			I_1 \subseteq I_2 \subseteq I_3 \subseteq \dots
+		\end{equation*}
+		nach endlich vielen Schritten konstant wird.
+	\end{definition}
+
+	\begin{theorem}
+		Sei $R$ ein Ring, dann ist äquivalent
+		\begin{enumerate}
+			\item Jedes Ideal ist endlich erzeugt
+			\item In $R$ gilt der Teilerkettensatz für Ideale
+			\item In jeder nicht-leeren Menge von Idealen gibt es ein Element, das bezüglich Inklusion maximal ist
+		\end{enumerate}
+		Falls diese Eigenschaften gelten, nenne $R$ Noethersch
+	\end{theorem}
+
+	\begin{proof}
+		\heading{1) $\Rightarrow$ 2)}
+		Sei $I_1 \subseteq I_2 \subseteq \dots$ eine Folge von Idealen. Beachte:
+		\begin{equation*}
+			I = \bigcup_{i=0}^\infty I_i
+		\end{equation*}
+		ist ein Ideal, also per Annahme endlich erzeugt: $I = (a_1, \dots, a_n)$ für geeignete $a_1, \dots, a_n \in \bigcup I_i$. Dann gibt es also $i_1, \dots, i_n$ so dass $a_i \in I_{i_1}, a_2 \in I_{i_2}$ wenn $m = \max \{ i_1, \dots, i_n \}$ dann $a_1 \in I_m, a_2 \in I_m, \dots$ damit gilt:
+		\begin{equation*}
+			(a_1, \dots, a_n) \subset I_m \subset I = (a_1, \dots, a_m)
+		\end{equation*}
+		also $I_m = I_{m+1} = I_{m+2} = \dots$
+		
+		\heading{2) $\Rightarrow$ 3)}
+		Sei $M$ eine nicht-leere Menge von Idealen ohne maximales Element. Sei $I_i \in M$ irgendein Element. Finde dann $I_2 \in M$ mit $I_1 \subsetneq I_2$. Da $I_2$ auch nicht maximal ist finde also $I_3 \in M$ mit $I_2 \subsetneq I_3$. Erhalte so eine Kette
+		\begin{equation*}
+			I_1 \subsetneq I_2 \subsetneq I_3 \subsetneq ...
+		\end{equation*}
+		$\Rightarrow$ Teilerkettensatz für Ideale gilt nicht!
+		
+		\heading{3) $\Rightarrow$ 1)}
+		Sei $I \subset R$ ein Ideal, $I \neq (0)$. Sei $M = \{ J \subset I \mid \text{$J$ ein Ideal, $J$ endlich erzeugt} \}$
+		
+		Wir wissen es gibt ein maximales $m \in M$. Behauptung $m = I$
+		
+		Denn sonst wäre $m = (a_1, \dots, a_n) \subsetneq I$ und es gäbe $a_{n+1} \in I \setminus m$. Dann ist $m' = (a_1, \dots a_n, a_{n+1})$ endlich erzeugt, also in $M$ und $m' \supsetneq m$ $\lightning$
+	\end{proof}
+
+	\begin{theorem}[Hilbert]
+		Sei $R$ Noethersch. Dann ist auch $R[x]$ Noethersch.
+	\end{theorem}
+
+	\begin{proof}
+		Angenommen $R[x]$ nicht Noethersch. Wir müssen zeigen $R$ ist nicht Noethersch.
+		
+		Wir wissen: Es gibt in $R[x]$ ein Ideal $I$, das nicht endlich erzeugt ist.
+		
+		Wähle in $I$ ein Element $f$ von minimalem Grad. Dann ist $I \subsetneq (f_1)$, also $I \setminus (f_1) \neq \emptyset$, wähle $f_2 \in I \setminus (f_1)$ von minimalem Grad. $I \supsetneq (f_1, f_2)$ wähle $f_3 \in I \setminus (f_1, f_2)$ von minimalem Grad.
+		
+		Erhalte Folge von Polynomen $f_1, f_2, f_3, \dots$ so dass $\deg f_1 \leq \deg f_2 \leq \deg f_3 \leq \dots$
+		
+		Setze $n_i = \deg f_i$, $a_i = $ Leitkoeffizient von $f_i \in R$.
+		
+		Will zeigen, dass folgende Kette von Idealen in $R$ nicht stationär wird.
+		\begin{equation*}
+			(a_1) \subseteq (a_1, a_2) \subseteq (a_1, a_2, a_3) \subseteq \dots
+		\end{equation*}
+		dann wird klar sein, dass $R$ nicht Noethersch war.
+		
+		Angenommen es gäbe $k$ mit $(a_1, \dots, a_k) = (a_1, \dots, a_{k+1}) \Leftrightarrow a_{k+1} \in (a_1 \dots, a_k)$
+		
+		Dann gibt es also eine Linearkombination
+		\begin{equation*}
+			a_{k+1} = \sum_{i = 1}^k r_i a_i
+		\end{equation*}
+		für geeignete $r_i \in R$. Betrachte Polynom
+		\begin{equation*}
+			s(x) = \sum_{i = 1}^k r_i \cdot x^{n_{k+1} - n_i} \cdot f_i(x)
+		\end{equation*}
+		Wesentliche Eigenschaft von $s$:
+		\begin{enumerate}
+			\item $\deg s = n_{k+1} = \deg f_{k+1}$
+			\item Leitkoeffizient $(s) = a_{k+1}$
+			\item $s \in (f_1, \dots, f_k)$
+		\end{enumerate}
+	
+		Betrachte $\underbrace{f_{k+1}(x)}_{\notin (f_1, \dots, f_k)} - \underbrace{s(x)}_{\in (f_1, \dots, f_k)} = t(x)$.
+		
+		Damit ist $t(x) \notin (f_1, \dots, f_k)$ und $\deg t(x) < n_{k+1}$.
+		
+		$\lightning$ zur Wahl von $f_{k+1}$ als Element von $I \setminus (f_1, \dots, f_k)$ von minimalem Grad.
+	\end{proof}
+
+	\begin{theorem}
+		Sei $R$ ein Integritätsring, der Hauptidealring ist. Dann ist $R$ faktoriell.
+	\end{theorem}
+
+	\begin{proof}
+		Sei $p$ irreduzibel, seien $a,b \in R$. $p \nmid a, p \nmid b$. Dann müssen wir zeigen: $p \nmid a \cdot b$.
+		
+		Wir wissen: $(p,a)$ ist ein Hauptideal, also $\exists c \in R$ so dass $(p,a) = (c)$. Also $p$ ist Vielfaches von $c$, also $c \mid p$. Aber $p$ ist irreduzibel hat also keine echten Teiler. Also $c \in R^*$ oder $c \sim p$.
+		
+		Aber $c \sim p \Leftrightarrow p \mid a$ was wir per Annahme ausschließen!
+		
+		Also $c \in R^* \quad\Rightarrow (a,p) = (1)$. Es gibt also eine Linearkombination
+		\begin{equation*}
+			1 = \alpha_1 a_1 + \alpha_2 p \tag{$*$}
+		\end{equation*}
+		Analog finde $\beta_1, \beta_2 \in R$
+		\begin{equation*}
+			1 = \beta_1 b + \beta_2 p \tag{$\leftmoon$}
+		\end{equation*}
+		
+		Es folgt
+		\begin{equation*}
+			1 = \alpha_2 \beta_2 p^2 + (\alpha_1 \beta_2 a + \alpha_2 \beta_1 b)p + \alpha_1 a \beta_1 b
+		\end{equation*}
+		
+		$\Rightarrow p \nmid \alpha_1 \beta_1 a b$ denn sonst würde $p$ die Summe teilen, also auch $p \mid 1$.
+		
+		$\Rightarrow p \nmid a \cdot b$
+	\end{proof}
+
 \end{document}
