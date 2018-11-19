@@ -1903,4 +1903,233 @@
 		$\Rightarrow p \nmid a \cdot b$
 	\end{proof}
 
+	\heading{Quotienten:} Sei $R$ ein Ring, $I \subset R$ ein Ideal. Dann definiere $r,s \in R$ als äquivalent, falls $r - s \in I$.
+	
+	\begin{theorem}
+		Es gibt auf Quotientenmengen eindeutige Verknüpfungen $+, \cdot$ so dass die Quotientenabbildung
+		\begin{equation*}
+			q: R \to R/I
+		\end{equation*}
+		Ringmorphismus ist.
+	\end{theorem}
+
+	\begin{example}
+		$R = \setZ, I = (p)$ das von einer Primzahl $p$ erzeugte Hauptideal. Dann gilt
+		\begin{equation*}
+			R/I = \setZ / p \setZ = \mathbb{F}_p = \underline{F}_p
+		\end{equation*}
+	\end{example}
+
+	\begin{example}
+		Sei $k$ ein Körper, $R = k[x]$, $f \in R$ ein Polynom, sowie $I = (f)$. Dann betrachte $R/(f)$.
+		
+		Beobachtung: Sei $n = \deg f$. Polynomdivison zeigt: die Polynome von $\deg < n$ bilden vollständiges Repräsentantensystem. Insbesondere $\dim_k R/(f) = n$.
+		
+		Multiplikation und Addition ist sehr einfach zu beschreiben: Wenn $a,b$ Polynome von $\deg < n$
+		\begin{equation*}
+			[a] \cdot [b] = [c]
+		\end{equation*}
+		wobei $c$ der Divisionsrest von $a \cdot b$ bei Division durch $f$ ist.
+	\end{example}
+
+	\begin{example}
+		Sei $k$ ein Körper, $X \subset k^n$ eine Teilmenge (z.B. Lösungsmenge eines algebraischen Gleichungssystems).
+		
+		Dann setze $R = k[x_1, \dots, x_n]$
+		\begin{equation*}
+			I = \{ f \in R \mid f_{\mid X} \equiv 0 \}
+		\end{equation*}
+		und $R/I = \{ \text{Funktionen $X \to k$, die sich zu Polynomen $k^n \to k$ fortsetzen lassen} \}$ $=$ Polynomiale Funktionen $=$ algebraische Funktionen
+	\end{example}
+
+	\begin{theorem}[Universelle Eigenschaft]
+		Sei $R$ ein Ring, sei $I \subset R$ ein Ideal. Sei $q: R \to R/I$ die Restklassenabbildung. Dann gilt folgende universelle Eigenschaft: für jeden surjektiven Ringmorphismus $\varphi: R \to S$ mit $\ker(\varphi) \supseteq I$ gibt es genau einen Ringmorphismus $\eta: R/I \to S$ so dass das folgende Diagramm kommutiert:
+		
+		\begin{center}
+			\begin{tikzpicture}
+			\node(R1) at (0,0){$R$};
+			\node[right = 2 of R1](ri){$R/I$};
+			\node[below = 1 of R1](R2){$R$};
+			\node[below = 1 of ri](s){$S$};
+			
+			\draw[->] (R1) -- (ri) node[midway,above]{$q$};
+			\draw (R1) -- (R2) node[midway,left]{$\mathbbm{1}_R$};
+			\draw[->] (R2) -- (s) node[midway,below]{$\varphi$};
+			\draw[->] (ri) -- (s) node[midway,right]{$\exists ! \eta$};
+			\end{tikzpicture}
+		\end{center}
+	\end{theorem}
+
+	\begin{proof}""
+		
+		\heading{Eindeutigkeit:} Angenommen wir haben zwei Morphismen $\eta_1, \eta_2$. Sei $[a] \in R/I$ gegeben. Weil die Diagramme kommutieren, muss dann $\eta_1([a]) = \eta_1(q(a)) = \varphi(a) = \eta_2([a])$.
+		
+		\heading{Existenz:} Setze $\eta: R/I \to S, [a] \mapsto \varphi(a)$. Dabei ist die Wohldefiniertheit zu zeigen. Sei also $[a] = [a']$ d.h. $a - a' \in I \subset \ker(\varphi)$. Dann ist $\varphi(a) - \varphi(a') = \varphi(a - a') = 0$, also $\varphi(a) = \varphi(a')$ und die Wohldefiniertheit ist klar. Muss noch nachrechnen: $\eta$ ist Ringmorphismus, bin aber zu faul.
+	\end{proof}
+
+	\begin{example}
+		Sei $\varphi: R \to S$ ein surjektiver Ringmorphismus. Dann ist $S \simeq R/\ker(\varphi)$.
+	\end{example}
+
+	\begin{proof}
+		Nach universeller Eigenschaft gibt es genau eine Abbildung $\eta: R/\ker(\varphi) \to S$ so dass das folgende Diagramm kommutiert.
+		
+		\begin{center}
+			\begin{tikzpicture}
+			\node(R1) at (0,0){$R$};
+			\node[right = 2 of R1](ri){$R/\ker(\varphi)$};
+			\node[below = 1 of R1](R2){$R$};
+			\node[below = 1 of ri](s){$S$};
+			
+			\draw[->] (R1) -- (ri);
+			\draw (R1) -- (R2) node[midway,left]{$\mathbbm{1}_R$};
+			\draw[->] (R2) -- (s) node[midway,below]{$\varphi$};
+			\draw[->] (ri) -- (s) node[midway,right]{$\exists ! \eta$};
+			\end{tikzpicture}
+		\end{center}
+		
+		Behauptung: $\eta$ ist Isomorphismus. Muss zeigen: $\eta$ bijektiv also injektiv und surjektiv. Surjektivität folgt sofort aus Kommutativität des Diagramms und der surjektivität von $\varphi$. Noch zu zeigen $\eta$ injektiv bzw. $\ker(\eta) = 0_{R/\ker(\varphi)}$.
+		
+		Sei also $[a] \in \ker(\eta)$. Wegen der Kommutativität des Diagramms:
+		\begin{equation*}
+			0_S = \eta([a]) = \eta(q(a)) = \varphi(a) \Rightarrow a \in \ker(\varphi),
+		\end{equation*}
+		also $[a] = 0_{R/\ker(\varphi)}$.
+	\end{proof}
+
+	\heading{Warum das Bohei um Quotienten?}
+	
+	Wir betrachten Körpererweiterung $L/K$ und algebraische Elemente $a \in L$.
+	
+	Wir wissen $a$ hat Minimalpolynom $f \in k[x]$. Jedes andere Polynom $g \in k[x]$ mit $g(a) = 0$ ist Vielfaches von $f$. ($g(a) = 0 \Leftrightarrow g \in (f)$).
+	
+	Betrachte Abbildung:
+	\begin{align*}
+		k[x] &\to k(a) \\
+		g &\mapsto g(a)
+	\end{align*}
+	
+	Wir wissen:
+	\begin{itemize}
+		\item $\ker(\varphi) = (f)$
+		\item Die Elemente von $k(a)$ kann ich schreiben als $\lambda_1 + \lambda_2 a + \dots + \lambda_n a^{n-1}$ mit $\lambda_i \in k$ $\Rightarrow$ $\varphi$ ist surjektiv!
+	\end{itemize}
+
+	Insgesamt:
+	\begin{equation*}
+		k(a) = k[x]/(f)
+	\end{equation*}
+
+	\begin{theorem}
+		Sei $\varphi: R \to S$ ein Ringmorphismus. Dann gilt
+		\begin{enumerate}
+			\item Für jedes Ideal $I \subset S$ ist $\varphi^{-1}(I)$ ein Ideal, das $\ker(\varphi)$ enthält.
+			\item Wenn $\varphi$ surjektiv ist, dann ist die Abbildung 
+			\begin{align*}
+				\{ \text{Ideale in $S$} \} &\overset{\alpha}{\to} \{ \text{Idealen in $R$, die $\ker(\varphi)$ enthalten} \} \\
+				I &\mapsto \varphi^{-1}(I)
+			\end{align*}
+			bijektiv.
+			\item Wenn $\varphi$ surjektiv ist, $J \subset R$ ein Ideal, dann ist $\varphi(J) \subset S$ ein Ideal.
+			\item Wenn $\varphi$ surjektiv ist, und $I \subset S$ ein Ideal ist, dann betrachte die Komposition $\psi$ von
+			\begin{equation*}
+				R \underset{\varphi}{\to} S \to S/I
+			\end{equation*}
+			und es ist $\ker(\psi) = \varphi^{-1}(I)$. Also ist $S(I) \simeq R/\varphi^{-1}(I)$.
+		\end{enumerate}
+	\end{theorem}
+
+	\begin{proof}
+		\begin{enumerate}
+			\item Hausaufgabe!
+			\item Weil $\varphi$ per Annahme surjektiv ist, ist die Abbildung $\alpha$ injektiv. Also noch surjektivität zu zeigen. Sei also $J \subset R$ ein Ideal, das $\ker(\varphi)$ enthält. Wir wissen $S \simeq R/\ker(\varphi)$ also gibt es nach universeller Eigenschaft ein Diagramm
+			\begin{center}
+				\begin{tikzpicture}
+				\node(R1) at (0,0){$R$};
+				\node[right = 2 of R1](ri){$R/\ker(\varphi)$};
+				\node[below = 1 of R1](R2){$R$};
+				\node[below = 1 of ri](s){$R/J$};
+				
+				\draw[->] (R1) -- (ri) node[midway,above]{$\varphi$};
+				\draw (R1) -- (R2) node[midway,left]{$\mathbbm{1}_R$};
+				\draw[->] (R2) -- (s) node[midway,below]{$q$};
+				\draw[->] (ri) -- (s) node[midway,right]{$\exists ! \eta$};
+				\end{tikzpicture}
+			\end{center}
+			und $J = q^{-1}((0)) = q^{-1}(\eta^{-1}(0))$, setze $I = \eta^{-1}(0)$, fertig.
+			\item Sei $J \subset R$ ein Ideal. Muss zeigen
+			
+			\heading{C 1}: Wenn $a,b \in \varphi(J)$, dann ist $a + b \in \varphi(J)$. $\exists a', b' \in J$ mit $a =  \varphi(a'), b = \varphi(b')$ und dann $a + b = \varphi(\underbrace{a' + b'}_{\in J})$
+			
+			\heading{C2:} Sei $a \in \varphi(J)$, sei $b \in S$ beliebig. Dann ist $s \cdot a \in \varphi(J)$. Weil $\varphi$ surjektiv ist, $\exists s' \in R: s = \varphi(s')$. Außerdem $\exists a' \in J: a = \varphi(a')$ und $\varphi(\underbrace{s' a'}_{\in J}) = \varphi(s') \varphi(a') = sa$
+			
+			\item Sei $r \in R$. Es gilt
+			\begin{align*}
+				r \in \ker(\psi) &\Leftrightarrow q(\varphi(r)) = 0_{S/I} \\
+				&\Leftrightarrow \varphi(r) \in I \\
+				&\Leftrightarrow r \in \varphi^{-1}(I)
+			\end{align*}
+		\end{enumerate}
+	\end{proof}
+
+	\begin{corollary}
+		Sei $R$ noethersch (bzw. Hauptidealring). Sei $I \subset R$ ein Ideal. Dann ist $R/I$ Noethersch (bzw. Hauptidealring).
+	\end{corollary}
+
+	\heading{Notation:} Sei $R$ Ring. Seien $I \subseteq J \subseteq R$ Ideale. Dann betrachte $q_I: R \to R/I$.
+	
+	Das Ideal $q_I(J) \subseteq R/I$ wird mit $J/I$ bezeichnet.
+
+	\begin{theorem}[Noetherscher Isomorphiesatz]
+		Situation wie oben. Dann
+		\begin{equation*}
+			R/J \simeq (R/I) / (J/I)
+		\end{equation*}
+	\end{theorem}
+
+	\begin{proof}
+		Wir haben Ringmorphismen
+		\begin{equation*}
+			R \overset{q_I}{\longrightarrow} R/I \overset{q_{J/I}}{\longrightarrow} (R/I) / (J/I)
+		\end{equation*}
+		Wir wissen $\ker(\eta) = q_I^{-1}(J/I) = J$. Also folgt die Aussage.
+	\end{proof}
+
+	\heading{Haben 2 wichtige Typen von Idealen}
+	\begin{itemize}
+		\item Primideale: $R$ ein Ring, $I \subseteq R$ ein Ideal. Nenne $I$ prim, falls $\forall a,b \in R: a \cdot b \in I \Rightarrow a \in I \lor b \in I$
+		\item Maximale Ideale: $R$ ein Ring. Ein Ideal $I \subset R$ heißt maximal falls gilt
+		\begin{enumerate}
+			\item $I \neq R$
+			\item Wenn $J \supsetneq I$ ein echt größeres Ideal ist, dann ist $J = R$.
+		\end{enumerate}
+	\end{itemize}
+
+	\begin{example}
+		\begin{itemize}
+			\item Sei $R$ ein Ring, $p \in R$ ein prim-Element. Dann ist $(p)$ ein Primideal.
+			\item Sei $k$ ein Körper, $R = k[x_1, \dots, x_n]$ und
+			\begin{equation*}
+				I = (x_1, x_2, \dots, x_n)= \{ \underbrace{x_1 f_1 + x_2 f_2 + \cdots + x_n f_n}_\text{Haben stets Nullstelle am Ursprung!} \mid f_i \in k[x_1, \dots, x_n] \}
+			\end{equation*}
+			Wir wissen $1 \notin I$, denn $1$ hat keine Nullstelle.
+			
+			Beobachte: Ein Polynom liegt genau dann in $I$ wenn der konstante Teil gleich Null ist (d.h. wenn $f(0) = 0_k$).
+			
+			Sei jetzt $J \supsetneq I$ echt größer! Sei $f \in J \setminus I$ Dann
+			\begin{equation*}
+				\underbrace{f}_{\in J} = \text{const}^{\neq 0} + (\underbrace{\text{Polynom ohne konstanten Teil}}_{\in I \subset J})
+			\end{equation*}
+			$\Rightarrow \text{const}^{\neq 0} \in J \Rightarrow J = R$
+			
+			Variante: Seien $a_1, \dots, a_n \in k$. Dann ist $I' = (x_1 - a_1, x_2 - a_2, \dots, x_n - a_n)$ auch maximal.
+			
+			Zurück zu Beispiel ohne Variante
+			\begin{align*}
+				R/I = k[x_1, \dots, x_n]/(x_1, \dots, x_n) &\overset{\simeq}{\longrightarrow} k \\
+				[f] &\longmapsto f(0)
+			\end{align*}
+		\end{itemize}
+	\end{example}
+
 \end{document}
