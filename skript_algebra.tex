@@ -1947,15 +1947,15 @@
 		
 		\begin{center}
 			\begin{tikzpicture}
-			\node(R1) at (0,0){$R$};
-			\node[right = 2 of R1](ri){$R/I$};
-			\node[below = 1 of R1](R2){$R$};
-			\node[below = 1 of ri](s){$S$};
-			
-			\draw[->] (R1) -- (ri) node[midway,above]{$q$};
-			\draw (R1) -- (R2) node[midway,left]{$\mathbbm{1}_R$};
-			\draw[->] (R2) -- (s) node[midway,below]{$\varphi$};
-			\draw[->] (ri) -- (s) node[midway,right]{$\exists ! \eta$};
+				\node(R1) at (0,0){$R$};
+				\node(ri) at (3,0){$R/I$};
+				\node(R2) at (0,-2){$R$};
+				\node(s) at (3,-2){$S$};
+				
+				\draw[->] (R1) -- (ri) node[midway,above]{$q$};
+				\draw (R1) -- (R2) node[midway,left]{$\mathbbm{1}_R$};
+				\draw[->] (R2) -- (s) node[midway,below]{$\varphi$};
+				\draw[->] (ri) -- (s) node[midway,right]{$\exists ! \eta$};
 			\end{tikzpicture}
 		\end{center}
 	\end{theorem}
@@ -1976,15 +1976,15 @@
 		
 		\begin{center}
 			\begin{tikzpicture}
-			\node(R1) at (0,0){$R$};
-			\node[right = 2 of R1](ri){$R/\ker(\varphi)$};
-			\node[below = 1 of R1](R2){$R$};
-			\node[below = 1 of ri](s){$S$};
-			
-			\draw[->] (R1) -- (ri);
-			\draw (R1) -- (R2) node[midway,left]{$\mathbbm{1}_R$};
-			\draw[->] (R2) -- (s) node[midway,below]{$\varphi$};
-			\draw[->] (ri) -- (s) node[midway,right]{$\exists ! \eta$};
+				\node(R1) at (0,0){$R$};
+				\node(ri) at (3,0){$R/\ker(\varphi)$};
+				\node(R2) at (0, -2){$R$};
+				\node(s) at (3,-2){$S$};
+				
+				\draw[->] (R1) -- (ri);
+				\draw (R1) -- (R2) node[midway,left]{$\mathbbm{1}_R$};
+				\draw[->] (R2) -- (s) node[midway,below]{$\varphi$};
+				\draw[->] (ri) -- (s) node[midway,right]{$\exists ! \eta$};
 			\end{tikzpicture}
 		\end{center}
 		
@@ -1999,7 +1999,7 @@
 
 	\heading{Warum das Bohei um Quotienten?}
 	
-	Wir betrachten Körpererweiterung $L/K$ und algebraische Elemente $a \in L$.
+	Wir betrachten Körpererweiterung $L/k$ und algebraische Elemente $a \in L$.
 	
 	Wir wissen $a$ hat Minimalpolynom $f \in k[x]$. Jedes andere Polynom $g \in k[x]$ mit $g(a) = 0$ ist Vielfaches von $f$. ($g(a) = 0 \Leftrightarrow g \in (f)$).
 	
@@ -2017,7 +2017,7 @@
 
 	Insgesamt:
 	\begin{equation*}
-		k(a) = k[x]/(f)
+		k(a) \cong k[x]/(f)
 	\end{equation*}
 
 	\begin{theorem}
@@ -2026,7 +2026,7 @@
 			\item Für jedes Ideal $I \subset S$ ist $\varphi^{-1}(I)$ ein Ideal, das $\ker(\varphi)$ enthält.
 			\item Wenn $\varphi$ surjektiv ist, dann ist die Abbildung 
 			\begin{align*}
-				\{ \text{Ideale in $S$} \} &\overset{\alpha}{\to} \{ \text{Idealen in $R$, die $\ker(\varphi)$ enthalten} \} \\
+				\{ \text{Ideale in $S$} \} &\overset{\alpha}{\to} \{ \text{Ideale in $R$, die $\ker(\varphi)$ enthalten} \} \\
 				I &\mapsto \varphi^{-1}(I)
 			\end{align*}
 			bijektiv.
@@ -2035,7 +2035,7 @@
 			\begin{equation*}
 				R \underset{\varphi}{\to} S \to S/I
 			\end{equation*}
-			und es ist $\ker(\psi) = \varphi^{-1}(I)$. Also ist $S(I) \simeq R/\varphi^{-1}(I)$.
+			und es ist $\ker(\psi) = \varphi^{-1}(I)$. Also ist $S/I \simeq R/\varphi^{-1}(I)$.
 		\end{enumerate}
 	\end{theorem}
 
@@ -2045,18 +2045,18 @@
 			\item Weil $\varphi$ per Annahme surjektiv ist, ist die Abbildung $\alpha$ injektiv. Also noch surjektivität zu zeigen. Sei also $J \subset R$ ein Ideal, das $\ker(\varphi)$ enthält. Wir wissen $S \simeq R/\ker(\varphi)$ also gibt es nach universeller Eigenschaft ein Diagramm
 			\begin{center}
 				\begin{tikzpicture}
-				\node(R1) at (0,0){$R$};
-				\node[right = 2 of R1](ri){$R/\ker(\varphi)$};
-				\node[below = 1 of R1](R2){$R$};
-				\node[below = 1 of ri](s){$R/J$};
-				
-				\draw[->] (R1) -- (ri) node[midway,above]{$\varphi$};
-				\draw (R1) -- (R2) node[midway,left]{$\mathbbm{1}_R$};
-				\draw[->] (R2) -- (s) node[midway,below]{$q$};
-				\draw[->] (ri) -- (s) node[midway,right]{$\exists ! \eta$};
+					\node(R1) at (0,0){$R$};
+					\node(ri) at (3,0){$R/\ker(\varphi)$};
+					\node(R2) at (0, -2){$R$};
+					\node(s) at (3, -2){$R/J$};
+					
+					\draw[->] (R1) -- (ri) node[midway,above]{$\varphi$};
+					\draw (R1) -- (R2) node[midway,left]{$\mathbbm{1}_R$};
+					\draw[->] (R2) -- (s) node[midway,below]{$q$};
+					\draw[->] (ri) -- (s) node[midway,right]{$\exists ! \eta$};
 				\end{tikzpicture}
 			\end{center}
-			und $J = q^{-1}((0)) = q^{-1}(\eta^{-1}(0))$, setze $I = \eta^{-1}(0)$, fertig.
+			und $J = q^{-1}((0)) = \varphi^{-1}(\eta^{-1}(0))$, setze $I = \eta^{-1}(0)$, fertig.
 			\item Sei $J \subset R$ ein Ideal. Muss zeigen
 			
 			\heading{C 1}: Wenn $a,b \in \varphi(J)$, dann ist $a + b \in \varphi(J)$. $\exists a', b' \in J$ mit $a =  \varphi(a'), b = \varphi(b')$ und dann $a + b = \varphi(\underbrace{a' + b'}_{\in J})$
@@ -2132,4 +2132,179 @@
 		\end{itemize}
 	\end{example}
 
+	\begin{example}
+		Sei $k$ ein Körper, $f \in k[x]$ irreduzibel. Dann ist $(f)$ maximal.
+	\end{example}
+
+	\begin{proof}
+		Sei $J \supsetneq (f)$ größer, sei $g \in J \setminus (f)$ ein Element ($g$ kein Vielfaches von $f$).
+		
+		Wissen (Euklidischer Algorithmus): $\operatorname{ggT}(f,g) \in J$. Aber $f$ ist irreduzibel hat also keine echten Teiler d.h. $\operatorname{ggT}(f,g) = 1$
+	\end{proof}
+
+	\begin{theorem}
+		Sei $R$ ein Ring, $I \subset R$ ein Ideal. Dann gilt
+		\begin{enumerate}
+			\item $I$ ist prim $\Leftrightarrow$ $R/I$ ist Integritätsring
+			\item $I$ ist maximal $\Leftrightarrow$ $R/I$ ist ein Körper
+		\end{enumerate}
+		Insbesonders maximale Ideale sind prim (denn Körper sind Integritätsringe)
+	\end{theorem}
+
+	\begin{proof}
+		\heading{$1) \Rightarrow$:} Sei $I$ prim. Seien $[a],[b] \in R/I$ Äquivalenzklassen von Elementen $a,b \in R$ so dass $[a] \neq 0_{R/I}$ und $[b] \neq 0_{R/I}$. Dann gilt $a \notin I$ und $b \notin I$.
+		
+		Da $I$ prim $a \cdot b \notin I \Rightarrow [a \cdot b] \neq 0_{R/I}$
+		
+		\heading{$1) \Leftarrow$:} Sei $R/I$ ein Integritätsring. Seien $a,b \in R \setminus I$. Dann $[a] \neq 0_{R/I}$ und $[b] \neq 0_{R/I}$ und $[a \cdot b] \neq 0_{R/I}$.
+		
+		$\Rightarrow a b \notin I$
+		
+		\heading{$2) \Rightarrow$:} Sei $I$ maximal. Sei $a \in R$ mit $[a] \neq 0_{R/I}$ d.h. $a \notin I$.
+		
+		Dann betrachte $J = (I, a)$. Wir wissen $J \supsetneq I$ also $(1) = J$. Also kann ich schreiben:
+		\begin{equation*}
+			1 = f + g \cdot a \qquad \text{mit $f \in I, g \in R$}
+		\end{equation*}
+		\begin{equation*}
+			\Rightarrow \underbrace{[1]}_{=1_{R/I}} = \underbrace{[f]}_{0_{R/I}} + [g] \cdot [a]
+		\end{equation*}
+		also ist $[g] = [a]^{-1}$ in $R/I$
+		
+		\heading{$2) \Leftarrow$:} Sei $R/I$ ein Körper, sei $J \supsetneq I$ ein echtes Oberideal. Dann gibt es $a \in J \setminus I$.
+		
+		Wir wissen $[a] \neq 0_{R/I}$, per Annahme $\exists b \in R$ mit $[a] \cdot [b] = [1]$. Das bedeutet $\exists f \in I$ so dass
+		\begin{equation*}
+			\underbrace{a \cdot b}_{\in J} + \underbrace{f}_{\in I \subset J} = 1
+		\end{equation*}
+		das heißt $1 \in J$ d.h. $J = R$.
+	\end{proof}
+
+	\begin{remark}
+		Teil 2) des Satzes gibt neuartige Methode, um Beispiele von Körpern zu konstruieren!
+	\end{remark}
+
+	\heading{Weitere Beobachtungen/Konstruktionen mit Idealen}
+	
+	Sei $R$ ein Ring, seien $I_1, \dots, I_n$ Ideale in $R$
+	\begin{itemize}
+		\item Dann ist $I_1 \cap I_2 \cap \dots \cap I_n$ ein Ideal
+		\item Dann ist $I_1 + \dots + I_n = \{ f_1 + \dots + f_n \in R \mid \forall i f_i \in I_i \}$ ein Ideal
+	\end{itemize}
+
+	\begin{example}
+		$R = \setZ$ $I_1 = (a)$ $I_2 = (b)$
+		
+		$I_1 \cap I_2 = (\operatorname{kgV}(a,b))$
+		
+		$I_1 + I_2 = (\operatorname{ggT}(a,b))$
+	\end{example}
+
+	\begin{definition}
+		Zwei Ideale $I_1, I_2$ heißen Teilerfremd, wenn $I_1 + I_2 = (1)$.
+	\end{definition}
+
+	\heading{Nutzanwendung:} Manchmal hat man Aufgaben der Form: egeben Ring $R$ gegeben Ideale $I_1, \dots, I_n$ und Elemente $r_1, \dots, r_n \in R$. Finde ein/alle $r \in R$
+	\begin{align*}
+		r &\equiv r_1 \mod I_1 \\
+		r &\equiv r_2 \mod I_2 \\
+		&\vdots \\
+		r &\equiv r_n \mod I_n
+	\end{align*}
+	
+	\heading{Antwort ist Chinesischer Restsatz:} Situation wie oben. Fall $\forall \; i \neq j$ die Ideale $I_i$ und $I_j$ stets teilerfremd sind, dann ist die Abbildung:
+	\begin{align*}
+		\varphi: R &\to R/I_1 \times R/I_2 \times \dots \times R/I_n \\
+		r &\mapsto ([r]_{R/I_1}, [r]_{R/I_2}, \dots, [r]_{R/I_n})
+	\end{align*}
+	surjektiv und $\ker(\varphi) = I_1 \cap \dots \cap I_n$.
+	
+	\begin{proof}
+		Aussage über $\ker(\varphi)$ ist trivial. Müssen surjektiv zeigen!
+		
+		Seien $k \neq l$ gegeben. Wir wissen $(1) = I_k + I_l$. Also existieren Elemente $a_{kl} \in I_k$ und $b_{kl} \in I_l$ so dass $1 = a_{kl} + b_{kl}$
+		
+		Setze
+		\begin{equation*}
+			s_l = \prod_{k \neq l} a_{kl} = \prod_{k \neq l} (1 - b_{kl}) \in R
+		\end{equation*}
+		
+		\textit{Beobachtung:} Seien $k \neq l$ gegeben. Dann $s_l \equiv 0 \mod I_k$ denn Faktor $a_{kl}$ aus dem 1. Produkt ist $\equiv 0 \mod I_k$.
+		
+		$s_l \equiv 1 \mod I_l$, denn es ist stets $b_kl \equiv 0 \mod I_l$, also jeder Faktor des Rechen Produktes $\equiv 1 \mod I_l$.
+		
+		Seien $r_1, \dots, r_n \in R$ gegeben.
+		
+		Setze: $r = \sum r_i \cdot s_i$ dann gilt $\forall i: r \equiv r_i \mod I_i$, also
+		\begin{equation*}
+			\varphi(r) = [r_1] \times [r_2] \times \dots \times [r_n]
+		\end{equation*}
+	\end{proof}
+
+	\heading{Einschub Mengenlehre}
+	
+	\begin{definition}
+		Sei $M$ eine Menge. $\leq$ sei eine Relation. Ich nenne $\leq$ eine Halbordnung falls gilt:
+		\begin{enumerate}
+			\item $\forall a \in M: a \leq a$
+			\item Wenn $a,b,c \in M$ gegeben sind mit
+			\begin{equation*}
+				a \leq b, b \leq c \Rightarrow a \leq c
+			\end{equation*}
+			\item $\forall a,b \in M: a \leq b$ und $b \leq a \Rightarrow a = b$
+		\end{enumerate}
+		Wir fordern nicht dass $\forall a,b \in M: a \leq b$ oder $b \leq a$ gilt. (Falls das gilt nenne $\leq$ vollständig)
+	\end{definition}
+
+	\begin{example}
+		Betrachte $S = \text{Studierende}$, $M = \operatorname{Pot}(S)$.
+		
+		Gegeben $m_1, m_2 \in M$, schreibe $m_1 \leq m_2$ falls $m_1 \subseteq m_2$ ist.
+	\end{example}
+
+	\begin{definition}
+		Sei $(M, \leq)$ eine Mengen mit Halbordnung. Eine Kette ist eine Teilmenge $N \subset M$, so dass die auf $N$ induzierte Halbordnung vollständig ist. Ein Element $m \in M$ heißt obere Schranke der Kette $N$, falls $\forall a \in N: n \leq m$.
+	\end{definition}
+
+	\begin{example}
+		Sei $(M, \leq)$ gegeben. Sei $(n_i)_{i \in \setN}$ eine Folge von Elementen so dass $n_1 \leq n_2 \leq \dots$ ist. Dann ist $N = \{ n_i \mid i \in \setN \}$ eine Kette.
+	\end{example}
+
+	\begin{example}
+		Sei $M = \setR$ und $\leq$ wie üblich definiert. Dann ist jede Teilmengen eine Kette, denn $\leq$ ist sowieso vollständig. Obere Schranken existieren genau dann wenn $N$ nach oben beschränkt ist.
+	\end{example}
+
+	\begin{theorem}[Lemma von Zorn]
+		Sei $(M, \leq)$ eine halbgeordnete Megne, $M \neq \emptyset$. Falls jede Kette eine obere Schranke besitzt, dann gibt es in $M$ ein maximales Element.
+	\end{theorem}
+
+	\begin{remark}
+		Dies ist Äquivalent zum Auswahlaxiom. Sei $(M_\alpha)_{\alpha \in A}$ eine Familie von Mengen. Dann gibt es eine Abbildung
+		\begin{equation*}
+			A \to \bigcup_{\alpha \in A} M_\alpha
+		\end{equation*}
+		so dass $\forall \alpha \in A: \varphi(\alpha) \in M_\alpha$.
+	\end{remark}
+
+	\begin{theorem}
+		Sei $R$ ein Ring. $I \subset R$ ein Ideal. Dann gibt es ein maximales Ideal $m \subset R$, das $I$ enthält
+	\end{theorem}
+	
+	\begin{proof}
+		Sei
+		\begin{equation*}
+			M = \{ \text{Ideale $J \subset R$ mit $I \subseteq J \subsetneq R$} \}
+		\end{equation*}
+		wähle $\subseteq$ als Halbordnung.
+		
+		Beachte: Wenn $N \subset M$ eine Kette ist, dann ist $s = \bigcup_{n \in N} n$ eine obere Schranke.
+		\begin{itemize}
+			\item Ketteneingenschaft garantiert, dass $s$ ein Ideal ist
+			\item $1 \notin s$, denn für alle $m \in M: 1 \notin m$. Also $s \subsetneq R$, also $s \in M$
+		\end{itemize}
+		Zorn: Es existiert in $M$ ein maximales Element $m$.
+		
+		Nachrechnen: Dies ist ein maximales Ideal in $R$, welches $I$ enthält.
+	\end{proof}
+	
 \end{document}
