@@ -17,6 +17,7 @@
 
 \usepackage{tikz}
 \usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
 
 \usepackage{enumitem}
 \setenumerate{label=\arabic*)}
@@ -2307,4 +2308,198 @@
 		Nachrechnen: Dies ist ein maximales Ideal in $R$, welches $I$ enthält.
 	\end{proof}
 	
+	\section{Körpertheorie}
+	
+	\subsection{Grundbegriffe}
+	
+	\heading{Beobachtung:} Sei $k$ ein Körper sei $1_k$ das neutrale Element der Multiplikation. Dann betrachte Ringmorphismus
+	\begin{align*}
+		\eta: \setZ &\to k \\
+		n &\mapsto \begin{cases}
+			\underbrace{1_k + \dots + 1_k}_\text{$n$ mal} & \text{falls } n \geq 0 \\
+			\underbrace{-(1_k + \dots + 1_k)}_\text{$-n$ mal} & \text{falls } n < 0 \\
+		\end{cases}
+	\end{align*}
+	
+	\heading{Beobachte:} Wenn $k' \subset k$ ein Unterkörper ist, dann $\operatorname{Bild}(\eta) \subseteq k'$.
+	
+	\heading{Beobachtung:} Wenn $(k_\lambda)_{\lambda \in \Lambda}$ eine Familie von Unterkörpern ist, dann ist
+	\begin{equation*}
+		k' \coloneqq \bigcap_{\lambda \in \Lambda} k_\lambda
+	\end{equation*}
+	wieder ein Unterkörper.
+	
+	\begin{definition}
+		Gegeben ein Körper $k$ betrachte
+		\begin{equation*}
+			k' \coloneqq \bigcap_{\substack{k'' \subseteq k \\ \text{Unterkörper}}} k''
+		\end{equation*}
+		Dieser Unterkörper heißt Primkörper von $k$.
+	\end{definition}
+
+	\heading{Mit der Beobachtung von eben:} $\operatorname{Bild}(\eta) \subseteq \text{Primkörper}$
+	
+	\heading{Beachte:} $\eta$ ist entweder injektiv oder nicht.
+	
+	\heading{Fall $\eta$ ist injektiv:}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\node(R1) at (0,0){$\setZ$};
+			\node(ri) at (5,0){$Q(\setZ) = \setQ$};
+			\node(R2) at (0, -2){$\setZ$};
+			\node(s) at (5, -2){Primkörper von $k$};
+			
+			\draw[->] (R1) -- (ri) node[midway,above]{$\varphi$};
+			\draw (R1) -- (R2) node[midway,left]{$\mathbbm{1}_R$};
+			\draw[right hook->] (R2) -- (s) node[midway,below]{$\eta$};
+			\draw[right hook->] (ri) -- (s) node[midway,right]{$\exists ! \varphi$};
+		\end{tikzpicture}
+	\end{center}
+
+	\heading{Beachte:} $\operatorname{Bild}(\varphi)$ ist Unterkörper des Primkörpers, welcher der kleinste Unterkörper von $k$ ist, also $\operatorname{Bild}(\varphi) = \text{Primkörper}$. Also insgesamt: Falls $\eta$ injektiv ist ist der Primkörper kanonisch isomorph zu $\setQ$.
+	
+	\heading{Fall $\eta$ nicht injektiv:} Dann ist $\ker(\eta) \subseteq \setZ$ ein nicht-triviales Ideal.
+	
+	Weil $\eta(1_\setZ) = 1_k \neq 0_k$, ist $\ker(\eta) \subsetneq \setZ$ also Hauptideal der Form $(p)$ für ein $p \in \setN$. Weil $k$ nullteilerfrei ist, ist $p$ eine Primzahl und nach universeller Eigenschaft von Quotienten habe ich ein Diagramm.
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\node(R1) at (0,0){$\setZ$};
+			\node(ri) at (5,0){$\setZ/(p)$};
+			\node(R2) at (0, -2){$\setZ$};
+			\node(s) at (5, -2){Primkörper von $k$};
+			
+			\draw[->] (R1) -- (ri) node[midway,above]{$\varphi$};
+			\draw (R1) -- (R2) node[midway,left]{$\mathbbm{1}_R$};
+			\draw[->] (R2) -- (s) node[midway,below]{$\eta$};
+			\draw[right hook->] (ri) -- (s) node[midway,right]{$\exists \varphi$};
+		\end{tikzpicture}
+	\end{center}
+
+	Argumentiere wie oben, erhalte einen kanonischen Isomorphismus zwischen dem Primkörper und $\setZ / p \setZ$.
+	
+	\heading{Zusammenfassung/Notation:} Sei $k$ ein Körper. Sei $k' \subseteq k$ der Primkörper. Dann entweder
+	\begin{itemize}
+		\item $k' \simeq \setQ$ und man sagt: $k$ hat Charakteristik $0, \operatorname{char}(k) = 0$
+		\item $k' \simeq \setZ / p \setZ$ für eine Primzahl $p$ und man sagt $k$ hat die Charakteristik $p$
+	\end{itemize}
+
+	\heading{Bemerkung zum Gruseln:} Sei $\operatorname{char}(k) = p > 0$. Dann ist $(x + y)^p = x^p + y^p$. Insbesondere ist
+	\begin{align*}
+		\operatorname{Frob:} k[x] &\to k[x] \\
+		f &\mapsto f^p
+	\end{align*}
+	ein Ringmorphismus. Außerdem ist die Ableitung von $f(x) = x^p$ gegeben als $f'(x) = p x^{p-1} \equiv 0$.
+	
+	$f(x) = x^p + x^{p+2}$ und $f'(x) = (p + 2) \cdot x^{p+1} = 2 \cdot x^{p+1}$
+	
+	\heading{Schlussbeobachtung:} Sei $k$ ein endlicher Körper, dann ist $\operatorname{char}(k) = p > 0$. Beobachte: $k$ ist ein Vektorraum über dem Primkörper $\simeq \setZ / p \setZ$.
+	
+	Sei $n = \dim_\text{Prim} k$. Dann $n < \infty$ und $\#k = p^n$.
+	
+	\subsection{Der algebraische Abschluss}
+	
+	\heading{Beobachtung:} Das Polynom $x^2 + 2$ hat in $\setQ$ keine Nullstelle, aber im Oberkörper $\setC$. Es gilt sogar jedes nicht konstante $f \in \setC[x]$ hat in $\setC$ eine Nullstelle.
+	
+	\heading{Ziel:} Wir wollen ähnliches für beliebige Körper konstruieren. Gegeben Körper $k$. Konstruiere einen Oberkörper $\overline{k}$ so dass alle nicht konstanten Polynome $f \in \overline{k}[x]$ in $\overline{k}$ eine Nullstelle haben.
+	
+	\heading{Aber:} $\overline{k}$ erfüllt keine gute universelle Eigenschaft $\leadsto$ Galois-Theorie: Symmetrie von Erweiterungen
+	
+	\heading{Spielwiese:} Betrachte $\setQ$ und $k = \setQ[x]/(x^2 + 1)$.
+	
+	Ich kann $\setQ$ in $k$ einbetten durch
+	\begin{align*}
+		\setQ &\hookrightarrow k \\
+		q &\mapsto [q]
+	\end{align*}
+	Also $k$ ist Oberkörper von $\setQ$.
+	
+	Betrachte das Element $a \coloneqq [x] \in k$
+	
+	\heading{Beobachte:} $a^2 + 1_k = a \cdot a + 1_k = [x] [x] + [1_\setQ] = [x \cdot x + 1_\setQ] = [x^2 + 1_\setQ] = 0_k$.
+	
+	\heading{Einsicht:} $a \in k$ ist Nullstelle des Polynoms $x^2 + 1_k \in k[x]$
+	
+	Wie soll die Konstruktion von $\overline{k}$ gehen? Grundidee: so wie in der Spielwiese.
+	
+	\begin{theorem}
+		Sei $k$ ein Körper, sei $f \in k[x]$ nicht konstant. Dann gibt es einen Oberkörper $L \supseteq k$ so dass $f$ als Polynom in $L[x]$ eine Nullstelle in $L$ hat.
+	\end{theorem}
+
+	\begin{proof}
+		Sei $p(x)$ ein irreduzibler Faktor von $f$. Setze
+		\begin{equation*}
+			L \coloneqq k[x] / (p)
+		\end{equation*}
+		das ist ein Körper, weil $(p)$ maximales Ideal ist.
+		
+		Bette $k$ mit Hilfe des injektiven Körpermorphismus
+		\begin{align*}
+			k &\to L \\
+			a &\mapsto [a]
+		\end{align*}
+		in $L$ ein. Beachte, dass $a \coloneqq [x] \in L$ eine Nullstelle von $p$ und also auch von $f$ ist.
+	\end{proof}
+
+	\heading{Beobachtung:} Wir wissen schon: wenn ich diese Konstruktion anwende auf $k = \setR, f = x^2 + 1$ dann erhalte ich $\setC$. Ich sehe schon an diesem Beispiel, dass die so erhaltene Erweiterung Symmetrien besitzt, nämlich die komplexe Konjugation. Also ist es nicht richtig, dass $\setC$ eindeutig ist bis auf kanonische Isomorphie.
+	
+	\begin{theorem}
+		Sei $k$ ein Körper. Dann ist äquivalent:
+		\begin{enumerate}
+			\item Jedes nicht-konstante Polynom in $k[x]$ hat Nullstelle in $k$.
+			\item Jedes nicht-konstante Polynom zerfällt in Linearfaktoren
+			\item Jedes irreduzible Polynom ist linear
+			\item Wenn $L/k$ eine algebraische Körpererweiterung ist, dann ist $L = k$
+		\end{enumerate}
+		Nenne $k$ algebraisch abgeschlossen falls diese Bedingungen erfüllt sind.
+	\end{theorem}
+
+	\begin{proof}
+		\heading{$1) \Rightarrow 2)$:} Polynomdivision: wenn $f$ bei $a$ eine Nullstelle hat dann ist $f$ ein Vielfaches von $(x - a)$.
+		
+		\heading{$2) \Rightarrow 3)$:} trivial
+		
+		\heading{$3) \Rightarrow 4)$:} Sei $L/k$ eine algebraische Körpererweiterung. Sei $a \in L$ gegeben. Dann $a$ ist algebraisch über $k$. Sei $f \in k[x]$ das Minimalpolynom. Dann $f$ irreduzibel, also linear, also $f(x) = x - a \in k[x]$ $\Rightarrow a \in k$.
+		
+		\heading{$4) \Rightarrow 1)$:} Sei $f \in k[x]$ nicht konstant. Sei $p(x)$ ein irreduzibler Faktor von $f$. Setze
+		\begin{equation*}
+			L = k[x]/(p)
+		\end{equation*}
+		das ist eine endliche Erweiterung, denn $\dim_k L = \deg p < \infty$, also ist $L$ algebraisch.  Außerdem gilt: $f$ hat in $L$ eine Nullstelle. Nach 4) ist $L = k$ also hat $f$ bereits in $k$ eine Nullstelle.
+		
+		\begin{definition}
+			Sei $k$ ein Körper. Ein Oberkörper $\overline{k}/k$ heißt algebraischer Abschluss von $k$ falls gilt:
+			\begin{enumerate}
+				\item $\overline{k}$ ist algebraisch abgeschlossen
+				\item $\overline{k} / k$ ist algebraisch
+			\end{enumerate}
+		\end{definition}
+	
+		\heading{Achtung:} $\setC$ ist kein algebraischer Abschluss von $\setQ$!
+		
+		\heading{Nicht verwechseln} mit algebraischer Abschluss von $k$ in einem Oberkörper $L$ $= \{ l \in L \mid \text{$l$ ist algebraisch über $k$} \}$. 
+	\end{proof}
+
+	\begin{definition}
+		Seien $R,S$ Ringe (später meistens Körper) die beide den Ring $T$ als Unterring besitzen.
+		
+		Ein Ringmorphismus $\varphi: R \to S$ heißt $T$-Morphismus, falls $\varphi \mid_T = id_T$.
+	\end{definition}
+
+	\begin{example}
+		$R = S = \setC$, $T = \setR$. Dann ist die Konjugation
+		\begin{align*}
+			\varphi: \setC &\to \setC \\
+			z &\mapsto \overline{z}
+		\end{align*}
+		ein $\setR$-Morphismus.
+	\end{example}
+
+	\begin{theorem}
+		Sei $k$ ein Körper, $\overline{k}$ ein algebraischer Abschluss von $k$. Sei $L/k$ algebraisch, sei $L_0$ ein Zwischenkörper $k \subseteq L_0 \subseteq L$. Sei weiter ein $k$-Morphismus $\varphi_0: L_0 \to \overline{k}$ gegeben. Dann existiert eine Fortsetzung $\varphi: L \to \overline{k}$ (d.h. ein Körpermorphismus $\varphi$, so dass $\varphi \mid_T{L_0} = \varphi_0$).
+		
+		Insbesondere $(L_0 = k)$ jede algebraische Körpererweiterung von $k$ bettet in $\overline{k}$ ein.
+	\end{theorem}
+
 \end{document}
