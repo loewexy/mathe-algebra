@@ -2497,9 +2497,176 @@
 	\end{example}
 
 	\begin{theorem}
+		\label{thm:schwacherErsatzFürUniverselleEigenschaft}
 		Sei $k$ ein Körper, $\overline{k}$ ein algebraischer Abschluss von $k$. Sei $L/k$ algebraisch, sei $L_0$ ein Zwischenkörper $k \subseteq L_0 \subseteq L$. Sei weiter ein $k$-Morphismus $\varphi_0: L_0 \to \overline{k}$ gegeben. Dann existiert eine Fortsetzung $\varphi: L \to \overline{k}$ (d.h. ein Körpermorphismus $\varphi$, so dass $\varphi \mid_T{L_0} = \varphi_0$).
 		
 		Insbesondere $(L_0 = k)$ jede algebraische Körpererweiterung von $k$ bettet in $\overline{k}$ ein.
 	\end{theorem}
+
+	\heading{Typische Anwendung:} Sei $k$ ein Körper, seien $\overline{k}$ und $\overline{k}'$ zwei algebraische Abschlüsse von $k$. Dann $\overline{k} \simeq \overline{k}'$.
+	
+	\begin{proof}
+		Wende den Satz \ref{thm:schwacherErsatzFürUniverselleEigenschaft} an mit $L = \overline{k}', L_0 = k$ und $\varphi_0 = Id_k$. Satz sagt dann, es gibt Körpermorphismus (sogar $k$-Morphismus)
+		\begin{equation*}
+			\varphi: \overline{k}' \to \overline{k}
+		\end{equation*}
+		Wissen: $\varphi$ ist injektiv. Ich behaupte: sogar surjektiv. Grund: Haben Kette von Körpern $k \subseteq \operatorname{Bild}(\varphi) \subseteq \overline{k}$.
+		
+		Wissen $\operatorname{Bild}(\varphi) \simeq \overline{k}'$ ist algebraisch abgeschlossen. $\overline{k}/k$ ist algebraisch $\Rightarrow$ $\overline{k} / \operatorname{Bild}(\varphi)$ ist algebraisch.
+		
+		Insgesamt: $\overline{k} = \operatorname{Bild}(\varphi)$, denn algebraisch abgeschlossene Körper haben keine echten algebraischen Erweiterungen.
+	\end{proof}
+
+	\begin{proof} zu Satz \ref{thm:schwacherErsatzFürUniverselleEigenschaft}
+		Verwende Zorns Lemma und betrachte
+		\begin{align*}
+			M = \{ (L', \varphi') \mid &L' \text{ ist Zwischenkörper } L_0 \subseteq L' \subseteq L \text{ und } \\
+			&\varphi': L' \to \overline{k} \text{ ist Körpermorphismus mit } \varphi'_{\mid L_0} = \varphi_0 \}
+		\end{align*}
+		
+		Definiere eine Halbordnung durch $(L', \varphi') \leq (L'', \varphi'')$ falls gilt:
+		\begin{enumerate}
+			\item $L' \subseteq L''$
+			\item $\varphi''_{\mid L'} = \varphi'$
+		\end{enumerate}
+		Fakt ohne Beweis: Das ist tatsächlich eine Halbordnung.
+		
+		\textit{Zwischenbehauptung:} In $(M, \leq)$ hat jede Kette eine obere Schranke.
+		
+		Sei $(L_\lambda, \varphi_\lambda)_{\lambda \in \Lambda}$ eine Kette. Dann ist $L' \coloneqq \bigcup_{\lambda \in \Lambda} L_\lambda$ ein Unterkörper von $L$ (sogar Zwischenkörper: $L_0 \subseteq L' \subseteq L$). Sei $a \in L'$ und seien $\lambda_1, \lambda_2 \in \Lambda$ so dass $a \in L_{\lambda_1}$ und $a \in L_{\lambda_2}$ ist. Dann gilt:
+		\begin{equation*}
+			\varphi_{\lambda_1}(a) = \varphi_{\lambda_2}(a)
+		\end{equation*}
+		Auswahlaxiom sagt: finde Abbildung $\eta: L' \to \Lambda$ so dass für alle $a$ $L_{\eta(a)} \ni a$.
+		
+		Definiere dann:
+		\begin{align*}
+			\varphi': &L' \to \overline{k} \\
+			&a \to \varphi_{\eta(a)}(a)
+		\end{align*}
+		
+		Das ist ein Körpermorphismus, der $\varphi_0$ fortsetzt. Also ist $(L', \varphi')$ eine obere Schranke für die Kette.
+		
+		Insgesamt sagt Zorns Lemma: Es gibt ein maximales Element $(L_\text{max}, \varphi_\text{max}) \in M$. Ich bin fertig, wenn ich zeige:
+		$L_\text{max} = L$. Angenommen es gibt $a \in L \setminus L_\text{max}$.
+		
+		\textit{Wissen:} $a$ ist algebraisch über $L_\text{max}$, mit Minimalpolynom
+		\begin{equation*}
+			f(x) = \sum \lambda_i x^i \in L_\text{max}[x]
+		\end{equation*}
+		
+		\textit{Wissen auch:}
+		\begin{equation*}
+			L_\text{max} \simeq L_\text{max}[x] / (f)
+		\end{equation*}
+		
+		Betrachte das Polynom
+		\begin{equation*}
+			\overline{f} = \sum \varphi_\text{max}(\lambda_i) \cdot x^i \in \operatorname{Bild}(\varphi_\text{max})[x] \subset \overline{k}[x]
+		\end{equation*}
+		
+		\textit{Wissen:} $\overline{f}$ hat eine Nullstelle $\overline{a} \in \overline{k}$ und 
+		\begin{equation*}
+			\operatorname{Bild}(\varphi_\text{max})(\overline{a}) \simeq \operatorname{Bild}(\varphi_\text{max})[x] / (\overline{f}) \simeq L_\text{max}[x]/ (f) \simeq L_\text{max}(a)
+		\end{equation*}
+		Insgesamt haben wir also einen Morphismus
+		\begin{equation*}
+			L_\text{max} \subsetneq L_\text{max}(a) \overset{\varphi_\text{mmax}}{\hookrightarrow} \operatorname{Bild}(\varphi_{\eta(a)}\text{max})(\overline{a}) \subseteq \overline{k}
+		\end{equation*}
+		
+		Per Konstruktion ist $\varphi_\text{mmax} \mid_{L_\text{max}} = \varphi_\text{max}$
+		
+		Insgesamt: $(L_\text{max}, \varphi_\text{max}) \lneq (L_\text{max}(a), \varphi_\text{mmax})$ $\lightning$ zur Maximalität von $(L_\text{max}, \varphi_\text{max})$.
+	\end{proof}
+
+	\begin{definition}[Polynomringe in $\infty$ vielen Variablen]
+		Sei $(x_\lambda)_{\lambda \in \Lambda}$ eine Menge von Variablennamen, sei $R$ ein Ring Dann betrachte
+		\begin{equation*}
+			R[(x_\lambda)_{\lambda \in \Lambda}] = \bigcup_{ \{ x_{\lambda_1}, \dots, x_{\lambda_n} \} \text{ endl.} } R[x_{\lambda_1}, \dots, x_{\lambda_n}]
+		\end{equation*}
+	\end{definition}
+
+	\begin{remark}
+		Polynome enthalten immer nur endlich viele Terme und endlich viele Variablen!
+	\end{remark}
+
+	\heading{Fakt:} (universelle Eigenschaft) Gegeben sei ein Ringmorphismus $\varphi: R \to S$ und eine beliebige Abbildung: $\alpha: \Lambda \to S$. Dann ibt es genau einen Ringmorphismus $\Phi: R[(x_\lambda)_{\lambda \in \Lambda}] \to S$ so dass $\Phi_{\mid R} = \varphi$
+	\begin{equation*}
+		\exists \lambda \in \Lambda: \Phi(x_\lambda) = \alpha(\lambda)
+	\end{equation*}
+	\textit{Idee:}
+	\begin{equation*}
+		\Phi(x_{\lambda_1}^2 + x_{\lambda_2} + r \cdot x_{\lambda_3}^7 \cdot x_{\lambda_4}) = \alpha(\lambda_1)^2 + \alpha(\lambda_2) + \varphi(r) \cdot \alpha(\lambda_3)^7 \cdot \alpha(\lambda_4)
+	\end{equation*}
+
+	\begin{theorem}[Steinitz]
+		Sei $k$ ein Körper. Dann existiert ein algebraischer Abschluss.
+	\end{theorem}
+
+	\begin{proof}(Mike Artin)
+		Betrachte:
+		\begin{itemize}
+			\item $\Lambda = \{ \text{nicht-konstante Polynome in $k[x]$} \}$
+			\item Polynomring $k[(x_\lambda)_{\lambda \in \Lambda}] \eqqcolon P$
+			\item Für jedes $f \in \Lambda$ das Element $f(x_f)$
+			\item Das Ideal $I = (f(x_f) \mid f \in \Lambda)$
+		\end{itemize}
+		\textit{Behauptung 1:} $I \subsetneq P$ d.h. $1 \notin I$
+		
+		\textit{Beweis:} Angenommen es wäre $1 \in I$. Dann kann ich schreiben
+		\begin{equation*}
+			1 = \sum_{i=1}^n g_i \cdot f_i(x_{f_i})
+		\end{equation*}
+		für geeignete $f_1, \dots, f_n \in \Lambda, g_1, \dots, g_n \in P$. Das kann nicht sein!
+		
+		\textit{Erinnerung:} Es gibt eine Körpererweiterung $k_1 / k$ so dass $f_1$ eine Nullstelle $a_1 \in k_1$ hat.
+		
+		Wiederholte Anwendung: Es gibt eine Körpererweiterung $k' /  k$ so dass für alle $i$ gilt $f_i$ hat in $k'$ eine Nullstelle $a_i \in k'$.
+		
+		\textit{Universelle Eigenschaft:} Es gibt Ringmorphismus $\Phi: P \to k'$ so dass für alle $i$ gilt $x_{f_i} \mapsto a_i$.
+		
+		Dann ist
+		\begin{equation*}
+			\Phi(1_{k'}) = \Phi(1_P) = \sum_{i = 1}^n \underbrace{\Phi(g_i) f_i(a_i)}_{=0} = 0
+		\end{equation*}
+		Widerspruch! Damit ist Behauptung 1 bewiesen.
+		
+		\textit{Erinnerung:} $I$ ist vielleicht nicht maximal, aber Zorn sagt: Es gibt ein maximales Ideal $I \subseteq m \subsetneq P$.
+		
+		\textit{Erinnerung:} $E_1 \coloneqq P/m$ ist ein Körper.
+		
+		Wesentliche Eigenschaften dieses Körpers.
+		\begin{enumerate}
+			\item Haben Abbildung $k \to P \to E_1 = P/m, a \mapsto \text{konst. Pol. $a$}$. Diese Abbildung ist injektiv, deshalb Inklusion von Körpern. Fasse ab sofort $k$ als Unterkörper von $E_1$ auf.
+			\item Die Polynome $f \in \Lambda$ haben Nullstellen in $E_1$, nämlich $f(x_f) \in I \subset m$, also $f([x_f]) = 0$ in $E_1 = P / m$
+			\item Die Körpererweiterung $E_1 / k$ ist algebraisch. Sei $a \in E_1$ irgendein Element. Schreibe $a = [g]$ wobei $g \in P$ ein Polynom in den endlich vielen Variablen $x_{\lambda_1}, \dots, x_{\lambda_n}$ ist.
+			Dann $a \in k([x_{\lambda_1}], \dots, [x_{\lambda_n}]) \subset E_1$.
+			
+			Wir wissen aber für alle $i$ ist $[x_{\lambda_i}]$ Nullstelle des Polynoms $\lambda_i \in \Lambda$.
+		\end{enumerate}
+	
+		\textit{Beobachtung:} Es ist nicht klar, dass $E_1$ ein algebraischer Abschluss von $k$ ist.
+		
+		\textit{Wissen:} Polnyome mit Koeffizienten in $k$ haben in $E_1$ Nullstelle.
+		
+		\textit{Wissen nicht:} Polynome mit Koeffizienten in $E_1$ haben in $E_1$ Nullstelle.
+		
+		Wiederhole diese Konstruktion, erhalte Erweiterungen
+		\begin{equation*}
+			k \subseteq E_1 \subseteq E_2 \subseteq \dots
+		\end{equation*}
+		so dass für alle $i \in \setN$ jedes nicht-konstante Polynom in $E_i[x]$ hat Nullstelle in $E_{i+1}$ und $E_{i+1} / E_i$ ist algebraisch. Insbesondere ist $E_i / k$ algebraisch.
+		
+		Setze
+		\begin{equation*}
+			E \coloneqq \bigcup_i E_i
+		\end{equation*}
+		dann gilt:
+		\begin{enumerate}
+			\item Weil ich eine Kette habe, ist $E$ ein Körper
+			\item Gegeben $a \in E$. Dann $\exists x: a \in E_i$, also $a$ algebraisch über $k$. $\Rightarrow E/k$ ist algebraisch.
+			\item Sei $f \in E[x]$ ein Polynom, $f(x) = \sum_{j=1}^n e_j x^j$. Dann gibt es ein $i \in \setN: \forall j: e_j \in E_i$. Also $f \in E_i[x]$ hat also eine Nullstelle in $E_{i+1} \subseteq E$.
+		\end{enumerate}
+	\end{proof}
 
 \end{document}
