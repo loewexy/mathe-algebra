@@ -2557,7 +2557,7 @@
 		
 		\textit{Wissen auch:}
 		\begin{equation*}
-			L_\text{max} \simeq L_\text{max}[x] / (f)
+			L_\text{max}(a) \simeq L_\text{max}[x] / (f)
 		\end{equation*}
 		
 		Betrachte das Polynom
@@ -2669,4 +2669,219 @@
 		\end{enumerate}
 	\end{proof}
 
+	\begin{definition}
+		Sei $k$ ein Körper, $f$ ein nicht konstantes Polynom, $f \in k[x]$. Eine Erweiterung $L/k$ heißt Zerfällungskörper von $f$, falls gilt:
+		\begin{enumerate}
+			\item $f$ zerfällt in $L[x]$ in Produkt von linearen Polynomen
+			\begin{equation*}
+				f = \operatorname{const} \cdot \prod (x - a_i) \in L[x]
+			\end{equation*}
+			\item $L = k(a_1, \dots, a_n)$
+		\end{enumerate}
+	\end{definition}
+
+	\heading{Wesentliches Problem:} Gegeben $k$ und $f$, finde ein $L$.
+	
+	\begin{theorem}
+		Sei $k$ ein Körper, dann gilt:
+		\begin{enumerate}
+			\item Jedes nicht-konstante $f$ hat einen Zerfällungskörper
+			\item Gegeben $f$, dann sind je zwei Zerfällungskörper von $f$ isomorph
+			\item Gegeben $f$ und ein Zerfällungskörper $L$, dann ist
+			\begin{equation*}
+				[L:k] \leq (\deg f)!
+			\end{equation*}
+		\end{enumerate}
+	\end{theorem}
+
+	\begin{proof}
+		\heading{1)} Sei $f$ gegeben. Seien $a_1, \dots, a_n \in \overline{k}$ die Nullstellen, dann setze $L = k(a_1, \dots, a_n) \subseteq \overline{k}$
+		
+		\heading{2)} Sei $f$ gegeben. Wähle $L$ wie in Schritt 1), sei $L'$ ein weiterer Zerfällungskörper, seien $a_1', \dots, a_n'$ die Nullstellen von $f$ in $L'$.
+		
+		\textit{Wir wissen:} $L'/k$ ist algebraisch. Nach universeller Eigenschaft habe ich einen $k$-Morphismus
+		\begin{equation*}
+			\varphi: L' \to \overline{k} \supseteq L
+		\end{equation*}
+		
+		\textit{Banale Beobachtung:} Die Abbildung $\varphi$ bildet Nullstellen von $f$ auf Nullstellen von $f$ in $\overline{k}$ ab. Sei $a_i \in L$ eine Nullstelle. Dann schreibe $f(x) = \sum f_i \cdot x^i$, wobei $f_i \in k$. Dann ist
+		\begin{equation*}
+			0_{\overline{k}} = \varphi(f(a)) = \varphi \left( \sum f_i \cdot a^i \right) = \sum \varphi(f_i) \cdot \varphi(a)^i = \sum f_i \varphi(a)^i = f(\varphi(a))
+		\end{equation*}
+		
+		\textit{Also:} $\forall i: \varphi(a_i') = a_j$ für geeignetes $j$.
+		
+		\begin{equation*}
+			\Rightarrow \operatorname{Bild}(\varphi) = \varphi(k(a_1', \dots, a_n')) \subseteq \underbrace{k(a_1, \dots, a_n)}_{=L} \subseteq \overline{k}
+		\end{equation*}
+		
+		\textit{Andererseits:} $\operatorname{Bild}(\varphi)$ ist ein Zerfällungkörper, enthält alle $n$ Nullstellen $\Rightarrow \operatorname{Bild}(\varphi) = L$.
+		
+		$\Rightarrow \varphi$ ist isomorphismus
+		
+		\heading{3)} Sei $f$ gegeben, seien $a_1, \dots, a_n \in L$ die Nullstellen. Dann ist $L = k(a_1, \dots, a_n)$ und habe Kette.
+		\begin{equation*}
+			k \subseteq k(a_1) \subseteq k(a_1, a_2) \subseteq \dots
+		\end{equation*}
+		Dann:
+		\begin{itemize}
+			\item $f$ ist Polynom in $k$, das $a_1$ als Nullstelle hat
+			\begin{equation*}
+				[k(a_1) : k] \leq \deg f
+			\end{equation*}
+			\item $f/(x-a_1)$ ist Polynom in $k(a_1)$, das $a_2$ als Nullstelle hat
+			\begin{equation*}
+				[k(a_1, a_2) : k(a_1)] \leq n - 1
+			\end{equation*}
+			\item Wiederholte Anwendung:
+			\begin{equation*}
+				[L:k] \leq n!
+			\end{equation*}
+		\end{itemize}
+		
+	\end{proof}
+
+	\begin{example}
+		$k = \setQ$, $f = x^2 - 2$. Dann ist Zerfällungskörper
+		\begin{equation*}
+			L = \setQ(- \sqrt{2}, \sqrt{2})
+		\end{equation*}
+		und
+		\begin{equation*}
+			[\setQ(\sqrt{2}) : \setQ] = 2
+		\end{equation*}
+		und
+		\begin{equation*}
+			[\setQ(\sqrt{2}, - \sqrt{2}) : \setQ(\sqrt{2})] = 1
+		\end{equation*}
+		$\Rightarrow \deg[L : \setQ] = 2$.
+	\end{example}
+
+	\begin{example}
+		$k = \setQ$, $f = x^3 - 2$. Dann:
+		\begin{equation*}
+			L = \setQ(\sqrt[3]{2}, \xi \sqrt[3]{2}, \xi^2 \sqrt[3]{2})
+		\end{equation*}
+		wobei $\xi = e^{\frac{2 \pi i}{3}}$, und
+		\begin{equation*}
+			[\setQ(\sqrt[3]{2}) : \setQ] = 3
+		\end{equation*}
+		und
+		\begin{equation*}
+			[\setQ(\xi \cdot \sqrt[3]{2}, \sqrt[3]{2}) : \setQ(\sqrt[3]{2})] = 2
+		\end{equation*}
+		weil $\setQ(\sqrt[3]{2}) \subset \setR$, $\xi \notin \setR$
+		
+		$\Rightarrow [L : \setQ] = 6$
+	\end{example}
+
+	\heading{Nächstes Ziel:} Zerfällungskörper verstehen. Dazu Nullstellenmenge von (irreduziblen) Polynomen verstehen.
+	
+	\heading{Dazu Sprache:} Sei $S \supseteq R$ eine Erweiterung von Ringen und sei $(a_\lambda)_{\lambda \in \Lambda}$ eine Familie von Elementen aus $S$ dann betrachte
+	\begin{equation*}
+		\bigcap_{\substack{\text{Zwischenringe} R \subseteq A \subseteq S \\ \forall \lambda \in \Lambda, a_\lambda \in A}} A = R[(a_\lambda)_{\lambda \in \Lambda}]
+	\end{equation*}
+	
+	\heading{Fakt:}
+	\begin{itemize}
+		\item $R[(a_\lambda)_{\lambda \in \Lambda}]$ ist ein Unterring von $S$, der alle $a_\lambda$ enthält.
+		\item $R[(a_\lambda)_{\lambda \in \Lambda}]$ ist der kleinste Unterring von $S$ der alle $(a_\lambda)_{\lambda \in \Lambda}$ enthält.
+		\item Sei $\varphi: R[(x_\lambda)_{\lambda \in \Lambda}] \to S$ die eindeutige Abbildung, die $\forall \lambda$ $x_\lambda$ auf $a_\lambda$ abbildet. Dann ist $R[(a_\lambda)_{\lambda \in \Lambda}] = \operatorname{Bild}(\varphi)$
+	\end{itemize}
+
+	\heading{Auf Deutsch:} Elemente von $R[(a_\lambda)_{\lambda \in \Lambda}]$ sehen aus wie Polynome in $a_\lambda$.
+	\begin{equation*}
+		r_1 a_{\lambda_1}^7 a_{\lambda_2} + r_2 a_{\lambda_3}^8 \cdot a_{\lambda_4} \cdot a_{\lambda_1}
+	\end{equation*}
+	
+	\heading{Spezialfall:} Die Ringe $R,S$ sind Körper. Gegeben also eine Körpererweiterung $L/k$ und Familie von Elementen aus $L$, $A \coloneqq (a_\lambda)_{\lambda \in \Lambda} \subseteq L$. Dann haben wir Ringe/Körper
+	\begin{equation*}
+		k \subseteq k[A] \overset{i}{\hookrightarrow} k(A) \subseteq L
+	\end{equation*}
+	und wir haben $k[A] \hookrightarrow Q(k[A])$. Und wir erhalten genau ein $\eta: Q(k[A]) \to k(A)$ wobei $\eta$ durch die universelle Eigenschaft des Quotientenkörpers gegeben ist.
+	
+	\heading{Klar:} $\operatorname{Bild}(\eta)$ ist Unterkörper von $k(A)$, der $k[A]$ enthält $\Rightarrow \operatorname{Bild}(\eta) = k(A)$. Also $\eta$ ist isomorph.
+	
+	\begin{theorem}
+		Situation wie oben. Dann
+		\begin{equation*}
+			k(A) \cong Q(k(A))
+		\end{equation*}
+		mit kanonischer Isomorphie.
+	\end{theorem}
+
+	\begin{example}
+		$k = \setR$, $L = \setC = \setR(i)$
+		
+		Wissen: jede komplexe Zahl kann ich schreiben als $r_1 + i r_2$, also $\setR[i] = \setR(i) = \setC$.
+	\end{example}
+
+	\heading{Allgemein:} Sei $L/k$ eine Körpererweiterung, sei $a \in L$ algebraisch über $k$. Dann kann ich alle Elemente von $k(a)$ schreiben als $k_0 + k_1 \cdot a + k_2 a^2 + \dots + k_{n-1} a^{n-1}$ wobei $n = [a : k]$. Also $k(a) = k[a]$.
+	
+	\begin{example}
+		$L/k$ Körpererweiterung, $a \in L$ sei transzendent über $k$. Dann haben wir Abbildung
+		\begin{equation*}
+			k[x] \to k[a] \subseteq k(a), \quad f(x) \mapsto f(a)
+		\end{equation*}
+		per Definition ist $\varphi$ surjektiv. Per Annahme $a$ transzendent ist $\varphi$ injektiv. $\Rightarrow k[a] \cong k[x]$. Insbesonders $k[a]$ kein Körper also $\neq k(a)$. Induktiv beweist man:
+	\end{example}
+
+	\begin{theorem}
+		Sei $L/k$ eine Körpererweiterung, seien $a_1, \dots, a_n \in L$ endlich viele Elemente, dann sind äquivalent
+		\begin{enumerate}
+			\item alle $a_i$ sind algebraisch
+			\item $k[a_1, \dots, a_n] = k(a_1, \dots, a_n)$
+		\end{enumerate}
+	\end{theorem}
+
+	\begin{remark}
+		Achtung: für $\infty$ viele Elemente ist das Falsch! z.B. sei $L/k$ beliebig. $A = L$, dann ist $k[A] = k(A)$.
+	\end{remark}
+
+	\subsection{Separable und Inseparable Körpererweiterungen}
+	
+	\heading{Frage:} Sei $L/k$ Erweiterung, $a \in L$ sei algebraisch über $k$ und $f \in k[x]$ das Minimalpolynom. Kann $f$ mehrfache Nullstellen in $L$ haben?
+	
+	\heading{Teilantwort:} Wenn $k = \setQ$ ist, geht das nicht! Denn wenn $f$ die Zahl $a \in L$ als mehrfache Nullstelle hat, dann $f'(a) = 0$. $\lightning$ zur Annahme $f$ Minimalpolynom.
+	
+	\heading{Ziel:} Argument erweitern zu beliebigen Körpern
+	
+	\begin{definition}
+		Sei $k$ ein Körper, $f \in k[x]$ ein Polynom. Dann schreibe
+		\begin{equation*}
+			f(x) = \sum_{i = 0}^n a_i \cdot x^i
+		\end{equation*}
+		und setze
+		\begin{equation*}
+			f'(x) = \sum_{i = 1}^n \underline{i} \cdot a_i \cdot x^{i-1}
+		\end{equation*}
+		wobei $\underline{i} = \underbrace{1 + \dots + 1}_{i-\text{mal}} \in k$
+	\end{definition}
+
+	\begin{theorem}
+		Alle bekannten Ableitungsregeln gelten.
+	\end{theorem}
+
+	\heading{Zurück zur Frage:} Wenn $k$ ein beliebiger Körper der Charakteristik $0$ ist, und $a$ eine mehrfache Nullstelle von $f$ ist (d.h. in $L[x]$) kann ich schreiben
+	\begin{equation*}
+		f = (x-a)(x-a) \cdot \text{rest}
+	\end{equation*}
+	Dann sagt Ketten/Produkt-Regel dass $f'$ das $a$ immer noch als Nullstelle hat. Weil $\operatorname{char}(k) = 0$. $f' \not\equiv 0$. Also $\lightning$ wie oben.
+	
+	\begin{remark}
+		In $\operatorname{char}(k) = p > 0$ immer noch wahr, dass $f'(a) = 0$ ist, aber es könnte sein, dass $f' \equiv 0$.
+	\end{remark}
+
+	\begin{definition}
+		Eine irreduzibles Polynom $f$ heißt separabel, wenn $f$ in $\overline{k}$ keine mehrfache Nullstelle hat. Ein beliebiges Polynom $f$ ist separabel, wenn alle irreduziblen Faktoren separabel sind. Ansonsten nenne $f$ inseparabel.
+	\end{definition}
+
+	\begin{remark}
+		Falls $\operatorname{char}(k) = 0$, sind alle Polynome separabel.
+	\end{remark}
+
+	\begin{remark}
+		(Nicht-irreduzible) separable Polynome können mehrfache Nullstellen haben.
+	\end{remark}
+	
 \end{document}
