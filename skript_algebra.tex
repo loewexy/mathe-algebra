@@ -2883,5 +2883,112 @@
 	\begin{remark}
 		(Nicht-irreduzible) separable Polynome können mehrfache Nullstellen haben.
 	\end{remark}
+
+	\heading{Konstruktion mit Frobenius-Morphismus:} Sei $R$ ein Ring ein Ringmorphismus $R \to S$ induziert einen Ringmorphismus $R[x] \to S[x]$. Für $S = R$ und den Frobenius-Morphismus erhalten Ringmorphismus
+	\begin{equation*}
+		\eta: R[x] \to R[x], \quad \sum a_i x^i \mapsto a_i^p x^i
+	\end{equation*}
+	Falls $R$ Integritätsring ist, ist $\eta$ injektiv.
+	
+	$\operatorname{Bild}(\eta) = (R^p)[x] \subseteq R[x]$ und die Abbildung $\eta: R[x] \to R^p[x]$ ist Isomorphismus.
+	
+	\begin{theorem}[Charakterisierung inseparabler Polynome]
+		Sei $k$ ein Körper, sei $f \in k[x]$ irreduzibel. Dann sind äquivalent
+		\begin{enumerate}
+			\item $f$ ist inseparabel
+			\item $f' \equiv 0$
+			\item $p = \operatorname{char}(k)$ ist eine Primzahl. Es gibt ein irreduzibles separables $g \in k[x]$ und $n \in \setN$ so dass $f(x) = g(x^{p \cdot n}) = g((x^p)^n)$.
+		\end{enumerate}
+	\end{theorem}
+
+	\begin{proof}
+		\heading{$1) \Rightarrow 2)$:} Sei $f$ inseparabel, d.h. $f$ hat in $\overline{k}$ eine mehrfache Nullstelle $a$, dann ist auch $f'(a) = 0$. Widerspruch zur Irreduzibilität falls $f \not\equiv 0$. Also $f' \equiv 0$.
+		
+		\heading{$2) \Rightarrow 3)$:} Sei $f(x) = \sum_{i=0}^n a_i x^i$. Dann:
+		\begin{equation*}
+			f'(x) = \sum_{i = 1}^n a_i \cdot i \cdot x^{i-1}
+		\end{equation*}
+		wobei $i$ hier $\varphi(i) = \underbrace{1 + \dots + 1}_\text{$i$-mal}$.
+		
+		Falls $\operatorname{char}(k) = 0$ wäre dann ist $\forall i$ mit $a_i \neq 0$ auch $i \cdot a_i \neq 0$ also $f'(x) \not\equiv 0$ $\lightning$. Also ist $\operatorname{char}(k) = p > 0$. Die Zahl $p$ ist prim weil $k$ ein Körper ist.
+		
+		\textit{Beobachtung:} Falls $i$ kein Vielfaches von $p$ ist, dann $\varphi(i) \neq 0$. Es ist aber $a_i \cdot \varphi(i) = 0 \Rightarrow a_i = 0$ für alle $i$ die kein Vielfaches von $p$ sind. Also
+		\begin{equation*}
+			f(x) = \sum_{j = 0}^{n/p} a_{j \cdot p} x^{j \cdot p}
+		\end{equation*}
+		Setze $g_1(x) = \sum_{j = 0}^{n/p} a_{j \cdot p} x^j$. Dann $f(x) = g_1(x^p)$.
+		
+		\textit{Idee:} Falls $g_1$ inseparabel ist, wiederhole Prozedur, finde $g_2(x)$ so dass $g_1(x) = g_2(x^p)$ ($\Rightarrow f(x) = g_2(x^{2p})$). Weil der Grad der Polynome dabei sinkt terminiert diese Prozedur nach endlich vielen Schritten, finde $g = g_n$ so dass $f(x) = g(x^{n \cdot p})$ und $g$ separabel ist.
+		
+		Damit das funktioniert muss ich zeigen, dass $g_1$ irreduzibel ist (per Induktion sind dann auch $g_2, \dots, g_n = g$ irreduzibel).
+		
+		\textit{Erinnerung:} hatten Morphismen
+		\begin{equation*}
+			\varphi_1: k[x] \to (k^p)[x], \quad \sum h_i \cdot x^i \mapsto \sum h_i^p \cdot x_i
+		\end{equation*}
+		
+		\begin{equation*}
+			\mathcal{F}: k[x] \to (k^p)[x^p] \subseteq (k^n)[x] \subseteq k[x], \quad \sum h_i \cdot x^i \mapsto \sum h_i^p \cdot x^{i \cdot p}
+		\end{equation*}
+		
+		Nachrechnen: es ist $\varphi(f) \in (k^p)[x^p]$ weil $f \in k[x^p]$ und $g = \mathcal{F}^{-1}(\varphi(f))$. Da $\varphi, \mathcal{F}$ Isomorphismen sind folgt aus $f$ irreduzibel $g_1$ irreduzibel.
+		
+		\heading{$3) \Rightarrow 1)$:} Angenommen $f$ hat folgende Eigenschaft: $\exists g(x) \in k[x]: f(x) = g(x^p)$. Sei $a \in \overline{k}$ eine Nullstelle von $g$, d.h. $g(x) = (x - a) \cdot \text{rest}$ in $\overline{k}[x]$. Wähle $b \in \overline{k}$ mit $b^p = a$ (das geht, weil $\overline{k}$ algebraisch abgeschlossen ist). Dann
+		\begin{equation*}
+			g(x^p) = (x^p - b^p) \cdot \text{rest} = (x - b)^p \cdot \text{rest}
+		\end{equation*}
+		$\Rightarrow b \in \overline{k}$ ist $p$-fache Nullstelle von $f$, also $f$ inseparabel.
+	\end{proof}
+
+	Warum diese Diskussion von Inseparabilität? Antwort kommt jetzt!
+	
+	\begin{lemma}
+		Sei $L/k$ eine Körpererweiterung und $a \in L$, sei algebraisch über $k$. Setze $M = k(a)$. Sei $f(x) \in k[x]$ das Minimalpolynom von $a$. Angenommen $f$ hat exakt $m$ unterschiedliche Nullstellen in $\overline{k}$. Dann gibt es genau $m$ unterschiedliche $k$-Morphismen
+		\begin{equation*}
+			\varphi: M \to \overline{k}
+		\end{equation*}
+	\end{lemma}
+
+	\begin{remark}
+		Falls $f$ separabel ist, $m = \deg f$. Falls $f$ inseparabel ist, ist $m < \deg f$.
+	\end{remark}
+
+	\begin{proof}
+		\textit{Beobachtung 1:} Wir wissen schon: Die Elemente von $M$ kann ich schreiben als
+		\begin{equation*}
+			\lambda_0 ü \lambda_1 a + \lambda_2 a^2 + \dots + \lambda_{n-1} a^{n-1}
+		\end{equation*}
+		mit $\lambda_i \in k$ wobei $n = \deg f$. Insbesondere ist für alle solche Elemente
+		\begin{equation*}
+			\varphi(\lambda_0 + \lambda_1 a + \dots + \lambda_{n-1} a^{n-1}) = \sum \lambda_i \varphi(a)^i
+		\end{equation*}
+		das bedeutet: $\varphi$ ist durch $\varphi(a)$ eindeutig festgelegt!
+		
+		\textit{Beobachtung 2:} Gegeben einen $k$-Morphismus $\varphi$, dann ist $\varphi(a)$ eine Nullstelle des Polynoms $f(x) \in k[x]$ habe aber nur $m$ unterschiedliche Nullstellen!
+		
+		Insgesamt also höchstens $m$ unterschiedliche Morphismen!
+		
+		Noch zu zeigen: Wenn $b \in \overline{k}$ eine Nullstelle von $f$ ist, dann existiert ein $k$-Morphismus $\varphi: M \to \overline{k}$ so dass $\varphi(a) = b$ ist.
+		
+		\textit{Erinnerung:} Wir wissen $M \simeq k[x]/(f)$ wobei $a$ mit $[x]$ identifiziert wird.
+		
+		Haben Morphismus:
+		\begin{equation*}
+			\Omega: k[x] \to \overline{k}, \quad g \mapsto g(b)
+		\end{equation*}
+		Dann $f \in \operatorname{Ker}(\Omega)$, der Kern ist ein Hauptideal und $f$ reduzibel also: $(f) = \operatorname{ker}(\Omega)$. Also erhalte (nach universeller Eigenschaft) einen Morphismus $k[x]/(f) \to \overline{k}$ wobei $[x] \mapsto b$
+		
+		Erhalte $M \to \overline{k}$ durch Komposition der Morphismen.
+		
+		\heading{Varianten mit völlig analogem Beweis}
+		
+		\begin{lemma}
+			Sei $L/k$ eine Körpererweiterung. $a \in L$ algebraisch mit Minimalpolynom $f \in k[x]$. $f$ hat $m$ unterschiedliche Nullstellen in $L$. Dann gibt es genau $m$ unterschiedliche $k$-Morphismen $\varphi: M \to L$, wobei $M = L(a)$ ist.
+		\end{lemma}
+	
+		\begin{lemma}
+			Seien $L_1$ und $L_2$ Körper und $\sigma: L_1 \to L_2$ Körpermorphismen. $a \in L_2$ sei algebraisch über $\operatorname{Bild}(\sigma)$ mit Minimalpolynom $f$. Angenommen $f$ hat $m$ unterschiedliche Nullstellen in $L_2$. Dann gibt es genau $m$ unterschiedliche Fortsetzungen von $\sigma$ zu Morphismen $\Sigma: M \to L_2$, wobei $M \supseteq L$, der Körper $\sigma(L_1)(a)$.
+		\end{lemma}
+	\end{proof}
 	
 \end{document}
