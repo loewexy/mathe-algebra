@@ -2990,5 +2990,166 @@
 			Seien $L_1$ und $L_2$ Körper und $\sigma: L_1 \to L_2$ Körpermorphismen. $a \in L_2$ sei algebraisch über $\operatorname{Bild}(\sigma)$ mit Minimalpolynom $f$. Angenommen $f$ hat $m$ unterschiedliche Nullstellen in $L_2$. Dann gibt es genau $m$ unterschiedliche Fortsetzungen von $\sigma$ zu Morphismen $\Sigma: M \to L_2$, wobei $M \supseteq L$, der Körper $\sigma(L_1)(a)$.
 		\end{lemma}
 	\end{proof}
+
+	\heading{Spezialfall:} $M = \overline{k}$. Dann hat $f$ (mit Vielfachheit) genau $n = \deg f$ Nullstellen. Beachte $f$ separabel $\Leftrightarrow$ $n$ unterschiedliche Nullstellen $\Leftrightarrow$ $n$ unterschiedliche Fortsetzungen von $\varphi$ zu $k(a)$.
+	
+	\begin{definition}
+		Sei $L/k$ Körpererweiterung. Nenne algebraisches $a \in L$ separabel, wenn das zugehörige Minimalpolynom separabel ist. Nenne $L/k$ separabel, falls alle $a \in L$ algebraisch und separabel über $k$ sind. Nenne $L/k$ inseparabel falls algebraisches $a \in L$ existiert, das nicht separabel über $k$ ist.
+	\end{definition}
+
+	\begin{theorem}
+		Sei $L/k$ eine endliche Körpererweiterung und $n \coloneqq \deg [L:k]$. Dann gilt:
+		\begin{enumerate}
+			\item Es gibt höchstens $n$ $k$-Morphismen $L \to \overline{k}$
+			\item $L/k$ ist genau dann separabel, wenn es exakt $n$ solche Morphismen gibt
+		\end{enumerate}
+	\end{theorem}
+
+	\begin{proof}
+		Vorbereitung: Wegen der Endlichkeit, finde $a_1, \dots, a_l \in L$ so dass $L = k(a_1, \dots, a_l)$. Betrachte Kette von Erweiterungen
+		\begin{equation*}
+			k \subseteq k(a_1) \subseteq k(a_1, a_2) \subseteq \dots \subseteq k(a_1, \dots, k_l) = L
+		\end{equation*}
+		Sei $k_0 = k$ und $k_l = k_{l-1}(a_l)$.
+		
+		\heading{a)} Erinnerung es gibt höchstens $[a_1: k_0]$ viele unterschiedliche $k$-Morphismen $\sigma_1: k_1 \to \overline{k}$.
+		
+		\textit{Erinnerung:} Gegeben $\sigma_1: k_1 \to \overline{k}$, dann gibt es maximal $[a_2 : k_1]$ viele Fortsetzungen von $\sigma_1$ zu Morphismen $\sigma_2: k_2 \to \overline{k}$.
+		
+		\textit{Erinnerung:} Gegeben $\sigma_i: k_i \to \overline{k}$, dann gibt es höchstens $[a_{i+1}: k_i]$ viele Fortsetzungen von $\sigma_i$ zu $\sigma_{i+1}: k_{i+1} \to \overline{k}$.
+		
+		\textit{Insgesamt:} Maximal
+		\begin{equation*}
+			[a_1: k_0] \cdot [a_1: k_2] \cdot \dots \cdot [a_l: k_{l-1}] = [L:k]
+		\end{equation*}
+		viele Fortsetzungen von $Id_k: k \to \overline{k}$ zu Morphismen $L \to \overline{k}$.
+		
+		\heading{b) $\Rightarrow$} Angenommen $L/k$ ist separabel. Wir wissen: die maximale Zahl von Erweiterungen existiert, falls für alle $i$ gilt $a_{i+1}$ ist separabel über $k_i$. Per Annahme: $a_{i+1}$ ist separabel über $k$.
+		
+		Aber: $f_{k_i} \mid f_k$ also klar, dass $f_{k_i}$ keine mehrfachen Nullstellen hat.
+		
+		\heading{b) $\Leftarrow$} Angenommen $L/k$ nicht separabel. Kann die $a_i$ so wählen, dass bereits $a_1/k$ nicht separabel ist.
+		
+		$\Rightarrow$ haben weniger als $[a_1: k_0]$ viele $k$-Morphismen $\sigma_i: k_1 \to \overline{k}$.
+		
+		$\Rightarrow$ haben insgesamt weniger als $[L:k]$ viele $k$-Morphismen $\sigma_l: L \to \overline{k}$.
+	\end{proof}
+
+	\begin{corollary}
+		Sei $L/k$ endlich. $n = [L:k]$. Sei $M/k$ algebraisch. Dann gibt es höchstens $n$ unterschiedliche $k$-Morphismen $L \to M$.
+	\end{corollary}
+
+	\begin{proof}
+		Bette $M$ in $\overline{k}$ ein. Dann liefert jeder $k$-Morphismus $L \to M$ automatisch einen $k$-Morphismus $L \to \overline{k}$.
+	\end{proof}
+
+	\begin{corollary}
+		Sei $L/k$ endlich. $L = k(a_1, \dots, a_l)$. Falls für alle $i$ gilt $a_{i+1}$ ist separabel über $k(a_1, \dots, a_i)$ dann gibt es genau $[L:k]$-viele $k$-Morphismen $L \to \overline{k}$.
+	\end{corollary}
+
+	\begin{corollary}
+		Sei $k \subseteq L \subseteq M$ eine Kette von Körpererweiterungen so dass $L/k$ und $M/L$ jeweils separabel sind, dann ist $M/k$ separabel.
+	\end{corollary}
+
+	\begin{proof}
+		Sei $m \in M$ gegeben. Betrachte das Minimalpolynom $f_L(x) \in L[x]$ von $m$. Schreibe $f_L(x) = \sum_{i=1}^n a_i x^i$, wobei $a_i \in L$ geeignete Koeffizienten sind.
+		
+		Betrachte den Zwischenkörper
+		\begin{equation*}
+			L' = k(a_0, \dots, a_{n-1})
+		\end{equation*}
+		und schreibe
+		\begin{equation*}
+			L'' = k(a_0, \dots, a_{n-1}, m)
+		\end{equation*}
+		Wende letzte Folgerung auf $L''$ an, erhalten mit Satz dass $L''/k$ separabel ist. Also ist $m/k$ separabel.
+	\end{proof}
+
+	\begin{corollary}
+		Sei $L/k$ eine Körpererweiterung. Sei
+		\begin{equation*}
+			L_\text{Sep} = \{ l \in L \mid \text{$l$ ist separabel über $k$} \}
+		\end{equation*}
+		Dann ist $L_\text{Sep}$ ein Unterkörper von $L$.
+		
+		\textit{Notation:} Nenne $L_\text{Sep}$ den separablen Abschluss (separable Hülle) von $k$ in $L$ ist.
+	\end{corollary}
+
+	\begin{proof}
+		Gegeben $a,b \in L_\text{Sep}$, müssen zeigen dass $a + b, a \cdot b, a - b$ und gegebenenfalls $a/b$ in $L_\text{Sep}$ liegen.
+		
+		\textit{Wissen:} all diese Elemente liegen in $k(a,b)$, das nach obiger Folgerung separabel ist.
+	\end{proof}
+
+	\heading{Notation:} Sei $L/k$ Körpererweiterung. Nenne $[L_\text{Sep}: k]$ den Sepearabilitätsgrad von $L/k$.
+	
+	\begin{definition}
+		Nenne Körper $k$ vollkommen, falls jede algebraische Körpererweiterung automatisch separabel ist.
+	\end{definition}
+
+	\begin{remark}
+		Trivial: Körper der $\operatorname{char} = 0$ und algebraisch abgeschlossene Körper sind vollkommen.
+	\end{remark}
+
+	\begin{theorem}
+		Sei $k$ ein Körper mit positiver Charakteristik. Dann ist äquivalent:
+		\begin{enumerate}
+			\item $k$ ist vollkommen
+			\item Der Frobenius-Morphismus $F: k \to k$ ist surjektiv
+		\end{enumerate}
+	\end{theorem}
+	\begin{proof}
+		\heading{$1) \Rightarrow 2)$} Beweis der Kontraposition: Sei $F$ nicht surjektiv. Sei also $k \in k \setminus k^p$. Sei $b \in \overline{k}$ so dass $b^p = a$. (Erinnerung $F: \overline{k} \to \overline{k}$ ist injektiv, das heißt $b$ ist eindeutig).
+		
+		Betrachte die Erweiterung $k(b)/k$. Das Minimalpolynom von $b$ ist Teiler von $x^p - a$ (das hat lediglich $b$ als Nullstelle) hat also nur eine Nullstelle, nämlich $b$.
+		
+		\heading{$2) \Rightarrow 1)$} Angenommen $F$ wäre surjektiv, $k = k^p$. Angenommen $k$ wäre nicht vollkommen, dann gäbe es ein inseparables, irreduzibles Prolynom $f(x) \in k[x]$.
+		
+		\textit{Erinnerung:} Es gibt $g \in k[x]$ so dass $f(x) = g(x^p)$. Schreibe $g(x) = \sum_{i=0}^n g_i \cdot x^i$.
+		
+		Per Annahme $\forall i \exists h_i \in k$ mit $g_i = (h_i)^p$. Also
+		\begin{align*}
+			g(x) &= \sum (h_i)^p x^i \\
+			g(x^p) &= \sum (h_i x^i)^p = \left( \sum h_i x^i \right)^p
+		\end{align*}
+		also $\sum h_i x^i$ ist echter Teiler von $f(x)$ in $k[x]$ $\lightning$ zur Irreduzibilität von $f$.
+	\end{proof}
+
+	\subsection{Galoissche Körpererweiterungen}
+	
+	\begin{definition}
+		Sei $L/k$ eine Körpererweiterung. Betrachte die Menge
+		\begin{equation*}
+			\operatorname{Gal}(L/k) = \{ \text{$k$-Morphismen $K \to L$ die surjektiv, also isomorph sind} \}
+		\end{equation*}
+	\end{definition}
+
+	\heading{Beobachtung:} $\operatorname{Gal}(L/k)$ ist eine Gruppe mit Einheit $Id_L$ und der Hintereinanderausführung als Gruppenverknüpfung. Die Inversen sind die Umkehrabbildungen.
+	
+	\textit{Diese Gruppe heißt Galoisgruppe}
+	
+	\heading{Variante:} Sei $k$ ein Körper, $f \in k[x]$ ein Polynom, $L$ der Zerfällungskörper. Dann bezeichne $\operatorname{Gal}(L/k)$ auch als $\operatorname{Gal}(f)$ (Galoisgruppe von $f$).
+	
+	\heading{Zentrale Beobachtung:} Falls $L/k$ endlich ist dann ist $\operatorname{Gal}(L/k)$ endlich und $\#\operatorname{Gal}(L/k) \leq [L: k]$.
+	
+	Analog
+	\begin{equation*}
+		\#\operatorname{Gal}(f) \leq [ \text{Zerfällungskörper von $f$}: k ] \leq (\deg f)!
+	\end{equation*}
+	
+	\begin{example}
+		\begin{enumerate}
+			\item $k = \setQ, L = \setQ(\sqrt{2})$ \textit{Wissen:} die Elemente von $L$ schreiben sich als $a + b \sqrt{2}$ mit $a,b \in \setQ$.
+			
+			Die Elemente der Galoisgruppe sind durch die Bilder von $\sqrt{2}$ festgelegt, und $\sqrt{2}$ kann nur auf andere Nullstellen von $x^2 - 2$ abgebildet werden. Es gibt aber nur eine andere Nullstelle, nämlich $- \sqrt{2}$.
+			
+			$\Rightarrow \operatorname{Gal}(L/k) = \{ Id, a + b\sqrt{2} \mapsto a - b\sqrt{2} \} \simeq (\setZ/2\setZ, +)$
+			\item Analog $\operatorname{Gal}(\setC/\setR) = \{ Id_\setC, \text{Konjugation} \}$
+			
+			\item $k = \setQ, L = \setQ(\sqrt[3]{2})$ Wieder: Elemente der Galoisgruppe sind durch das Bild von $\sqrt[3]{2}$ bestimmt und als Bilder kommen nur die Nullstellen von $x^3 - 2$ in Frage. In $L$ ist $\sqrt[3]{2}$ aber die einzige Nullstelle.
+			
+			$\Rightarrow \operatorname{Gal}(L/\setQ) = \{ Id_L \}$
+		\end{enumerate}
+	\end{example}
 	
 \end{document}
