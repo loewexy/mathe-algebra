@@ -3120,7 +3120,7 @@
 	\begin{definition}
 		Sei $L/k$ eine Körpererweiterung. Betrachte die Menge
 		\begin{equation*}
-			\operatorname{Gal}(L/k) = \{ \text{$k$-Morphismen $K \to L$ die surjektiv, also isomorph sind} \}
+			\operatorname{Gal}(L/k) = \{ \text{$k$-Morphismen $L \to L$ die surjektiv, also isomorph sind} \}
 		\end{equation*}
 	\end{definition}
 
@@ -3149,7 +3149,149 @@
 			\item $k = \setQ, L = \setQ(\sqrt[3]{2})$ Wieder: Elemente der Galoisgruppe sind durch das Bild von $\sqrt[3]{2}$ bestimmt und als Bilder kommen nur die Nullstellen von $x^3 - 2$ in Frage. In $L$ ist $\sqrt[3]{2}$ aber die einzige Nullstelle.
 			
 			$\Rightarrow \operatorname{Gal}(L/\setQ) = \{ Id_L \}$
+			
+			\item Sei $k$ ein endlicher Körper, sei $\mathbb{F}_p$ der Primkörper von $k$. Betrachte $k/\mathbb{F}_p$. Betrachte den Frobenius-Morphismus $F: k \to k$. 
+			
+			\textit{Beobachtung:}
+			\begin{align*}
+				F(1) &= 1^p = 1 \\
+				F(1 + 1) &= 1 + 1 \\
+				&\vdots \\
+				F(1 + \dots + 1) &= 1 + \dots + 1
+			\end{align*}
+			Das heißt für alle $a \in \mathbb{F}_p$ gilt $F(a) = a$.
+			
+			\textit{Beobachte auch:} Die $a \in k$ für die $F(a) = a$ gilt sind exakt die Nullstellen des Polynoms $x^p - x$. Dieses Polynom hat höchstens $p$ Nullstellen. Also für alle $a \in k$ gilt $F(a) = a \Leftrightarrow a \in \mathbb{F}_p$.
+			
+			\textit{Insgesamt:} Der Frobenius-Morphismus ist ein $\mathbb{F}_p$-Automorphismus von $k$. $F \in \operatorname{Gal}(k/\mathbb{F}_p)$.
+			
+			\textit{Fakt:} Die Galoisgruppe ist von $F$ erzeugt, d.h. alle Elemente sind von der Form
+			\begin{itemize}
+				\item $Id_k$
+				\item $\underbrace{F \circ \dots \circ F}_\text{$n$-mal}$
+				\item $\underbrace{F^{-1} \circ \dots \circ F^{-1}}_\text{$n$-mal}$
+			\end{itemize}
+			
 		\end{enumerate}
 	\end{example}
+
+	\heading{Ziel:} Die Galois-Gruppe ausrechnen!
+	
+	Falls $L/k$ algebraisch:
+	
+	\heading{Beobachtung:} Wir können stets $L$ in $\overline{k}$ einbetten. Jedes $\sigma \in \operatorname{Gal}(L/k)$ ist dann automatisch ein Morphismus
+	\begin{equation*}
+		L \to L \subseteq \overline{k}
+	\end{equation*}
+	
+	Falls $L/k$ endlich ist wissen wir: Es existieren höchstens $[L:k]$ viele $k$-Morphismen $L \to \overline{k}$. Also
+	\begin{equation*}
+		\#\operatorname{Gal}(L/k) \leq [L:k]
+	\end{equation*}
+	
+	\heading{Frage:} Haben wir Gleichheit?
+	
+	\heading{Antwort:} Im allgemeinen nein!
+	\begin{itemize}
+		\item Falls $L/k$ inseparabel ist, dann weniger als $[L:k]$ viele $k$-Morphismen $L \to \overline{k}$.
+		\item Es kann passieren, dass für gegebenes $\sigma: L \to \overline{k}$, $\operatorname{Bild}(\sigma) \neq L$ ist. $\Rightarrow$ dieses $\sigma$ liefert kein Element von $\operatorname{Gal}(L/k)$.
+	\end{itemize}
+
+	\begin{definition}
+		Sei $L/k$ eine Körpererweiterung. Nenne $L/k$ normal, wenn $L/k$ algebraisch ist und wenn jedes Polynom $f \in k[x] \setminus \{ 0 \}$, das in $L$ überhaupt eine Nullstelle hat, bereits über $L$ in Linearfaktoren zerfällt.
+	\end{definition}
+
+	\begin{example}
+		\begin{itemize}
+			\item $\setC/\setR$ ist normal
+			\item $\setQ(\sqrt[3]{2})/\setQ$ ist nicht normal, denn $x^3 - 2$ hat Nullstelle, zerfällt aber nicht.
+			\item $\overline{k}/k$ ist immer normal
+			\item Werden gleich sehen: Zerfällungskörper sind normal!
+		\end{itemize}
+	\end{example}
+
+	\begin{theorem}
+		Sei $L/k$ eine algebraische Körpererweiterung. Dann sind folgende Aussagen äquivalent:
+		\begin{enumerate}
+			\item $L/k$ ist normal
+			\item Es gibt eine Familie $(f_\lambda)_{\lambda \in \Lambda}$ von Polynomen in $k[x]$ so dass $L$ aus $k$ entsteht durch Adjunktion sämtlicher Nullstellen der $f_\lambda$ in $\overline{k}$.
+			\item Jeder Körpermorphismus $\sigma: L \to \overline{k}$ hat $\operatorname{Bild}(\sigma) = L$
+		\end{enumerate}
+	\end{theorem}
+
+	\begin{proof}
+		$L/k$ ist algebraisch. Wir betrachten $L$ daher als Unterkörper von $\overline{k}$.
+		
+		\heading{$1) \Rightarrow 2):$} Finde Elemente $(a_\lambda)_{\lambda \in \Lambda}$ von $L$, so dass $L = k(a_\lambda \mid \lambda \in \Lambda)$. Die $a_\lambda$ sind algebraisch über $k$ und haben Minimalpolynome $f_\lambda$. Jedes der $f_\lambda$ hat eine Nullstelle in $L$ (nämlich $a_\lambda$), zerfällt also über $L$ (da $L/k$ normal). Sei jetzt $(b_\mu)_{\mu \in M}$ die Familie der Nullstellen aller $f_\lambda$. Per Annahme: alle $b_\mu \in L$ und $L = k(b_\mu \mid \mu \in M)$ da $L \subseteq \{ b_\mu \mid \mu \in M \} \supseteq \{ a_\lambda \mid \lambda \in \Lambda \}$.
+		
+		\heading{$2) \Rightarrow 3):$} Sei $L$ wie in 2) gegeben. Das heißt es gibt Familie $(f_\lambda)_{\lambda \in \Lambda}$ von Polynomen, so dass $L = k(b_\mu \mid \mu \in M)$wobei $(b_\mu)_{\mu \in M}$ die Familie der Nullstellen der $f_\lambda$ in $\overline{k}$ ist. Weiter sei ein $k$-Morphismus $\sigma: L \to \overline{k}$ gegeben. Muss zeigen $\operatorname{Bild}(\sigma) = L$.
+		
+		\textit{Schritt 1:} Zeige: $\operatorname{Bild}(\sigma) \subseteq L$. Da $L = k(b_\mu \mid \mu \in M)$ ist, genügt es zu zeigen dass für alle $\mu$ $\sigma(b_\mu) \in L$. Sei $\mu$ gegeben, per Definition finde ich ein $\lambda$ so dass $f_\lambda(b_\mu) = 0$. Erinnerung: $\sigma$ ist ein $k$-Morphismus und $f_\lambda \in k[x]$. Das bedeutet $\sigma(b_\mu)$ ist wieder eine Nullstelle von $f_\lambda$. Also $\sigma(b_\mu) \in L$.
+		
+		\textit{Schritt 2:} Zeige: $\operatorname{Bild}(\sigma) \supseteq L$. Es genügt zu zeigen: Für alle $\mu$ gilt $b_\mu \in \operatorname{Bild}(\sigma)$. Sei also ein $\mu$ gegeben. Wieder finde $\lambda$ so dass $f_\lambda(b_\mu) = 0$. Das $f_\lambda$ hat weitere Nullstellen $b_\mu, b_{\mu_1}, \dots, b_{\mu_d}$ wobei $d = \deg(f_\lambda) - 1$. Wir wissen: $\sigma$ bildet die $d$ Nullstellen $b_\mu, b_{\mu_1}, \dots, b_{\mu_d}$ injektiv auf die Nullstellen von $f_\lambda$ ab. $\Rightarrow$ $\sigma(b_\mu) = b_\mu$ oder es gibt $1 \leq i \leq d$ so dass $\sigma(b_{\mu_i}) = b_\mu$.
+		
+		\heading{$3) \Rightarrow 1):$} Muss zeigen: jedes irreduzible $f \in k[x]$, das in $L$ eine Nullstelle hat, zerfällt über $L$ in Linearfaktoren. Sei also $f \in k[x]$ wie oben gegeben, sei $a \in L$ eine Nullstelle von $f$, sei $b \in \overline{k}$ eine weitere Nullstelle. Muss zeigen: $b \in L$. Wir wissen: es gibt $k$-Isomorphismen
+		\begin{equation*}
+			k(a) \longleftarrow k[x]/(f) \longrightarrow k(b)
+		\end{equation*}
+		so dass für die Komposition $\varphi$ gilt $\varphi(a) = b$. Insgesamt habe ich
+		\begin{equation*}
+			L \supseteq k(a) \overset{\varphi}{\longrightarrow} k(b) \subseteq \overline{k}
+		\end{equation*}
+		Universelle Eigenschaft von $\overline{k}$. Ich kann Morphismus $\varphi$ fortsetzen zu $\sigma: L \to \overline{k}$. Per Annahme: $\operatorname{Bild}(\sigma) = L$, aber $b \in \operatorname{Bild}(\sigma)$.
+	\end{proof}
+
+	\begin{corollary}
+		Sei $L/k$ endlich. Dann ist äquivalent:
+		\begin{enumerate}
+			\item $L/k$ ist normal
+			\item $L$ ist Zerfällungskörper eines einzigen Polynoms
+		\end{enumerate}
+	\end{corollary}
+
+	\begin{proof}
+		\heading{$2) \Rightarrow 1):$} folgt aus dem Satz
+		
+		\heading{$1) \Rightarrow 2):$} $L/k$ ist endlich also gibt es $a_1, \dots, a_n \in L$ so dass $L = k(a_1, \dots, a_n)$. Sei $f_1, \dots, f_n$ die Minimalpolynome. Behauptung: $L$ ist Zerfällungskörper von $f = f_1 \cdot \ldots \cdot f_n$.
+		
+		Seien $(b_\mu)_{\mu \in M}$ die Nullstellen von $f$. Weil $L/k$ normal ist, folgt
+		\begin{equation*}
+			L = k(a_1, \dots, a_n) = k(b_\mu \mid \mu \in M)
+		\end{equation*}
+		also ist $L$ der Zerfällungskörper.
+	\end{proof}
+
+	\begin{corollary}
+		Sei $L/k$ eine algebraische Körpererweiterung. Dann gibt es einen Oberkörper $k \subseteq L \subseteq N \subseteq \overline{k}$ so dass gilt
+		\begin{enumerate}
+			\item $N/k$ ist normal
+			\item Wenn ich einen Zwischenkörper habe
+			\begin{equation*}
+				k \subseteq L \subseteq N' \subseteq N
+			\end{equation*}
+			so dass $N'/k$ normal ist $\Rightarrow N = N'$
+		\end{enumerate}
+		Wenn $\tilde{N}$ ein weiterer Oberkörper ist mit Eigenschaften 1) und 2) $\Rightarrow$ $\tilde{N}$ und $\tilde{N}$ sind $k$-Isomorph.
+		
+		Nenne $N/k$ die normale Hülle von $L/k$.
+	\end{corollary}
+
+	\begin{proof}
+		Schreibe $L = k(a_\lambda \mid \lambda \in \Lambda)$. Seien $f_\lambda$ die Minimalpolynome der $a_\lambda$. Sei $(b_\mu)_{\mu \in M}$ die Familie aller Nullstellen. Setze $N \coloneqq k(b_\mu \mid \mu \in M)$. Mit Satz folgt $N$ ist normal.
+		
+		Sei $N'$ ein Zwischenkörper. Um zu zeigen $N = N'$ muss ich zeigen: alle $b_\mu \in N'$. Sei also $\mu$ gegeben, wähle $\lambda$ so dass $f_\lambda(b_\mu) = 0$. Dann $f_\lambda$ hat Nullstelle in $N'$ (nämlich $a_\lambda$) also zerfällt $f_\lambda$ über $N'$, das heißt $b_\mu \in N'$ $\Rightarrow$ $N = N'$
+		
+		Sei jetzt $\tilde{N}$ gegeben. Finde Einbettung $\sigma: \tilde{N} \to \overline{k}$. Es ist $\tilde{N} \simeq \operatorname{Bild}(\sigma)$. Also genügt es, den Fall zu betrachten, wo $\tilde{N} \subseteq \overline{k}$ und für jedes solche $\tilde{N}$ zu zeigen: $N = \tilde{N}$.
+		
+		\textit{Beobachte:} $N \cap \tilde{N}$ ist ein Oberkörper von $L$, der wieder normal ist.
+		
+		Also habe ich
+		\begin{equation*}
+			k = \subseteq L \subseteq N' \subseteq N
+		\end{equation*}
+		Da $N' = N \cap \tilde{N}$ folgt $N' = N$ daraus folgt $N \subseteq \tilde{N}$.
+		
+		Die andere Inklusion $N \supseteq \tilde{N}$ folgt analog.
+	\end{proof}
 	
 \end{document}
