@@ -39,6 +39,7 @@
  
 \DeclareMathOperator{\Kons}{Kons}
 \DeclareMathOperator{\charac}{char}
+\DeclareMathOperator{\Gal}{Gal}
  
 \theoremstyle{definition}
 \newtheorem{theorem}{Satz}[section]
@@ -2873,7 +2874,7 @@
 	\end{remark}
 
 	\begin{definition}
-		Eine irreduzibles Polynom $f$ heißt separabel, wenn $f$ in $\overline{k}$ keine mehrfache Nullstelle hat. Ein beliebiges Polynom $f$ ist separabel, wenn alle irreduziblen Faktoren separabel sind. Ansonsten nenne $f$ inseparabel.
+		Ein irreduzibles Polynom $f$ heißt separabel, wenn $f$ in $\overline{k}$ keine mehrfache Nullstelle hat. Ein beliebiges Polynom $f$ ist separabel, wenn alle irreduziblen Faktoren separabel sind. Ansonsten nenne $f$ inseparabel.
 	\end{definition}
 
 	\begin{remark}
@@ -2956,7 +2957,7 @@
 	\begin{proof}
 		\textit{Beobachtung 1:} Wir wissen schon: Die Elemente von $M$ kann ich schreiben als
 		\begin{equation*}
-			\lambda_0 ü \lambda_1 a + \lambda_2 a^2 + \dots + \lambda_{n-1} a^{n-1}
+			\lambda_0 \lambda_1 a + \lambda_2 a^2 + \dots + \lambda_{n-1} a^{n-1}
 		\end{equation*}
 		mit $\lambda_i \in k$ wobei $n = \deg f$. Insbesondere ist für alle solche Elemente
 		\begin{equation*}
@@ -3120,21 +3121,21 @@
 	\begin{definition}
 		Sei $L/k$ eine Körpererweiterung. Betrachte die Menge
 		\begin{equation*}
-			\operatorname{Gal}(L/k) = \{ \text{$k$-Morphismen $L \to L$ die surjektiv, also isomorph sind} \}
+			\Gal(L/k) = \{ \text{$k$-Morphismen $L \to L$ die surjektiv, also isomorph sind} \}
 		\end{equation*}
 	\end{definition}
 
-	\heading{Beobachtung:} $\operatorname{Gal}(L/k)$ ist eine Gruppe mit Einheit $Id_L$ und der Hintereinanderausführung als Gruppenverknüpfung. Die Inversen sind die Umkehrabbildungen.
+	\heading{Beobachtung:} $\Gal(L/k)$ ist eine Gruppe mit Einheit $Id_L$ und der Hintereinanderausführung als Gruppenverknüpfung. Die Inversen sind die Umkehrabbildungen.
 	
 	\textit{Diese Gruppe heißt Galoisgruppe}
 	
-	\heading{Variante:} Sei $k$ ein Körper, $f \in k[x]$ ein Polynom, $L$ der Zerfällungskörper. Dann bezeichne $\operatorname{Gal}(L/k)$ auch als $\operatorname{Gal}(f)$ (Galoisgruppe von $f$).
+	\heading{Variante:} Sei $k$ ein Körper, $f \in k[x]$ ein Polynom, $L$ der Zerfällungskörper. Dann bezeichne $\Gal(L/k)$ auch als $\Gal(f)$ (Galoisgruppe von $f$).
 	
-	\heading{Zentrale Beobachtung:} Falls $L/k$ endlich ist dann ist $\operatorname{Gal}(L/k)$ endlich und $\#\operatorname{Gal}(L/k) \leq [L: k]$.
+	\heading{Zentrale Beobachtung:} Falls $L/k$ endlich ist dann ist $\Gal(L/k)$ endlich und $\#\Gal(L/k) \leq [L: k]$.
 	
 	Analog
 	\begin{equation*}
-		\#\operatorname{Gal}(f) \leq [ \text{Zerfällungskörper von $f$}: k ] \leq (\deg f)!
+		\#\Gal(f) \leq [ \text{Zerfällungskörper von $f$}: k ] \leq (\deg f)!
 	\end{equation*}
 	
 	\begin{example}
@@ -3143,12 +3144,12 @@
 			
 			Die Elemente der Galoisgruppe sind durch die Bilder von $\sqrt{2}$ festgelegt, und $\sqrt{2}$ kann nur auf andere Nullstellen von $x^2 - 2$ abgebildet werden. Es gibt aber nur eine andere Nullstelle, nämlich $- \sqrt{2}$.
 			
-			$\Rightarrow \operatorname{Gal}(L/k) = \{ Id, a + b\sqrt{2} \mapsto a - b\sqrt{2} \} \simeq (\setZ/2\setZ, +)$
-			\item Analog $\operatorname{Gal}(\setC/\setR) = \{ Id_\setC, \text{Konjugation} \}$
+			$\Rightarrow \Gal(L/k) = \{ Id, a + b\sqrt{2} \mapsto a - b\sqrt{2} \} \simeq (\setZ/2\setZ, +)$
+			\item Analog $\Gal(\setC/\setR) = \{ Id_\setC, \text{Konjugation} \}$
 			
 			\item $k = \setQ, L = \setQ(\sqrt[3]{2})$ Wieder: Elemente der Galoisgruppe sind durch das Bild von $\sqrt[3]{2}$ bestimmt und als Bilder kommen nur die Nullstellen von $x^3 - 2$ in Frage. In $L$ ist $\sqrt[3]{2}$ aber die einzige Nullstelle.
 			
-			$\Rightarrow \operatorname{Gal}(L/\setQ) = \{ Id_L \}$
+			$\Rightarrow \Gal(L/\setQ) = \{ Id_L \}$
 			
 			\item Sei $k$ ein endlicher Körper, sei $\mathbb{F}_p$ der Primkörper von $k$. Betrachte $k/\mathbb{F}_p$. Betrachte den Frobenius-Morphismus $F: k \to k$. 
 			
@@ -3163,7 +3164,7 @@
 			
 			\textit{Beobachte auch:} Die $a \in k$ für die $F(a) = a$ gilt sind exakt die Nullstellen des Polynoms $x^p - x$. Dieses Polynom hat höchstens $p$ Nullstellen. Also für alle $a \in k$ gilt $F(a) = a \Leftrightarrow a \in \mathbb{F}_p$.
 			
-			\textit{Insgesamt:} Der Frobenius-Morphismus ist ein $\mathbb{F}_p$-Automorphismus von $k$. $F \in \operatorname{Gal}(k/\mathbb{F}_p)$.
+			\textit{Insgesamt:} Der Frobenius-Morphismus ist ein $\mathbb{F}_p$-Automorphismus von $k$. $F \in \Gal(k/\mathbb{F}_p)$.
 			
 			\textit{Fakt:} Die Galoisgruppe ist von $F$ erzeugt, d.h. alle Elemente sind von der Form
 			\begin{itemize}
@@ -3179,14 +3180,14 @@
 	
 	Falls $L/k$ algebraisch:
 	
-	\heading{Beobachtung:} Wir können stets $L$ in $\overline{k}$ einbetten. Jedes $\sigma \in \operatorname{Gal}(L/k)$ ist dann automatisch ein Morphismus
+	\heading{Beobachtung:} Wir können stets $L$ in $\overline{k}$ einbetten. Jedes $\sigma \in \Gal(L/k)$ ist dann automatisch ein Morphismus
 	\begin{equation*}
 		L \to L \subseteq \overline{k}
 	\end{equation*}
 	
 	Falls $L/k$ endlich ist wissen wir: Es existieren höchstens $[L:k]$ viele $k$-Morphismen $L \to \overline{k}$. Also
 	\begin{equation*}
-		\#\operatorname{Gal}(L/k) \leq [L:k]
+		\#\Gal(L/k) \leq [L:k]
 	\end{equation*}
 	
 	\heading{Frage:} Haben wir Gleichheit?
@@ -3194,11 +3195,11 @@
 	\heading{Antwort:} Im allgemeinen nein!
 	\begin{itemize}
 		\item Falls $L/k$ inseparabel ist, dann weniger als $[L:k]$ viele $k$-Morphismen $L \to \overline{k}$.
-		\item Es kann passieren, dass für gegebenes $\sigma: L \to \overline{k}$, $\operatorname{Bild}(\sigma) \neq L$ ist. $\Rightarrow$ dieses $\sigma$ liefert kein Element von $\operatorname{Gal}(L/k)$.
+		\item Es kann passieren, dass für gegebenes $\sigma: L \to \overline{k}$, $\operatorname{Bild}(\sigma) \neq L$ ist. $\Rightarrow$ dieses $\sigma$ liefert kein Element von $\Gal(L/k)$.
 	\end{itemize}
 
 	\begin{definition}
-		Sei $L/k$ eine Körpererweiterung. Nenne $L/k$ normal, wenn $L/k$ algebraisch ist und wenn jedes Polynom $f \in k[x] \setminus \{ 0 \}$, das in $L$ überhaupt eine Nullstelle hat, bereits über $L$ in Linearfaktoren zerfällt.
+		Sei $L/k$ eine Körpererweiterung. Nenne $L/k$ normal, wenn $L/k$ algebraisch ist und wenn jedes irreduzible Polynom $f \in k[x] \setminus \{ 0 \}$, das in $L$ überhaupt eine Nullstelle hat, bereits über $L$ in Linearfaktoren zerfällt.
 	\end{definition}
 
 	\begin{example}
@@ -3292,6 +3293,114 @@
 		Da $N' = N \cap \tilde{N}$ folgt $N' = N$ daraus folgt $N \subseteq \tilde{N}$.
 		
 		Die andere Inklusion $N \supseteq \tilde{N}$ folgt analog.
+	\end{proof}
+
+	\begin{theorem}
+		Sei $L/K$ eine endliche Körpererweiterung. Dann sind folgende Aussagen äquivalent
+		\begin{enumerate}
+			\item $L/K$ ist normal und separabel
+			\item $L$ ist Zerfällungskörper eines separablen Polynoms $f \in K[x]$
+			\item $\abs{\Gal(L/K)} = [L:K]$
+		\end{enumerate}
+		solche Körpererweiterungen heißen Galoissche Körpererweiterung.
+	\end{theorem}
+
+	\begin{proof}
+		\heading{$1) \Rightarrow 2)$} $L$ ist der Zerfällungskörper eines $f \in K[x]$. Die irreduziblen Faktoren von $f$ können keine mehrfache Nullstelle haben, denn ein solche Faktor ist das Minimalpolynom eines separablen Elements $\in L$.
+		
+		\heading{$2) \Rightarrow 1)$} $L$ ist separabel, weil $f$ separabel ist. $L$ ist normal, denn es ist ein Zerfällungskörper über $K$.
+		
+		\heading{$1) \Leftrightarrow 2)$} Sei $\overline{L}$ ein algebraischer Abschluss von $L$. $\sigma \in \Gal(L/K)$ kann zu einem $K$-morphismus $L \to \overline{L}$ fortgesetzt werden.
+		
+		Angenommen $[L:K] = n$, dann gibt es maximal $n$ $K$-morphismen $L \to \overline{L}$ und es gibt genau $n$ weil $L$ separabel ist. Außerdem ist $L/K$ genau dann normal wenn für jeden $K$-morphismus $\tau: L \to \overline{K}$ gilt $\tau(L) = L$ deshalb ist $\tau$ ein Element von $\Gal(L/K)$.
+	\end{proof}
+
+	\begin{corollary}
+		Sei $K$ ein Körper der Charakteristik $0$, dann ist jeder Zerfällungskörper über $K$ Galois-Erweiterung.
+	\end{corollary}
+
+	\begin{remark}
+		Wenn $K \subset L \subset M$ Körpererweiterungen sind und $K/M$ Galois ist, dann ist $L/M$ Galois, aber $K/L$ muss nicht Galois sein.
+	\end{remark}
+
+	\begin{remark}
+		Sei $f \in K[x]$ ein separables Polynom mit Zerfällungkörper $L$. Dann notiere $\Gal(f) = \Gal(L/K)$.
+		\begin{enumerate}
+			\item Seien $\alpha_1, \dots, \alpha_n$ die Nullstellen von $f$. Dann permutiert $\sigma \in \Gal(f)$ die $\alpha_1, \dots, \alpha_n$, und $\sigma$ wird durch diese Permutation eindeutig bestimmt. Wir können also $\Gal(f)$ als Untergruppe von $S_n$ betrachten.
+			
+			Für $f(\alpha_i) = 0$ gilt
+			\begin{equation*}
+				c_n \alpha_i^n + \dots + c_1 \alpha_i + c_0 = 0 \qquad c_i \in K
+			\end{equation*}
+			und damit
+			\begin{align*}
+				&&\sigma(c_n \alpha_i^n + \dots + c_1 \alpha_i + c_0) &= \sigma(0) \\
+				&\Rightarrow& \sigma(c_n) \sigma(\alpha_i)^n + \dots + \sigma(c_1) \sigma(\alpha_i) + \sigma(c_0) &= 0 \\
+				&\Rightarrow& f(\sigma(\alpha_i)) =  c_n \sigma(\alpha_i)^n + \dots + c_1 \sigma(\alpha_i) + c_0 &= 0
+			\end{align*}
+			\item Die Nullstellen der irreduziblen Faktoren werden untereinander permutiert.
+			\item Wenn $f$ irreduzibel ist, dann operiert $\Gal(f)$ transitiv auf der Menge der Nullstellen.
+			\item Sei $n = \deg(f)$ und $f$ irreduzibel, dann gilt $n \mid \abs{\Gal(f)}$
+		\end{enumerate}
+	\end{remark}
+
+	\begin{proof}
+		\heading{$3)$} Seien $a$ und $b$ Nullstellen von $f$. Dann ist \begin{equation*}
+			L \supset K(a) \cong K[x]/(f) \cong K(b) \subset L
+		\end{equation*}
+		Und damit einen Isomorphismus $\sigma: K(a) \to L$. $\sigma$ kann zu einem $K$-morphismus $L \hookrightarrow \overline{L}$ erweitert werden. Da $L/K$ normal ist, gilt $\sigma(L) = L$, also $\sigma \in \Gal(L/K)$.
+	\end{proof}
+
+	\begin{definition}
+		Sei $L/K$ eine Galoissche Körpererweiterung und $\alpha \in L$ ein beliebiges Element, dann nennen wir die Elemente $\sigma(\alpha), \sigma \in \Gal(L/K)$, die konjugierten von $\alpha$. Die Menge $\{ \sigma(\alpha) \mid \sigma \in \Gal(L(K)) \}$ ist die Menge der Nullstellen des Minimalpolynoms von $\alpha$.
+	\end{definition}
+
+	\begin{example}
+		$f = X^3 - 3 \in \setQ[X]$, hat Nullstellen $\sqrt[3]{2} \in \setR$ und $\sqrt[3]{2} \cdot \zeta_3, \sqrt[3]{2} \cdot \zeta_3^2 \in \setC$ mit $\zeta_3 = e^{2\pi i / 3}$.
+		
+		$\setQ(\alpha) / \setQ$ ist nicht Galois.
+		
+		$L = \setQ(\alpha, \zeta_3)$ ist der Zerfällungskörper von $f$.
+		
+		$[L:\setQ]$ ist $6$. Denn $\Gal(f) \subset S_3$ und $\#S_3 = 6$ und damit $\setQ \underset{3}{\subset} \setQ(\alpha) \underset{2}{\subset} L$. Also $\Gal(f) = S_3$.
+	\end{example}
+
+	\begin{theorem}
+		Sei $K$ ein Körper und $G \subset \operatorname{Aut}(K)$ eine endliche Untergruppe. Dann ist
+		\begin{equation*}
+			\operatorname{Fix}(G) = \{ \alpha \in K \mid \sigma(\alpha) = \alpha, \forall \sigma \in G \}
+		\end{equation*}
+		ein Unterkörper von $K$, genannt der Fixkörper von $G$.
+	\end{theorem}
+
+	\begin{theorem}[E. Artin]
+		Sei $G$ eine endliche Untergruppe von $\operatorname{Aut}(L)$ für einen beliebigen Körper $L$. Schreibe $K = \operatorname{Fix}(G)$. Dann ist $L/K$ Galois, und $G = \Gal(L/K)$.
+		
+		Im speziellen $[L:K] = \#G$.
+	\end{theorem}
+
+	\begin{theorem}
+		Sei $K$ ein endlicher Körper, mit $q$ Elementen. Dann ist $q = p^m$ für eine Primzahl $p$ und $m \in \setZ_{>0}$. Außerdem ist $K$ isomorph zu dem Zerfällungskörper von
+		\begin{equation*}
+			x^q - x \in \mathbb{F}_p[x]
+		\end{equation*}
+		Umgekehrt, für jedes $q = p^m$, hat der Zerfällungskörper $\mathbb{F}_q$ von $x^q - x \in \mathbb{F}_p[x]$ $q$ Elemente.
+		
+		Die Galois Gruppe ist $\Gal(\mathbb{F}_q / \mathbb{F}_p) = (\setZ / m \setZ, +)$ und wird erzeugt vom Frobenius-Morphismus: $F: \mathbb{F}_q \to \mathbb{F}_q, a \mapsto a^p$.
+	\end{theorem}
+
+	\begin{proof}
+		Sei $\mathbb{F}_p \subset M$ mit $m = [K: \mathbb{F}_p]$ und damit $q = p^m$.
+		
+		Wir haben gesehen dass $\mathbb{F}_p = \{ \alpha \in K \mid F(\alpha) = \alpha \} = \operatorname{Fix}(F)$.
+		
+		Also gibt es $\tilde{m} \in \setZ_{>0}$ so dass $F^{\tilde{m}} = Id_K$. Also ist
+		\begin{equation*}
+			G = \{ Id, F, F^2, \dots, F^{\tilde{m} - 1} \} \subset \operatorname{Aut}(K)
+		\end{equation*}
+		Also ist $\operatorname{Fix}(G) = \mathbb{F}_p$. Mit dem Satz von Artin folgt $K/\operatorname{Fix}(G)$ ist Galois mit Gruppe $G$.
+		
+		Also ist $K/\mathbb{F}_p$ ist Galois. $m = [K: \mathbb{F}] = \#G$ $\Rightarrow \tilde{m} = m$.
 	\end{proof}
 	
 \end{document}
