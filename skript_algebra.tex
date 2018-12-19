@@ -2999,7 +2999,7 @@
 	\end{definition}
 
 	\begin{theorem}
-		Sei $L/k$ eine endliche Körpererweiterung und $n \coloneqq \deg [L:k]$. Dann gilt:
+		Sei $L/k$ eine endliche Körpererweiterung und $n \coloneqq  [L:k]$. Dann gilt:
 		\begin{enumerate}
 			\item Es gibt höchstens $n$ $k$-Morphismen $L \to \overline{k}$
 			\item $L/k$ ist genau dann separabel, wenn es exakt $n$ solche Morphismen gibt
@@ -3013,7 +3013,7 @@
 		\end{equation*}
 		Sei $k_0 = k$ und $k_l = k_{l-1}(a_l)$.
 		
-		\heading{a)} Erinnerung es gibt höchstens $[a_1: k_0]$ viele unterschiedliche $k$-Morphismen $\sigma_1: k_1 \to \overline{k}$.
+		\heading{1)} Erinnerung es gibt höchstens $[a_1: k_0]$ viele unterschiedliche $k$-Morphismen $\sigma_1: k_1 \to \overline{k}$.
 		
 		\textit{Erinnerung:} Gegeben $\sigma_1: k_1 \to \overline{k}$, dann gibt es maximal $[a_2 : k_1]$ viele Fortsetzungen von $\sigma_1$ zu Morphismen $\sigma_2: k_2 \to \overline{k}$.
 		
@@ -3025,7 +3025,7 @@
 		\end{equation*}
 		viele Fortsetzungen von $Id_k: k \to \overline{k}$ zu Morphismen $L \to \overline{k}$.
 		
-		\heading{b) $\Rightarrow$} Angenommen $L/k$ ist separabel. Wir wissen: die maximale Zahl von Erweiterungen existiert, falls für alle $i$ gilt $a_{i+1}$ ist separabel über $k_i$. Per Annahme: $a_{i+1}$ ist separabel über $k$.
+		\heading{2)} Angenommen $L/k$ ist separabel. Wir wissen: die maximale Zahl von Erweiterungen existiert, falls für alle $i$ gilt $a_{i+1}$ ist separabel über $k_i$. Per Annahme: $a_{i+1}$ ist separabel über $k$.
 		
 		Aber: $f_{k_i} \mid f_k$ also klar, dass $f_{k_i}$ keine mehrfachen Nullstellen hat.
 		
@@ -3046,6 +3046,10 @@
 
 	\begin{corollary}
 		Sei $L/k$ endlich. $L = k(a_1, \dots, a_l)$. Falls für alle $i$ gilt $a_{i+1}$ ist separabel über $k(a_1, \dots, a_i)$ dann gibt es genau $[L:k]$-viele $k$-Morphismen $L \to \overline{k}$.
+	\end{corollary}
+
+	\begin{corollary}
+		Sei $L/K$ eine Körpererweiterung. Seien $a_1, \dots, a_n \in L$. Wenn $a_{i+1}$ separabel über $K(a_1, \dots, a_i)$ ist, dann ist $K(a_1, \dots, a_n)$ eine separable Erweiterung von $K$. 
 	\end{corollary}
 
 	\begin{corollary}
@@ -3376,7 +3380,7 @@
 	\begin{theorem}[E. Artin]
 		Sei $G$ eine endliche Untergruppe von $\operatorname{Aut}(L)$ für einen beliebigen Körper $L$. Schreibe $K = \operatorname{Fix}(G)$. Dann ist $L/K$ Galois, und $G = \Gal(L/K)$.
 		
-		Im speziellen $[L:K] = \#G$.
+		Insbesondere $[L:K] = \#G$.
 	\end{theorem}
 
 	\begin{theorem}
@@ -3390,7 +3394,7 @@
 	\end{theorem}
 
 	\begin{proof}
-		Sei $\mathbb{F}_p \subset M$ mit $m = [K: \mathbb{F}_p]$ und damit $q = p^m$.
+		Sei $\mathbb{F}_p \subset K$ mit $m = [K: \mathbb{F}_p]$ und damit $q = p^m$.
 		
 		Wir haben gesehen dass $\mathbb{F}_p = \{ \alpha \in K \mid F(\alpha) = \alpha \} = \operatorname{Fix}(F)$.
 		
@@ -3401,6 +3405,146 @@
 		Also ist $\operatorname{Fix}(G) = \mathbb{F}_p$. Mit dem Satz von Artin folgt $K/\operatorname{Fix}(G)$ ist Galois mit Gruppe $G$.
 		
 		Also ist $K/\mathbb{F}_p$ ist Galois. $m = [K: \mathbb{F}] = \#G$ $\Rightarrow \tilde{m} = m$.
+		
+		Es gilt $F^m: K \to K = Id_k$. Also ist $x^{p^m} = x$, oder auch $x^q - x = 0, \forall x \in K$. Also gilt $X^q - X = \prod_{x \in K} (X - x)$. Insbesondere ist $K$ isomorph zu einem Zerfällungskörper von $X^q - X$.
+		
+		Umgekehrt, wenn $q = p^m$ eine Primzahlpotenz ist. Betrachte $\{ x \in \overline{\mathbf{F}_p} \mid x^q = x \} = \operatorname{Fix}(F^m)$. Das ist ein Körper. Außerdem ergibt $X^q - X$ abgeleitet $q X^{q-1} - 1 = -1 \neq 0$. Also gilt $\#\operatorname{Fix}(F^m) = q$.
 	\end{proof}
+
+	\begin{definition}
+		Sei $H$ eine Gruppe, und $L$ ein Körper. Sei $L^*$ die Gruppe der Einheiten in $L$, also $L^* = L \setminus \{ 0 \}$.
+		
+		Ein ($L$-wertiger) Charakter von $H$ ist ein Gruppenmorphismus
+		\begin{equation*}
+			H \to L^*
+		\end{equation*}
+		
+		Beachte: Wenn $\sigma: K \to L$ ein Körpermorphismus ist erhalten wir einen Charakter $K^* \to L^*$ der Gruppe $K^*$.
+	\end{definition}
+
+	\begin{theorem}
+		Seien $\sigma_1, \dots, \sigma_n$ paarweise verschiedene Charakter eine Gruppe $H$ mit Werten in einem Körper $L$. Seien $a_1, \dots, a_n \in L$ so dass die Linearkombination
+		\begin{equation*}
+			\sum_{i = 1}^n a_i \sigma_i: H \to L, h \mapsto \sum_{i = 1}^n a_i \sigma_i(h)
+		\end{equation*}
+		die Nullabbildung ist. Dann gilt $a_1 = a_2 = \dots = a_n = 0$.
+	\end{theorem}
+
+	\begin{proof}
+		Induktion über $n$.
+		
+		\textit{Fall $n = 1$:} $a_1 \cdot \sigma_1(h) = 0, \sigma_1(h) \in L^* \Rightarrow a_1 = 0$
+		
+		\textit{Fall $n > 1$:}
+		\begin{equation*}
+			\sum_{i = 1}^n a_i \sigma_i(h) = 0 \qquad \forall h \in H
+		\end{equation*}
+		Da $\sigma_1 \neq \sigma_n$, also gibt es $g \in H$ so dass $\sigma_1(g) \neq \sigma_n(g)$.
+		\begin{equation*}
+			\sum_{i = 1}^n a_i \sigma_n(g) \sigma_i(h) = 0 \qquad \forall h \in H \tag{$*$}
+		\end{equation*}
+		\begin{equation*}
+			\sum_{i = 1}^n a_i \sigma_i(g) \sigma_i(h) = \sum_{i = 1}^n a_i \sigma_i(gh) = 0 \qquad \forall h \in H \tag{$**$}
+		\end{equation*}
+		Wir betrachten die Differenz von $(*)$ und $(**)$.
+		\begin{equation*}
+			\sum_{i = 1}^n (a_i \sigma_i(g) \sigma_i(h) - a_i \sigma_n(g) \sigma_i(h)) = 0 \qquad \forall h \in H
+		\end{equation*}
+		oder
+		\begin{equation*}
+			\sum_{i = 1}^{n-1} a_i(\sigma_i(g) - \sigma_n(g)) \sigma_i(h) = 0
+		\end{equation*}
+		Mit der Induktionsvoraussetzung folgt für alle $i < n$ $a_i(\sigma_i(g) - \sigma_n(g)) = 0$ und da $\sigma_1(g) \neq \sigma_n(g)$ gilt $a_1 = 0$.
+		
+		Also erhalten wir
+		\begin{equation*}
+			\sum_{i = 2}^n a_i \sigma_i(h) = 0 \qquad \forall h \in H
+		\end{equation*}
+		und durch Induktion $a_2 = a_3 = \dots = a_n = 0$.
+	\end{proof}
+
+	\begin{theorem}[E. Artin (wdh.)]
+		Sei $G$ eine endliche Untergruppe von $\operatorname{Aut}(L)$ für einen beliebigen Körper $L$. Schreibe $K = \operatorname{Fix}(G)$. Dann ist $L/K$ Galois, und $G = \Gal(L/K)$.
+		
+		Insbesondere $[L:K] = \#G$.
+	\end{theorem}
+
+	\begin{proof}
+		Betrachte $\sigma \in G$, dann gilt für alle $a \in K, b \in L$ $\sigma(a \cdot b) = \sigma(a) \cdot \sigma(b) = a \sigma(b)$.
+		
+		Also ist $\sigma \in G$ $K$-linear und damit $G \subset \Gal(L/K)$. Damit also $\#G \leq \#\Gal(L/K) \leq [L:K]$. Wir wollen zeigen $[L:K] \leq \#G$.
+		
+		Setze $n = \#G$ und schreibe $G = \{ \sigma_1, \dots, \sigma_n \}$.
+		
+		Für jedes $y \in L$ betrachte
+		\begin{equation*}
+			S(y) = \sum_{i = 1}^n \sigma_i(y)
+		\end{equation*}
+		und
+		\begin{equation*}
+			\sigma_j(S(y)) = \sigma_j \left( \sum_{i = 1}^n \sigma_i(y) \right) = \sum_{i = 1}^n \sigma_j(\sigma_i(y)) = \sum_{i = 1}^n (\sigma_j \circ \sigma_i)(y) = \sum_{\sigma \in G} \sigma(y) = S(y)
+		\end{equation*}
+		$\Rightarrow S(y) \in K$.
+		
+		Mit der linearen Unabhängigkeit der Charaktere folgt $\exists y \in L^*, S(y) \neq 0$.
+		
+		Außerdem gilt $\forall z_1, z_2 \in L: S(z_1 + z_2) = S(z_1) + S(z_2)$
+		
+		und $\forall x \in K, z \in L: S(xz) = x S(z)$.
+		
+		Seien $a_1, \dots, a_{n+1} \in L$ beliebig. Betrachte das Gleichungssystem
+		\begin{equation*}
+			\sum_{k = 1}^{n+1} \sigma_i^{-1}(a_k) x_k = 0 \text{ für $i = 1, \dots, n$}
+		\end{equation*}
+		Also haben wir $n$ Gleichungen in den Variablen $x_1, x_2, \dots, x_{n+1}$. Also haben wir eine nicht-triviale Lösung $(y_1, \dots, y_{m+1}) \in L^{n+1}$. Wir können (durch umsortieren) annehmen dass $y_1 \neq 0$.
+		
+		Wenn $(y_1, \dots, y_{n-1})$ eine Lösung ist und $z \in L^*$ dann ist $(zy_1, \dots, zy_{n+1})$ eine weitere Lösung.
+		
+		Wir wählen $z = y/y_1$, dann könne wir annehmen dass $S(y_1) \neq 0$. Anwenden von $\sigma_i$ auf die Gleichung $i$ ergibt
+		\begin{equation*}
+			\sum_{k = 1}^{n+1} a_k \sigma_i(y_k) = 0
+		\end{equation*}
+		Summieren über $i$ ergibt
+		\begin{equation*}
+			0 = \sum_{i = 1}^n \sum_{k = 1}^{n+1} a_k \sigma_i(y_k) = \sum_{k = 1}^{n+1} a_k \sum_{i = 1}^n \sigma_i(y_k) = \sum_{k = 1}^{n+1} a_k S(y_k) = \sum_{k = 1}^{n+1} \underbrace{S(y_k)}_{\in K} \underbrace{a_k}_{\in L}
+		\end{equation*}
+		Also sind $a_1, \dots, a_{n+1} \in L$ linear abhängig über $K$. Also $\dim_K(L) \leq n$ und damit $[L:K] \leq \#G$.
+	\end{proof}
+
+	\begin{theorem}[Hauptsatz der Galois-Theorie]
+		Sei $L/K$ eine Galois-Erweiterung mit Galois-Gruppe $G = \Gal(L/K)$.
+		\begin{enumerate}
+			\item Für jeden Zwischenkörper $K \subset Z  \subset L$, ist die Gruppe $\Gal(L/Z)$ eine Untergruppe von $G$.
+			
+			Für jede Untergruppe $H \subset G$ ist der Fixkörper $\operatorname{Fix}(H)$ ein Zwischenkörper $K \subset \operatorname{Fix}(H) \subset L$.
+			
+			\item Schreibe $\mathcal{Z}$ für die Menge der Zwischenkörper $K \subset Z \subset L$ und $\mathcal{H}$ für die Menge der Untergruppen $H \subset G$. Dann sind die Abbildungen
+			\begin{align*}
+				\Gal(L/\_): \mathcal{Z} &\to \mathcal{H} \\
+				z &\mapsto \Gal(L/Z)
+			\end{align*}
+			und
+			\begin{align}
+				\operatorname{Fix}(\_): \mathcal{H} &\to \mathcal{Z} \\
+				H &\mapsto \operatorname{Fix}(H)
+			\end{align}
+			bijektiv und invers zueinander.
+			
+			\item Die Abbildungen sind umgekehrte Inklusionen und erhalten Indizes.
+			
+			$Z_1 \subset Z_2 \Rightarrow \Gal(L/Z_1) \supset \Gal(L/Z_2)$ und $[Z_2: Z_1] = [\Gal(L/Z_1):\Gal(L/Z_2)]$.
+			
+			$H_1 \subset H_2 \Rightarrow \operatorname{Fix}(H_1) \supset \operatorname{Fix}(H_2)$ und $[H_2:H_1] = [\operatorname{Fix}(H_1): \operatorname{Fix}(H_2)]$
+			
+			\item Für jedes $\sigma \in G, Z \in \mathcal{Z}$ ist $\sigma(z)$ ein Zwischenkörper und $\Gal(L/\sigma(Z)) = \sigma \circ \Gal(L/Z) \circ \sigma^{-1}$.
+			
+			\item Für $Z \in \mathcal{Z}$ ist $Z/K$ Galois genau dann wenn $G(L/Z) \subset G$ eine normale Untergruppe ist, in anderen Worten wenn $\sigma \circ \Gal(L/Z) \circ \sigma^{-1} = \Gal(L/Z)$ für alle $\sigma \in G$.
+			
+			In dem Fall gilt
+			\begin{equation*}
+				\Gal(Z/K) = \Gal(L/K) / \Gal(L/Z)
+			\end{equation*}
+		\end{enumerate}
+	\end{theorem}
 	
 \end{document}
