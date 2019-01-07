@@ -3524,10 +3524,10 @@
 				z &\mapsto \Gal(L/Z)
 			\end{align*}
 			und
-			\begin{align}
+			\begin{align*}
 				\operatorname{Fix}(\_): \mathcal{H} &\to \mathcal{Z} \\
 				H &\mapsto \operatorname{Fix}(H)
-			\end{align}
+			\end{align*}
 			bijektiv und invers zueinander.
 			
 			\item Die Abbildungen sind umgekehrte Inklusionen und erhalten Indizes.
@@ -3536,7 +3536,7 @@
 			
 			$H_1 \subset H_2 \Rightarrow \operatorname{Fix}(H_1) \supset \operatorname{Fix}(H_2)$ und $[H_2:H_1] = [\operatorname{Fix}(H_1): \operatorname{Fix}(H_2)]$
 			
-			\item Für jedes $\sigma \in G, Z \in \mathcal{Z}$ ist $\sigma(z)$ ein Zwischenkörper und $\Gal(L/\sigma(Z)) = \sigma \circ \Gal(L/Z) \circ \sigma^{-1}$.
+			\item Für jedes $\sigma \in G, Z \in \mathcal{Z}$ ist $\sigma(z)$ ein Zwischenkörper und $\Gal(L/\sigma(Z)) = \sigma \circ \Gal(L/Z) \circ \sigma^{-1} = \{ \sigma \tau \sigma^{-1} \mid \tau \in \Gal(L/K) \} \subseteq \Gal(L/K)$.
 			
 			\item Für $Z \in \mathcal{Z}$ ist $Z/K$ Galois genau dann wenn $G(L/Z) \subset G$ eine normale Untergruppe ist, in anderen Worten wenn $\sigma \circ \Gal(L/Z) \circ \sigma^{-1} = \Gal(L/Z)$ für alle $\sigma \in G$.
 			
@@ -3546,5 +3546,157 @@
 			\end{equation*}
 		\end{enumerate}
 	\end{theorem}
+
+	\begin{remark}
+		Sei $G$ eine endliche Gruppe, Sei $H \subseteq G$ eine Untergruppe. Dann gilt $\#H \mid \#G$. Den Quotienten bezeichnet man als Grad der Gruppenerweiterung $[G:H]$.
+	\end{remark}
+
+	\heading{Beispielanwendung:} Sei $k = \setQ$, sei $L$ der Zerfällungskörper von $x^3 - 2$.
+	
+	\textit{Erinnerung:} Wir wissen: $L = \setQ(\underbrace{\sqrt[3]{2}}_{a_1}, \underbrace{\xi \sqrt[3]{2}}_{a_2}, \underbrace{\xi^2 \sqrt[3]{2}}_{a_3})$ wobei $\xi = e^{\frac{2 \pi i}{3}}$.
+	
+	Wissen auch $[L: \setQ] = 6$
+	
+	Wissen auch $L = \setQ(\sqrt[3]{2}, i \cdot \sqrt[2]{3})$
+	
+	\textit{Frage:} Welche Zwischenkörper gibt es? Welche sind Galois?
+	
+	\textit{Gegenfrage:} Was ist $\Gal(L/K)$?
+	
+	\textit{Antwort:} Jedes Element von $\Gal(L/K)$ permutiert $\{ a_1, a_2, a_3 \}$ erhalte also Abbildung:
+	\begin{equation*}
+		\Gal(L/K) \overset{\alpha}{\to} \operatorname{Perm}(\{ a_1, a_2, a_3 \}) = S_3
+	\end{equation*}
+	Wissen auch: die Elemente von $\Gal(L/K)$ sind durch die Permutation eindeutig bestimmt. Also ist $\alpha$ injektiv.
+	
+	Wissen auch: $L/K$ ist Galos, also
+	\begin{equation*}
+		6 = [L:k] = \#\Gal(L/K) = \#S_3
+	\end{equation*}
+	$\alpha$ ist also bijektiv.
+	
+	Wie viele Elemente hat $S_3$? Wie sehen die aus?
+	\begin{equation*}
+		\{ Id, (123), (12)(3), (13)(2), (23)(1), (132) \} = S_3
+	\end{equation*}
+	
+	Untergruppen sind
+	\begin{equation*}
+		\{ Id \}
+	\end{equation*}
+	\begin{equation*}
+		\{ Id, (12)(3) \}, \{ Id, (13)(2) \}, \{ (23)(1) \}
+	\end{equation*}
+	\begin{equation*}
+		\{ Id, (123), (132) \}
+	\end{equation*}
+	\begin{equation*}
+		S_3
+	\end{equation*}
+	
+	Wir sehen die normalen Untergruppen sind exakt $\{ Id \}, \{ Id, (123), (132) \}, S_3$.
+	
+	Welche Körpererweiterungen gibt es also?
+	
+	$\operatorname{Fix}(Id) = L$
+	
+	$\operatorname{Fix}(Id, (12)(3) = k(a_3)$
+	
+	Denn: Klar ist das Elemente von $k$ und $a_3$ fix sind, also $k(a_3) \subseteq \operatorname{Fix}(Id, (12)(3))$. Wende 3) an mit $H_2 = S_3, H_1 = (Id, (12)(3))$ also
+	\begin{equation*}
+		\Rightarrow [\operatorname{Fix}(H_1): \operatorname{Fix}(H2)] = [H_2: H_1] = 3
+	\end{equation*}
+	Aber $[k(a_3), k] = 3$ also Gleichheit.
+	
+	Außerdem
+	
+	$\operatorname{Fix}(Id, (13)(2)) = k(a_2)$ und $\operatorname{Fix}(Id, (23)(1)) = k(a_1)$ sind nicht Galois.
+	
+	$\operatorname{Fix}(S_3) = k$
+	
+	$\operatorname{Fix}(Id, (123), (132)) = k(i \cdot \sqrt[2]{3})$. Warum ist $i \cdot \sqrt[2]{3}$ überhaupt invariant? Wir wissen
+	\begin{equation*}
+		i \cdot \sqrt[2]{3} = \frac{a_2 - a_3}{a_1} = \frac{\xi \sqrt[3]{2} - \xi^2 \sqrt[3]{2}}{\sqrt[3]{2}} = \xi - \xi^2
+	\end{equation*}
+	aber
+	\begin{equation*}
+		\frac{a_3 - a_1}{a_2} = \frac{\xi^2 \sqrt[2]{3} - \sqrt[2]{3}}{\xi \sqrt[2]{3}} = \xi - \overline{\xi} = \xi - \xi^2
+	\end{equation*}
+	
+	\begin{proof}[Beweis des Hauptsatzes]
+		\heading{1)} ist bereits bewiesen
+		
+		\heading{2)} Muss zeigen: Für jeden Zwischenkörper $Z$ ist $\operatorname{Fix}(\Gal(L/Z)) = Z$
+		
+		Und für jede Untergruppe $H$ ist
+		\begin{equation*}
+			\Gal(L/\operatorname{Fix}(H)) = H
+		\end{equation*}
+		
+		Letztere Aussage ist Satz von Artin, also fertig.
+		
+		Sei $Z$ gegeben. Klar per Definition $\operatorname{Fix}(\Gal(L/Z)) \supseteq Z$. Will Gleichheit zeigen mit Hilfe des Gradargumentes.
+		
+		\textit{Artin} $L/\operatorname{Fix}(\Gal(L/Z))$ ist Galoisch, $[L: \operatorname{Fix}(\Gal(L/Z))] = \#\Gal(L/Z)$
+		
+		\textit{Wir} $L/Z$ ist auch Galoisch, also $[L:Z] = \#\Gal(L/Z)$.
+		
+		\textit{Also:} $[\operatorname{Fix}(\Gal(L/Z)): Z] = 1$
+		
+		\heading{3)} Beweise nur die zweite Aussage. Seien also Gruppen $H_1 \subseteq H_2 \subseteq \Gal(L/K)$ gegeben. Klar ist: jedes $l \in L$, das fix ist unter $H_2$ ist auch fix unter $H_1$ $\Rightarrow$ $\operatorname{Fix}(H_2) \subseteq \operatorname{Fix}(H_1)$ Inklusionsumkehr ist also bewiesen.
+		
+		\textit{Artin} $[L: \operatorname{Fix}(H_1)] = \#H_1$ und $[L: \operatorname{Fix}(H_2)] = \#H_2$
+		
+		\begin{equation*}
+			\Rightarrow [\operatorname{Fix}(H_1): \operatorname{Fix}(H_2)] = \frac{[L: \operatorname{Fix}(H_2)]}{[L: \operatorname{Fix}(H_1)]} = \frac{\#H_2}{\#H_1} = [H_2: H_1]
+		\end{equation*}
+		
+		\heading{4)} Sei $\sigma$ und $Z$ gegeben. Klar ist $\sigma(Z)$ ist ein Zwischenkörper. Behaupte
+		\begin{equation*}
+			\Gal(L/\sigma(Z)) \supseteq \sigma \Gal(L/Z) \sigma^{-1} \tag{$*$}
+		\end{equation*}
+		\textit{Beweis der Behauptung:} Sei $\tau \in \sigma \Gal(L/Z) \sigma^{-1}$ und sei $z \in \sigma(Z)$. Muss zeigen, dass $\tau(z) = z$ ist. Schreibe dazu $\tau = \sigma \tau' \sigma^{-1}$ und $z = \sigma(z')$ für geeignete $\tau \in \Gal(L/Z), z' \in Z$. Dann ist
+		\begin{equation*}
+			\tau(z) = \sigma \tau \sigma^{-1} \sigma(z') = \sigma \tau' z' = \sigma(z') = z
+		\end{equation*}
+		Noch zu zeigen: Wir haben Gleichheit in $(*)$
+		
+		\textit{Beobachte:} Die Gruppen $\Gal(L/Z)$ und $\sigma \Gal(L/Z) \sigma^{-1}$ sind isomorph, haben also gleich viele Elemente.
+		
+		Isomorphie ist
+		\begin{align*}
+			\Gal(L/Z) &\to \sigma \Gal(L/Z) \sigma^{-1} \\
+			\tau &\mapsto \sigma \tau \sigma^{-1}
+		\end{align*}
+		
+		\textit{Beobachtung:} $L/Z$ ist Galoisch
+		\begin{equation*}
+			\#\Gal(L/Z) = [L:Z] = [\sigma(L): \sigma(Z)] = [L: \sigma(Z)] = \#\Gal(L/\sigma(Z))
+		\end{equation*}
+		Insgesamt: Die beiden Gruppen in $(*)$ haben gleich viele Elemente!
+		
+		\heading{5)} Sei $Z$ ein Zwischenkörper.
+		
+		\textit{Beobachtung 1:} $Z/K$ ist separabel. Also: $Z/K$ ist Galoisch $\Leftrightarrow$ $Z/K$ ist normal $\Leftrightarrow$ für jede $k$-Morphismus $\sigma: Z \to \overline{L}$ ist $\sigma(Z) = Z$.
+		
+		\textit{Beobachtung 2:} Jeder Morphismus $\sigma: Z \to \overline{L}$ setzt sich fort zu Morphismus $\overline{\sigma}: L \to \overline{L}$. Weil $L/K$ per Annahme Galoisch, also normal ist, gilt: $\overline{sigma}(L) = L$.
+		
+		\textit{Zusammenfassung:} $Z/K$ ist Galoisch $\Leftrightarrow$ $\forall \sigma \in \Gal(L/K) \sigma(Z) = Z$.
+		
+		$\overset{2)}{\Rightarrow} \forall \sigma \in \Gal(L/K): \Gal(L/\sigma(Z)) = \Gal(L/Z)$
+		
+		$\overset{4)}{\Rightarrow} \forall \sigma \in \Gal(L/K): \sigma \Gal(L/Z) \sigma^{-1} = \Gal(L/Z)$
+		
+		$\Leftrightarrow \Gal(L/Z)$ ist normale Untergruppe von $\Gal(L/K)$
+		
+		Falls $Z/K$ Galoisch ist, habe ich Einschränkung
+		\begin{equation*}
+			r: \Gal(L/K) \to \Gal(Z/K)
+		\end{equation*}
+		
+		die Abbildung $r$ ist surjektiv, weil ich Morphismen fortsetzen kann. $\ker(r) = \Gal(L/Z)$.
+ 		
+	\end{proof}
+
 	
 \end{document}
