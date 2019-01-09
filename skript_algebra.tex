@@ -3343,7 +3343,7 @@
 				&\Rightarrow& f(\sigma(\alpha_i)) =  c_n \sigma(\alpha_i)^n + \dots + c_1 \sigma(\alpha_i) + c_0 &= 0
 			\end{align*}
 			\item Die Nullstellen der irreduziblen Faktoren werden untereinander permutiert.
-			\item Wenn $f$ irreduzibel ist, dann operiert $\Gal(f)$ transitiv auf der Menge der Nullstellen.
+			\item Wenn $f$ irreduzibel ist, dann operiert $\Gal(f)$ transitiv auf der Menge der Nullstellen. (siehe Definition \ref{def:transivGruppe})
 			\item Sei $n = \deg(f)$ und $f$ irreduzibel, dann gilt $n \mid \abs{\Gal(f)}$
 		\end{enumerate}
 	\end{remark}
@@ -3698,5 +3698,225 @@
  		
 	\end{proof}
 
+	\section{Gruppentheorie}
+	
+	\subsection{Grundbegriffe}
+	
+	\begin{definition}
+		Sei $G$ eine Gruppe, $M$ eine Menge. Eine gruppenwirkung ist eine Abbildung
+		\begin{equation*}
+			\alpha: G \times M \to M
+		\end{equation*}
+		so dass
+		\begin{enumerate}
+			\item $\forall m \in M: \; \alpha(e,m) = m$
+			\item $\forall m \in M, \forall g,h \in G \; \alpha(h, \alpha(g,m)) = \alpha(h \cdot g, m)$
+		\end{enumerate}
+	\end{definition}
+
+	\begin{remark}
+		Gegeben eine Gruppenwirkung $\alpha: G \times M \to M$ und $g \in G$ betrachte oft die Abbildung
+		\begin{align*}
+			\alpha_g: M &\longrightarrow M\\
+			m &\longmapsto \alpha(g,m)
+		\end{align*}
+		(translation). Die Axiome 1) und 2) sagen:
+		\begin{equation*}
+			\alpha_e = id_M, \forall g,h: \alpha_h \circ \alpha_g = \alpha_{h \cdot g}
+		\end{equation*}
+		Insbesondere: Alle $\alpha_g$ sind bijektiv, $(\alpha_g)^{-1} = \alpha_{g^{-1}}$.
+		
+		Insbesondere: erhalte Gruppenmorphismus
+		\begin{align*}
+			\underbrace{\alpha}: G &\longrightarrow \operatorname{Perm}(M) \\
+			g &\longmapsto \alpha_g
+		\end{align*}
+		
+		Andersherum: Gegeben Gruppenmorphismus
+		\begin{equation*}
+			\underline{\beta}: G \to \operatorname{Perm}(M)
+		\end{equation*}
+		dann liefert
+		\begin{align*}
+			\beta: G \times M &\longrightarrow M \\
+			(g,m) &\longmapsto (\underline{\beta}(g))(m)
+		\end{align*}
+		eine Gruppenwirkung.
+	\end{remark}
+
+	\begin{example}
+		\begin{itemize}
+			\item $k$ ein Körper. Dann wirkt $\operatorname{Gl}_n(k)$ auf $k^n$
+			\item $(\setR, +)$ wirkt auf $\setR$.
+			\begin{align*}
+				a: \setR \times \setR &\longrightarrow \setR \\
+				(a,b) &\longmapsto a + b
+			\end{align*}
+			\begin{align*}
+				m: \setR \times \setR &\longrightarrow \setR \\
+				(a,b) &\longmapsto \exp(a) b
+			\end{align*}
+			\item $k$ ein Körper, $f$ ein Polynom mit Zerfällungskörper $L$. Sei $G = \Gal(L/K)$. Dann habe ich natürliche Wirkungen
+			\begin{itemize}
+				\item $G$ wirkt auf $L$
+				\item $G$ wirkt auf die Nullstellenmenge von $f$
+				\item $G$ wirkt auf die Menge der Zwischenkörper $k \subseteq \cdot \subseteq L$
+			\end{itemize}
+			\item Sei $G$ eine Gruppe. Dann wirkt $G$ auf sich selbst $(M = G)$
+			\begin{align*}
+				l: G \times G &\longrightarrow G \\
+				(g,m) &\longmapsto g \cdot m \\
+				r: G \times G &\longrightarrow G \\
+				(g,m) &\longmapsto m \cdot g^{-1} \\
+				c: G \times G &\longrightarrow G \\
+				(g,m) &\longmapsto g \cdot m \cdot g^{-1}
+			\end{align*}
+			\item Variante: Sei $H \subseteq G$ eine Untergruppe. Dann:
+			\begin{align*}
+				&l: H \times G \to G \quad (h,m) \mapsto h m \\
+				&r: H \times G \to G \quad (h,m) \mapsto m h^{-1} \\
+				&c: H \times G \to G \quad (h,m) \mapsto h m h^{-1}
+			\end{align*}
+			\item Sei ODE auf $M$ gegeben, so dass Anfangswertprobleme für alle Zeilen lösbar sind. Dann ist die Lösungsabbildung
+			\begin{align*}
+				\setR \times M &\longrightarrow M \\
+				(t,m) &\longmapsto \text{Lösung des AWP zum Wert $m$ und Zeit $t$}
+			\end{align*}
+			Wirkung von $\setR$ auf $M$.
+		\end{itemize}
+	\end{example}
+
+	\begin{definition}
+		\label{def:transivGruppe}
+		Sei $\alpha: G \times M \to M$ eine Gruppenwirkung.
+		\begin{enumerate}
+			\item Schreibe statt $\alpha(g,m)$ oft $g \cdot m$.
+			\item Gegeben $m \in M$. Dann betrachte alle Elemente, die ich von $m$ erreichen kann
+			\begin{equation*}
+			G \cdot m = \{ g \cdot m \mid g \in G \}
+			\end{equation*}
+			Dies heißt die Bahn von $m$.
+			\item Gegeben Teilmenge $N \subseteq M$ betrachte Untergruppen
+			\begin{equation*}
+				\operatorname{Fix}(N) = \{ g \in G \mid \forall n \in N: g \cdot n = n \}
+			\end{equation*}
+			\begin{equation*}
+				\operatorname{Stab}(N) = \{ g \in G \mid g \cdot N = N \}
+			\end{equation*}
+			Spezialfall: $m \in M$ gegeben. Dann nenne $\operatorname{Fix}(\{ m \})$ die Isotropiegruppe von $m$.
+			\item Ein Element $m \in M$ so dass $\forall g \in G: g \cdot m = m$ heißt Fixpunkt der Gruppenwirkung.
+			\item Eine Gruppenwirkung heißt transitiv, falls es nur eine Bahn gibt.
+		\end{enumerate}
+	\end{definition}
+
+	\heading{Zentrale Beobachtung:} Sei $\alpha: G \times M \to M$ eine Gruppenwirkung, seien $m_1, m_2 \in M$ gegeben. Betrachte Bahnen $G \cdot m_1$ und $G \cdot m_2$. Falls die Bahnen einen Schnittpunkt haben, sind sie gleich!
+	
+	\begin{proof}
+		Sei $m_3$ ein Schnittpunkt. Das heißt finde $g_1, g_2 \in G: m_3 = g_1 \cdot m_1 = g_2 \cdot m_2$.
+		
+		Sei $n \in G m_1$ jetzt irgend ein Element, also $n = h \cdot m_1$, dann $n = h g_1^{-1} g_2 m_2$ also $n \in G \cdot m_2$.
+		
+		$\Rightarrow G \cdot m_1 \subseteq G \cdot m_2$. Andere Inklusion analog!
+	\end{proof}
+
+	Die Relation auf $M$
+	\begin{equation*}
+		a \sim b \Leftrightarrow \exists g \in G: a = g \cdot b \Leftrightarrow \text{Bahnen von $a$ und $b$ sind gleich}
+	\end{equation*}
+	ist eine Äquivalenzrelation! Die Gruppenwirkung zerlegt den Raum in eine disjunkte Vereinigung von Bahnen.
+	
+	\heading{Besonders relevanter Fall:} Sei $G$ eine Gruppe, $H \subseteq G$ eine Untergruppe, Wirkung: $l$. Die Bahnen heißen Rechtsnebenklassen. Die Anzahl der Bahnen wird mit $[G:H]$ bezeichnet und heißt Index von $H$ in $G$.
+	
+	\begin{theorem}
+		\label{thm:4_4}
+		Sei $G$ eine endliche Gruppe, die auf $M$ wirkt. Sei $m \in M$ gegeben. Dann ist
+		\begin{equation*}
+			\#G = \#\operatorname{Iso}(m) \cdot \#(G \cdot m)
+		\end{equation*}
+	\end{theorem}
+	\begin{proof}
+		Betrachte Bahnabbildung
+		\begin{align*}
+			b: G &\longrightarrow M \\
+			g &\longmapsto g \cdot m
+		\end{align*}
+		Bild der Bahnabbildung ist die Bahn $G \cdot m$. Was sind die Fasern?
+		\begin{equation*}
+			b^{-1}(m) = \{ g \in G \mid g \cdot m = m \} = \operatorname{Iso}(m)
+		\end{equation*}
+		Gegeben $h \in G$
+		\begin{equation*}
+			b^{-1}(h \cdot m) = \{ g \in G \mid g \cdot m = h \cdot m \} = h^{-1} \cdot \operatorname{Iso}(m)
+		\end{equation*}
+		Also alle Urbildmengen enthalten stets $\#\operatorname{Iso}(m)$ Elemente. Es gibt exakt $\#(G \cdot m)$ Urbildmengen.
+		
+		$\Rightarrow$ hat $\#\operatorname{Iso}(m) \cdot \#(G \cdot m)$ viele Elemente.
+	\end{proof}
+
+	\heading{Anwendung auf Spezialfall:} $H \subseteq G$ wirkt auf $M = G$ durch Linksmultiplikation.
+	
+	\begin{theorem}[Kleiner Satz von Lagrange]
+		Sei $G$ eine endliche Gruppe, sei $H \subseteq G$ eine Untergruppe. Dann $\#G = [G:H] \cdot \#H$.
+	\end{theorem}
+
+	\begin{proof}
+		Die Menge $G$ ist disjunkte Vereinigung von $[G:H]$ vielen Bahnen. Müssen also zeigen: alle Bahnen enthalten exakt $\#H$ viele Elemente. Wegen Satz \ref{thm:4_4} genügt es zu zeigen $\forall g \in G: \#\operatorname{Iso}(g) = \{ e \}$.
+		
+		Erinnerung: $\operatorname{Iso}(g) = \{ h \in H \mid h \cdot g = g \}$
+	\end{proof}
+
+	\begin{corollary}
+		$[G:H] = \#G/\#H$. Insbesondere ist $[G:H]$ Teiler von $\#G$. Insbesondere ist $\#H$ Teiler von $\#G$.
+	\end{corollary}
+
+	\begin{corollary}
+		Sei $G$ endlich. $G$ wirke auf Menge $M$. Sei $m \in M$ dann $\# (G \cdot m) = [G: \operatorname{Iso}(m)]$.
+	\end{corollary}
+
+	\heading{Wesentliches weiteres Beispiel}
+	
+	$G$ wirkt auf sich selbst durch Konjugation. Die Bahnen heißen Konjugationsklassen. Gegeben Untergruppe $H \subseteq G$, betrachte $\operatorname{Fix}(H) = \{ g \in G \mid g h g^{-1} = h, \forall h \in H \} = Z(H) \subseteq G$ diese Untergruppe heißt Zentralisator von $H$.
+	
+	$\operatorname{Fix}(H) = \{ g \in G \mid g H g^{-1} = H \} \subseteq G$
+	
+	\textit{Beobachtung:} $H \subseteq \operatorname{Stab}(H)$ ist normale Untergruppe.
+	
+	\textit{Klassengleichung:} Die Gruppe $G$ zerlegt sich in Konjugationsklassen. Wenn ich aus jeder Klassen einen Vertreter wähle $h_1, \dots, h_n \in G$. Dann
+	\begin{equation*}
+		\#G = \sum_{i=1}^{n} H \cdot h_i = \sum_{i=1}^{n} [G: Z(h_i)] = \#Z(H) + \sum_{\substack{i = 1 \dots n \\ h_i \notin Z(H)}} [G:Z(h_i)]
+	\end{equation*}
+	
+	\subsection{Zyklische Gruppen}
+
+	Gegeben sei eine Gruppe $G$ und ein Element $g \in G$. Dann gibt es einen Gruppenmorphismus
+	\begin{align*}
+		\varphi_g: \setZ &\longrightarrow G \\
+		n &\longmapsto \begin{cases}
+			g^n & \text{falls } n > 0 \\
+			e & \text{falls } n = 0 \\
+			(g^{-1})^n & \text{falls } n < 0
+		\end{cases}
+	\end{align*}
+	
+	Bild ist eine Untergruppe von $G$, genannt $\langle g \rangle$ die von $g$ erzeugte Zyklische Untergruppe.
+	\begin{itemize}
+		\item Falls $\varphi_g$ injektiv ist, dann ist $\langle g \rangle$ isomorph zu $\setZ$.
+		\item Falls $\varphi_g$ nicht injektiv ist, beachte $\ker(\varphi_g)$ enthält positive Zahlen. Sei also $n = \min (\ker(\varphi_g) \cap \setN)$. Wie immer ist
+		\begin{equation*}
+			\langle g \rangle \simeq (\setZ/(n), +)
+		\end{equation*}
+	\end{itemize}
+
+	\begin{example}
+		Sei $G$ eine endliche Gruppe. Sei $\#G = p$ eine Primzahl. Sei $g \in G$ gegeben. Dann ist $\langle g \rangle \subseteq G$ also: $\#\langle g \rangle \mid \#G$.
+		
+		$\Rightarrow$ entweder $\langle g \rangle = \{ e \}$ oder $\langle g \rangle = G$.
+		
+		Konsequenz:
+		\begin{enumerate}
+			\item $G$ hat überhaupt keine Untergruppen.
+			\item $G$ ist zyklisch.
+		\end{enumerate}
+	\end{example}
 	
 \end{document}
