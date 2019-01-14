@@ -186,7 +186,7 @@
 		Ein Ring ist eine Menge $R$ mit $2$ Verknüpfungen $+$ und $\cdot$ so dass gilt:
 		\begin{itemize}
 			\item $(R,+)$ ist eine Abelsche Gruppe
-			\item Distributivgesetz: $\forall a,b,c \in T (a+b) \cdot c = ac + bc$ und $a(b+c) = ab + ac$
+			\item Distributivgesetz: $\forall a,b,c \in R \; (a+b) \cdot c = ac + bc$ und $a(b+c) = ab + ac$
 			\item $(R \setminus 0, \cdot)$ ist fast Gruppe nämlich assoziativ und es existiert ein neutrales Element
 		\end{itemize}
 	\end{definition}
@@ -408,7 +408,7 @@
 		
 		\heading{Also:} $\dim_k k(a) \geq n$
 		
-		Um Gleichheit zu zeigen, genügt es zu zeigen, dass $\langle 1, a, a^2, \dots, a^{n-1} \rangle_k \eqqcolon \tilde{k}$ bereits $k(a)$. Klar ist $\tilde{k} \in k(a)$. Wegen der Minimalität von $k(a)$ genügt es für die Umkehrrichtung zu zeigen, dass $\tilde{k}$ ein Körper ist.
+		Um Gleichheit zu zeigen, genügt es zu zeigen, dass $\langle 1, a, a^2, \dots, a^{n-1} \rangle_k \eqqcolon \tilde{k}$ bereits $k(a)$. Klar ist $\tilde{k} \subseteq k(a)$. Wegen der Minimalität von $k(a)$ genügt es für die Umkehrrichtung zu zeigen, dass $\tilde{k}$ ein Körper ist.
 		
 		Klar ist $0,1 \in \tilde{k}$.
 		
@@ -447,7 +447,7 @@
 	\end{corollary}
 
 	\begin{example}
-		Sei $L = \setC, k \subset C$ ein Unterkörper, sei $b \in k$ und $a = \sqrt{b}$. Dann gilt:
+		Sei $L = \setC, k \subset \setC$ ein Unterkörper, sei $b \in k$ und $a = \sqrt{b}$. Dann gilt:
 		\begin{equation*}
 			[k(a): k] = \begin{cases}
 				2 & \text{falls $a \notin k$} \\
@@ -526,6 +526,7 @@
 	\end{corollary}
 
 	\begin{theorem}
+		\label{thm:1_27}
 		Sei $L/k$ eine Körpererweiterung, dann ist äquivalent:
 		\begin{enumerate}
 			\item $[L:k] < \infty$
@@ -574,7 +575,7 @@
 	\end{proposition}
 
 	\begin{proof}
-		Klar ist, dass $0,1 \in \overline{k}$ sind. Wir müssen klären, ob mit $a,b \in \overline{k}$ auch $a+b, a-b, a \cdot b$ und gegebenenfalls für $\frac{1}{a} \in \overline{k}$ sind. Das ist aber klar, denn all diese Elemente liegen in $k(a,b)$. Nach Satz ist $k(a,b)$ algebraisch über $k$.
+		Klar ist, dass $0,1 \in \overline{k}$ sind. Wir müssen klären, ob mit $a,b \in \overline{k}$ auch $a+b, a-b, a \cdot b$ und gegebenenfalls für $\frac{1}{a} \in \overline{k}$ sind. Das ist aber klar, denn all diese Elemente liegen in $k(a,b)$. Nach Satz \ref{thm:1_27} ist $k(a,b)$ algebraisch über $k$.
 	\end{proof}
 
 	\begin{remark}
@@ -585,7 +586,7 @@
 	
 	\heading{Wissen aus der Schule:} Quadratische Gleichungen in einer Variable haben Lösungsformel.
 	
-	\heading{Wissen seit der Renaissance:} Haaben Formeln für Gleichungen von Grad 3 und 4.
+	\heading{Wissen seit der Renaissance:} Haben Formeln für Gleichungen von Grad 3 und 4.
 	
 	\heading{Beispiel:} $x^3 + a x^2 + bx + c = 0$ Setze:
 	\begin{equation*}
@@ -608,9 +609,9 @@
 	\heading{Bescheidener:} Kann ich die Lösung überhaupt hinschreiben? (als komplizierten Ausdruck in Wurzeln/Polynomen)
 	
 	\begin{definition}
-		Sei $L/k$ eine Körpererweiterung, nenne diese Erweiterung Radikalerweiterung, falls es $a_1, \dots, a_n$ und $m_1, \dots, m_n \in \setN$ gibt, so dass
+		Sei $L/k$ eine Körpererweiterung, nenne diese Erweiterung Radikalerweiterung, falls es $a_1, \dots, a_n \in L$ und $m_1, \dots, m_n \in \setN$ gibt, so dass
 		\begin{enumerate}
-			\item $L = k(a_1, \dots, a_m)$
+			\item $L = k(a_1, \dots, a_n)$
 			\item $\forall i a_i^{m_i} \in k(a_1, \dots, a_{i-1})$ also $a_i$ ist die $m_i$-te Wurzel eines Elementes aus $k(a_1, \dots a_{i-1})$.
 		\end{enumerate}
 	\end{definition}
@@ -618,7 +619,7 @@
 	\heading{Was bedeutet das?}
 	\begin{enumerate}
 		\item $a_1^{m_1} \in k$ Also $k(a_1) = \langle 1 , a_1, a_1^2, \dots, a_1^{m_1 - 1} \rangle_k$
-		\item $a_2^{m_2} \in k$ Also $k(a_1, a_2) = \langle 1 , a_2, a_2^2, \dots, a_2^{m_2 - 1} \rangle_{k(a_1)}$
+		\item $a_2^{m_2} \in k(a_1)$ Also $k(a_1, a_2) = \langle 1 , a_2, a_2^2, \dots, a_2^{m_2 - 1} \rangle_{k(a_1)}$
 		\item \textellipsis
 	\end{enumerate}
 
@@ -737,6 +738,8 @@
  		$\Rightarrow (r \cdot b) \cdot a \Rightarrow r(ba - 1) = 0$
  		
  		Da $R$ Integritätsring ist: $\Rightarrow ba = 1 \qquad \Rightarrow b,a, \in R^*$
+ 		
+ 		(geht so nur für $r \neq 0$, der Fall muss extra behandelt werden)
  	\end{proof}
  
  	\begin{definition}
@@ -3219,7 +3222,7 @@
 		Sei $L/k$ eine algebraische Körpererweiterung. Dann sind folgende Aussagen äquivalent:
 		\begin{enumerate}
 			\item $L/k$ ist normal
-			\item Es gibt eine Familie $(f_\lambda)_{\lambda \in \Lambda}$ von Polynomen in $k[x]$ so dass $L$ aus $k$ entsteht durch Adjunktion sämtlicher Nullstellen der $f_\lambda$ in $\overline{k}$.
+			\item Es gibt eine Familie $(f_\lambda)_{\lambda \in \Lambda}$ von Polynomen in $k[x]$ so dass $L$ aus $k$ entsteht durch Adjunktion sämtlicher Nullstellen der $f_\lambda$ in $\overline{L}$.
 			\item Jeder Körpermorphismus $\sigma: L \to \overline{k}$ hat $\operatorname{Bild}(\sigma) = L$
 		\end{enumerate}
 	\end{theorem}
@@ -3877,7 +3880,7 @@
 	
 	$G$ wirkt auf sich selbst durch Konjugation. Die Bahnen heißen Konjugationsklassen. Gegeben Untergruppe $H \subseteq G$, betrachte $\operatorname{Fix}(H) = \{ g \in G \mid g h g^{-1} = h, \forall h \in H \} = Z(H) \subseteq G$ diese Untergruppe heißt Zentralisator von $H$.
 	
-	$\operatorname{Fix}(H) = \{ g \in G \mid g H g^{-1} = H \} \subseteq G$
+	$\operatorname{Stab}(H) = \{ g \in G \mid g H g^{-1} = H \} \subseteq G$
 	
 	\textit{Beobachtung:} $H \subseteq \operatorname{Stab}(H)$ ist normale Untergruppe.
 	
@@ -3918,5 +3921,211 @@
 			\item $G$ ist zyklisch.
 		\end{enumerate}
 	\end{example}
+
+	\begin{definition}
+		Sei $G$ eine Gruppe und $g \in G$, definiere:
+		\begin{equation*}
+			\operatorname{ord}(g) = \min \{ n \in \setN : g^n = e \} \in \setN \cup \{ \infty \}
+		\end{equation*}
+		$\operatorname{ord}(g) = \#(g)$, falls endlich ist $\operatorname{ord}(g) \mid \#G$
+	\end{definition}
+
+	\begin{example}
+		\begin{enumerate}
+			\item Falls $\#G$ eine Primzahl ist, dann ist $G$ zyklisch.
+			\item Gegeben $n \in \setN$ betrachte $G = \{ \xi \in \setC \mid \xi^n = 1 \}$.
+			\item Sei $R$ ein Integritätsring, sei $G \subset (R^*, \cdot)$ endlich. Dann ist $G$ zyklisch.
+			\begin{proof}
+				Weil $R \hookrightarrow Q(R)$ eingebettet ist, können wir ohne Einschränkung annehmen. $R = k$ ist ein Körper. Sei $m = \max \{ \operatorname{ord}(h) \mid h \in G \}$. Dann gilt $\forall g \in G$
+				\begin{equation*}
+					g^m = {\underbrace{\left( g^{\operatorname{ord}(g)} \right)}_{=e}}^{m/\operatorname{ord}(g)} = e
+				\end{equation*}
+				Also: alle $g \in G$ sind Nullstellen des Polynoms $x^m - 1$. Dieses Polynom hat maximal $m$ Nullstellen $\Rightarrow \#G \leq m$. Wenn ich $g \in G$ nehme mit $\operatorname{ord}(g) = m$ dann ist $\#(g) = m$. Insbesondere $G = (g)$, $G$ ist zyklisch.
+			\end{proof}
+		\end{enumerate}
+	\end{example}
+
+	\subsection{Die Sätze von Sylow}
+	
+	\heading{Frage:} Wenn $G$ endliche Gruppe ist, $H \subseteq G$ eine Untergruppe, dann $\#H \mid \#G$. Wenn ich $n \in \setN$ habe mit $n \mid \#G$ gibt es dann auch eine Untergruppe $H$ mit $\# H = n$?
+	
+	Sylow-Sätze geben Teilantwort. Die Zentrale Beobachtung ist einfach!
+	
+	\begin{lemma}
+		Sei $G$ eine Gruppe, sei $\#G = p^n$ für $p$ Primzahl, $n \in \setN$. $G$ wirke auf endliche Menge $M$. Setze $M_0 = \operatorname{Fix}(G)$. Dann ist $\# M \equiv \# M_0  \mod p$.
+	\end{lemma}
+
+	\begin{proof}
+		$M$ ist disjunkte Vereinigung der Bahnen. Bahnen mit einem Element sind exakt die Fixpunkte. Wenn $B$ eine Bahn mit mehr als einem Element ist, dann $1 < \#B \mid p^n$ $\Rightarrow \#B \equiv 0 \mod p$.
+	\end{proof}
+
+	\begin{theorem}[Satz von Cauchy]
+		Sei $G$ endliche Gruppe und sei $p$ eine Primzahl so dass $p \mid \#G$. Dann gibt es ein $g \in G: \operatorname{ord}(g) = p$.
+	\end{theorem}
+
+	\begin{proof}
+		Betrachte $(\setZ/p\setZ, +)$. Diese Gruppe wirkt auf $\underbrace{G \times \dots \times G}_{p-\text{mal}}$ durch Zyklische Vertauschung:
+		\begin{equation*}
+			1: (g_1, \dots, g_p) \mapsto (g_p, g_1, \dots, g_{p-1})
+		\end{equation*}
+		
+		Beobachte: Die Menge $M = \{ (g_1, \dots, g_p) \in G^p \mid g_1 \cdot \dots \cdot g_p = e \}$ ist stabil unter der Wirkung von $\setZ/p\setZ$.
+		
+		Beobachte: $\#M = (\#G)^{p-1}$
+		
+		Beobachte: Fixpunkte der $\setZ/p\setZ$-wirkung auf $M$ sind Elemente der Form $\underbrace{(g, \cdots , g)}_{p-\text{mal}}$ mit $g^p = e$.
+		
+		$\Rightarrow g = e$ oder $\operatorname{ord}(g) = p$.
+		
+		Wir wissen:
+		\begin{enumerate}
+			\item $\# \operatorname{Fix}(\setZ / p \setZ) \geq 1$, denn $(e \dots e) \in \operatorname{Fix}(\dots)$
+			\item Lemma: $\#\operatorname{Fix}(\setZ / p \setZ) \equiv 0 \mod p$
+		\end{enumerate}
+	
+		$\Rightarrow \#Fix(\setZ / p \setZ) \geq p$. Also existiert ein Element der Ordnung $p$.
+	\end{proof}
+
+	\begin{definition}
+		Sei $p$ eine Primzahl. Eine Gruppe heißt $p$-Gruppe, wenn $\forall g \in G: \operatorname{ord}(g) = p^n$ für ein $n \in \setN$.
+	\end{definition}
+
+	\begin{theorem}
+		Sei $G$ eine endliche Gruppe, sei $p$ eine Primzahl. Dann sind äquivalent:
+		\begin{enumerate}
+			\item $G$ ist $p$-Gruppe
+			\item $\#G = p^m$ für geeignetes $m \in \setN$
+		\end{enumerate}
+	\end{theorem}
+
+	\begin{proof}
+		\heading{$2) \Rightarrow 1)$} Klar, denn wir wissen:
+		\begin{equation*}
+			\forall g \in G: \operatorname{ord}(g) \mid \#G = p^m
+		\end{equation*}
+		$\Rightarrow \operatorname{ord}(g)$ ist Potenz von $p$
+		
+		\heading{$1) \Rightarrow 2)$} Beweis der Kontraposition!
+		
+		Angenommen $\#G$ ist keine Potenz von $p$.
+		
+		$\Rightarrow$ Es gibt Primzahl $q \neq p$ mit $q \mid \#G$.
+		
+		Cauchy: Es gibt ein Element $g \in G$ mit $\operatorname{ord}(g) = q$.
+		
+		$\Rightarrow$ $G$ ist keine $p$-Gruppe.
+	\end{proof}
+
+	\begin{lemma}
+		Sei $G$ eine endliche $p$-Gruppe. Dann: $G$ hat nicht triviales Zentrum
+		\begin{equation*}
+			Z(G) \supsetneq \{ e \}
+		\end{equation*}
+	\end{lemma}
+
+	\begin{proof}
+		Betrachte die Wirkung von $G$ auf $M = G$ durch Konjugation. Dann $Z(G) = \operatorname{Fix}(G)$.
+		
+		Wieder gilt: $\{ e \} \subseteq \operatorname{Fix}(G)$
+		
+		$\#\operatorname{Fix}(G) \equiv 0 \mod p$ $\Rightarrow \#\operatorname{Fix}(G) \geq p$.
+	\end{proof}
+
+	\begin{definition}
+		Sei $G$ eine Gruppe, $p$ eine Primzahl. Eine $p$-Sylowgruppe ist eine maximal große $p$-Untergruppe von $G$.
+	\end{definition}
+
+	\begin{theorem}[ohne Beweis]
+		Mit Zorns Lemma existieren Sylowgruppen.
+	\end{theorem}
+
+	\begin{lemma}
+		Sei $G$ eine Gruppe, sei $G_p \subseteq G$ eine $p$-Sylowgruppe, sei $g \in G$ ein Element $\Rightarrow$ $g G_p g^{-1}$ ist eine Sylowgruppe.
+	\end{lemma}
+
+	\begin{proof}
+		Klar ist $\#G_p = \# g G_p g^{-1}$ also ist $g G_p g^{-1}$ schon mal eine $p$-Gruppe.
+		Angenommen $g G_p g^{-1}$ wäre nicht maximal das heißt $p$-Gruppe $U$ mit $g G_p g^{-1} \subsetneq U$ $\Rightarrow G_p \subsetneq g^{-1} U g$ und $g^{-1} U g \simeq U$ also $p$-Gruppe.
+		
+		$\Rightarrow G_p$ nicht Sylow!
+	\end{proof}
+
+	\begin{lemma}
+		Sei $G$ endlich, sei $U \subseteq G$ eine $p$-Untergruppe dann gilt:
+		\begin{equation*}
+			[G:U] = [N(U): U]
+		\end{equation*}
+		(Erinnerung: $N(U) = \{ g \in G \mid g U g^{-1} = U \}$ Das ist eine Untergruppe von $G$ und $U$ ist normal in $N(U)$)
+	\end{lemma}
+	
+	\begin{proof}
+		Betrachte die Wirkung von $U$ auf $G$ durch linkstranslation. Sei $M = \text{Quot}$. Anders gesagt $M = \text{Menge der Bahnen}$ also
+		\begin{equation*}
+			M = \{ U \cdot g \mid g \in G \}
+		\end{equation*}
+		
+		Nachrechnen: $U$ wirkt auf der Menge $M$ durch:
+		\begin{align*}
+			U \times M &\longrightarrow M \\
+			(u, U \cdot g) &\longmapsto U \cdot g \cdot u^{-1}
+		\end{align*}
+		Betrachte wieder $M_0 \subseteq M$, die Fixpunktmenge dieser Wirkung.
+		
+		Beobachte: 
+		\begin{align*}
+			Z \cdot g \in M_0 &\Leftrightarrow \forall u \in U: U \cdot g \cdot u^{-1} = U g \\
+			&\Leftrightarrow \forall u \in U: U g u^{-1} g^{-1} = U \Leftrightarrow g \in N(U)
+		\end{align*}
+		
+		Wir wissen:
+		\begin{equation*}
+			[G:U] = \#M = \# M_0 \mod p
+		\end{equation*}
+		wobei $\#M_0 = \#\text{Bahnen der Wirkung von $U$ auf Gruppe $N(U)$} = [N(U):U]$
+	\end{proof}
+
+	\heading{Zusatz:} Falls gilt $p \mid [G:U]$, dann $[N(U):U] = 0 \mod p$
+	
+	$\Rightarrow [N(U):U] \neq 1 \Rightarrow N(U) \subsetneq U$
+	
+	\begin{theorem}[Sylow-Satz 1]
+		Sei $G$ eine endliche Gruppe, sei $p$ eine Primzahl. Schreibe $\#G = p^n \cdot m$ wobei $p \nmid m$. Dann gilt:
+		\begin{enumerate}
+			\item $\forall 0 \leq i \leq n$ gilt: Es existiert eine $p$-Untergruppe von $G$ mit $p^i$-Elementen.
+			\item $\forall 0 \leq i < n$ und alle $p$-Untergruppen $U \subseteq G$ mit $p^i$ Elementen: Es gibt eine $p$-Untergruppe $U' \subseteq G$ mit $p^{i+1}$ Elementen. $U \subseteq U'$ und $U$ ist normal in $U'$.
+		\end{enumerate}
+	\end{theorem}
+
+	\begin{proof}
+		Banal: $\{ e \}$ hat $p^0$ Elemente
+		
+		Cauchy: Es existiert eine Untergruppe mit $p$ Elementen. Per Induktion genügt es also Teil 2) zu zeigen.
+		
+		Sei also $0 \leq i < n$ gegeben, sei $U$ mit $p^i$ Elementen gegeben. Wissen dann (Lemma und Zusatz) $N(U) \supsetneq U$. Weil $U$ normal ist in $N(U)$ kann ich Quotientengruppe betrachten!
+		
+		\begin{equation*}
+			\pi: N(U) \longrightarrow N(U) / U
+		\end{equation*}
+		
+		Lemma: $[N(U):U] = [G: U] \equiv 0 \mod p$
+		
+		$\Rightarrow \# N(U)/U \equiv 0 \mod p$
+		
+		$\Rightarrow p \mid \# N(U)/U$
+		
+		Cauchy: Finde in $N(U)/U$ eine Untergruppe $U' \subseteq N(U)/U$ von Ordnung $\#U = p$. Setze $U' \coloneqq \pi^{-1} (\underline{U}')$. Diese Gruppe hat dann $p^{i+1}$ viele Elemente und $U' \subseteq N(U)$, also $U \subseteq U'$ normal.
+	\end{proof}
+
+	\begin{theorem}[Sylow-Satz 2]
+		Sei $G$ eine endliche Gruppe: Zu jeder $p$-Untergruppe $U \subseteq G$ und jeder $p$-Sylowgruppe $P \subseteq G$ gibt es $g \in G: g U g^{-1} \subseteq P$.
+		
+		Insbesondere: je zwei $p$-Sylowgruppen sind zueinander konjugiert!
+	\end{theorem}
+
+	\begin{theorem}[Sylow-Satz 3]
+		Sei $G$ eine endliche Gruppe $s_p = \#\text{$p$-Sylowgruppen}$
+		
+		$\Rightarrow s_p \mid \#G$ und $s_p \equiv 1 \mod p$
+	\end{theorem}
 	
 \end{document}
