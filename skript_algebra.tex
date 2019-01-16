@@ -1216,7 +1216,7 @@
 				\node(R1) at (0,0){$R$};
 				\node[right = 2 of R1](k1){$k$};
 				\node[below = 1 of R1](R2){$R$};
-				\node[below = 1 of k1](k2){$k$};
+				\node[below = 1 of k1](k2){$k'$};
 				
 				\draw[->] (R1) -- (k1) node[midway,above]{$\varphi$};
 				\draw (R1) -- (R2) node[midway,left]{$\mathbbm{1}_R$};
@@ -1233,7 +1233,7 @@
 				\node(R1) at (0,0){$R$};
 				\node[right = 2 of R1](k1){$k$};
 				\node[below = 1 of R1](R2){$R$};
-				\node[below = 1 of k1](k2){$k$};
+				\node[below = 1 of k1](k2){$k'$};
 				
 				\draw[->] (R1) -- (k1) node[midway,above]{$\varphi$};
 				\draw (R1) -- (R2) node[midway,left]{$\mathbbm{1}_R$};
@@ -1397,7 +1397,7 @@
 			
 			Grund: Wir haben eine Inklusion $R \subset \setQ(2 + \sqrt{-5})$ deshalb gibt es Körpermorphismus $Q(R) \to \setQ(2 + \sqrt{-5})$.
 			
-			Dieser ist surjektiv, denn $Q(R)$ enthält das Element $a = 2 + \sqrt{-5}$. Wir wissen aber $\setQ(2 + \sqrt{-5})$ ist der kleinste Körper der dieses Element enthält.
+			Dieser ist injektiv, denn $Q(R)$ enthält das Element $a = 2 + \sqrt{-5}$. Wir wissen aber $\setQ(2 + \sqrt{-5})$ ist der kleinste Körper der dieses Element enthält.
 			\item Sei $R$ faktoriell. Wähle Repräsentantensystem $P \subset R$. Dann kann ich alle Elemente von $Q(R)$ auf eindeutige Weise schreiben als
 			\begin{equation*}
 				\varepsilon \cdot \prod_{p \in P} p^{\alpha_p}
@@ -1414,7 +1414,7 @@
 	
 	Behauptung: $f$ ist irreduzibel in $\setZ[x]$
 	
-	Anbenommen es gäbe einen echten Teiler, dann gäbe es einen linearen Teiler das heißt
+	Angenommen es gäbe einen echten Teiler, dann gäbe es einen linearen Teiler das heißt
 	\begin{equation*}
 		\exists a,b \in \setZ, a \neq 0: f(x) = (ax + b) g(x)
 	\end{equation*}
@@ -2268,7 +2268,7 @@
 	\end{example}
 
 	\begin{definition}
-		Sei $(M, \leq)$ eine Mengen mit Halbordnung. Eine Kette ist eine Teilmenge $N \subset M$, so dass die auf $N$ induzierte Halbordnung vollständig ist. Ein Element $m \in M$ heißt obere Schranke der Kette $N$, falls $\forall a \in N: n \leq m$.
+		Sei $(M, \leq)$ eine Mengen mit Halbordnung. Eine Kette ist eine Teilmenge $N \subset M$, so dass die auf $N$ induzierte Halbordnung vollständig ist. Ein Element $m \in M$ heißt obere Schranke der Kette $N$, falls $\forall n \in N: n \leq m$.
 	\end{definition}
 
 	\begin{example}
@@ -3223,7 +3223,7 @@
 		\begin{enumerate}
 			\item $L/k$ ist normal
 			\item Es gibt eine Familie $(f_\lambda)_{\lambda \in \Lambda}$ von Polynomen in $k[x]$ so dass $L$ aus $k$ entsteht durch Adjunktion sämtlicher Nullstellen der $f_\lambda$ in $\overline{L}$.
-			\item Jeder Körpermorphismus $\sigma: L \to \overline{k}$ hat $\operatorname{Bild}(\sigma) = L$
+			\item Jeder $k$-Morphismus $\sigma: L \to \overline{L}$ hat $\operatorname{Bild}(\sigma) = L$
 		\end{enumerate}
 	\end{theorem}
 
@@ -3327,7 +3327,7 @@
 	\end{corollary}
 
 	\begin{remark}
-		Wenn $K \subset L \subset M$ Körpererweiterungen sind und $K/M$ Galois ist, dann ist $L/M$ Galois, aber $K/L$ muss nicht Galois sein.
+		Wenn $K \subset L \subset M$ Körpererweiterungen sind und $M/K$ Galois ist, dann ist $M/L$ Galois, aber $L/K$ muss nicht Galois sein.
 	\end{remark}
 
 	\begin{remark}
@@ -3863,7 +3863,7 @@
 	\end{theorem}
 
 	\begin{proof}
-		Die Menge $G$ ist disjunkte Vereinigung von $[G:H]$ vielen Bahnen. Müssen also zeigen: alle Bahnen enthalten exakt $\#H$ viele Elemente. Wegen Satz \ref{thm:4_4} genügt es zu zeigen $\forall g \in G: \#\operatorname{Iso}(g) = \{ e \}$.
+		Die Menge $G$ ist disjunkte Vereinigung von $[G:H]$ vielen Bahnen. Müssen also zeigen: alle Bahnen enthalten exakt $\#H$ viele Elemente. Wegen Satz \ref{thm:4_4} genügt es zu zeigen $\forall g \in G: \operatorname{Iso}(g) = \{ e \}$.
 		
 		Erinnerung: $\operatorname{Iso}(g) = \{ h \in H \mid h \cdot g = g \}$
 	\end{proof}
@@ -3952,6 +3952,7 @@
 	Sylow-Sätze geben Teilantwort. Die Zentrale Beobachtung ist einfach!
 	
 	\begin{lemma}
+		\label{lemma:sylowKeyLemma}
 		Sei $G$ eine Gruppe, sei $\#G = p^n$ für $p$ Primzahl, $n \in \setN$. $G$ wirke auf endliche Menge $M$. Setze $M_0 = \operatorname{Fix}(G)$. Dann ist $\# M \equiv \# M_0  \mod p$.
 	\end{lemma}
 
@@ -4122,10 +4123,130 @@
 		Insbesondere: je zwei $p$-Sylowgruppen sind zueinander konjugiert!
 	\end{theorem}
 
+	\begin{proof}
+		$H$ wirkt auf $G/P \eqqcolon M$.
+		
+		$\#G = p^n \cdot m$ wobei $p \nmid m$ und $\#P = p^n$
+		
+		$\Rightarrow \#M = m \equiv 0 \mod p$
+		
+		Mit Lemma \ref{lemma:sylowKeyLemma} folgt $M_0 \neq \emptyset$.
+		
+		Also gibt es $g \in G$ so dass $gP \in G/P$ Fixpunkt von $H$ ist.
+		
+		Für alle $h \in H$ gilt $h \cdot g \cdot P = g \cdot P$.
+		
+		$\Rightarrow g^{-1} h g \cdot P = P \forall h \in H$.
+		
+		$\forall h \in H: g^{-1} h g \in P \Rightarrow g^{-1} H g \subset P$
+	\end{proof}
+
 	\begin{theorem}[Sylow-Satz 3]
 		Sei $G$ eine endliche Gruppe $s_p = \#\text{$p$-Sylowgruppen}$
 		
-		$\Rightarrow s_p \mid \#G$ und $s_p \equiv 1 \mod p$
+		$\Rightarrow s_p \mid \#G$ und $s_p \neq 1 \mod p$
 	\end{theorem}
+
+	\begin{proof}
+		Betrachte die Wirkung von $G$ auf $\operatorname{subgrp}(G) = \{ H \subset G \mid \text{$H$ Untergruppe} \}$ durch Konjugation: $(g, H) \mapsto g^{-1} H g$.
+		
+		Alle $p$-Sylow Untergruppen bilden eine Bahn mit Länge $s_p$.
+		
+		Die Länge einer Bahn teilt $\#G$, also teilt $s_p$ $\#G$.
+		
+		Sei $P \subset G$ eine $p$-Sylow Untergruppe $P \subset G$. $P$ wirkt durch Konjugation auf die Menge der $p$-Sylow Untergruppen.
+		
+		Die Fixpunkte dieser Wirkung sind
+		\begin{equation*}
+			M_0 = \{ Q \mid g^{-1} Q g = Q \; \forall g \in P \}
+		\end{equation*}
+		oder auch $Q \in M_0 \Leftrightarrow P \subset N(Q) = \{ g \in G \mid g^{-1} Q g = Q \} \subseteq G$
+		
+		Beobachte: $P$ und $Q$ sind $p$-Sylow Untergruppen von $N(Q)$.
+		
+		Nach Sylow-Satz 2 sind beide zueinander konjugiert: Es gibt also $h \in N(Q)$ so dass $P = h^{-1} Q h = Q$. $\Rightarrow M_0 = \{ P \}$. Mit Lemma \ref{lemma:sylowKeyLemma} folgt $s_p \equiv \# M_0 = 1 \mod p$.
+	\end{proof}
+
+	\subsection{Abelsche Gruppen}
+	
+	Sei $G$ eine abelsche Gruppe. Für $n \in \setN$ und $g \in G$ schreibe $n \cdot g = \underbrace{g + \dots + g}_{\text{$n$-mal}}$ und $(-n) \cdot a = -(n \cdot a)$.
+	
+	Beachte: Für $n \in \setZ$, und $g,h \in G$ gilt $n(a + b) = n a + n b$.
+	
+	\begin{definition}
+		Eine abelsche Gruppe $G$ ist endlich erzeugt, falls es eine endliche liste von Elementen $g_1, \dots, g_n \in G$ gibt, so dass jedes $g \in G$ als Linearkombination geschrieben werden kann.
+		\begin{equation*}
+			g = \sum_{i = 1}^n n_i g_i, \quad n_i \in \setZ
+		\end{equation*}
+	\end{definition}
+
+	\begin{definition}
+		Ein Erzeugendensystem $\{ g_1, \dots, g_n \}$ heißt Basis falls gilt
+		\begin{equation*}
+			0 = \sum_{i = 1}^n n_i g_i \Rightarrow n_i = 0 \; \forall i
+		\end{equation*}
+		
+		Wenn $G$ eine Basis hat, heißt $G$ frei.
+	\end{definition}
+
+	\begin{lemma}
+		Wenn $G$ frei ist, haben je zwei Basen dieselbe Länge. Die Länge heißt dann Rang von $G$.
+	\end{lemma}
+
+	\begin{theorem}
+		Sei $G$ eine endlich erzeugte abelsche Gruppe. Dann gibt es $r \in \setZ_{\geq 0}$ und $a_1, \dots, a_n \in \setZ_{>0}$ mit $a_i \mid a_{i+1} \; \forall i \in \{ 1, \dots, n-1 \}$ so dass
+		\begin{equation*}
+			G \cong \setZ^r \oplus \setZ/(a_1) \oplus \dots \oplus \setZ/(a_n)
+		\end{equation*}
+		$r, a_1, \dots, a_n$ sind durch $G$ eindeutig bestimmt.
+	\end{theorem}
+
+	\begin{remark}
+		\begin{enumerate}
+			\item Wir nennen $r$ den Rang von $G$ und $a_1, \dots, a_n$ die Elementarteiler von $G$.
+			\item Die Summe $\setZ(a_1) \oplus \dots \oplus \setZ/(a_n)$ ist der Torsionsanteil von $G$ und $\setZ^r$ der freie Anteil von $G$.
+			\item Der Torsionsteil ist eindeutig bestimmte Untergruppe von $G$ und ist $\operatorname{Tors}(G) = \{ g \in G \mid \operatorname{ord}(g) < \infty \}$.
+			\item der freie Anteil von $G$ ist nicht notwendigerweise eindeutig bestimmt als Untergruppe, aber es gilt $\setZ^r \cong G/\operatorname{Tors}(G)$
+		\end{enumerate}
+	\end{remark}
+
+	\subsection{Auflösbare Gruppen}
+	
+	Sei $G$ eine Gruppe. Wir versuchen $G$ zu verstehen.
+	
+	Finde eine normale Untergruppe $N \subset G, i \neq N \neq G$. Wir betrachten $N$ und $G/N$.
+	
+	\begin{definition}
+		Eine Gruppe $G$ heißt auflösbar, wenn es eine endliche Kette
+		\begin{equation*}
+			G = N_k \supset N_{k-1} \supset N_{k-2} \supset \dots \subset N_1 \supset N_0 = \{ e \}
+		\end{equation*}
+		gibt, so dass $N_i$ normal in $N_{i+1}$ ist und dass $N_{i+1}/N_i$ abelsch ist für alle $i$.
+	\end{definition}
+
+	\begin{theorem}
+		Jede endliche $p$-Gruppe ist auflösbar.
+	\end{theorem}
+	
+	\begin{proof}
+		Sei $G$ eine endliche $p$-Gruppe. Angenommen $G \neq \{ e \}$. Dann ist $Z(G)$ ebenso nicht trivial.
+		
+		Betrachte jetzt $G/Z(G)$ und beweise durch Induktion wie folgt:
+		
+		Nehme an wir haben eine Auflösungskette
+		\begin{equation*}
+			G/Z(G) = \tilde{N}_k \supset \tilde{N}_{k-1} \supset \dots \supset \tilde{N}_1 \supset \tilde{N}_0 = \{ e \}
+		\end{equation*}
+		
+		Sei $\varphi: G \to G/Z(G)$ die Quotientenabbildung und setze $N_i = \varphi^{-1}(\tilde{N_i})$. Damit erhalten wir die Kette
+		\begin{equation*}
+			G = N_k \supset N_{k-1} \supset \dots \supset N_1 \supset N_0 = Z(G) \subset N_{-1} = \{ e \}
+		\end{equation*}
+		$\ker(q_i) = N_i \subset\underbrace{ N_{i+1} \twoheadrightarrow \tilde{N}_{i+1} \twoheadrightarrow \tilde{N}_{i+1}/\tilde{N}_i}_{q_i}$
+		
+		$\Rightarrow N_i \subset N_{i+1}$ ist normal
+		
+		$\Rightarrow N_{i+1}/N_i \cong \tilde{N}_{i+1}/\tilde{N_i}$ ist abelsch		
+	\end{proof}
 	
 \end{document}
