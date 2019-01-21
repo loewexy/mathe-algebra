@@ -4118,13 +4118,13 @@
 	\end{proof}
 
 	\begin{theorem}[Sylow-Satz 2]
-		Sei $G$ eine endliche Gruppe: Zu jeder $p$-Untergruppe $U \subseteq G$ und jeder $p$-Sylowgruppe $P \subseteq G$ gibt es $g \in G: g U g^{-1} \subseteq P$.
+		Sei $G$ eine endliche Gruppe: Zu jeder $p$-Untergruppe $H \subseteq G$ und jeder $p$-Sylowgruppe $H \subseteq G$ gibt es $g \in G: g H g^{-1} \subseteq P$.
 		
 		Insbesondere: je zwei $p$-Sylowgruppen sind zueinander konjugiert!
 	\end{theorem}
 
 	\begin{proof}
-		$H$ wirkt auf $G/P \eqqcolon M$.
+		$H$ wirkt auf die Menge $G/P \eqqcolon M$.
 		
 		$\#G = p^n \cdot m$ wobei $p \nmid m$ und $\#P = p^n$
 		
@@ -4144,7 +4144,7 @@
 	\begin{theorem}[Sylow-Satz 3]
 		Sei $G$ eine endliche Gruppe $s_p = \#\text{$p$-Sylowgruppen}$
 		
-		$\Rightarrow s_p \mid \#G$ und $s_p \neq 1 \mod p$
+		$\Rightarrow s_p \mid \#G$ und $s_p \equiv 1 \mod p$
 	\end{theorem}
 
 	\begin{proof}
@@ -4219,7 +4219,7 @@
 	\begin{definition}
 		Eine Gruppe $G$ heißt auflösbar, wenn es eine endliche Kette
 		\begin{equation*}
-			G = N_k \supset N_{k-1} \supset N_{k-2} \supset \dots \subset N_1 \supset N_0 = \{ e \}
+			G = N_k \supset N_{k-1} \supset N_{k-2} \supset \dots \supset N_1 \supset N_0 = \{ e \}
 		\end{equation*}
 		gibt, so dass $N_i$ normal in $N_{i+1}$ ist und dass $N_{i+1}/N_i$ abelsch ist für alle $i$.
 	\end{definition}
@@ -4247,6 +4247,120 @@
 		$\Rightarrow N_i \subset N_{i+1}$ ist normal
 		
 		$\Rightarrow N_{i+1}/N_i \cong \tilde{N}_{i+1}/\tilde{N_i}$ ist abelsch		
+	\end{proof}
+
+	\begin{theorem}
+		Sei $G$ eine endliche auflösbare Gruppe. Dann ist jede Untergruppe und jeder Quotient auflösbar.
+	\end{theorem}
+
+	\begin{theorem}
+		Sei $G$ eine auflösbare Gruppe, and sei $N \subset G$ eine normale Untergruppe.
+		
+		Dann gibt es eine Auflösungskette
+		\begin{equation*}
+			\{ e \} \subset N_1 \subset \dots \subset N_k \subset G
+		\end{equation*}
+		so dass
+		\begin{enumerate}
+			\item $N \in \{ \{e\}, N_1, \dots, N_k, G \}$
+			\item $N_{i+1}/N_i$ ist zyklisch mit primer Ordnung
+		\end{enumerate}
+	\end{theorem}
+
+	\begin{proof}
+		\heading{1)} Sei $\{ e \}  \subset \tilde{N}_1 \subset \tilde{N}_2 \subset \dots \subset \tilde{N}_l = N$ eine Auflösungskette für $N$.
+		
+		Sei $N/N = \tilde{N}_{l} \subset \tilde{N}_{l+1} \subset \dots \subset \tilde{N}_k = G/N$ eine Auflösungskette für $G/N$. Sei $q: G \to G/N$ dann is
+		\begin{equation*}
+			\{ e \} \subset \tilde{N}_1 \subset \dots \subset \tilde{N}_l = N = q^{-1}(\tilde{N}_l) \subset q^{-1}(\tilde{N}_{l+1}) \subset \dots \subset q^{-1}(\tilde{N}_k) = G
+		\end{equation*}
+		eine Auflösungskette für $G$.
+		
+		\heading{2)} Wenn $\{ N_i \}$ eine Auflösungskette ist, dann ist $N_{i+1}/N_i = \setZ/(a_1) \oplus \dots \oplus \setZ/(a_m)$ abelsch.
+		
+		Sei $p$ eine Primzahl die $\abs{N_{i+1}/N_i}$ teilt. Dann sagt der Satz von Cauchy dass $N_{i+1} / N_i$ eine zyklische Untergruppe $H$ der Ordnung $p$ hat so dass $\{ e \} \subset H \subset N_{i+1}/N_i$.
+		\begin{equation*}
+			\{ e \} \subset N_1 \subset N_2 \subset \dots \subset N_i \subset q^{-1}(H) \subset N_{i+1} \subset \dots \subset N_k
+		\end{equation*}
+	\end{proof}
+
+	\begin{definition}
+		Eine Gruppe $G$ ist einfach, wenn die einzige normalen Untergruppen $\{ e \}$ und $G$ sind.
+	\end{definition}
+
+	\begin{theorem}
+		Wenn $G$ eine endliche einfache abelsche Gruppe ist, dann ist
+		\begin{equation*}
+			G \cong \setZ/(p)
+		\end{equation*}
+		für eine Primzahl $p$.
+	\end{theorem}
+
+	\begin{theorem}
+		Für $n \geq 5$ ist $S_n$ nicht auflösbar.
+	\end{theorem}
+	
+	\begin{proof}
+		Nutze den nächsten Satz.
+	\end{proof}
+
+	\begin{theorem}
+		Für $n \geq 5$ ist $A_n$ einfach.
+		
+		Wobei $A_n = \{ \sigma \in S_n \mid \operatorname{sign}(\sigma) = 1 \}$.
+	\end{theorem}
+
+	\begin{proof}
+		Zwei Zutaten: Sei $\{ e \} \neq N \subset A_n$ eine normale Untergruppe.
+		\begin{enumerate}
+			\item Wenn $N$ ein $3$-Zykel enthält, dann ist $N = A_n$
+			\item $N$ enthält einen $3$-Zykel
+		\end{enumerate}
+	
+		\heading{1)} Sei $(a b c) \in N$. Wir zeigen $(a b d) \in N$.
+		
+		Wir nehmen $\tau = (ab)(cd) \in A_n$. Dann ist $\tau \sigma \tau^{-1} = (b a d)$.
+		
+		Also ist $(a b d) = (\tau \sigma \tau^{-1})^{-1} \in A_n$.
+		
+		Weil $N$ normal ist gilt $(a b d) \in N$.
+		
+		\heading{2)} Sei $e \neq \sigma \in N$ ein Element, dass so viele Elemente von $\{ 1, 2, 3, \dots, n \}$ festhält wie möglich.
+		
+		Angenommen $\sigma$ fixiert $n-3$ Elemente, dann ist $\sigma$ ein $3$-Zykel.
+		
+		Angenommen $\sigma$ fixiert $n-4$ Elemente
+		\begin{equation*}
+			\sigma = \begin{cases}
+				(a b c d) & \notin A_n \\
+				(a b)(c d)
+			\end{cases}
+		\end{equation*}
+		Sei $e \in \{ 1, \dots, n\}$ verschieden von $a,b,c$ und $d$. Setze $\tau = (c d e) \in A_n$
+	
+		Dann ist $\tilde{\sigma} = \tau \sigma \tau^{-1} = (ab)(de) \in N$ und $\tilde{\sigma} \sigma = (d c e) \in N$ $\lightning$.
+		
+		Angenommen $\sigma$ ändert $\geq 5$ Elemente. Schreibe $\sigma$ also Produkt von disjunkten Zykeln absteigend geordnet nach Länge. Also
+		\begin{equation*}
+			\sigma = \begin{cases}
+				(a b c d e \dots)(\dots)(\dots) \dots \\
+				(a b c d) (e f \dots) \dots \\
+				(a b c) (d e \dots \\
+				(a b) (c d) \dots
+			\end{cases}
+		\end{equation*}
+		Konjugiere jetzt $\sigma$ durch $\tau = (bcd) \in A_n$, dann fixiert $\tau \sigma \tau^{-1} \in N$ mehr Elemente als $\sigma$.
+		
+		Also enthält $N$ einen $3$-Zykel.
+		
+		$\Rightarrow N = A_n$ also ist $A_n$ einfach.
+		
+		\heading{Für $n=5$ und $\#A_5 = 60$}
+		\begin{itemize}
+			\item Berechne eine Tabelle von Konjugationsklassen von $A_5$.
+			\item Wenn $N$ normal ist, dann ist es eine Vereinigung von Konjugationsklassen.
+			\item Auf der anderen Seite teilt $\#N$ $\#A_5 = 60$.
+		\end{itemize}
 	\end{proof}
 	
 \end{document}
