@@ -2960,7 +2960,7 @@
 	\begin{proof}
 		\textit{Beobachtung 1:} Wir wissen schon: Die Elemente von $M$ kann ich schreiben als
 		\begin{equation*}
-			\lambda_0 \lambda_1 a + \lambda_2 a^2 + \dots + \lambda_{n-1} a^{n-1}
+			\lambda_0 + \lambda_1 a + \lambda_2 a^2 + \dots + \lambda_{n-1} a^{n-1}
 		\end{equation*}
 		mit $\lambda_i \in k$ wobei $n = \deg f$. Insbesondere ist für alle solche Elemente
 		\begin{equation*}
@@ -2980,14 +2980,14 @@
 		\begin{equation*}
 			\Omega: k[x] \to \overline{k}, \quad g \mapsto g(b)
 		\end{equation*}
-		Dann $f \in \operatorname{Ker}(\Omega)$, der Kern ist ein Hauptideal und $f$ reduzibel also: $(f) = \operatorname{ker}(\Omega)$. Also erhalte (nach universeller Eigenschaft) einen Morphismus $k[x]/(f) \to \overline{k}$ wobei $[x] \mapsto b$
+		Dann $f \in \operatorname{Ker}(\Omega)$, der Kern ist ein Hauptideal und $f$ irreduzibel also: $(f) = \operatorname{ker}(\Omega)$. Also erhalte (nach universeller Eigenschaft) einen Morphismus $k[x]/(f) \to \overline{k}$ wobei $[x] \mapsto b$
 		
 		Erhalte $M \to \overline{k}$ durch Komposition der Morphismen.
 		
 		\heading{Varianten mit völlig analogem Beweis}
 		
 		\begin{lemma}
-			Sei $L/k$ eine Körpererweiterung. $a \in L$ algebraisch mit Minimalpolynom $f \in k[x]$. $f$ hat $m$ unterschiedliche Nullstellen in $L$. Dann gibt es genau $m$ unterschiedliche $k$-Morphismen $\varphi: M \to L$, wobei $M = L(a)$ ist.
+			Sei $L/k$ eine Körpererweiterung. $a \in L$ algebraisch mit Minimalpolynom $f \in k[x]$. $f$ hat $m$ unterschiedliche Nullstellen in $L$. Dann gibt es genau $m$ unterschiedliche $k$-Morphismen $\varphi: M \to L$, wobei $M = k(a)$ ist.
 		\end{lemma}
 	
 		\begin{lemma}
@@ -3539,7 +3539,7 @@
 			
 			$H_1 \subset H_2 \Rightarrow \operatorname{Fix}(H_1) \supset \operatorname{Fix}(H_2)$ und $[H_2:H_1] = [\operatorname{Fix}(H_1): \operatorname{Fix}(H_2)]$
 			
-			\item Für jedes $\sigma \in G, Z \in \mathcal{Z}$ ist $\sigma(z)$ ein Zwischenkörper und $\Gal(L/\sigma(Z)) = \sigma \circ \Gal(L/Z) \circ \sigma^{-1} = \{ \sigma \tau \sigma^{-1} \mid \tau \in \Gal(L/K) \} \subseteq \Gal(L/K)$.
+			\item Für jedes $\sigma \in G, Z \in \mathcal{Z}$ ist $\sigma(Z)$ ein Zwischenkörper und $\Gal(L/\sigma(Z)) = \sigma \circ \Gal(L/Z) \circ \sigma^{-1} = \{ \sigma \tau \sigma^{-1} \mid \tau \in \Gal(L/K) \} \subseteq \Gal(L/K)$.
 			
 			\item Für $Z \in \mathcal{Z}$ ist $Z/K$ Galois genau dann wenn $G(L/Z) \subset G$ eine normale Untergruppe ist, in anderen Worten wenn $\sigma \circ \Gal(L/Z) \circ \sigma^{-1} = \Gal(L/Z)$ für alle $\sigma \in G$.
 			
@@ -3706,7 +3706,7 @@
 	\subsection{Grundbegriffe}
 	
 	\begin{definition}
-		Sei $G$ eine Gruppe, $M$ eine Menge. Eine gruppenwirkung ist eine Abbildung
+		Sei $G$ eine Gruppe, $M$ eine Menge. Eine Gruppenwirkung ist eine Abbildung
 		\begin{equation*}
 			\alpha: G \times M \to M
 		\end{equation*}
@@ -3917,7 +3917,7 @@
 		
 		Konsequenz:
 		\begin{enumerate}
-			\item $G$ hat überhaupt keine Untergruppen.
+			\item $G$ hat überhaupt keine echten Untergruppen.
 			\item $G$ ist zyklisch.
 		\end{enumerate}
 	\end{example}
@@ -3927,7 +3927,7 @@
 		\begin{equation*}
 			\operatorname{ord}(g) = \min \{ n \in \setN : g^n = e \} \in \setN \cup \{ \infty \}
 		\end{equation*}
-		$\operatorname{ord}(g) = \#(g)$, falls endlich ist $\operatorname{ord}(g) \mid \#G$
+		$\operatorname{ord}(g) = \# \langle g \rangle$, falls endlich ist $\operatorname{ord}(g) \mid \#G$
 	\end{definition}
 
 	\begin{example}
@@ -3988,7 +3988,7 @@
 	\end{proof}
 
 	\begin{definition}
-		Sei $p$ eine Primzahl. Eine Gruppe heißt $p$-Gruppe, wenn $\forall g \in G: \operatorname{ord}(g) = p^n$ für ein $n \in \setN$.
+		Sei $p$ eine Primzahl. Eine Gruppe heißt $p$-Gruppe, wenn $\forall g \in G \exists n \in \setN: \operatorname{ord}(g) = p^n$.
 	\end{definition}
 
 	\begin{theorem}
@@ -4054,7 +4054,7 @@
 	\begin{lemma}
 		Sei $G$ endlich, sei $U \subseteq G$ eine $p$-Untergruppe dann gilt:
 		\begin{equation*}
-			[G:U] = [N(U): U]
+			[G:U] = [N(U): U] \mod p
 		\end{equation*}
 		(Erinnerung: $N(U) = \{ g \in G \mid g U g^{-1} = U \}$ Das ist eine Untergruppe von $G$ und $U$ ist normal in $N(U)$)
 	\end{lemma}
@@ -4204,7 +4204,7 @@
 	\begin{remark}
 		\begin{enumerate}
 			\item Wir nennen $r$ den Rang von $G$ und $a_1, \dots, a_n$ die Elementarteiler von $G$.
-			\item Die Summe $\setZ(a_1) \oplus \dots \oplus \setZ/(a_n)$ ist der Torsionsanteil von $G$ und $\setZ^r$ der freie Anteil von $G$.
+			\item Die Summe $\setZ/(a_1) \oplus \dots \oplus \setZ/(a_n)$ ist der Torsionsanteil von $G$ und $\setZ^r$ der freie Anteil von $G$.
 			\item Der Torsionsteil ist eindeutig bestimmte Untergruppe von $G$ und ist $\operatorname{Tors}(G) = \{ g \in G \mid \operatorname{ord}(g) < \infty \}$.
 			\item der freie Anteil von $G$ ist nicht notwendigerweise eindeutig bestimmt als Untergruppe, aber es gilt $\setZ^r \cong G/\operatorname{Tors}(G)$
 		\end{enumerate}
@@ -4361,6 +4361,215 @@
 			\item Wenn $N$ normal ist, dann ist es eine Vereinigung von Konjugationsklassen.
 			\item Auf der anderen Seite teilt $\#N$ $\#A_5 = 60$.
 		\end{itemize}
+	\end{proof}
+
+	\section{Anwendungen}
+	
+	\subsection{Satz vom primitiven Element}
+	
+	\heading{Erinnerung:} Sei $L/k$ eine Körpererweiterung. Die Erweiterung heißt einfach, falls $a \in L$ existiert, mit $L = k(a)$. Solche $a \in L$ heißen primitiv.
+	
+	\heading{Ziel:} Sehr viele Erweiterungen sind einfach.
+	
+	\begin{theorem}[Kriterium für Einfachheit]
+		Sei $L/k$ eine Körpererweiterung dann sind äquivalent:
+		\begin{enumerate}
+			\item $L/k$ ist einfach und algebraisch
+			\item Es gibt nur endlich viele Zwischenkörper
+		\end{enumerate}
+	\end{theorem}
+
+	\begin{proof}
+		\heading{$1) \Rightarrow 2)$} Angenommen $L$ sei einfach und algebraisch. Wähle primitives Element $a \in L$. Das Minimalpolynom von $a$ sei $f_k(x) \in k[x] \subseteq L[x]$.
+		
+		\textit{Beobachtung:} Wenn $Z$ ein Zwischenkörper ist, dann ist $a$ algebraisch über $Z$ und hat Minimalpolynom $f_Z(x) \in Z[x] \subseteq L[x]$.
+		
+		Es gilt: im Ring $L[x]$ ist $f_Z$ ein normierter Teiler von $f_k$.
+		
+		Habe also Abbildung
+		\begin{equation*}
+			\{ \text{Zwischenkörper} \} \overset{\phi}{\to} \underbrace{\{ \text{norm. Polynome in $L[x]$, die Teiler von $f_k$ sind} \}}_{\text{endl. weil $L[x]$ faktoriell ist}}
+		\end{equation*}
+		
+		\textit{Möchte zeigen:} diese Abbildung ist injektiv. Dazu hätte ich gerne eine Abbildung $\eta$ so dass $\eta \circ \phi = Id$.
+		
+		\textit{Das geht so:} Gegeben Polynom $f(x) = \sum_{i = 0}^{n-1} b_i x^i + x^n$. Dann betrachte den Körper $\eta(f) = k(b_0, \dots, b_{n-1})$.
+		
+		Um zu prüfen, ob $\eta \circ \phi = Id$, sei $Z$ ein Zwischenkörper. Dann sei $f_Z(x) = \phi(Z) \in Z[x] \subseteq L[x]$.
+		
+		Da die Koeffizienten von $f_Z$ alle aus $Z$ sind, ist $\eta(f_Z) \subseteq Z$.
+		
+		\textit{Sehe:} $f_Z \in n(f_Z)[x]$ ist irreduzibel hat also Nullstelle $\Rightarrow$ $f_Z$ ist Minimalpolynom von $a$ über $\eta(f_Z)$.
+		
+		$\Rightarrow [L:Z] = [Z(a):Z] = \deg f_Z = [L: \eta(f_Z)] = [\eta(f_Z)(a): \eta(f_z)]$
+		
+		$\Rightarrow [Z:\eta(f_Z)] = 1 \Rightarrow Z = \eta(f_Z)$
+		
+		\heading{$2) \Rightarrow 1)$} Angenommen es gibt nur endlich viele Zwischenkörper.
+		
+		\textit{$L$ ist algebraisch:} Widerspruch! Angenommen es gäbe ein transzendentes Element $a$. Dann $L \supseteq k(a) \supseteq k$ ein Zwischenkörper, und $k(a) \simeq k(x)$ den rationalen Funktionen in einer Variablen.
+		
+		Dann habe ich aber Unterkörper $k(a) \supsetneq k(a^2) \supsetneq k(a^4) \dots$. Habe also $\infty$ viele Zwischenkörper. $\lightning$
+		
+		\textit{$L$ ist einfach:} Die Körpererweiterung $L/k$ ist sogar endlich, also $L = k(a_1, \dots, a_n)$ für geeignete $a_i \in L$. Denn durch Adjunktion
+		\begin{equation*}
+			k \subseteq k(a_1) \subseteq k(a_1, a_2) \subseteq \dots
+		\end{equation*}
+		konstruiere ich Ketten von Zwischenkörpern, es gibt aber nur endlich viele!
+		
+		Falls $k$ endlich ist, dann ist $L$ auch endlich (weil endliche Erweiterungen von endlichem Körper) und $L^*$ ist zyklisch. Finde also $a \in L^*$ so dass $L^* = \{ a, a^2, a^3, \dots, a^n \}$
+		
+		$\Rightarrow k(a) = L$, also ist $a$ primitiv!
+		
+		Sei also ab sofort $k$ unendlich.
+		
+		Wir wissen schon es gibt endlich viele $a_1, \dots, a_n \in L$ so dass $L = k(a_1, \dots, a_n)$. Betrachte Abbildung
+		\begin{align*}
+			k &\longrightarrow \text{Zwischenkörper} \\
+			\lambda &\longmapsto k(a_1 + \lambda a_2)
+		\end{align*}
+		Finde also $\lambda_1 \neq \lambda_2 \in k$ so dass $k(a_1 + \lambda_1 a_2) = k(a_1 + \lambda_2 a_2) = Z$.
+		
+		Wissen: $Z \subseteq k(a_1, a_2)$ und wissen auch: $\lambda_2(a_1 + \lambda_1 a_2) - \lambda_1(a_1 + \lambda_2 a_2) = (\lambda_2 - \lambda_1) a_1 \in Z$. $\Rightarrow a_1 \in Z$.
+		
+		Analog folgt auch $a_2 \in Z$.
+		
+		Insgesamt: $k(a_1 ü \lambda_1 a_2) = k(a_1, a_2)$
+		
+		also $k(a_1, a_2, \dots, a_n) = k(a_1 ü \lambda_1 a_2, a_3, \dots, a_n)$.
+		
+		Wiederhole das Argument, erhalte primitives Element $a \in L$.
+	\end{proof}
+
+	\begin{theorem}[Satz vom primitiven Element]
+		Sei $L/k$ eine separable, endliche Körpererweiterung. Dann ist $L(k)$ einfach.
+	\end{theorem}
+
+	\begin{proof}
+		Sei $N \subset \overline{k}$ die normale Hülle von $L$. Dann ist $N/k$ endlich und galois. Dann gibt es maximal endlich viele Zwischenkörper $N \supseteq \dots \supseteq k$. (genau so viele wie $\Gal(N/k)$ Untergruppen hat) $\Rightarrow L/k$ hat endlich viele Zwischenkörper und ist damit einfach.
+	\end{proof}
+
+	\subsection{Kreisteilungskörper}
+	
+	\heading{Ziel:} Antwort auf die Frage, ob das regelmäßige $n$-Eck konstruierbar ist.
+	
+	Dazu betrachte Zerfällungskörper $L_n$ von $x^n - 1 \in \setQ[x]$, genannt $n$-te Kreisteilungskörper.
+	
+	\textit{Wissen:} $L_n \subseteq \setC$, die Nullstellen von $x^n -1$ heißen $n$-te Einheitswurzeln. Die Menge der $n$-ten Einheitswurzeln bilden zyklische Untergruppe von $\setC^*$, eine Einheitswurzel heißt primitiv, wenn sie die Gruppe erzeugt.
+	
+	Ganz allgemein identifiziere die Gruppe der $n$-ten Einheitswurzeln $\{ e^{\frac{2\pi i}{n} \cdot j} \mid 1 \leq j \leq n \}$ und $\setZ/(n)$.
+	
+	\textit{Wissen schon:} Die $j$-te Einheitswurzel ist primitiv $\Leftrightarrow \operatorname{ggT}(j,n) = 1$ $\Leftrightarrow$ Restklasse von $j$ ist Einheit in $\setZ/(n)$.
+	
+	Muss primitive Einheitswurzeln verstehen, um die irredzuiblen Faktoren von $x^n -1$ (und damit $L_n$) zu verstehen. Wie viele primitive Einheitswurzeln gibt es?
+	
+	\begin{definition}
+		Die Abbildung
+		\begin{align*}
+			\setN &\overset{\varphi}{\longrightarrow} \setN \\
+			n &\mapsto \# \{ \text{prim $n$-te Einheitswurzeln} \}
+		\end{align*}
+		heißt Eulersche $\varphi$-Funktion.
+	\end{definition}
+
+	\begin{theorem}
+		Es gilt:
+		\begin{enumerate}
+			\item Wenn $n,m \in \setN$ teilerfremd sind $\Rightarrow \varphi(n \cdot m) = \varphi(n) \cdot \varphi(m)$
+			\item Wenn $p \in \setN$ prim ist $\alpha \in \setN$ $\Rightarrow$ $\varphi(p^\alpha) = p^{\alpha - 1}(p-1)$
+			\item Dann
+			\begin{equation*}
+				\varphi(p_1^{\alpha_1} \cdot \dots \cdot p_n^{\alpha_n}) = p_1^{\alpha_1 - 1} \dots p_n^{\alpha_n - 1} (p_1 - 1) \dots (p_n - 1)
+			\end{equation*}
+			falls $p_1, \dots, p_n$ paarweise verschiedene Primzahlen sind.
+		\end{enumerate}
+	\end{theorem}
+
+	\begin{proof}
+		\heading{1)} Chinesischer Restsatz: $\setZ/(n \cdot m) = \setZ/(n) \times \setZ/(m)$ also
+		\begin{equation*}
+			\left( \setZ/(n \cdot m) \right)^* = \left( \setZ/(n) \right)^* \times \left( \setZ/(m) \right)^*
+		\end{equation*}
+		also $\varphi(n \cdot m) = \varphi(n) \cdot \varphi(m)$
+		
+		\heading{2)} Die Nullteiler (= nicht Einheiten) im Ring $\setZ/(p^\alpha)$ sind genau die Restklassen der $j$ mit $\operatorname{ggT}(j, p^\alpha) \neq 1$. Das sind exakt:
+		\begin{equation*}
+			p, 2 \cdot p, 2 \cdot p, 4 \cdot p, \dots, p^{\alpha-1} p
+		\end{equation*}
+		also $p^{\alpha-1}$ viele. Also $\#\text{Einheiten} = p^\alpha - p^{\alpha-1} = p^{\alpha - 1} \cdot (p-1)$
+	\end{proof}
+
+	\begin{definition}
+		Das $n$-te Kreisteilungspolynom ist
+		\begin{equation*}
+			\phi_n(x) = \prod_{\substack{\xi \text{ eine prim} \\ \text{$n$-te EHW}}} (x - \xi) \qquad \in \setC[x]
+		\end{equation*}
+		Dann $\deg \phi_n = \varphi(n)$.
+	\end{definition}
+
+	\begin{remark}
+		$\phi_n$ kann man ganz gut ausrechnen! Denn
+		\begin{equation*}
+			\phi_n(x) = \prod_{\substack{\xi \text{ eine} \\ \text{$n$-te EHW}}} (x - \xi)
+		\end{equation*}
+		
+		Wenn $\xi$ jetzt irgendeine $n$-te Einheitswurzel ist, mit $\operatorname{ord}(\xi) = d$, dann ist $d \mid n$ und $\xi$ ist primitive $d$-te Einheitswurzel.
+		
+		\begin{equation*}
+			\Rightarrow x^n - 1 = \prod_{\substack{\xi \text{ eine} \\ \text{$n$-te EHW}}} (x - \xi) = \prod_{d \mid n} \prod_{\substack{\xi \text{ eine prim} \\ \text{$n$-te EHW}}} (x - \xi) = \prod_{d \mid n} \phi_d(x)
+		\end{equation*}
+		
+		Wissen noch: $\phi_1(x) = x - 1$
+		
+		Falls $p$ prim:
+		\begin{equation*}
+			x^p - 1 = \phi_1(x) \cdot \phi_p(x) \Rightarrow \phi_p(x) = \frac{x^p - 1}{x - 1} = x^{p-1} + x^{p-2} + \dots + 1
+		\end{equation*}
+	\end{remark}
+
+	Analog:
+	\begin{equation*}
+		x^{15} - 1 = \phi_1(x) \cdot \phi_3(x) \cdot \phi_5(x) \phi_{15}(x)
+	\end{equation*}
+	
+	\begin{equation*}
+		\phi_{15}(x) = \frac{x^{15} - 1}{(x-1)(x^2 + x + 1)(x^4 + x^3 + x^2 + x + 1)} = x^8 - x^7 + x^5 - x^4 + x^3 - x + 1
+	\end{equation*}
+	
+	\begin{remark}
+		Für alle $n$ gilt sogar $\phi_n \in \setZ[x]$
+	\end{remark}
+
+	\begin{remark}
+		Für alle $n$ ist $\phi_n$ irreduzibel.
+	\end{remark}
+
+	\heading{Zusammenfassung:}
+	\begin{itemize}
+		\item $L_n$ ist Zerfällungskörper von $x^n - 1$, also $L_n/\setQ$ ist Galois
+		\item Wenn $\xi$ eine primitive $n$-te Einheitswurzel ist, dann ist $L_n = \setQ(\xi)$. Minimalpolynom von $\xi$ ist $\phi_n$.
+		\begin{equation*}
+			\Rightarrow [L_n: \setQ] = \phi(n) = \# (\setZ/(n))^*
+		\end{equation*}
+	\end{itemize}
+
+	\begin{theorem}
+		\begin{equation*}
+			\Gal(L_n/\setQ) \cong (\setZ/(n))^*
+		\end{equation*}
+	\end{theorem}
+
+	\begin{proof}
+		Müssen injektiven Gruppenmorphismus finden! Wähle primitive Einheitswurzel $\xi$. Gegeben $\sigma \in \Gal(L_n/\setQ)$ betrachte $\sigma(\xi)$. Dies ist primitive $n$-te Einheitswurzel, weil $\sigma$ die Nullstellen von $\phi_n$ permutiert.
+		
+		Also: $\sigma(\xi) = \xi^{r_\sigma}$ wobei $r_\sigma \in (\setZ/(n))^*$.
+		
+		Nachrechnen: Die Abbildung
+		\begin{align*}
+			\Gal(L_n/\setQ) &\longrightarrow (\setZ/(n))^* \\
+			\sigma &\longmapsto r_\sigma
+		\end{align*}
+		ist Gruppenmorphismus. Die Abbildung ist injektiv, denn $\sigma$ ist durch $\operatorname{Bild}(\sigma(\xi))$ festgelegt, denn $L_n = \setQ(\xi)$.
 	\end{proof}
 	
 \end{document}
