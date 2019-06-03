@@ -1,19 +1,21 @@
 % !TeX spellcheck = de_DE
-\documentclass[12pt,parskip=full]{scrartcl}
+\documentclass[a4paper,12pt,numbers=noenddot,parskip=full]{scrartcl}
  
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage[ngerman]{babel}
 \usepackage{color}
+\usepackage[hidelinks]{hyperref}
 \usepackage{amsmath,amssymb,amstext,mathtools,amsthm}
 \usepackage{subcaption}
 \usepackage{float}
 \usepackage{wasysym}
 \usepackage{stmaryrd}
 \usepackage{bbm}
-\usepackage[hidelinks]{hyperref}
 \hypersetup{bookmarksnumbered}
+
+
 
 \usepackage{tikz}
 \usetikzlibrary{positioning}
@@ -40,8 +42,10 @@
 \DeclareMathOperator{\Kons}{Kons}
 \DeclareMathOperator{\charac}{char}
 \DeclareMathOperator{\Gal}{Gal}
+
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{}{ }{}
  
-\theoremstyle{definition}
+\theoremstyle{dotless}
 \newtheorem{theorem}{Satz}[section]
 \newtheorem{corollary}[theorem]{Folgerung}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -50,18 +54,30 @@
 \newtheorem{example}[theorem]{Beispiel}
 \newtheorem*{axiom}{Axiom}
 
- 
+\makeatletter
+\g@addto@macro\th@remark{\thm@headpunct{:}}
+\makeatother 
 \theoremstyle{remark}
 \newtheorem*{remark}{Bemerkung}
  
 \hfuzz=5pt 
  
-\title{Skript Algebra}
-\author{Lukas Metzger}
+\title{Algebra und Zahlentheorie}
+
+\subtitle{Wintersemester 2018/19}
+\author{gehalten von Prof. Dr. Stefan Kebekus}
 \date{\today}
  
 \begin{document}
-	\maketitle
+	\pagestyle{headings}
+\begin{titlepage}
+	\maketitle	
+	\thispagestyle{empty}
+\end{titlepage}
+\tableofcontents 
+\thispagestyle{empty}
+\newpage
+\setcounter{page}{1}
 	
 	\setcounter{section}{-1}
 	\section{Konstruktion mit Zirkel und Lineal}
@@ -75,14 +91,14 @@
 
 	\heading{Erste Frage:} Gegeben $n \in \setN$, kann ich das regelmäßige $n$-Eck konstruieren?
 	
-	\heading{Beispielproblem:} Betrachte Das $5$-Eck, sei $a$ die Kantenkänge und $s$ die Sekantenlänge.
+	\heading{Beispielproblem:} Betrachte Das $5$-Eck, sei $a$ die Kantenlänge und $s$ die Sekantenlänge.
 	
 	Dann ist $\frac{s}{a} \notin \setQ$.
 	
 	\begin{proof}
-		Angenommen $\frac{s}{a}$ wäre in $\setQ$. Dann schreibe $\frac{s}{a} = \frac{p}{q}$ mit $p,q \in \setN$. Dann gibt es also eine Länge $d \in \setR$, so dass $s$ und $a$ beides ganzzahlige Vielfache von $d$ sind. $\exists n,m \in \setN$  $a = n \cdot d, s= m \cdot d$.
+		Angenommen $\frac{s}{a}$ wäre in $\setQ$. Dann schreibe $\frac{s}{a} = \frac{p}{q}$ mit $p,q \in \setN$. Dann gibt es also eine Länge $d \in \setR$, sodass $s$ und $a$ beide ganzzahlige Vielfache von $d$ sind. $\exists n,m \in \setN$  $a = n \cdot d, s= m \cdot d$.
 		
-		Betrachte/Erweitere die Konstruktion des $5$-Ecks und erhalte kleines (blaues) $5$-Eck wie gezeichnet mit Sekantenlänge $s' = a$ und Kantenlänge $a' = s - a$.
+		Betrachte/Erweitere die Konstruktion des $5$-Ecks und erhalte ein kleines $5$-Eck (vgl. blaues $5$-Eck in der Abbildung unten) mit Sekantenlänge $s' = a$ und Kantenlänge $a' = s - a$.
 		
 		\begin{center}
 			\includegraphics[width=0.8\linewidth]{bilder/bild2.png}
@@ -94,7 +110,7 @@
 	\heading{Weitere Konstruktionsprobleme:}
 	\begin{itemize}
 		\item $3$-Teilung des Winkels
-		\item Verdoppelung des Würfels (d.h. Verdoppelung des Volumens)
+		\item Verdopplung des Würfels (d.h. Verdopplung des Volumens)
 		\item Quadratur des Kreises (Gegeben ein Kreis, konstruiere Quadrat mit demselben Flächeninhalt)
 	\end{itemize}
 
@@ -166,16 +182,16 @@
 	\end{lemma}
 
 	\begin{definition}[Abelsche Gruppe]
-		Nenne Gruppe $(G,m)$ Abelsch, falls $\forall a,b \in G: m(a,b) = m(b,a)$.
+		Nenne Gruppe $(G,m)$ Abel'sch, falls $\forall a,b \in G: m(a,b) = m(b,a)$.
 	\end{definition}
 
-	\heading{Notation:} Statt $m$ schreibt man oft $+$ oder $\cdot$, wobei $+$ hauptsächlich für Abelsche Gruppen verwendet wird.
+	\heading{Notation:} Statt $m$ schreibt man oft $+$ oder $\cdot$, wobei $+$ hauptsächlich für Abel'sche Gruppen verwendet wird.
 	
 	\begin{example}
 		Beispiele für Gruppen:
 		\begin{itemize}
-			\item Abelsche Gruppen: $(\setZ, +)$, $(\setZ / p\setZ, +)$, $(Vektorraum, +)$
-			\item Nicht-Abelsche Gruppen: Sei $M$ eine Menge mit $>2$ Elementen. Die bijektiven Abbildungen $M \to M$ mit der Hintereinanderausführung ist eine nicht-Abelsche Gruppe.
+			\item Abel'sche Gruppen: $(\setZ, +)$, $(\setZ / p\setZ, +)$, $(Vektorraum, +)$
+			\item Nicht-Abel'sche Gruppen: Sei $M$ eine Menge mit $>2$ Elementen. Die bijektiven Abbildungen $M \to M$ mit der Hintereinanderausführung ist eine nicht-Abelsche Gruppe.
 			
 			Sei $K$ ein Schiefkörper, z.B. $K = \setR, \setC, \setH$. Sei $K^* K \setminus \{0\}$. Dann ist $(K^*, \cdot)$ eine Gruppe.
 			\item Nicht-Beispiel: $G = \setR^3$. Ich erhalte durch das Kreuzprodukt keine Gruppenkonstruktion.
@@ -183,11 +199,11 @@
 	\end{example}
 
 	\begin{definition}[Ring]
-		Ein Ring ist eine Menge $R$ mit $2$ Verknüpfungen $+$ und $\cdot$ so dass gilt:
+		Ein Ring ist eine Menge $R$ mit $2$ Verknüpfungen $+$ und $\cdot$ sodass gilt:
 		\begin{itemize}
-			\item $(R,+)$ ist eine Abelsche Gruppe
+			\item $(R,+)$ ist eine Abel'sche Gruppe
 			\item Distributivgesetz: $\forall a,b,c \in R \; (a+b) \cdot c = ac + bc$ und $a(b+c) = ab + ac$
-			\item $(R \setminus 0, \cdot)$ ist fast Gruppe nämlich assoziativ und es existiert ein neutrales Element
+			\item $(R \setminus 0, \cdot)$ ist fast Gruppe, nämlich assoziativ und es existiert ein neutrales Element
 		\end{itemize}
 	\end{definition}
 
@@ -205,18 +221,18 @@
 		\begin{itemize}
 			\item Nicht jedes Element in $R \setminus 0$ hat ein multiplikatives Inverses
 			\item Ich kann aus $a \cdot b = 0$ und $a \neq 0$ im Allgemeinen nicht folgern, dass $b = 0$
-			\item Ich kann aus $ab = ac$ und $a \neq 0$ im allgemeinen nicht folgern, dass $b = c$ ist
+			\item Ich kann aus $ab = ac$ und $a \neq 0$ im Allgemeinen nicht folgern, dass $b = c$ ist
 		\end{itemize}
 	\end{remark}
 
 	\begin{definition}[Nullteiler]
 		Sei $R$ ein Ring, $a \in R \setminus \{0\}$. Falls $b \neq 0$ existiert mit $a \cdot b = 0$, nenne ich $a$ einen Nullteiler.
 		
-		Ringe ohne Nullteiler heißen Nullteilerfrei oder Integritätsringe.
+		Ringe ohne Nullteiler heißen nullteilerfrei oder Integritätsringe.
 	\end{definition}
 
-	\begin{definition}[Abelscher Ring]
-		Ein Ring heißt abelsch, falls $\forall a,b \in R \; ab = ba$.
+	\begin{definition}[Abel'scher Ring]
+		Ein Ring heißt abel'sch, falls $\forall a,b \in R \; ab = ba$.
 	\end{definition}
 
 	\begin{remark}
@@ -234,7 +250,7 @@
 	\end{example}
 
 	\begin{remark}
-		Sei $R$ ein Ringe. Die Menge der Elemente, die ein multiplikatives Inverses haben, wir mit $R^*$ bezeichnet.
+		Sei $R$ ein Ringe. Die Menge der Elemente, die ein multiplikatives Inverses haben, wird mit $R^*$ bezeichnet.
 		
 		\begin{itemize}
 			\item $\setZ^* = \{ 1, -1 \}$
@@ -322,7 +338,7 @@
 	\begin{remark}
 		Sei $k \subset L$ eine Körpererweiterung, sei $a \in L$ algebraisch über $k$ und sei $f \in k[x]$ ein Polynom $\neq 0$ mit $f(a) = 0$.
 		
-		Solche Polynome gibt es viele, wir interessieren uns für $f$'s mit mimimalem Grad. Wenn so ein $f$ gegeben ist:
+		Solche Polynome gibt es viele, wir interessieren uns für $f$'s mit minimalem Grad. Wenn so ein $f$ gegeben ist:
 		\begin{equation*}
 			f = a_n x^n + a_{n-1} x^{n-1} + \dots + a_0
 		\end{equation*}
@@ -332,7 +348,7 @@
 		\end{equation*}
 		mit $a$ als Nullstelle.
 		
-		Falls $\hat{f}$ und $\overline{f}$ in $k[x]$ zwei normierte Polynome von minimalem Grad sind mit $\hat{f}(a) = \overline{f}(a) = 0$, dann betrachte Polynom $(\hat{f} - \overline{f}) \in k[x]$. Dann gilt
+		Falls $\hat{f}$ und $\overline{f}$ in $k[x]$ zwei normierte Polynome minimalen Grades sind mit $\hat{f}(a) = \overline{f}(a) = 0$, dann betrachte Polynom $(\hat{f} - \overline{f}) \in k[x]$. Dann gilt
 		\begin{equation*}
 			(\hat{f} - \overline{f})(a) = \hat{f}(a) - \overline{f}(a) = 0 - 0 = 0
 		\end{equation*}
@@ -400,7 +416,7 @@
 	\end{theorem}
 
 	\begin{proof}
-		Falls $a$ tanszendent, dann sind $1,a,a^2,\dots$ $k$-linear unabhängig, also ist $\dim_k k(a) = \infty$.
+		Falls $a$ transzendent, dann sind $1,a,a^2,\dots$ $k$-linear unabhängig, also ist $\dim_k k(a) = \infty$.
 		
 		Betrachte also den Fall, wo $a$ algebraisch ist mit Minimalpolynom $f(x) = x^n + b_{n-1} + \dots + b_0 \in k[x]$.
 		
@@ -435,7 +451,7 @@
 		\begin{align*}
 			&0 = p(s) = s^m + p_{m-1} s^{m-1} + \dots + p_0 \\
 			\Leftrightarrow& - p_0 = s(s^{m-1} + p_{m-1} s^{m-1} + \dots + p_1) \\
-			\Leftrightarrow& \frac{1}{s} = \underbrace{\frac{1}{-p_0}}_{\in k} \underbrace{(s^{m-1 + p_{m-1} s^{m-2} + \dots + p_1)}}_{\in \tilde{k} \text{ wegen Abg. unter Mult.}} \in \tilde{k}
+			\Leftrightarrow& \frac{1}{s} = \underbrace{\frac{1}{-p_0}}_{\in k} \underbrace{(s^{m-1 + p_{m-1} s^{m-2} + \dots + p_1)}}_{\in \tilde{k} \text{ wegen Abgeschlossenheit unter Multiplikation}} \in \tilde{k}
 		\end{align*}
 	\end{proof}
 
@@ -506,7 +522,7 @@
 		\end{equation*}
 		mit $\mu_j \in k$.
 		
-		Einsetzten zeigt $m$ kann geschrieben werden als $k$-Linearkombination der Produkte $m_i \cdot l_j$.
+		Einsetzen zeigt $m$ kann geschrieben werden als $k$-Linearkombination der Produkte $m_i \cdot l_j$.
 		
 		\heading{Lineare Unabhängigkeit:} Sei eine lineare Relation
 		\begin{equation*}
@@ -579,7 +595,7 @@
 	\end{proof}
 
 	\begin{remark}
-		Achtung: Es gibt einen anderen Begriff von (absolutem) algebraischen Abschluss, der nicht von einem Oberkörper $L \supseteq k$ abhängt.
+		Achtung: Es gibt einen anderen Begriff des (absoluten) algebraischen Abschlusses, der nicht von einem Oberkörper $L \supseteq k$ abhängt.
 	\end{remark}
 
 	\subsection{Lösungsformel für Polynome}
@@ -777,7 +793,7 @@
  	\begin{example}
  		Betrachte $R = \setZ[\sqrt{-5}] = \{ a + b \cdot \sqrt{-5} \mid a,b \in \setZ \} \subset \setC$
  		
- 		Dieser Ring ist ein Unterring von $\setC$ und deshalb Nullteilerfrei und
+ 		Dieser Ring ist ein Unterring von $\setC$ und deshalb nullteilerfrei und
  		\begin{equation*}
  			9 = 3 \cdot 3 = \underbrace{(2 + \sqrt{-5})(2 - \sqrt{-5})}_{2^2 - (\sqrt{-5})^2}
  		\end{equation*}
@@ -795,19 +811,19 @@
  	\end{example}
  
  	\begin{theorem}
- 		Sei $R$ ein Integritätsring in dem der Teilerkettensatz für Elemente gilt. Dann ist jedes $r \in R, r \notin R^*, r \neq 0$ als Produkt von endliche vielen irreduziblen Elementen darstellbar.
+ 		Sei $R$ ein Integritätsring in dem der Teilerkettensatz für Elemente gilt. Dann ist jedes $r \in R, r \notin R^*, r \neq 0$ als Produkt von endlich vielen irreduziblen Elementen darstellbar.
  	\end{theorem}
  
  	\begin{proof}(Noether Rekursion)
- 		Wir wollen zeigen, dass $M = \{ r \in R \mid r \notin R^*, r \neq 0 \text{ und $r$ nicht als Produkt von endlich vielen irreduziblen darstellbar} \}$ leer ist. Widerspruchsbeweis: angenommen $M \neq \emptyset$.
+ 		Wir wollen zeigen, dass $M = \{ r \in R \mid r \notin R^*, r \neq 0 \text{ und $r$ nicht als Produkt von endlich vielen Irreduziblen darstellbar} \}$ leer ist. Widerspruchsbeweis: angenommen $M \neq \emptyset$.
  		
  		Beobachtungen:
  		\begin{enumerate}
- 			\item $\forall r \in M$ $r$ ist nicht irreduziblen (denn sonst wäre $r$ eine Darstellung), also hat $r$ echte Teiler
- 			\item $\exists r \in M$, so dass alle echten Teiler von $r$ nicht mehr in $M$ liegen (denn sonst nehme echten Teiler aus $M$, widerhole das Verfahren, erhalte unendliche Teilerkette wo ich in jedem Schritt echte Teiler habe $\lightning$ zur Annahme)
+ 			\item $\forall r \in M$ $r$ ist nicht irreduzibel (denn sonst wäre $r$ eine Darstellung), also hat $r$ echte Teiler
+ 			\item $\exists r \in M$, so dass alle echten Teiler von $r$ nicht mehr in $M$ liegen (denn sonst nehme echten Teiler aus $M$, wiederhole das Verfahren, erhalte unendliche Teilerkette wo ich in jedem Schritt echte Teiler habe, $\lightning$ zur Annahme)
  		\end{enumerate}
  	
- 		Also gegeben $r$ wie in Beobachtung 2), dann ist jeder echte Teiler als Produkt von endlich vielen irreduziblen darstellbar, also auch $r$ selbst. (Schreibe $r = r_1 \cdot r_2$ mit $r_1, r_2$ echte Teiler. Dann $r_1 = a_1 \cdots a_n, r_2 = b_1 \dots b_m$ mit $\forall i,j a_i, b_j$ irreduzibel dann $r = a_1 \dots a_n b_1 \dots b_m$) $\lightning$.
+ 		Also gegeben $r$ wie in Beobachtung 2), dann ist jeder echte Teiler als Produkt von endlich vielen Irreduziblen darstellbar, also auch $r$ selbst. (Schreibe $r = r_1 \cdot r_2$ mit $r_1, r_2$ echte Teiler. Dann $r_1 = a_1 \cdots a_n, r_2 = b_1 \dots b_m$ mit $\forall i,j a_i, b_j$ irreduzibel dann $r = a_1 \dots a_n b_1 \dots b_m$) $\lightning$.
  	\end{proof}
  
  	\begin{definition}
@@ -899,7 +915,7 @@
 		Sei $R$ ein Integritätsring. Dann ist äquivalent:
 		\begin{enumerate}
 			\item Jedes $r \in R, r \notin R^*, r \neq 0$ ist als Produkt von endlich vielen Irreduziblen darstellbar und je zwei Darstellungen sind äquivalent.
-			\item In $R$ gilt der Teilerkettensatz für Elemente und alle irreduziblen sind prim.
+			\item In $R$ gilt der Teilerkettensatz für Elemente und alle Irreduziblen sind prim.
 		\end{enumerate}
 		Falls diese Eigenschaften gelten, nenne $R$ faktoriell oder UFD.
 	\end{theorem}
@@ -909,7 +925,7 @@
 		
 		\textit{Teilerkettensatz}: Sei $(r_i)_{i \in \setN}$ eine Teilerkette. Sei $i$ so dass $r_{i+1} \parallel r_i$ das heißt $\exists h: h \notin R^*, h \neq 0: r_{i+1} \cdot h = r_i$.
 		
-		Nach Annahme, kann $r_i, r_{i+1},h$ als Produkt von endlich vielen irreduziblen geschrieben werden
+		Nach Annahme, kann $r_i, r_{i+1},h$ als Produkt von endlich vielen Irreduziblen geschrieben werden
 		\begin{align*}
 			r_i &= a_1 \cdot a_n \\
 			r_{i+1} &= b_1 \cdots b_m \\
