@@ -1072,14 +1072,14 @@
 		\begin{equation*}
 			p_1 \cdot \frac{h}{p} = \frac{a}{p} q_1
 		\end{equation*}
-		Das geht mit jedem Primfaktor von $a$ erhalte also am Ende:
+		Das geht mit jedem Primfaktor von $a$, erhalte also am Ende:
 		\begin{equation*}
 			p_1 \cdot \frac{h}{a} = q_1 \qquad\Rightarrow p_1 \mid q_1 \qquad\Rightarrow p_1 \sim q_1 \qquad\Rightarrow \lightning
 		\end{equation*}
 	
 		\textit{Zwischenbehauptung (jetzt der Beweis):} Sei $p \in R$ irreduzibel. Dann ist das konstante Polynom $p \in R[x]$ prim.
 		
-		Sei $p \in R$ irreduzibel. Ich zeige die Kontraposition: wenn $a(x), b(x) \in R[x]$ Polynome sind mit $p \nmid a(x)$ und $p \nmid b(x)$ $\Rightarrow p \nmid (a \cdot b)(x)$
+		Sei $p \in R$ irreduzibel. Ich zeige die Kontraposition: wenn $a(x), b(x) \in R[x]$ Polynome sind mit $p \nmid a(x)$ und $p \nmid b(x)$, dann gilt $p \nmid (a \cdot b)(x)$
 		
 		Seien also $a(x), b(x)$ gegeben. Schreibe
 		\begin{align*}
@@ -1094,20 +1094,20 @@
 			\gamma \coloneqq \sum_{\substack{\alpha + \beta = i + j \\ \alpha, \beta \in \setN}} a_\alpha \cdot b_\beta
 		\end{equation*}
 		
-		In dieser Summe sind alle Summanden durch $p$ teilbar, weil stets $\alpha < i$ oder $\beta < j$ mit der Ausnahme des Summanden $\alpha = i, \beta = j, (= a_i \cdot b_j)$.
+		In dieser Summe sind alle Summanden durch $p$ teilbar, weil stets $\alpha < i$ oder $\beta < j$ gilt, mit der Ausnahme des Summanden $\alpha = i, \beta = j, (= a_i \cdot b_j)$.
 		
-		Weil $R$ faktoriell ist per Annahme und $p \in R$ deshalb prim ist $\Rightarrow p \nmid a_i \cdot b_j$
+		Weil $R$ per Annahme faktoriell ist, und $p \in R$ deshalb prim ist, folgt $ p \nmid a_i \cdot b_j$
 		
 		$\Rightarrow p \nmid \gamma \qquad \Rightarrow p \nmid (a \cdot b)(x)$
 	\end{proof}
 
 	\heading{Was tun wir mit faktoriellen Ringen?}
 	
-	Sei $R$ ein faktorieller Ring, betrachte die Äquivalenzrelation $a \sim b \Leftrightarrow a \text{ assoziiert zu } b$
+	Sei $R$ ein faktorieller Ring. Betrachte die Äquivalenzrelation $a \sim b \Leftrightarrow a \text{ assoziiert zu } b$.
 	
-	Wähle Repräsentantensystem $P \subset R$ für die irreduziblen Elemente (= zu jedem irreduziblen $a \in R$ gibt es genau ein $b \in P$ mit $a \sim b$)
+	Wähle Repräsentantensystem $P \subset R$ für die irreduziblen Elemente (= zu jedem irreduziblen $a \in R$ gibt es genau ein $b \in P$ mit $a \sim b$).
 	
-	Wenn dann irgendein $a \in R$ gegeben ist, dann kann ich schreiben
+	Wenn dann irgendein $a \in R$ gegeben ist, dann kann ich schreiben:
 	\begin{equation*}
 		a = \varepsilon \cdot \prod_{p \in P} p^{\alpha_p}
 	\end{equation*}
@@ -1129,7 +1129,7 @@
 	Sei $R$ ein Integritätsring, seien $a,b \in R \setminus R^*, a \cdot b \neq 0$
 	
 	\begin{enumerate}
-		\item Ein Element $c \in R$ heißt größter Gemeinsamer Teiler wenn gilt $c \mid a$ und $c \mid b$ und wenn für jedes andere $c'$ mit $c' \mid a$ und $c' \mid b$ gilt $c' \mid c$.
+		\item Ein Element $c \in R$ heißt größter gemeinsamer Teiler, wenn gilt: $c \mid a$ und $c \mid b$ und wenn für jedes andere $c'$ mit $c' \mid a$ und $c' \mid b$ gilt $c' \mid c$.
 		\item Ein Element $c \in R$ heißt kleinstes gemeinsames Vielfaches, wenn $a \mid c$ und $b \mid c$ ist und für alle $c' \in R$ mit $a \mid c'$ und $b \mid c'$ gilt $c \mid c'$.
 	\end{enumerate}
 
@@ -1167,7 +1167,7 @@
 			r_{n-2} = q_n \cdot r_{n-1} + r_n \tag{n}
 		\end{equation*}
 		
-		\textit{Beobachtung:} Die Grade der Polynome $r_1, r_2, \dots$ werden immer kleiner. Der Prozess stoppt also nach endlich vielen Schritten das heißt irgendwann geht die Division auf. Es existiert also $n \in \setN$ sodass
+		\textit{Beobachtung:} Die Grade der Polynome $r_1, r_2, \dots$ werden immer kleiner. Der Prozess stoppt also nach endlich vielen Schritten, das heißt irgendwann geht die Division auf. Es existiert also $n \in \setN$ sodass
 		\begin{equation*}
 			r_{n-1} = q_{n+1} \cdot r_n + 0 \tag{n+1}
 		\end{equation*}
@@ -1196,12 +1196,12 @@
 
 	\subsection{Der Quotientenkörper eines Integritätsrings}
 	
-	\heading{Ziel:} Gegeben ein Ring $R$, suche einen möglichst kleinen Körper $k$ sodass. $R \subset k$ (besser: sodass es einen injektiven Ringmorphismus $R \hookrightarrow k$ gibt). Wir denken an $\setZ \hookrightarrow \setQ$.
+	\heading{Ziel:} Gegeben ein Ring $R$, suche einen möglichst kleinen Körper $k$ sodass: $R \subset k$ (besser: sodass es einen injektiven Ringmorphismus $R \hookrightarrow k$ gibt). Wir denken an $\setZ \hookrightarrow \setQ$.
 	
 	\heading{Beobachtung:} So etwas kann es nicht geben, wenn $R$ Nullteiler hat! Betrachte also nur Integritätsringe.
 	
 	\begin{definition}
-		Sei $R$ ein Integritätsring. Ein Quotientenkörper von $R$ ist ein Körper $k$ zusammen mit einem injektiven Ringmorphismus $\varphi: R \to k$ sodass folgende (universelle) Eigenschaft gilt: Wann immer $\Phi: R \to L$ ein injektiver Ringmorphismus in einen Körper ist, dann gibt es genau einen Körpermorphismus $\eta: k \to L$ sodass das folgende Diagramm kommutiert.
+		Sei $R$ ein Integritätsring. Ein Quotientenkörper von $R$ ist ein Körper $k$ zusammen mit einem injektiven Ringmorphismus $\varphi: R \to k$, sodass folgende (universelle) Eigenschaft gilt: Wann immer $\Phi: R \to L$ ein injektiver Ringmorphismus in einen Körper ist, dann gibt es genau einen Körpermorphismus $\eta: k \to L$, sodass das folgende Diagramm kommutiert.
 		
 		\begin{center}
 			\begin{tikzpicture}
@@ -1305,7 +1305,7 @@
 			\begin{equation*}
 				B = \{ (a,b) \in R \times R \mid b \neq 0 \}
 			\end{equation*}
-			und sage $(a,b)$ ist äquivalent zu $(a', b')$ wenn gilt $a b' = a' b$. Das ist eine Äquivalenzrelation. Symmetrie und Reflexivität sind klar per Definition. Wir müssen also noch die Transitivität zeigen: Seien also Tupel gegeben sodass
+			und sage $(a,b)$ ist äquivalent zu $(a', b')$ wenn gilt $a b' = a' b$. Das ist eine Äquivalenzrelation. Symmetrie und Reflexivität sind klar per Definition. Wir müssen also noch die Transitivität zeigen: Seien also Tupel gegeben, sodass
 			\begin{align*}
 				&&(a,b) &\sim (a', b') & (a', b') &\sim (a'',b'') \\
 				&\Leftrightarrow& ab' &= a'b & a'b'' &= a''b'
@@ -1354,7 +1354,7 @@
 			
 			\textit{Hausaufgabe:} Dasselbe für Multiplikation
 			
-			\textit{Lästige Rechnerei:} Diese Verknüpfungen definieren eine Körperstruktur auf $k$ sodass die Abbildung $\varphi: R \to k$ ein Ringmorphismus ist. Es gilt
+			\textit{Lästige Rechnerei:} Diese Verknüpfungen definieren eine Körperstruktur auf $k$, sodass die Abbildung $\varphi: R \to k$ ein Ringmorphismus ist. Es gilt
 			\begin{equation*}
 				0_k = \frac01 \qquad 1_k = \frac11 \qquad \text{falls $a \neq 0$ dann} \left( \frac{a}{b} \right)^{-1} = \frac{b}{a}
 			\end{equation*}
@@ -1406,7 +1406,7 @@
 			Nachrechnen: das ist ein Körperisomorphismus.
 		\end{enumerate}
 	\end{proof}
-
+\newpage
 	\begin{example}""
 		\begin{itemize}
 			\item $R = \setZ$ dann ist $Q(\setZ) = \setQ$
@@ -1423,7 +1423,7 @@
 			wobei $\varepsilon \in R^*, \alpha_p \in \setZ$ und fast alle $\alpha_p = 0$.
 		\end{itemize}
 	\end{example}
-\newpage
+
 	\heading{Warum das alles?}
 	
 	Wenn $R$ faktoriell ist, kann ich manchmal entscheiden, ob Polynome in $R[x]$ irreduzibel sind.
@@ -1432,7 +1432,7 @@
 	
 	Behauptung: $f$ ist irreduzibel in $\setZ[x]$
 	
-	Angenommen es gäbe einen echten Teiler, dann gäbe es einen linearen Teiler das heißt
+	Angenommen es gäbe einen echten Teiler, dann gäbe es einen linearen Teiler, das heißt
 	\begin{equation*}
 		\exists a,b \in \setZ, a \neq 0: f(x) = (ax + b) g(x)
 	\end{equation*}
@@ -1578,7 +1578,6 @@
 	\end{proof}
 
 	\heading{Wie finde ich $\varphi$?}: Keine Ahnung, wir müssen rumprobieren.
-	\newpage
 	
 	\heading{Beispielhafte Konstruktionen}
 	
@@ -1658,11 +1657,11 @@
 		ist injektiv hat also überabzählbar viele Bildpunkte, es gibt aber nur abzählbar viele algebraische Zahlen. Also ist $e^{i \varphi}$ transzendent für fast alle $\varphi$.
 	\end{remark}
 
-	Für dieses Problem betrachte bei gegebenem $\varphi$ die Menge $M = \{ 0, 1, e^{i \varphi} \}$. Ist $e^{i \frac{\varphi}{3}} \in \operatorname{Kons(M)}$? Also betrachte ich
+	Für dieses Problem betrachte bei gegebenem $\varphi$ die Menge $M = \{ 0, 1, e^{i \varphi} \}$. Ist $e^{i \frac{\varphi}{3}} \in \operatorname{Kons(M)}$? Also betrachten wir
 	\begin{equation*}
 		k = \setQ(M \cup \overline{M}) = \setQ(z) = \setQ(e^{i \varphi})
 	\end{equation*}
-	Muss diskutieren: $[k(e^{i \frac{\varphi}{3}}): k]$ das ist eine $2$-er Potenz falls $e^{i \frac{\varphi}{3}}$ konstruierbar ist.
+	Müssen diskutieren: $[k(e^{i \frac{\varphi}{3}}): k]$ das ist eine $2$-er Potenz falls $e^{i \frac{\varphi}{3}}$ konstruierbar ist.
 	
 	Wir sehen $e^{i \frac{\varphi}{3}}$ ist Nullstelle des Polynoms $f(x) = x^3 - e^{i \varphi} \in k[x]$. Falls $f$ das Minimalpolynom ist, ist $[k(e^{i \frac{\varphi}{3}}): k] = 3$, also $e^{i \frac{\varphi}{3}} \notin \operatorname{Kons}(M)$.
 	
@@ -1671,7 +1670,7 @@
 	\heading{Behauptung:} $k$ ist isomorph zum Körper der rationalen Funktionen $\setQ(y)$
 	
 	\begin{proof}
-		Ich betrachte einen Ringmorphismus
+		Wir betrachten einen Ringmorphismus
 		\begin{equation*}
 			\setQ[y] \to k = \setQ(e^{i \varphi}), f(y) \mapsto f(e^{i \varphi})
 		\end{equation*}
@@ -1687,7 +1686,7 @@
 		$\eta$ ist surjektiv weil $e^{i \varphi} = \eta(y)$ im Bild liegt und $k$ der kleinste Körper ist, der $e^{i \varphi}$ enthält.
 	\end{proof}
 
-	Wir wollen entscheiden ob $f(x) = x^3 - e^{i \varphi} \in k[x]$ irreduzibel ist. Wir können also auch untersuchen ob $x^3 - y$ in $(\setQ(y))[x]$ irreduzibel ist.
+	Wir wollen entscheiden ob $f(x) = x^3 - e^{i \varphi} \in k[x]$ irreduzibel ist. Wir können also auch untersuchen, ob $x^3 - y$ in $(\setQ(y))[x]$ irreduzibel ist.
 	
 	$\Leftrightarrow$ Ist $x^3 - y \in (\setQ[y])[x]$ irreduzibel?
 	
@@ -1731,9 +1730,9 @@
 		\begin{itemize}
 			\item Die $0$ ist in jedem Ideal enthalten
 			\item $\{ 0 \}, R$ sind immer Ideale
-			\item Fall $R$ ein Körper ist, sind $\{ 0 \}$ und $R$ die einzigen Ideale, denn
+			\item Falls $R$ ein Körper ist, sind $\{ 0 \}$ und $R$ die einzigen Ideale, denn:
 			
-			Sei $k$ ein Körper, $I \subset k$ ein Ideal. Angenommen $\exists a \in I \setminus \{ 0 \}$. Sei $b \in k$ gegeben dann ist $b = (b \cdot a^{-1}). a \in I$.
+			\textit{Sei $k$ ein Körper, $I \subset k$ ein Ideal. Angenommen $\exists a \in I \setminus \{ 0 \}$. Sei $b \in k$ gegeben; dann ist $b = (b \cdot a^{-1})\cdot a \in I$.}
 			
 			\item Falls $I \subset R$ ein Ideal und $1 \in I \Rightarrow I = R$
 		\end{itemize}
