@@ -1749,11 +1749,11 @@
 			\end{equation*}
 			Damit ist $c \in I$ aber auch $c < a \Rightarrow c = 0$ und damit $b \in (a)$.
 			
-			Das gleiche gilt falls $k$ ein Körper und $R = k[x]$ ist.
+			Das gleiche gilt, falls $k$ ein Körper und $R = k[x]$ ist.
 			
 			$R = k[x,y]$ ist kein Hauptidealring, denn $I = (x,y)$ ist kein Hauptideal, denn
 			\begin{enumerate}
-				\item $I \neq R$ Genauer $1 \notin I$, denn alle Elemente von $I$ außer $0$ haben positiven Grad.
+				\item $I \neq R$ genauer $1 \notin I$, denn alle Elemente von $I$ außer $0$ haben positiven Grad.
 				\item Wenn $I$ ein Hauptideal wäre, $I = (a)$, dann $a \mid x$ und $a \mid y$, Aber $\operatorname{ggT}(x,y) = 1$. Also wäre $a$ Einheit, $I = R$ $\lightning$.
 			\end{enumerate}
 		
@@ -1803,7 +1803,7 @@
 	\end{example}
 
 	\begin{definition}
-		Sei $R$ ein Ring. Sage in $R$ gilt der Teilerkettensatz für Ideale, falls jede aufsteigende Kette von Idealen
+		Sei $R$ ein Ring. Sage "in $R$ gilt der Teilerkettensatz für Ideale", falls jede aufsteigende Kette von Idealen
 		\begin{equation*}
 			I_1 \subseteq I_2 \subseteq I_3 \subseteq \dots
 		\end{equation*}
@@ -1811,13 +1811,13 @@
 	\end{definition}
 
 	\begin{theorem}
-		Sei $R$ ein Ring, dann ist äquivalent
+		Sei $R$ ein Ring, dann sind äquivalent:
 		\begin{enumerate}
 			\item Jedes Ideal ist endlich erzeugt
 			\item In $R$ gilt der Teilerkettensatz für Ideale
 			\item In jeder nicht-leeren Menge von Idealen gibt es ein Element, das bezüglich Inklusion maximal ist
 		\end{enumerate}
-		Falls diese Eigenschaften gelten, nenne $R$ Noethersch
+		Falls diese Eigenschaften gelten, nenne $R$ Noethersch.
 	\end{theorem}
 
 	\begin{proof}
@@ -1826,11 +1826,11 @@
 		\begin{equation*}
 			I = \bigcup_{i=0}^\infty I_i
 		\end{equation*}
-		ist ein Ideal, also per Annahme endlich erzeugt: $I = (a_1, \dots, a_n)$ für geeignete $a_1, \dots, a_n \in \bigcup I_i$. Dann gibt es also $i_1, \dots, i_n$ sodass $a_i \in I_{i_1}, a_2 \in I_{i_2}$ wenn $m = \max \{ i_1, \dots, i_n \}$ dann $a_1 \in I_m, a_2 \in I_m, \dots$ damit gilt:
+		ist ein Ideal, also per Annahme endlich erzeugt: $I = (a_1, \dots, a_n)$ für geeignete $a_1, \dots, a_n \in \bigcup I_i$. Dann gibt es also $i_1, \dots, i_n$ sodass $a_i \in I_{i_1}, a_2 \in I_{i_2}$ wenn $m = \max \{ i_1, \dots, i_n \}$. Dann gilt $a_1 \in I_m, a_2 \in I_m, \dots$ und somit:
 		\begin{equation*}
 			(a_1, \dots, a_n) \subset I_m \subset I = (a_1, \dots, a_m)
 		\end{equation*}
-		also $I_m = I_{m+1} = I_{m+2} = \dots$
+		also auch $I_m = I_{m+1} = I_{m+2} = \dots$
 		
 		\heading{2) $\Rightarrow$ 3)}
 		Sei $M$ eine nicht-leere Menge von Idealen ohne maximales Element. Sei $I_i \in M$ irgendein Element. Finde dann $I_2 \in M$ mit $I_1 \subsetneq I_2$. Da $I_2$ auch nicht maximal ist finde also $I_3 \in M$ mit $I_2 \subsetneq I_3$. Erhalte so eine Kette
@@ -1878,7 +1878,7 @@
 		\begin{equation*}
 			s(x) = \sum_{i = 1}^k r_i \cdot x^{n_{k+1} - n_i} \cdot f_i(x)
 		\end{equation*}
-		Wesentliche Eigenschaft von $s$:
+		Wesentliche Eigenschaften von $s$:
 		\begin{enumerate}
 			\item $\deg s = n_{k+1} = \deg f_{k+1}$
 			\item Leitkoeffizient $(s) = a_{k+1}$
@@ -1897,11 +1897,11 @@
 	\end{theorem}
 
 	\begin{proof}
-		Sei $p$ irreduzibel, seien $a,b \in R$. $p \nmid a, p \nmid b$. Dann müssen wir zeigen: $p \nmid a \cdot b$.
+		Sei $p$ irreduzibel, seien $a,b \in R$, sowie $p \nmid a, p \nmid b$. Dann müssen wir zeigen: $p \nmid a \cdot b$.
 		
-		Wir wissen: $(p,a)$ ist ein Hauptideal, also $\exists c \in R$ sodass $(p,a) = (c)$. Also $p$ ist Vielfaches von $c$, also $c \mid p$. Aber $p$ ist irreduzibel hat also keine echten Teiler. Also $c \in R^*$ oder $c \sim p$.
+		Wir wissen: $(p,a)$ ist ein Hauptideal, also $\exists c \in R$ sodass $(p,a) = (c)$. Also $p$ ist Vielfaches von $c$, also $c \mid p$. Aber $p$ ist irreduzibel, hat also keine echten Teiler. Also $c \in R^*$ oder $c \sim p$.
 		
-		Aber $c \sim p \Leftrightarrow p \mid a$ was wir per Annahme ausschließen!
+		Aber $c \sim p \Leftrightarrow p \mid a$, was wir per Annahme ausschließen!
 		
 		Also $c \in R^* \quad\Rightarrow (a,p) = (1)$. Es gibt also eine Linearkombination
 		\begin{equation*}
@@ -1929,7 +1929,7 @@
 		\begin{equation*}
 			q: R \to R/I
 		\end{equation*}
-		Ringmorphismus ist.
+		ein Ringmorphismus ist.
 	\end{theorem}
 
 	\begin{example}
