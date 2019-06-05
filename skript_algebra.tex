@@ -2007,7 +2007,7 @@
 			\end{tikzpicture}
 		\end{center}
 		
-		Behauptung: $\eta$ ist Isomorphismus. Muss zeigen: $\eta$ bijektiv also injektiv und surjektiv. Surjektivität folgt sofort aus Kommutativität des Diagramms und der surjektivität von $\varphi$. Noch zu zeigen $\eta$ injektiv bzw. $\ker(\eta) = 0_{R/\ker(\varphi)}$.
+		Behauptung: $\eta$ ist Isomorphismus. Muss zeigen: $\eta$ bijektiv also injektiv und surjektiv. Surjektivität folgt sofort aus Kommutativität des Diagramms und der Surjektivität von $\varphi$. Noch zu zeigen $\eta$ injektiv bzw. $\ker(\eta) = 0_{R/\ker(\varphi)}$.
 		
 		Sei also $[a] \in \ker(\eta)$. Wegen der Kommutativität des Diagramms:
 		\begin{equation*}
@@ -2020,7 +2020,7 @@
 	
 	Wir betrachten Körpererweiterung $L/k$ und algebraische Elemente $a \in L$.
 	
-	Wir wissen $a$ hat Minimalpolynom $f \in k[x]$. Jedes andere Polynom $g \in k[x]$ mit $g(a) = 0$ ist Vielfaches von $f$. ($g(a) = 0 \Leftrightarrow g \in (f)$).
+	Wir wissen: $a$ hat das Minimalpolynom $f \in k[x]$. Jedes andere Polynom $g \in k[x]$ mit $g(a) = 0$ ist Vielfaches von $f$. ($g(a) = 0 \Leftrightarrow g \in (f)$).
 	
 	Betrachte Abbildung:
 	\begin{align*}
@@ -2061,7 +2061,7 @@
 	\begin{proof}
 		\begin{enumerate}
 			\item Hausaufgabe!
-			\item Weil $\varphi$ per Annahme surjektiv ist, ist die Abbildung $\alpha$ injektiv. Also noch surjektivität zu zeigen. Sei also $J \subset R$ ein Ideal, das $\ker(\varphi)$ enthält. Wir wissen $S \simeq R/\ker(\varphi)$ also gibt es nach universeller Eigenschaft ein Diagramm
+			\item Weil $\varphi$ per Annahme surjektiv ist, ist die Abbildung $\alpha$ injektiv. Also noch Surjektivität zu zeigen. Sei also $J \subset R$ ein Ideal, das $\ker(\varphi)$ enthält. Wir wissen: $S \simeq R/\ker(\varphi)$. Also gibt es nach universeller Eigenschaft ein Diagramm
 			\begin{center}
 				\begin{tikzpicture}
 					\node(R1) at (0,0){$R$};
@@ -2076,7 +2076,7 @@
 				\end{tikzpicture}
 			\end{center}
 			und $J = q^{-1}((0)) = \varphi^{-1}(\eta^{-1}(0))$, setze $I = \eta^{-1}(0)$, fertig.
-			\item Sei $J \subset R$ ein Ideal. Muss zeigen
+			\item Sei $J \subset R$ ein Ideal. Wir müssen zeigen
 			
 			\heading{C 1}: Wenn $a,b \in \varphi(J)$, dann ist $a + b \in \varphi(J)$. $\exists a', b' \in J$ mit $a =  \varphi(a'), b = \varphi(b')$ und dann $a + b = \varphi(\underbrace{a' + b'}_{\in J})$
 			
@@ -2114,10 +2114,10 @@
 		Wir wissen $\ker(\eta) = q_I^{-1}(J/I) = J$. Also folgt die Aussage.
 	\end{proof}
 
-	\heading{Haben 2 wichtige Typen von Idealen}
+	\heading{Wir haben 2 wichtige Typen von Idealen}
 	\begin{itemize}
 		\item Primideale: $R$ ein Ring, $I \subseteq R$ ein Ideal. Nenne $I$ prim, falls $\forall a,b \in R: a \cdot b \in I \Rightarrow a \in I \lor b \in I$
-		\item Maximale Ideale: $R$ ein Ring. Ein Ideal $I \subset R$ heißt maximal falls gilt
+		\item Maximale Ideale: $R$ ein Ring. Ein Ideal $I \subset R$ heißt maximal, falls gilt
 		\begin{enumerate}
 			\item $I \neq R$
 			\item Wenn $J \supsetneq I$ ein echt größeres Ideal ist, dann ist $J = R$.
@@ -2129,13 +2129,13 @@
 			\item Sei $R$ ein Ring, $p \in R$ ein prim-Element. Dann ist $(p)$ ein Primideal.
 			\item Sei $k$ ein Körper, $R = k[x_1, \dots, x_n]$ und
 			\begin{equation*}
-				I = (x_1, x_2, \dots, x_n)= \{ \underbrace{x_1 f_1 + x_2 f_2 + \cdots + x_n f_n}_\text{Haben stets Nullstelle am Ursprung!} \mid f_i \in k[x_1, \dots, x_n] \}
+				I = (x_1, x_2, \dots, x_n)= \{ \underbrace{x_1 f_1 + x_2 f_2 + \cdots + x_n f_n}_\text{haben stets Nullstelle am Ursprung!} \mid f_i \in k[x_1, \dots, x_n] \}
 			\end{equation*}
 			Wir wissen $1 \notin I$, denn $1$ hat keine Nullstelle.
 			
-			Beobachte: Ein Polynom liegt genau dann in $I$ wenn der konstante Teil gleich Null ist (d.h. wenn $f(0) = 0_k$).
+			Beobachte: Ein Polynom liegt genau dann in $I$, wenn der konstante Teil gleich Null ist (d.h. wenn $f(0) = 0_k$).
 			
-			Sei jetzt $J \supsetneq I$ echt größer! Sei $f \in J \setminus I$ Dann
+			Sei jetzt $J \supsetneq I$ echt größer! Sei $f \in J \setminus I$. Dann
 			\begin{equation*}
 				\underbrace{f}_{\in J} = \text{const}^{\neq 0} + (\underbrace{\text{Polynom ohne konstanten Teil}}_{\in I \subset J})
 			\end{equation*}
@@ -2167,7 +2167,7 @@
 			\item $I$ ist prim $\Leftrightarrow$ $R/I$ ist Integritätsring
 			\item $I$ ist maximal $\Leftrightarrow$ $R/I$ ist ein Körper
 		\end{enumerate}
-		Insbesonders maximale Ideale sind prim (denn Körper sind Integritätsringe)
+		\heading {Insbesondere:} maximale Ideale sind prim (denn Körper sind Integritätsringe)
 	\end{theorem}
 
 	\begin{proof}
@@ -2200,7 +2200,7 @@
 	\end{proof}
 
 	\begin{remark}
-		Teil 2) des Satzes gibt neuartige Methode, um Beispiele von Körpern zu konstruieren!
+		Teil 2) des Satzes liefert neuartige Methode, um Beispiele von Körpern zu konstruieren!
 	\end{remark}
 
 	\heading{Weitere Beobachtungen/Konstruktionen mit Idealen}
@@ -2220,10 +2220,10 @@
 	\end{example}
 
 	\begin{definition}
-		Zwei Ideale $I_1, I_2$ heißen Teilerfremd, wenn $I_1 + I_2 = (1)$.
+		Zwei Ideale $I_1, I_2$ heißen teilerfremd, wenn $I_1 + I_2 = (1)$.
 	\end{definition}
 
-	\heading{Nutzanwendung:} Manchmal hat man Aufgaben der Form: egeben Ring $R$ gegeben Ideale $I_1, \dots, I_n$ und Elemente $r_1, \dots, r_n \in R$. Finde ein/alle $r \in R$
+	\heading{Nutzanwendung:} Manchmal hat man Aufgaben der Form: gegeben ein Ring $R$, Ideale $I_1, \dots, I_n$ und Elemente $r_1, \dots, r_n \in R$. Finde ein/alle $r \in R$
 	\begin{align*}
 		r &\equiv r_1 \mod I_1 \\
 		r &\equiv r_2 \mod I_2 \\
@@ -2248,9 +2248,9 @@
 			s_l = \prod_{k \neq l} a_{kl} = \prod_{k \neq l} (1 - b_{kl}) \in R
 		\end{equation*}
 		
-		\textit{Beobachtung:} Seien $k \neq l$ gegeben. Dann $s_l \equiv 0 \mod I_k$ denn Faktor $a_{kl}$ aus dem 1. Produkt ist $\equiv 0 \mod I_k$.
+		\textit{Beobachtung:} Seien $k \neq l$ gegeben. Dann $s_l \equiv 0 \mod I_k$, denn der Faktor $a_{kl}$ aus dem 1. Produkt ist $\equiv 0 \mod I_k$.
 		
-		$s_l \equiv 1 \mod I_l$, denn es ist stets $b_kl \equiv 0 \mod I_l$, also jeder Faktor des Rechen Produktes $\equiv 1 \mod I_l$.
+		$s_l \equiv 1 \mod I_l$, denn es ist stets $b_kl \equiv 0 \mod I_l$, also jeder Faktor des rechten Produktes $\equiv 1 \mod I_l$.
 		
 		Seien $r_1, \dots, r_n \in R$ gegeben.
 		
@@ -2263,7 +2263,7 @@
 	\heading{Einschub Mengenlehre}
 	
 	\begin{definition}
-		Sei $M$ eine Menge. $\leq$ sei eine Relation. Ich nenne $\leq$ eine Halbordnung falls gilt:
+		Sei $M$ eine Menge. $\leq$ sei eine Relation. Wie nennen $\leq$ eine Halbordnung, falls gilt:
 		\begin{enumerate}
 			\item $\forall a \in M: a \leq a$
 			\item Wenn $a,b,c \in M$ gegeben sind mit
@@ -2272,7 +2272,7 @@
 			\end{equation*}
 			\item $\forall a,b \in M: a \leq b$ und $b \leq a \Rightarrow a = b$
 		\end{enumerate}
-		Wir fordern nicht dass $\forall a,b \in M: a \leq b$ oder $b \leq a$ gilt. (Falls das gilt nenne $\leq$ vollständig)
+		Wir fordern nicht, dass $\forall a,b \in M: a \leq b$ oder $b \leq a$ gilt. (Falls das gilt nenne $\leq$ vollständig)
 	\end{definition}
 
 	\begin{example}
@@ -2282,7 +2282,7 @@
 	\end{example}
 
 	\begin{definition}
-		Sei $(M, \leq)$ eine Mengen mit Halbordnung. Eine Kette ist eine Teilmenge $N \subset M$, sodass die auf $N$ induzierte Halbordnung vollständig ist. Ein Element $m \in M$ heißt obere Schranke der Kette $N$, falls $\forall n \in N: n \leq m$.
+		Sei $(M, \leq)$ eine Menge mit Halbordnung. Eine Kette ist eine Teilmenge $N \subset M$, sodass die auf $N$ induzierte Halbordnung vollständig ist. Ein Element $m \in M$ heißt obere Schranke der Kette $N$, falls gilt: $\forall n \in N: n \leq m$.
 	\end{definition}
 
 	\begin{example}
@@ -2294,11 +2294,11 @@
 	\end{example}
 
 	\begin{theorem}[Lemma von Zorn]
-		Sei $(M, \leq)$ eine halbgeordnete Megne, $M \neq \emptyset$. Falls jede Kette eine obere Schranke besitzt, dann gibt es in $M$ ein maximales Element.
+		Sei $(M, \leq)$ eine halbgeordnete Menge, $M \neq \emptyset$. Falls jede Kette eine obere Schranke besitzt, dann gibt es in $M$ ein maximales Element.
 	\end{theorem}
 
 	\begin{remark}
-		Dies ist Äquivalent zum Auswahlaxiom. Sei $(M_\alpha)_{\alpha \in A}$ eine Familie von Mengen. Dann gibt es eine Abbildung
+		Dies ist äquivalent zum Auswahlaxiom. Sei $(M_\alpha)_{\alpha \in A}$ eine Familie von Mengen. Dann gibt es eine Abbildung
 		\begin{equation*}
 			A \to \bigcup_{\alpha \in A} M_\alpha
 		\end{equation*}
@@ -2306,7 +2306,7 @@
 	\end{remark}
 
 	\begin{theorem}
-		Sei $R$ ein Ring. $I \subset R$ ein Ideal. Dann gibt es ein maximales Ideal $m \subset R$, das $I$ enthält
+		Sei $R$ ein Ring, $I \subset R$ ein Ideal. Dann gibt es ein maximales Ideal $m \subset R$, das $I$ enthält
 	\end{theorem}
 	
 	\begin{proof}
@@ -2330,12 +2330,12 @@
 	
 	\subsection{Grundbegriffe}
 	
-	\heading{Beobachtung:} Sei $k$ ein Körper sei $1_k$ das neutrale Element der Multiplikation. Dann betrachte Ringmorphismus
+	\heading{Beobachtung:} Sei $k$ ein Körper, sei $1_k$ das neutrale Element der Multiplikation. Dann betrachte Ringmorphismus
 	\begin{align*}
 		\eta: \setZ &\to k \\
 		n &\mapsto \begin{cases}
 			\underbrace{1_k + \dots + 1_k}_\text{$n$ mal} & \text{falls } n \geq 0 \\
-			\underbrace{-(1_k + \dots + 1_k)}_\text{$-n$ mal} & \text{falls } n < 0 \\
+			\underbrace{-(1_k + \dots + 1_k)}_\text{$n$ mal} & \text{falls } n < 0 \\
 		\end{cases}
 	\end{align*}
 	
@@ -2348,7 +2348,7 @@
 	wieder ein Unterkörper.
 	
 	\begin{definition}
-		Gegeben ein Körper $k$ betrachte
+		Gegeben ein Körper $k$, betrachte
 		\begin{equation*}
 			k' \coloneqq \bigcap_{\substack{k'' \subseteq k \\ \text{Unterkörper}}} k''
 		\end{equation*}
@@ -2375,11 +2375,11 @@
 		\end{tikzpicture}
 	\end{center}
 
-	\heading{Beachte:} $\operatorname{Bild}(\varphi)$ ist Unterkörper des Primkörpers, welcher der kleinste Unterkörper von $k$ ist, also $\operatorname{Bild}(\varphi) = \text{Primkörper}$. Also insgesamt: Falls $\eta$ injektiv ist ist der Primkörper kanonisch isomorph zu $\setQ$.
+	\heading{Beachte:} $\operatorname{Bild}(\varphi)$ ist Unterkörper des Primkörpers, welcher der kleinste Unterkörper von $k$ ist, also $\operatorname{Bild}(\varphi) = \text{Primkörper}$. Also insgesamt: Falls $\eta$ injektiv ist, ist der Primkörper kanonisch isomorph zu $\setQ$.
 	
 	\heading{Fall $\eta$ nicht injektiv:} Dann ist $\ker(\eta) \subseteq \setZ$ ein nicht-triviales Ideal.
 	
-	Weil $\eta(1_\setZ) = 1_k \neq 0_k$, ist $\ker(\eta) \subsetneq \setZ$ also Hauptideal der Form $(p)$ für ein $p \in \setN$. Weil $k$ nullteilerfrei ist, ist $p$ eine Primzahl und nach universeller Eigenschaft von Quotienten habe ich ein Diagramm.
+	Weil $\eta(1_\setZ) = 1_k \neq 0_k$, ist $\ker(\eta) \subsetneq \setZ$ also Hauptideal der Form $(p)$ für ein $p \in \setN$. Weil $k$ nullteilerfrei ist, ist $p$ eine Primzahl und nach universeller Eigenschaft von Quotienten haben wir ein Diagramm.
 	
 	\begin{center}
 		\begin{tikzpicture}
@@ -2420,7 +2420,7 @@
 	
 	\heading{Beobachtung:} Das Polynom $x^2 + 2$ hat in $\setQ$ keine Nullstelle, aber im Oberkörper $\setC$. Es gilt sogar jedes nicht konstante $f \in \setC[x]$ hat in $\setC$ eine Nullstelle.
 	
-	\heading{Ziel:} Wir wollen ähnliches für beliebige Körper konstruieren. Gegeben Körper $k$. Konstruiere einen Oberkörper $\overline{k}$ sodass alle nicht konstanten Polynome $f \in \overline{k}[x]$ in $\overline{k}$ eine Nullstelle haben.
+	\heading{Ziel:} Wir wollen Ähnliches für beliebige Körper konstruieren. Gegeben Körper $k$, konstruiere einen Oberkörper $\overline{k}$, sodass alle nicht konstanten Polynome $f \in \overline{k}[x]$ in $\overline{k}$ eine Nullstelle haben.
 	
 	\heading{Aber:} $\overline{k}$ erfüllt keine gute universelle Eigenschaft $\leadsto$ Galois-Theorie: Symmetrie von Erweiterungen
 	
@@ -2431,7 +2431,7 @@
 		\setQ &\hookrightarrow k \\
 		q &\mapsto [q]
 	\end{align*}
-	Also $k$ ist Oberkörper von $\setQ$.
+	Also ist $k$ Oberkörper von $\setQ$.
 	
 	Betrachte das Element $a \coloneqq [x] \in k$
 	
@@ -2442,7 +2442,7 @@
 	Wie soll die Konstruktion von $\overline{k}$ gehen? Grundidee: so wie in der Spielwiese.
 	
 	\begin{theorem}
-		Sei $k$ ein Körper, sei $f \in k[x]$ nicht konstant. Dann gibt es einen Oberkörper $L \supseteq k$ sodass $f$ als Polynom in $L[x]$ eine Nullstelle in $L$ hat.
+		Sei $k$ ein Körper, sei $f \in k[x]$ nicht konstant. Dann gibt es einen Oberkörper $L \supseteq k$, sodass $f$ als Polynom in $L[x]$ eine Nullstelle in $L$ hat.
 	\end{theorem}
 
 	\begin{proof}
@@ -2452,7 +2452,7 @@
 		\end{equation*}
 		das ist ein Körper, weil $(p)$ maximales Ideal ist.
 		
-		Bette $k$ mit Hilfe des injektiven Körpermorphismus
+		Bette $k$ mit Hilfe des injektiven Körpermorphismuses
 		\begin{align*}
 			k &\to L \\
 			a &\mapsto [a]
@@ -2460,7 +2460,7 @@
 		in $L$ ein. Beachte, dass $a \coloneqq [x] \in L$ eine Nullstelle von $p$ und also auch von $f$ ist.
 	\end{proof}
 
-	\heading{Beobachtung:} Wir wissen schon: wenn ich diese Konstruktion anwende auf $k = \setR, f = x^2 + 1$ dann erhalte ich $\setC$. Ich sehe schon an diesem Beispiel, dass die so erhaltene Erweiterung Symmetrien besitzt, nämlich die komplexe Konjugation. Also ist es nicht richtig, dass $\setC$ eindeutig ist bis auf kanonische Isomorphie.
+	\heading{Beobachtung:} Wir wissen schon: wenn wir diese Konstruktion anwenden auf $k = \setR, f = x^2 + 1$, dann erhalte ich $\setC$. Wir sehen schon an diesem Beispiel, dass die so erhaltene Erweiterung Symmetrien besitzt, nämlich die komplexe Konjugation. Also ist es nicht richtig, dass $\setC$ eindeutig ist bis auf kanonische Isomorphie.
 	
 	\begin{theorem}
 		Sei $k$ ein Körper. Dann ist äquivalent:
