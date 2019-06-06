@@ -2447,10 +2447,10 @@
 
 	\begin{proof}
 		Sei $p(x)$ ein irreduzibler Faktor von $f$. Setze
-		\begin{equation*}
+		$
 			L \coloneqq k[x] / (p)
-		\end{equation*}
-		das ist ein Körper, weil $(p)$ maximales Ideal ist.
+		$.
+		Das ist ein Körper, weil $(p)$ ein maximales Ideal ist.
 		
 		Bette $k$ mit Hilfe des injektiven Körpermorphismuses
 		\begin{align*}
@@ -2460,17 +2460,17 @@
 		in $L$ ein. Beachte, dass $a \coloneqq [x] \in L$ eine Nullstelle von $p$ und also auch von $f$ ist.
 	\end{proof}
 
-	\heading{Beobachtung:} Wir wissen schon: wenn wir diese Konstruktion anwenden auf $k = \setR, f = x^2 + 1$, dann erhalte ich $\setC$. Wir sehen schon an diesem Beispiel, dass die so erhaltene Erweiterung Symmetrien besitzt, nämlich die komplexe Konjugation. Also ist es nicht richtig, dass $\setC$ eindeutig ist bis auf kanonische Isomorphie.
+	\heading{Beobachtung:} Wir wissen schon: wenn wir diese Konstruktion anwenden auf $k = \setR, f = x^2 + 1$, dann erhalte ich $\setC$. Wir sehen schon an diesem Beispiel, dass die so erhaltene Erweiterung Symmetrien besitzt, nämlich die komplexe Konjugation. Also ist es nicht richtig, dass $\setC$ bis auf kanonische Isomorphie eindeutig ist.
 	
 	\begin{theorem}
 		Sei $k$ ein Körper. Dann ist äquivalent:
 		\begin{enumerate}
-			\item Jedes nicht-konstante Polynom in $k[x]$ hat Nullstelle in $k$.
-			\item Jedes nicht-konstante Polynom zerfällt in Linearfaktoren
-			\item Jedes irreduzible Polynom ist linear
-			\item Wenn $L/k$ eine algebraische Körpererweiterung ist, dann ist $L = k$
+			\item Jedes nicht-konstante Polynom in $k[x]$ hat eine Nullstelle in $k$.
+			\item Jedes nicht-konstante Polynom zerfällt in Linearfaktoren.
+			\item Jedes irreduzible Polynom ist linear.
+			\item Wenn $L/k$ eine algebraische Körpererweiterung ist, dann ist $L = k$.
 		\end{enumerate}
-		Nenne $k$ algebraisch abgeschlossen falls diese Bedingungen erfüllt sind.
+		Nenne $k$ algebraisch abgeschlossen, falls diese Bedingungen erfüllt sind.
 	\end{theorem}
 
 	\begin{proof}
@@ -2478,16 +2478,17 @@
 		
 		\heading{$2) \Rightarrow 3)$:} trivial
 		
-		\heading{$3) \Rightarrow 4)$:} Sei $L/k$ eine algebraische Körpererweiterung. Sei $a \in L$ gegeben. Dann $a$ ist algebraisch über $k$. Sei $f \in k[x]$ das Minimalpolynom. Dann $f$ irreduzibel, also linear, also $f(x) = x - a \in k[x]$ $\Rightarrow a \in k$.
+		\heading{$3) \Rightarrow 4)$:} Sei $L/k$ eine algebraische Körpererweiterung. Sei $a \in L$ gegeben. Dann ist $a$ algebraisch über $k$. Sei $f \in k[x]$ das Minimalpolynom. Dann ist $f$ irreduzibel, also linear, also $f(x) = x - a \in k[x]$ $\Rightarrow a \in k$.
 		
 		\heading{$4) \Rightarrow 1)$:} Sei $f \in k[x]$ nicht konstant. Sei $p(x)$ ein irreduzibler Faktor von $f$. Setze
 		\begin{equation*}
 			L = k[x]/(p)
 		\end{equation*}
-		das ist eine endliche Erweiterung, denn $\dim_k L = \deg p < \infty$, also ist $L$ algebraisch.  Außerdem gilt: $f$ hat in $L$ eine Nullstelle. Nach 4) ist $L = k$ also hat $f$ bereits in $k$ eine Nullstelle.
+		Das ist eine endliche Erweiterung, denn $\dim_k L = \deg p < \infty$, also ist $L$ algebraisch.  Außerdem gilt: $f$ hat in $L$ eine Nullstelle. Nach 4) ist $L = k$, also hat $f$ bereits in $k$ eine Nullstelle.
+	\end{proof}
 		
 		\begin{definition}
-			Sei $k$ ein Körper. Ein Oberkörper $\overline{k}/k$ heißt algebraischer Abschluss von $k$ falls gilt:
+			Sei $k$ ein Körper. Ein Oberkörper $\overline{k}/k$ heißt algebraischer Abschluss von $k$, falls gilt:
 			\begin{enumerate}
 				\item $\overline{k}$ ist algebraisch abgeschlossen
 				\item $\overline{k} / k$ ist algebraisch
@@ -2497,11 +2498,9 @@
 		\heading{Achtung:} $\setC$ ist kein algebraischer Abschluss von $\setQ$!
 		
 		\heading{Nicht verwechseln} mit algebraischer Abschluss von $k$ in einem Oberkörper $L$ $= \{ l \in L \mid \text{$l$ ist algebraisch über $k$} \}$. 
-	\end{proof}
 
 	\begin{definition}
 		Seien $R,S$ Ringe (später meistens Körper) die beide den Ring $T$ als Unterring besitzen.
-		
 		Ein Ringmorphismus $\varphi: R \to S$ heißt $T$-Morphismus, falls $\varphi \mid_T = id_T$.
 	\end{definition}
 
@@ -2516,26 +2515,26 @@
 
 	\begin{theorem}
 		\label{thm:schwacherErsatzFürUniverselleEigenschaft}
-		Sei $k$ ein Körper, $\overline{k}$ ein algebraischer Abschluss von $k$. Sei $L/k$ algebraisch, sei $L_0$ ein Zwischenkörper $k \subseteq L_0 \subseteq L$. Sei weiter ein $k$-Morphismus $\varphi_0: L_0 \to \overline{k}$ gegeben. Dann existiert eine Fortsetzung $\varphi: L \to \overline{k}$ (d.h. ein Körpermorphismus $\varphi$, sodass $\varphi \mid_T{L_0} = \varphi_0$).
+		Sei $k$ ein Körper, $\overline{k}$ ein algebraischer Abschluss von $k$. Sei $L/k$ algebraisch, sei $L_0$ ein Zwischenkörper $k \subseteq L_0 \subseteq L$. Sei weiter ein $k$-Morphismus $\varphi_0: L_0 \to \overline{k}$ gegeben. \\Dann existiert eine Fortsetzung $\varphi: L \to \overline{k}$ (d.h. ein Körpermorphismus $\varphi$, sodass $\varphi \mid_T{L_0} = \varphi_0$).
 		
-		Insbesondere $(L_0 = k)$ jede algebraische Körpererweiterung von $k$ bettet in $\overline{k}$ ein.
+		Insbesondere $(L_0 = k)$: jede algebraische Körpererweiterung von $k$ bettet in $\overline{k}$ ein.
 	\end{theorem}
 
 	\heading{Typische Anwendung:} Sei $k$ ein Körper, seien $\overline{k}$ und $\overline{k}'$ zwei algebraische Abschlüsse von $k$. Dann $\overline{k} \simeq \overline{k}'$.
 	
 	\begin{proof}
-		Wende den Satz \ref{thm:schwacherErsatzFürUniverselleEigenschaft} an mit $L = \overline{k}', L_0 = k$ und $\varphi_0 = Id_k$. Satz sagt dann, es gibt Körpermorphismus (sogar $k$-Morphismus)
+		Wende den Satz \ref{thm:schwacherErsatzFürUniverselleEigenschaft} an mit $L = \overline{k}', L_0 = k$ und $\varphi_0 = Id_k$. Der Satz sagt dann, dass es einen Körpermorphismus (sogar $k$-Morphismus) gibt
 		\begin{equation*}
 			\varphi: \overline{k}' \to \overline{k}
 		\end{equation*}
-		Wissen: $\varphi$ ist injektiv. Ich behaupte: sogar surjektiv. Grund: Haben Kette von Körpern $k \subseteq \operatorname{Bild}(\varphi) \subseteq \overline{k}$.
+		Wir wissen: $\varphi$ ist injektiv. Wir behaupten: $\varphi$ ist sogar surjektiv. Der Grund dafür ist: Wir haben eine Kette von Körpern $k \subseteq \operatorname{Bild}(\varphi) \subseteq \overline{k}$.
 		
-		Wissen $\operatorname{Bild}(\varphi) \simeq \overline{k}'$ ist algebraisch abgeschlossen. $\overline{k}/k$ ist algebraisch $\Rightarrow$ $\overline{k} / \operatorname{Bild}(\varphi)$ ist algebraisch.
+		Wir wissen auch: $\operatorname{Bild}(\varphi) \simeq \overline{k}'$ ist algebraisch abgeschlossen. $\overline{k}/k$ ist algebraisch $\Rightarrow$ $\overline{k} / \operatorname{Bild}(\varphi)$ ist algebraisch.
 		
 		Insgesamt: $\overline{k} = \operatorname{Bild}(\varphi)$, denn algebraisch abgeschlossene Körper haben keine echten algebraischen Erweiterungen.
 	\end{proof}
 
-	\begin{proof} zu Satz \ref{thm:schwacherErsatzFürUniverselleEigenschaft}
+	\begin{proof} \textit{(zu Satz \ref{thm:schwacherErsatzFürUniverselleEigenschaft})}
 		Verwende Zorns Lemma und betrachte
 		\begin{align*}
 			M = \{ (L', \varphi') \mid &L' \text{ ist Zwischenkörper } L_0 \subseteq L' \subseteq L \text{ und } \\
@@ -2565,15 +2564,15 @@
 		
 		Das ist ein Körpermorphismus, der $\varphi_0$ fortsetzt. Also ist $(L', \varphi')$ eine obere Schranke für die Kette.
 		
-		Insgesamt sagt Zorns Lemma: Es gibt ein maximales Element $(L_\text{max}, \varphi_\text{max}) \in M$. Ich bin fertig, wenn ich zeige:
-		$L_\text{max} = L$. Angenommen es gibt $a \in L \setminus L_\text{max}$.
+		Insgesamt sagt Zorns Lemma: Es gibt ein maximales Element $(L_\text{max}, \varphi_\text{max}) \in M$. Wir sind fertig, wenn wir zeigen:
+		$L_\text{max} = L$. \\Angenommen es gibt $a \in L \setminus L_\text{max}$.
 		
-		\textit{Wissen:} $a$ ist algebraisch über $L_\text{max}$, mit Minimalpolynom
+		\textit{Wir wissen:} $a$ ist algebraisch über $L_\text{max}$, mit Minimalpolynom
 		\begin{equation*}
 			f(x) = \sum \lambda_i x^i \in L_\text{max}[x]
 		\end{equation*}
 		
-		\textit{Wissen auch:}
+		\textit{Wir wissen auch:}
 		\begin{equation*}
 			L_\text{max}(a) \simeq L_\text{max}[x] / (f)
 		\end{equation*}
@@ -2583,7 +2582,7 @@
 			\overline{f} = \sum \varphi_\text{max}(\lambda_i) \cdot x^i \in \operatorname{Bild}(\varphi_\text{max})[x] \subset \overline{k}[x]
 		\end{equation*}
 		
-		\textit{Wissen:} $\overline{f}$ hat eine Nullstelle $\overline{a} \in \overline{k}$ und 
+		\textit{Wir wissen:} $\overline{f}$ hat eine Nullstelle $\overline{a} \in \overline{k}$ und 
 		\begin{equation*}
 			\operatorname{Bild}(\varphi_\text{max})(\overline{a}) \simeq \operatorname{Bild}(\varphi_\text{max})[x] / (\overline{f}) \simeq L_\text{max}[x]/ (f) \simeq L_\text{max}(a)
 		\end{equation*}
@@ -2594,11 +2593,11 @@
 		
 		Per Konstruktion ist $\varphi_\text{mmax} \mid_{L_\text{max}} = \varphi_\text{max}$
 		
-		Insgesamt: $(L_\text{max}, \varphi_\text{max}) \lneq (L_\text{max}(a), \varphi_\text{mmax})$ $\lightning$ zur Maximalität von $(L_\text{max}, \varphi_\text{max})$.
+		Insgesamt: $(L_\text{max}, \varphi_\text{max}) \lneq (L_\text{max}(a), \varphi_\text{mmax})$, $\lightning$ zur Maximalität von $(L_\text{max}, \varphi_\text{max})$.
 	\end{proof}
 
 	\begin{definition}[Polynomringe in $\infty$ vielen Variablen]
-		Sei $(x_\lambda)_{\lambda \in \Lambda}$ eine Menge von Variablennamen, sei $R$ ein Ring Dann betrachte
+		Sei $(x_\lambda)_{\lambda \in \Lambda}$ eine Menge von Variablennamen, sei $R$ ein Ring. Dann betrachte:
 		\begin{equation*}
 			R[(x_\lambda)_{\lambda \in \Lambda}] = \bigcup_{ \{ x_{\lambda_1}, \dots, x_{\lambda_n} \} \text{ endl.} } R[x_{\lambda_1}, \dots, x_{\lambda_n}]
 		\end{equation*}
@@ -2608,7 +2607,7 @@
 		Polynome enthalten immer nur endlich viele Terme und endlich viele Variablen!
 	\end{remark}
 
-	\heading{Fakt:} (universelle Eigenschaft) Gegeben sei ein Ringmorphismus $\varphi: R \to S$ und eine beliebige Abbildung: $\alpha: \Lambda \to S$. Dann ibt es genau einen Ringmorphismus $\Phi: R[(x_\lambda)_{\lambda \in \Lambda}] \to S$ sodass $\Phi_{\mid R} = \varphi$
+	\heading{Fakt:} (universelle Eigenschaft) Gegeben sei ein Ringmorphismus $\varphi: R \to S$ und eine beliebige Abbildung: $\alpha: \Lambda \to S$. Dann gibt es genau einen Ringmorphismus $\Phi: R[(x_\lambda)_{\lambda \in \Lambda}] \to S$ sodass $\Phi_{\mid R} = \varphi$
 	\begin{equation*}
 		\exists \lambda \in \Lambda: \Phi(x_\lambda) = \alpha(\lambda)
 	\end{equation*}
@@ -2631,7 +2630,7 @@
 		\end{itemize}
 		\textit{Behauptung 1:} $I \subsetneq P$ d.h. $1 \notin I$
 		
-		\textit{Beweis:} Angenommen es wäre $1 \in I$. Dann kann ich schreiben
+		\textit{Beweis:} Angenommen es wäre $1 \in I$. Dann können wir schreiben:
 		\begin{equation*}
 			1 = \sum_{i=1}^n g_i \cdot f_i(x_{f_i})
 		\end{equation*}
@@ -2639,7 +2638,7 @@
 		
 		\textit{Erinnerung:} Es gibt eine Körpererweiterung $k_1 / k$ sodass $f_1$ eine Nullstelle $a_1 \in k_1$ hat.
 		
-		Wiederholte Anwendung: Es gibt eine Körpererweiterung $k' /  k$ sodass für alle $i$ gilt $f_i$ hat in $k'$ eine Nullstelle $a_i \in k'$.
+		Wiederholte Anwendung: Es gibt eine Körpererweiterung $k' /  k$ sodass für alle $i$ gilt: $f_i$ hat in $k'$ eine Nullstelle $a_i \in k'$.
 		
 		\textit{Universelle Eigenschaft:} Es gibt Ringmorphismus $\Phi: P \to k'$ sodass für alle $i$ gilt $x_{f_i} \mapsto a_i$.
 		
@@ -2657,23 +2656,23 @@
 		\begin{enumerate}
 			\item Haben Abbildung $k \to P \to E_1 = P/m, a \mapsto \text{konst. Pol. $a$}$. Diese Abbildung ist injektiv, deshalb Inklusion von Körpern. Fasse ab sofort $k$ als Unterkörper von $E_1$ auf.
 			\item Die Polynome $f \in \Lambda$ haben Nullstellen in $E_1$, nämlich $f(x_f) \in I \subset m$, also $f([x_f]) = 0$ in $E_1 = P / m$
-			\item Die Körpererweiterung $E_1 / k$ ist algebraisch. Sei $a \in E_1$ irgendein Element. Schreibe $a = [g]$ wobei $g \in P$ ein Polynom in den endlich vielen Variablen $x_{\lambda_1}, \dots, x_{\lambda_n}$ ist.
+			\item Die Körpererweiterung $E_1 / k$ ist algebraisch. Sei $a \in E_1$ irgendein Element. Schreibe $a = [g]$, wobei $g \in P$ ein Polynom in den endlich vielen Variablen $x_{\lambda_1}, \dots, x_{\lambda_n}$ ist.
 			Dann $a \in k([x_{\lambda_1}], \dots, [x_{\lambda_n}]) \subset E_1$.
 			
-			Wir wissen aber für alle $i$ ist $[x_{\lambda_i}]$ Nullstelle des Polynoms $\lambda_i \in \Lambda$.
+			Wir wissen aber: für alle $i$ ist $[x_{\lambda_i}]$ Nullstelle des Polynoms $\lambda_i \in \Lambda$.
 		\end{enumerate}
 	
 		\textit{Beobachtung:} Es ist nicht klar, dass $E_1$ ein algebraischer Abschluss von $k$ ist.
 		
-		\textit{Wissen:} Polnyome mit Koeffizienten in $k$ haben in $E_1$ Nullstelle.
+		\textit{Wir wissen:} Polynome mit Koeffizienten in $k$ haben in $E_1$ eine Nullstelle.
 		
-		\textit{Wissen nicht:} Polynome mit Koeffizienten in $E_1$ haben in $E_1$ Nullstelle.
+		\textit{Wir wissen nicht:} Polynome mit Koeffizienten in $E_1$ haben in $E_1$ eine Nullstelle.
 		
-		Wiederhole diese Konstruktion, erhalte Erweiterungen
+		Wir wiederholen diese Konstruktion und erhalten die Erweiterungen
 		\begin{equation*}
 			k \subseteq E_1 \subseteq E_2 \subseteq \dots
 		\end{equation*}
-		sodass für alle $i \in \setN$ jedes nicht-konstante Polynom in $E_i[x]$ hat Nullstelle in $E_{i+1}$ und $E_{i+1} / E_i$ ist algebraisch. Insbesondere ist $E_i / k$ algebraisch.
+		sodass für alle $i \in \setN$ jedes nicht-konstante Polynom in $E_i[x]$ eine Nullstelle in $E_{i+1}$ hat und $E_{i+1} / E_i$ algebraisch ist. Insbesondere ist $E_i / k$ algebraisch.
 		
 		Setze
 		\begin{equation*}
@@ -2681,16 +2680,16 @@
 		\end{equation*}
 		dann gilt:
 		\begin{enumerate}
-			\item Weil ich eine Kette habe, ist $E$ ein Körper
-			\item Gegeben $a \in E$. Dann $\exists x: a \in E_i$, also $a$ algebraisch über $k$. $\Rightarrow E/k$ ist algebraisch.
-			\item Sei $f \in E[x]$ ein Polynom, $f(x) = \sum_{j=1}^n e_j x^j$. Dann gibt es ein $i \in \setN: \forall j: e_j \in E_i$. Also $f \in E_i[x]$ hat also eine Nullstelle in $E_{i+1} \subseteq E$.
+			\item Weil wir eine Kette haben, ist $E$ ein Körper
+			\item Gegeben $a \in E$. Dann $\exists x: a \in E_i$, also ist $a$ algebraisch über $k$. $\Rightarrow E/k$ ist algebraisch.
+			\item Sei $f \in E[x]$ ein Polynom, $f(x) = \sum_{j=1}^n e_j x^j$. Dann gibt es ein $i \in \setN: \forall j: e_j \in E_i$. Das Polynom $f \in E_i[x]$ hat also eine Nullstelle in $E_{i+1} \subseteq E$.
 		\end{enumerate}
 	\end{proof}
 
 	\begin{definition}
 		Sei $k$ ein Körper, $f$ ein nicht konstantes Polynom, $f \in k[x]$. Eine Erweiterung $L/k$ heißt Zerfällungskörper von $f$, falls gilt:
 		\begin{enumerate}
-			\item $f$ zerfällt in $L[x]$ in Produkt von linearen Polynomen
+			\item $f$ zerfällt in $L[x]$ in ein Produkt von linearen Polynomen
 			\begin{equation*}
 				f = \operatorname{const} \cdot \prod (x - a_i) \in L[x]
 			\end{equation*}
@@ -2713,11 +2712,11 @@
 	\end{theorem}
 
 	\begin{proof}
-		\heading{1)} Sei $f$ gegeben. Seien $a_1, \dots, a_n \in \overline{k}$ die Nullstellen, dann setze $L = k(a_1, \dots, a_n) \subseteq \overline{k}$
+		\heading{1)} Sei $f$ gegeben. Seien $a_1, \dots, a_n \in \overline{k}$ die Nullstellen, dann setze $L = k(a_1, \dots, a_n) \subseteq \overline{k}$.
 		
 		\heading{2)} Sei $f$ gegeben. Wähle $L$ wie in Schritt 1), sei $L'$ ein weiterer Zerfällungskörper, seien $a_1', \dots, a_n'$ die Nullstellen von $f$ in $L'$.
 		
-		\textit{Wir wissen:} $L'/k$ ist algebraisch. Nach universeller Eigenschaft habe ich einen $k$-Morphismus
+		\textit{Wir wissen:} $L'/k$ ist algebraisch. Nach universeller Eigenschaft haben wir einen $k$-Morphismus
 		\begin{equation*}
 			\varphi: L' \to \overline{k} \supseteq L
 		\end{equation*}
@@ -2735,9 +2734,9 @@
 		
 		\textit{Andererseits:} $\operatorname{Bild}(\varphi)$ ist ein Zerfällungkörper, enthält alle $n$ Nullstellen $\Rightarrow \operatorname{Bild}(\varphi) = L$.
 		
-		$\Rightarrow \varphi$ ist isomorphismus
+		$\Rightarrow \varphi$ ist Isomorphismus
 		
-		\heading{3)} Sei $f$ gegeben, seien $a_1, \dots, a_n \in L$ die Nullstellen. Dann ist $L = k(a_1, \dots, a_n)$ und habe Kette.
+		\heading{3)} Sei $f$ gegeben, seien $a_1, \dots, a_n \in L$ die Nullstellen. Dann ist $L = k(a_1, \dots, a_n)$ und wir haben eine Kette
 		\begin{equation*}
 			k \subseteq k(a_1) \subseteq k(a_1, a_2) \subseteq \dots
 		\end{equation*}
@@ -2751,7 +2750,7 @@
 			\begin{equation*}
 				[k(a_1, a_2) : k(a_1)] \leq n - 1
 			\end{equation*}
-			\item Wiederholte Anwendung:
+			\item Wiederholte Anwendung liefert:
 			\begin{equation*}
 				[L:k] \leq n!
 			\end{equation*}
@@ -2760,15 +2759,15 @@
 	\end{proof}
 
 	\begin{example}
-		$k = \setQ$, $f = x^2 - 2$. Dann ist Zerfällungskörper
-		\begin{equation*}
+		$k = \setQ$, $f = x^2 - 2$. \\Dann ist
+		$
 			L = \setQ(- \sqrt{2}, \sqrt{2})
-		\end{equation*}
-		und
+		$
+		der Zerfällungskörper und
 		\begin{equation*}
 			[\setQ(\sqrt{2}) : \setQ] = 2
 		\end{equation*}
-		und
+		sowie
 		\begin{equation*}
 			[\setQ(\sqrt{2}, - \sqrt{2}) : \setQ(\sqrt{2})] = 1
 		\end{equation*}
@@ -2793,9 +2792,9 @@
 		$\Rightarrow [L : \setQ] = 6$
 	\end{example}
 
-	\heading{Nächstes Ziel:} Zerfällungskörper verstehen. Dazu Nullstellenmenge von (irreduziblen) Polynomen verstehen.
+	\heading{Nächstes Ziel:} Zerfällungskörper verstehen. Dazu Nullstellenmengen von (irreduziblen) Polynomen verstehen.
 	
-	\heading{Dazu Sprache:} Sei $S \supseteq R$ eine Erweiterung von Ringen und sei $(a_\lambda)_{\lambda \in \Lambda}$ eine Familie von Elementen aus $S$ dann betrachte
+	\heading{Dazu Sprache:} Sei $S \supseteq R$ eine Erweiterung von Ringen und sei $(a_\lambda)_{\lambda \in \Lambda}$ eine Familie von Elementen aus $S$. Betrachte dann:
 	\begin{equation*}
 		\bigcap_{\substack{\text{Zwischenringe} R \subseteq A \subseteq S \\ \forall \lambda \in \Lambda, a_\lambda \in A}} A = R[(a_\lambda)_{\lambda \in \Lambda}]
 	\end{equation*}
@@ -2816,7 +2815,7 @@
 	\begin{equation*}
 		k \subseteq k[A] \overset{i}{\hookrightarrow} k(A) \subseteq L
 	\end{equation*}
-	und wir haben $k[A] \hookrightarrow Q(k[A])$. Und wir erhalten genau ein $\eta: Q(k[A]) \to k(A)$ wobei $\eta$ durch die universelle Eigenschaft des Quotientenkörpers gegeben ist.
+	und wir haben $k[A] \hookrightarrow Q(k[A])$. Zudem erhalten wir genau ein $\eta: Q(k[A]) \to k(A)$ wobei $\eta$ durch die universelle Eigenschaft des Quotientenkörpers gegeben ist.
 	
 	\heading{Klar:} $\operatorname{Bild}(\eta)$ ist Unterkörper von $k(A)$, der $k[A]$ enthält $\Rightarrow \operatorname{Bild}(\eta) = k(A)$. Also $\eta$ ist isomorph.
 	
@@ -2831,17 +2830,17 @@
 	\begin{example}
 		$k = \setR$, $L = \setC = \setR(i)$
 		
-		Wissen: jede komplexe Zahl kann ich schreiben als $r_1 + i r_2$, also $\setR[i] = \setR(i) = \setC$.
+		Wir wissen: jede komplexe Zahl können wir schreiben als $r_1 + i r_2$, also $\setR[i] = \setR(i) = \setC$.
 	\end{example}
 
-	\heading{Allgemein:} Sei $L/k$ eine Körpererweiterung, sei $a \in L$ algebraisch über $k$. Dann kann ich alle Elemente von $k(a)$ schreiben als $k_0 + k_1 \cdot a + k_2 a^2 + \dots + k_{n-1} a^{n-1}$ wobei $n = [a : k]$. Also $k(a) = k[a]$.
+	\heading{Allgemein:} Sei $L/k$ eine Körpererweiterung, sei $a \in L$ algebraisch über $k$. Dann können wir alle Elemente von $k(a)$ schreiben als $k_0 + k_1 \cdot a + k_2 a^2 + \dots + k_{n-1} a^{n-1}$, wobei $n = [a : k]$. Also $k(a) = k[a]$.
 	
 	\begin{example}
-		$L/k$ Körpererweiterung, $a \in L$ sei transzendent über $k$. Dann haben wir Abbildung
+		$L/k$ Körpererweiterung, $a \in L$ sei transzendent über $k$. Dann haben wir eine Abbildung
 		\begin{equation*}
-			k[x] \to k[a] \subseteq k(a), \quad f(x) \mapsto f(a)
+			\varphi :k[x] \to k[a] \subseteq k(a), \quad f(x) \mapsto f(a)
 		\end{equation*}
-		per Definition ist $\varphi$ surjektiv. Per Annahme $a$ transzendent ist $\varphi$ injektiv. $\Rightarrow k[a] \cong k[x]$. Insbesonders $k[a]$ kein Körper also $\neq k(a)$. Induktiv beweist man:
+		Per Definition ist $\varphi$ surjektiv. Per Annahme $a$ transzendent ist $\varphi$ injektiv. $\Rightarrow k[a] \cong k[x]$. Insbesondere ist $k[a]$ kein Körper, also $\neq k(a)$. Induktiv beweist man:
 	\end{example}
 
 	\begin{theorem}
@@ -2853,7 +2852,7 @@
 	\end{theorem}
 
 	\begin{remark}
-		Achtung: für $\infty$ viele Elemente ist das Falsch! z.B. sei $L/k$ beliebig. $A = L$, dann ist $k[A] = k(A)$.
+		Achtung: für $\infty$ viele Elemente ist das falsch! z.B. sei $L/k$ beliebig, $A = L$. \\Dann ist $k[A] = k(A)$.
 	\end{remark}
 
 	\subsection{Separable und Inseparable Körpererweiterungen}
@@ -2880,14 +2879,14 @@
 		Alle bekannten Ableitungsregeln gelten.
 	\end{theorem}
 
-	\heading{Zurück zur Frage:} Wenn $k$ ein beliebiger Körper der Charakteristik $0$ ist, und $a$ eine mehrfache Nullstelle von $f$ ist (d.h. in $L[x]$) kann ich schreiben
+	\heading{Zurück zur Frage:} Wenn $k$ ein beliebiger Körper der Charakteristik $0$ ist, und $a$ eine mehrfache Nullstelle von $f$ ist (d.h. in $L[x]$), kann ich schreiben:
 	\begin{equation*}
 		f = (x-a)(x-a) \cdot \text{rest}
 	\end{equation*}
-	Dann sagt Ketten/Produkt-Regel dass $f'$ das $a$ immer noch als Nullstelle hat. Weil $\operatorname{char}(k) = 0$. $f' \not\equiv 0$. Also $\lightning$ wie oben.
+	Dann sagt die Ketten-/Produkt-Regel dass $f'$ das Element $a$ immer noch als Nullstelle hat, wegen $\operatorname{char}(k) = 0$ und $f' \not\equiv 0$. Also $\lightning$ wie oben.
 	
 	\begin{remark}
-		In $\operatorname{char}(k) = p > 0$ immer noch wahr, dass $f'(a) = 0$ ist, aber es könnte sein, dass $f' \equiv 0$.
+		In $\operatorname{char}(k) = p > 0$ ist immer noch wahr, dass $f'(a) = 0$ ist, aber es könnte sein, dass $f' \equiv 0$.
 	\end{remark}
 
 	\begin{definition}
@@ -2902,13 +2901,13 @@
 		(Nicht-irreduzible) separable Polynome können mehrfache Nullstellen haben.
 	\end{remark}
 
-	\heading{Konstruktion mit Frobenius-Morphismus:} Sei $R$ ein Ring ein Ringmorphismus $R \to S$ induziert einen Ringmorphismus $R[x] \to S[x]$. Für $S = R$ und den Frobenius-Morphismus erhalten Ringmorphismus
+	\heading{Konstruktion mit Frobenius-Morphismus:} Sei $R$ ein Ring ein Ringmorphismus $R \to S$. Dieser induziert einen Ringmorphismus $R[x] \to S[x]$. Für $S = R$ und den Frobenius-Morphismus erhalten wir den Ringmorphismus
 	\begin{equation*}
 		\eta: R[x] \to R[x], \quad \sum a_i x^i \mapsto a_i^p x^i
 	\end{equation*}
 	Falls $R$ Integritätsring ist, ist $\eta$ injektiv.
 	
-	$\operatorname{Bild}(\eta) = (R^p)[x] \subseteq R[x]$ und die Abbildung $\eta: R[x] \to R^p[x]$ ist Isomorphismus.
+	$\operatorname{Bild}(\eta) = (R^p)[x] \subseteq R[x]$ und die Abbildung $\eta: R[x] \to R^p[x]$ ist ein Isomorphismus.
 	
 	\begin{theorem}[Charakterisierung inseparabler Polynome]
 		Sei $k$ ein Körper, sei $f \in k[x]$ irreduzibel. Dann sind äquivalent
@@ -2928,17 +2927,17 @@
 		\end{equation*}
 		wobei $i$ hier $\varphi(i) = \underbrace{1 + \dots + 1}_\text{$i$-mal}$.
 		
-		Falls $\operatorname{char}(k) = 0$ wäre dann ist $\forall i$ mit $a_i \neq 0$ auch $i \cdot a_i \neq 0$ also $f'(x) \not\equiv 0$ $\lightning$. Also ist $\operatorname{char}(k) = p > 0$. Die Zahl $p$ ist prim weil $k$ ein Körper ist.
+		Falls $\operatorname{char}(k) = 0$ wäre, dann wäre $\forall i$ mit $a_i \neq 0$ auch $i \cdot a_i \neq 0$, also $f'(x) \not\equiv 0$ $\lightning$. Somit ist $\operatorname{char}(k) = p > 0$. Die Zahl $p$ ist prim weil $k$ ein Körper ist.
 		
-		\textit{Beobachtung:} Falls $i$ kein Vielfaches von $p$ ist, dann $\varphi(i) \neq 0$. Es ist aber $a_i \cdot \varphi(i) = 0 \Rightarrow a_i = 0$ für alle $i$ die kein Vielfaches von $p$ sind. Also
+		\textit{Beobachtung:} Falls $i$ kein Vielfaches von $p$ ist, dann $\varphi(i) \neq 0$. Es ist aber $a_i \cdot \varphi(i) = 0 \Rightarrow a_i = 0$ für alle $i$, die kein Vielfaches von $p$ sind. Also
 		\begin{equation*}
 			f(x) = \sum_{j = 0}^{n/p} a_{j \cdot p} x^{j \cdot p}
 		\end{equation*}
 		Setze $g_1(x) = \sum_{j = 0}^{n/p} a_{j \cdot p} x^j$. Dann $f(x) = g_1(x^p)$.
 		
-		\textit{Idee:} Falls $g_1$ inseparabel ist, wiederhole Prozedur, finde $g_2(x)$ sodass $g_1(x) = g_2(x^p)$ ($\Rightarrow f(x) = g_2(x^{2p})$). Weil der Grad der Polynome dabei sinkt terminiert diese Prozedur nach endlich vielen Schritten, finde $g = g_n$ sodass $f(x) = g(x^{n \cdot p})$ und $g$ separabel ist.
+		\textit{Idee:} Falls $g_1$ inseparabel ist, wiederhole Prozedur, finde $g_2(x)$ sodass $g_1(x) = g_2(x^p)$ ($\Rightarrow f(x) = g_2(x^{2p})$). Weil der Grad der Polynome dabei sinkt, endet diese Prozedur nach endlich vielen Schritten, finde $g = g_n$ sodass $f(x) = g(x^{n \cdot p})$ und $g$ separabel ist.
 		
-		Damit das funktioniert muss ich zeigen, dass $g_1$ irreduzibel ist (per Induktion sind dann auch $g_2, \dots, g_n = g$ irreduzibel).
+		Damit das funktioniert, muss ich zeigen, dass $g_1$ irreduzibel ist (per Induktion sind dann auch $g_2, \dots, g_n = g$ irreduzibel).
 		
 		\textit{Erinnerung:} hatten Morphismen
 		\begin{equation*}
@@ -2972,7 +2971,7 @@
 	\end{remark}
 
 	\begin{proof}
-		\textit{Beobachtung 1:} Wir wissen schon: Die Elemente von $M$ kann ich schreiben als
+		\textit{Beobachtung 1:} Wir wissen schon: Die Elemente von $M$ können wir schreiben als
 		\begin{equation*}
 			\lambda_0 + \lambda_1 a + \lambda_2 a^2 + \dots + \lambda_{n-1} a^{n-1}
 		\end{equation*}
@@ -2980,21 +2979,21 @@
 		\begin{equation*}
 			\varphi(\lambda_0 + \lambda_1 a + \dots + \lambda_{n-1} a^{n-1}) = \sum \lambda_i \varphi(a)^i
 		\end{equation*}
-		das bedeutet: $\varphi$ ist durch $\varphi(a)$ eindeutig festgelegt!
+		Das bedeutet: $\varphi$ ist durch $\varphi(a)$ eindeutig festgelegt!
 		
-		\textit{Beobachtung 2:} Gegeben einen $k$-Morphismus $\varphi$, dann ist $\varphi(a)$ eine Nullstelle des Polynoms $f(x) \in k[x]$ habe aber nur $m$ unterschiedliche Nullstellen!
+		\textit{Beobachtung 2:} Gegeben einen $k$-Morphismus $\varphi$, dann ist $\varphi(a)$ eine Nullstelle des Polynoms $f(x) \in k[x]$, wir haben aber nur $m$ unterschiedliche Nullstellen!
 		
 		Insgesamt also höchstens $m$ unterschiedliche Morphismen!
 		
 		Noch zu zeigen: Wenn $b \in \overline{k}$ eine Nullstelle von $f$ ist, dann existiert ein $k$-Morphismus $\varphi: M \to \overline{k}$ sodass $\varphi(a) = b$ ist.
 		
-		\textit{Erinnerung:} Wir wissen $M \simeq k[x]/(f)$ wobei $a$ mit $[x]$ identifiziert wird.
+		\textit{Erinnerung:} Wir wissen $M \simeq k[x]/(f)$, wobei $a$ mit $[x]$ identifiziert wird.
 		
 		Haben Morphismus:
 		\begin{equation*}
 			\Omega: k[x] \to \overline{k}, \quad g \mapsto g(b)
 		\end{equation*}
-		Dann $f \in \operatorname{Ker}(\Omega)$, der Kern ist ein Hauptideal und $f$ irreduzibel also: $(f) = \operatorname{ker}(\Omega)$. Also erhalte (nach universeller Eigenschaft) einen Morphismus $k[x]/(f) \to \overline{k}$ wobei $[x] \mapsto b$
+		Dann $f \in \operatorname{Ker}(\Omega)$, der Kern ist ein Hauptideal und $f$ irreduzibel, also: $(f) = \operatorname{ker}(\Omega)$. Also erhalte (nach universeller Eigenschaft) einen Morphismus $k[x]/(f) \to \overline{k}$ wobei $[x] \mapsto b$.
 		
 		Erhalte $M \to \overline{k}$ durch Komposition der Morphismen.
 		
@@ -3030,7 +3029,7 @@
 		\end{equation*}
 		Sei $k_0 = k$ und $k_l = k_{l-1}(a_l)$.
 		
-		\heading{1)} Erinnerung es gibt höchstens $[a_1: k_0]$ viele unterschiedliche $k$-Morphismen $\sigma_1: k_1 \to \overline{k}$.
+		\heading{1)} \textit{Erinnerung:} es gibt höchstens $[a_1: k_0]$ viele unterschiedliche $k$-Morphismen $\sigma_1: k_1 \to \overline{k}$.
 		
 		\textit{Erinnerung:} Gegeben $\sigma_1: k_1 \to \overline{k}$, dann gibt es maximal $[a_2 : k_1]$ viele Fortsetzungen von $\sigma_1$ zu Morphismen $\sigma_2: k_2 \to \overline{k}$.
 		
@@ -3046,11 +3045,11 @@
 		
 		Aber: $f_{k_i} \mid f_k$ also klar, dass $f_{k_i}$ keine mehrfachen Nullstellen hat.
 		
-		\heading{b) $\Leftarrow$} Angenommen $L/k$ nicht separabel. Kann die $a_i$ so wählen, dass bereits $a_1/k$ nicht separabel ist.
+		\heading{b) $\Leftarrow$} Angenommen $L/k$ nicht separabel. Wir können die $a_i$ so wählen, dass bereits $a_1/k$ nicht separabel ist.
 		
-		$\Rightarrow$ haben weniger als $[a_1: k_0]$ viele $k$-Morphismen $\sigma_i: k_1 \to \overline{k}$.
+		$\Rightarrow$ wir haben weniger als $[a_1: k_0]$ viele $k$-Morphismen $\sigma_i: k_1 \to \overline{k}$.
 		
-		$\Rightarrow$ haben insgesamt weniger als $[L:k]$ viele $k$-Morphismen $\sigma_l: L \to \overline{k}$.
+		$\Rightarrow$ wir haben insgesamt weniger als $[L:k]$ viele $k$-Morphismen $\sigma_l: L \to \overline{k}$.
 	\end{proof}
 
 	\begin{corollary}
@@ -3062,7 +3061,7 @@
 	\end{proof}
 
 	\begin{corollary}
-		Sei $L/k$ endlich. $L = k(a_1, \dots, a_l)$. Falls für alle $i$ gilt $a_{i+1}$ ist separabel über $k(a_1, \dots, a_i)$ dann gibt es genau $[L:k]$-viele $k$-Morphismen $L \to \overline{k}$.
+		Sei $L/k$ endlich. $L = k(a_1, \dots, a_l)$. Falls für alle $i$ gilt, dass $a_{i+1}$ separabel über $k(a_1, \dots, a_i)$ ist, dann gibt es genau $[L:k]$-viele $k$-Morphismen $L \to \overline{k}$.
 	\end{corollary}
 
 	\begin{corollary}
@@ -3084,7 +3083,7 @@
 		\begin{equation*}
 			L'' = k(a_0, \dots, a_{n-1}, m)
 		\end{equation*}
-		Wende letzte Folgerung auf $L''$ an, erhalten mit Satz dass $L''/k$ separabel ist. Also ist $m/k$ separabel.
+		Wir wenden die letzte Folgerung auf $L''$ an, somit erhalten wir mit dem vorherigen Satz, dass $L''/k$ separabel ist. Also ist $m/k$ separabel.
 	\end{proof}
 
 	\begin{corollary}
@@ -3123,7 +3122,7 @@
 	\begin{proof}
 		\heading{$1) \Rightarrow 2)$} Beweis der Kontraposition: Sei $F$ nicht surjektiv. Sei also $k \in k \setminus k^p$. Sei $b \in \overline{k}$ sodass $b^p = a$. (Erinnerung $F: \overline{k} \to \overline{k}$ ist injektiv, das heißt $b$ ist eindeutig).
 		
-		Betrachte die Erweiterung $k(b)/k$. Das Minimalpolynom von $b$ ist Teiler von $x^p - a$ (das hat lediglich $b$ als Nullstelle) hat also nur eine Nullstelle, nämlich $b$.
+		Betrachte die Erweiterung $k(b)/k$. Das Minimalpolynom von $b$ ist Teiler von $x^p - a$ (das hat lediglich $b$ als Nullstelle), hat also nur eine Nullstelle, nämlich $b$.
 		
 		\heading{$2) \Rightarrow 1)$} Angenommen $F$ wäre surjektiv, $k = k^p$. Angenommen $k$ wäre nicht vollkommen, dann gäbe es ein inseparables, irreduzibles Prolynom $f(x) \in k[x]$.
 		
@@ -3134,7 +3133,7 @@
 			g(x) &= \sum (h_i)^p x^i \\
 			g(x^p) &= \sum (h_i x^i)^p = \left( \sum h_i x^i \right)^p
 		\end{align*}
-		also $\sum h_i x^i$ ist echter Teiler von $f(x)$ in $k[x]$ $\lightning$ zur Irreduzibilität von $f$.
+		also ist $\sum h_i x^i$ ein echter Teiler von $f(x)$ in $k[x]$. $\lightning$ zur Irreduzibilität von $f$.
 	\end{proof}
 
 	\subsection{Galoissche Körpererweiterungen}
@@ -3183,7 +3182,7 @@
 			\end{align*}
 			Das heißt für alle $a \in \mathbb{F}_p$ gilt $F(a) = a$.
 			
-			\textit{Beobachte auch:} Die $a \in k$ für die $F(a) = a$ gilt sind exakt die Nullstellen des Polynoms $x^p - x$. Dieses Polynom hat höchstens $p$ Nullstellen. Also für alle $a \in k$ gilt $F(a) = a \Leftrightarrow a \in \mathbb{F}_p$.
+			\textit{Beobachte auch:} Die $a \in k$, für die $F(a) = a$ gilt, sind exakt die Nullstellen des Polynoms $x^p - x$. Dieses Polynom hat höchstens $p$ Nullstellen. Also für alle $a \in k$ gilt $F(a) = a \Leftrightarrow a \in \mathbb{F}_p$.
 			
 			\textit{Insgesamt:} Der Frobenius-Morphismus ist ein $\mathbb{F}_p$-Automorphismus von $k$. $F \in \Gal(k/\mathbb{F}_p)$.
 			
@@ -3206,14 +3205,14 @@
 		L \to L \subseteq \overline{k}
 	\end{equation*}
 	
-	Falls $L/k$ endlich ist wissen wir: Es existieren höchstens $[L:k]$ viele $k$-Morphismen $L \to \overline{k}$. Also
+	Falls $L/k$ endlich ist, wissen wir: Es existieren höchstens $[L:k]$ viele $k$-Morphismen $L \to \overline{k}$. Also
 	\begin{equation*}
 		\#\Gal(L/k) \leq [L:k]
 	\end{equation*}
 	
 	\heading{Frage:} Haben wir Gleichheit?
 	
-	\heading{Antwort:} Im allgemeinen nein!
+	\heading{Antwort:} Im Allgemeinen nein!
 	\begin{itemize}
 		\item Falls $L/k$ inseparabel ist, dann weniger als $[L:k]$ viele $k$-Morphismen $L \to \overline{k}$.
 		\item Es kann passieren, dass für gegebenes $\sigma: L \to \overline{k}$, $\operatorname{Bild}(\sigma) \neq L$ ist. $\Rightarrow$ dieses $\sigma$ liefert kein Element von $\Gal(L/k)$.
@@ -3236,7 +3235,7 @@
 		Sei $L/k$ eine algebraische Körpererweiterung. Dann sind folgende Aussagen äquivalent:
 		\begin{enumerate}
 			\item $L/k$ ist normal
-			\item Es gibt eine Familie $(f_\lambda)_{\lambda \in \Lambda}$ von Polynomen in $k[x]$ sodass $L$ aus $k$ entsteht durch Adjunktion sämtlicher Nullstellen der $f_\lambda$ in $\overline{L}$.
+			\item Es gibt eine Familie $(f_\lambda)_{\lambda \in \Lambda}$ von Polynomen in $k[x]$, sodass $L$ durch Adjunktion sämtlicher Nullstellen der $f_\lambda$ in $\overline{L}$ aus $k$ entsteht.
 			\item Jeder $k$-Morphismus $\sigma: L \to \overline{L}$ hat $\operatorname{Bild}(\sigma) = L$
 		\end{enumerate}
 	\end{theorem}
@@ -3244,23 +3243,23 @@
 	\begin{proof}
 		$L/k$ ist algebraisch. Wir betrachten $L$ daher als Unterkörper von $\overline{k}$.
 		
-		\heading{$1) \Rightarrow 2):$} Finde Elemente $(a_\lambda)_{\lambda \in \Lambda}$ von $L$, sodass $L = k(a_\lambda \mid \lambda \in \Lambda)$. Die $a_\lambda$ sind algebraisch über $k$ und haben Minimalpolynome $f_\lambda$. Jedes der $f_\lambda$ hat eine Nullstelle in $L$ (nämlich $a_\lambda$), zerfällt also über $L$ (da $L/k$ normal). Sei jetzt $(b_\mu)_{\mu \in M}$ die Familie der Nullstellen aller $f_\lambda$. Per Annahme: alle $b_\mu \in L$ und $L = k(b_\mu \mid \mu \in M)$ da $L \subseteq \{ b_\mu \mid \mu \in M \} \supseteq \{ a_\lambda \mid \lambda \in \Lambda \}$.
+		\heading{$1) \Rightarrow 2):$} Finde Elemente $(a_\lambda)_{\lambda \in \Lambda}$ von $L$, sodass $L = k(a_\lambda \mid \lambda \in \Lambda)$. Die $a_\lambda$ sind algebraisch über $k$ und haben Minimalpolynome $f_\lambda$. Jedes der $f_\lambda$ hat eine Nullstelle in $L$ (nämlich $a_\lambda$), zerfällt also über $L$ (da $L/k$ normal). Sei jetzt $(b_\mu)_{\mu \in M}$ die Familie der Nullstellen aller $f_\lambda$. Per Annahme: alle $b_\mu \in L$ und $L = k(b_\mu \mid \mu \in M)$, da $L \subseteq \{ b_\mu \mid \mu \in M \} \supseteq \{ a_\lambda \mid \lambda \in \Lambda \}$.
 		
-		\heading{$2) \Rightarrow 3):$} Sei $L$ wie in 2) gegeben. Das heißt es gibt Familie $(f_\lambda)_{\lambda \in \Lambda}$ von Polynomen, sodass $L = k(b_\mu \mid \mu \in M)$wobei $(b_\mu)_{\mu \in M}$ die Familie der Nullstellen der $f_\lambda$ in $\overline{k}$ ist. Weiter sei ein $k$-Morphismus $\sigma: L \to \overline{k}$ gegeben. Muss zeigen $\operatorname{Bild}(\sigma) = L$.
+		\heading{$2) \Rightarrow 3):$} Sei $L$ wie in 2) gegeben. Das heißt es gibt Familie $(f_\lambda)_{\lambda \in \Lambda}$ von Polynomen, sodass $L = k(b_\mu \mid \mu \in M)$wobei $(b_\mu)_{\mu \in M}$ die Familie der Nullstellen der $f_\lambda$ in $\overline{k}$ ist. Weiter sei ein $k$-Morphismus $\sigma: L \to \overline{k}$ gegeben. Wir müssen zeigen: $\operatorname{Bild}(\sigma) = L$.
 		
 		\textit{Schritt 1:} Zeige: $\operatorname{Bild}(\sigma) \subseteq L$. Da $L = k(b_\mu \mid \mu \in M)$ ist, genügt es zu zeigen dass für alle $\mu$ $\sigma(b_\mu) \in L$. Sei $\mu$ gegeben, per Definition finde ich ein $\lambda$ sodass $f_\lambda(b_\mu) = 0$. Erinnerung: $\sigma$ ist ein $k$-Morphismus und $f_\lambda \in k[x]$. Das bedeutet $\sigma(b_\mu)$ ist wieder eine Nullstelle von $f_\lambda$. Also $\sigma(b_\mu) \in L$.
 		
-		\textit{Schritt 2:} Zeige: $\operatorname{Bild}(\sigma) \supseteq L$. Es genügt zu zeigen: Für alle $\mu$ gilt $b_\mu \in \operatorname{Bild}(\sigma)$. Sei also ein $\mu$ gegeben. Wieder finde $\lambda$ sodass $f_\lambda(b_\mu) = 0$. Das $f_\lambda$ hat weitere Nullstellen $b_\mu, b_{\mu_1}, \dots, b_{\mu_d}$ wobei $d = \deg(f_\lambda) - 1$. Wir wissen: $\sigma$ bildet die $d$ Nullstellen $b_\mu, b_{\mu_1}, \dots, b_{\mu_d}$ injektiv auf die Nullstellen von $f_\lambda$ ab. $\Rightarrow$ $\sigma(b_\mu) = b_\mu$ oder es gibt $1 \leq i \leq d$ sodass $\sigma(b_{\mu_i}) = b_\mu$.
+		\textit{Schritt 2:} Zeige: $\operatorname{Bild}(\sigma) \supseteq L$. Es genügt zu zeigen: Für alle $\mu$ gilt $b_\mu \in \operatorname{Bild}(\sigma)$. Sei also ein $\mu$ gegeben. Wieder finde $\lambda$ sodass $f_\lambda(b_\mu) = 0$. Das $f_\lambda$ hat weitere Nullstellen $b_\mu, b_{\mu_1}, \dots, b_{\mu_d}$ wobei $d = \deg(f_\lambda) - 1$. Wir wissen: $\sigma$ bildet die $d$ Nullstellen $b_\mu, b_{\mu_1}, \dots, b_{\mu_d}$ injektiv auf die Nullstellen von $f_\lambda$ ab. $\Rightarrow$ $\sigma(b_\mu) = b_\mu$, oder es gibt $1 \leq i \leq d$ sodass $\sigma(b_{\mu_i}) = b_\mu$.
 		
-		\heading{$3) \Rightarrow 1):$} Muss zeigen: jedes irreduzible $f \in k[x]$, das in $L$ eine Nullstelle hat, zerfällt über $L$ in Linearfaktoren. Sei also $f \in k[x]$ wie oben gegeben, sei $a \in L$ eine Nullstelle von $f$, sei $b \in \overline{k}$ eine weitere Nullstelle. Muss zeigen: $b \in L$. Wir wissen: es gibt $k$-Isomorphismen
+		\heading{$3) \Rightarrow 1):$} Wir Müssen zeigen: jedes irreduzible $f \in k[x]$, das in $L$ eine Nullstelle hat, zerfällt über $L$ in Linearfaktoren. Sei also $f \in k[x]$ wie oben gegeben, sei $a \in L$ eine Nullstelle von $f$, sei $b \in \overline{k}$ eine weitere Nullstelle. Wir müssen zeigen: $b \in L$. Wir wissen: es gibt $k$-Isomorphismen
 		\begin{equation*}
 			k(a) \longleftarrow k[x]/(f) \longrightarrow k(b)
 		\end{equation*}
-		sodass für die Komposition $\varphi$ gilt $\varphi(a) = b$. Insgesamt habe ich
+		sodass für die Komposition $\varphi$ gilt $\varphi(a) = b$. Insgesamt haben wir
 		\begin{equation*}
 			L \supseteq k(a) \overset{\varphi}{\longrightarrow} k(b) \subseteq \overline{k}
 		\end{equation*}
-		Universelle Eigenschaft von $\overline{k}$. Ich kann Morphismus $\varphi$ fortsetzen zu $\sigma: L \to \overline{k}$. Per Annahme: $\operatorname{Bild}(\sigma) = L$, aber $b \in \operatorname{Bild}(\sigma)$.
+		Universelle Eigenschaft von $\overline{k}$. Wir können Morphismus $\varphi$ fortsetzen zu $\sigma: L \to \overline{k}$. Per Annahme: $\operatorname{Bild}(\sigma) = L$, aber $b \in \operatorname{Bild}(\sigma)$.
 	\end{proof}
 
 	\begin{corollary}
@@ -3274,13 +3273,13 @@
 	\begin{proof}
 		\heading{$2) \Rightarrow 1):$} folgt aus dem Satz
 		
-		\heading{$1) \Rightarrow 2):$} $L/k$ ist endlich also gibt es $a_1, \dots, a_n \in L$ sodass $L = k(a_1, \dots, a_n)$. Sei $f_1, \dots, f_n$ die Minimalpolynome. Behauptung: $L$ ist Zerfällungskörper von $f = f_1 \cdot \ldots \cdot f_n$.
+		\heading{$1) \Rightarrow 2):$} $L/k$ ist endlich, also gibt es $a_1, \dots, a_n \in L$ sodass $L = k(a_1, \dots, a_n)$. Seien $f_1, \dots, f_n$ die Minimalpolynome. Behauptung: $L$ ist Zerfällungskörper von $f = f_1 \cdot \ldots \cdot f_n$.
 		
 		Seien $(b_\mu)_{\mu \in M}$ die Nullstellen von $f$. Weil $L/k$ normal ist, folgt
 		\begin{equation*}
 			L = k(a_1, \dots, a_n) = k(b_\mu \mid \mu \in M)
 		\end{equation*}
-		also ist $L$ der Zerfällungskörper.
+		Also ist $L$ der Zerfällungskörper.
 	\end{proof}
 
 	\begin{corollary}
