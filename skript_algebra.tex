@@ -892,7 +892,7 @@
 	\end{theorem}
 
 	\begin{proof}
-		Angenommen es existiert in $\setZ$ ein irreduzibles Element $p$, das nicht prim ist. Dann ist $-p$ irreduzibel und auch nicht prim. Wir können also oBdA annehmen $p > 0$. Wir können auch annehmen das $p$ das kleinste positive, irreduzible Element ist, das nicht prim ist.
+		Angenommen es existiert in $\setZ$ ein irreduzibles Element $p$, das nicht prim ist. Dann ist $-p$ irreduzibel und auch nicht prim. Wir können also oBdA annehmen $p > 0$. Wir können auch annehmen, dass $p$ das kleinste positive, irreduzible Element ist, das nicht prim ist.
 		
 		Also $\exists a,b \in \setN: p \mid a \cdot b$ aber $p \nmid a$ und $p \nmid b$.
 		
@@ -916,7 +916,7 @@
 			p \cdot p' \cdot h' = p' \cdot a' \cdot b \underset{\text{$\setZ$ Integritätsring}}{\Longrightarrow} p \cdot h' = a' b \qquad\Longrightarrow\qquad p \mid a' b
 		\end{equation*}
 		
-		Da $a' b < ab$ ist gilt nach Wahl von $a \cdot b$ ($a,b$ Gegenbeispiel zur Prim-Eigenschaft mit minimalem Produkt) also $p \mid a'$ oder $p \mid b$. Da $a' \mid a$ ist folgt $p \mid a$ oder $p \mid b$. $\lightning$
+		Da $a' b < ab$ ist, gilt nach Wahl von $a \cdot b$ ($a,b$ Gegenbeispiel zur Prim-Eigenschaft mit minimalem Produkt) also $p \mid a'$ oder $p \mid b$. Da $a' \mid a$ ist folgt $p \mid a$ oder $p \mid b$. $\lightning$
 	\end{proof}
 
 	\begin{theorem}
@@ -931,9 +931,9 @@
 	\begin{proof}
 		\heading{1) $\Rightarrow$ 2)}
 		
-		\textit{Teilerkettensatz}: Sei $(r_i)_{i \in \setN}$ eine Teilerkette. Sei $i$ sodass $r_{i+1} \parallel r_i$ das heißt $\exists h: h \notin R^*, h \neq 0: r_{i+1} \cdot h = r_i$.
+		\textit{Teilerkettensatz}: Sei $(r_i)_{i \in \setN}$ eine Teilerkette. Sei $i$ sodass $r_{i+1} \parallel r_i$, das heißt $\exists h: h \notin R^*, h \neq 0: r_{i+1} \cdot h = r_i$.
 		
-		Nach Annahme, kann $r_i, r_{i+1},h$ als Produkt von endlich vielen Irreduziblen geschrieben werden
+		Nach Annahme können $r_i, r_{i+1},h$ als Produkt von endlich vielen Irreduziblen geschrieben werden:
 		\begin{align*}
 			r_i &= a_1 \cdot a_n \\
 			r_{i+1} &= b_1 \cdots b_m \\
@@ -941,11 +941,11 @@
 		\end{align*}
 		Dann gilt
 		\begin{equation*}
-			\underbrace{b_1 \cdots b_m}_\text{Darstellung von $r_{i+1}$} \cdot c_1 \cdots c_k = \underbrace{a_1 \cdots a_n}_\text{Darstellung von $r_i$}
+			\underbrace{b_1 \cdots b_m}_{\substack{\text{Darstellung} \\ \text{von $r_{i+1}$}}} \cdot c_1 \cdots c_k = \underbrace{a_1 \cdots a_n}_{\substack{\text{Darstellung } \text{von $r_i$}}}
 		\end{equation*}
 		Da alle Darstellungen äquivalent sind, folgt $n = m + k > m$.
 		
-		Also in der Teilerkette gibt es höchstens endlich viele echte Teiler, nämlich höchstens so viele, wie eine (jede) Darstellung von $r_1$ lang ist. $\Rightarrow$ Teilerkettensatz gilt
+		Also: In der Teilerkette gibt es höchstens endlich viele echte Teiler, nämlich höchstens so viele, wie eine (jede) Darstellung von $r_1$ lang ist. $\Rightarrow$ Teilerkettensatz gilt
 		
 		\textit{Irreduzibel $\Rightarrow$ Prim}: Sei $r$ irreduzibel und seien $a,b \in R \setminus \{ 0 \}$ sodass $r \mid ab$. Also existiert $h \in R \setminus \{ 0 \}$, sodass $r \cdot h = a \cdot b$. Wir wissen $h,a,b$ haben Darstellung
 		\begin{equation*}
@@ -961,7 +961,7 @@
 		
 		\heading{2) $\Rightarrow 1)$}
 		
-		Wir haben schon bewiesen: Teilerkettensatz $\Rightarrow$ Darstellbarkeit, es fehlt noch die Äquivalenz $\forall r \in R, r \notin R^*, r \neq 0$ und für alle Darstellungen $r =  a_1 \cdots a_n \underset{(*)}{=} b_1 \cdots b_m$ mit $n \neq m$ gilt, dass beide Darstellungen äquivalent sind.
+		Wir haben schon bewiesen: Teilerkettensatz $\Rightarrow$ Darstellbarkeit, es fehlt noch die Äquivalenz $\forall r \in R, r \notin R^*, r \neq 0$ und für alle Darstellungen $r =  \underbrace{a_1 \cdots a_n = b_1 \cdots b_m}_{(*)}$ mit $n \neq m$ gilt, dass beide Darstellungen äquivalent sind.
 		
 		\textit{Beweis per Induktion über $n$}
 		
