@@ -1011,7 +1011,8 @@
 		
 		\heading{zu 2):} Widerspruchsbeweis! Angenommen es gibt $r(x) \in R[x], r \neq 0, r \notin R[x]^* = R^*$ sodass $r$ zwei Darstellungen hat, die nicht äquivalent sind
 		\begin{equation*}
-			r(x) = p_1(x) \cdots p_\alpha(x) = q_1(x) \cdots q_\beta(x) \qquad\qquad\qquad (*)
+			\tag{*}
+			r(x) = p_1(x) \cdots p_\alpha(x) = q_1(x) \cdots q_\beta(x)
 		\end{equation*}
 		Wir können oBdA einige Annahmen treffen
 		\begin{itemize}
@@ -1028,16 +1029,16 @@
 		
 		Beobachtungen:
 		\begin{itemize}
-			\item $\deg r(x) > 0$, denn sonst wären $r(x)$ und alle $q_i(x), p_j(x)$ konstant, also in $R$. Per Annahme das $R$ faktoriell ist müssten die Darstellungen dann äquivalent sein.
+			\item $\deg r(x) > 0$, denn sonst wären $r(x)$ und alle $q_i(x), p_j(x)$ konstant, also in $R$. Per Annahme das $R$ faktoriell ist, müssten die Darstellungen dann äquivalent sein.
 			
 			$\Rightarrow$ $n > 0$ und $m > 0$
 			
-			\item Angenommen es gäbe ein $j$, sodass $p_1 \sim q_j$. Dann könnten wir in $(*)$ auf beiden Seiten $p_1$ kürzen und erhielte Polynom vom Grad $(\deg r(x)) - n < \deg r(x)$, das zwei nicht äquivalente Darstellungen hat $\lightning$ zur Minimalität von $\deg r(x)$.
+			\item Angenommen es gäbe ein $j$, sodass $p_1 \sim q_j$. Dann könnten wir in (*) auf beiden Seiten $p_1$ kürzen und erhielten Polynom vom Grad $(\deg r(x)) - n < \deg r(x)$, das zwei nicht äquivalente Darstellungen hat. $\lightning$ zur Minimalität von $\deg r(x)$.
 		\end{itemize}
 	
 		Betrachte Hilfspolynom:
 		\begin{equation*}
-			s(x) = \underbrace{\left[ b \cdot p_1(x) \cdot x^{m-n} - a \cdot q_1(x) \right]}_{\deg < \deg q_1(x)} \cdot q_2 \cdots q_\beta \tag{\sun}
+			s(x) = \underbrace{\left[ b \cdot p_1(x) \cdot x^{m-n} - a \cdot q_1(x) \right]}_{\deg (\cdot) < \deg q_1(x)} \cdot q_2 \cdots q_\beta \tag{\sun}
 		\end{equation*}
 		
 		Wir erhalten zwei offensichtliche Fälle
@@ -1048,7 +1049,7 @@
 			\end{equation*}
 			\item $s(x) \neq 0$: Wir sehen $\deg s(x) < \deg r(x)$. Also sind je zwei Darstellungen von $s(x)$ äquivalent! Schreibe $s(x)$ um:
 			\begin{align*}
-				s(x) &= b \cdot p_1(X) x^{m-n} \cdot q_2 \cdots q_\beta - a \underbrace{q_1 \cdots q\beta}_{r(x)} \\
+				s(x) &= b \cdot p_1(X) x^{m-n} \cdot q_2 \cdots q_\beta - a \underbrace{q_1 \cdots q_\beta}_{r(x)} \\
 				&= b \cdot p_1 x ^{m-n} \cdot q_2 \cdot q_\beta - a \cdot p_1 \cdots p_\alpha \\
 				&= p_1(x) \left[ b \cdot x^{m-n} \cdot q_2(x) \cdots q_\beta(x) - a \cdot p_2(x) \cdots p_\alpha(x) \right] \tag{\leftmoon}
 			\end{align*}
@@ -1056,7 +1057,7 @@
 	
 		Wir können die Ausdrücke $(\sun)$ und $(\leftmoon)$ verfeinern zu Produkten von Irreduziblen, indem wir die Ausdrücke in $[\dots]$ als Produkt von Irreduziblen schreiben. Diese Darstellungen von $s(x)$ müssen dann äquivalent sein.
 		
-		\textit{Konsequenz:} In der Darstellung von $(\sun)$ muss es einen Faktor geben, der zu $p_1$ assoziiert ist. Da $p_1 \nsim 1_2 \dots p_1 \nsim q_\beta$ muss $p_1$ ein Primfaktor vom $[\dots]$-Ausdruck in $(\sun)$ sein.
+		\textit{Konsequenz:} In der Darstellung von $(\sun)$ muss es einen Faktor geben, der zu $p_1$ assoziiert ist. Da $p_1 \nsim p_2  \dots p_1 \nsim q_\beta$ muss $p_1$ ein Primfaktor vom $[\dots]$-Ausdruck in $(\sun)$ sein.
 		\begin{equation*}
 			\Rightarrow \qquad p_1 \mid (b p_1 \cdot x^{m-n} - a q_1) \qquad \Rightarrow p_1 \mid a q_1
 		\end{equation*}
@@ -1074,7 +1075,7 @@
 		
 		$\Rightarrow p \mid p_1$ oder $p \mid h$. $p \mid p_1$ kann nicht sein, denn $p_1$ ist irreduzibel, hat also überhaupt keine echten Teiler.
 		
-		Also können wir aus $(\bell)$ $p$ herausteilen und erhalte
+		Also können wir $p$ aus $(\bell)$ herausteilen und erhalten:
 		\begin{equation*}
 			p_1 \cdot \frac{h}{p} = \frac{a}{p} q_1
 		\end{equation*}
@@ -1135,8 +1136,8 @@
 	Sei $R$ ein Integritätsring, seien $a,b \in R \setminus R^*, a \cdot b \neq 0$
 	
 	\begin{enumerate}
-		\item Ein Element $c \in R$ heißt größter gemeinsamer Teiler, wenn gilt: $c \mid a$ und $c \mid b$ und wenn für jedes andere $c'$ mit $c' \mid a$ und $c' \mid b$ gilt $c' \mid c$.
-		\item Ein Element $c \in R$ heißt kleinstes gemeinsames Vielfaches, wenn $a \mid c$ und $b \mid c$ ist und für alle $c' \in R$ mit $a \mid c'$ und $b \mid c'$ gilt $c \mid c'$.
+		\item Ein Element $c \in R$ heißt \emph{größter gemeinsamer Teiler (ggT)}, wenn gilt: $c \mid a$ und $c \mid b$ und wenn für jedes andere $c'$ mit $c' \mid a$ und $c' \mid b$ gilt: $c' \mid c$.
+		\item Ein Element $c \in R$ heißt \emph{kleinstes gemeinsames Vielfaches (kgV)}, wenn $a \mid c$ und $b \mid c$ ist und für alle $c' \in R$ mit $a \mid c'$ und $b \mid c'$ gilt: $c \mid c'$.
 	\end{enumerate}
 
 	\begin{theorem}
@@ -1207,7 +1208,7 @@
 	\heading{Beobachtung:} So etwas kann es nicht geben, wenn $R$ Nullteiler hat! Betrachte also nur Integritätsringe.
 	
 	\begin{definition}
-		Sei $R$ ein Integritätsring. Ein Quotientenkörper von $R$ ist ein Körper $k$ zusammen mit einem injektiven Ringmorphismus $\varphi: R \to k$, sodass folgende (universelle) Eigenschaft gilt: Wann immer $\Phi: R \to L$ ein injektiver Ringmorphismus in einen Körper ist, dann gibt es genau einen Körpermorphismus $\eta: k \to L$, sodass das folgende Diagramm kommutiert.
+		Sei $R$ ein Integritätsring. Ein \emph{Quotientenkörper von $R$} ist ein Körper $k$ zusammen mit einem injektiven Ringmorphismus $\varphi: R \to k$, sodass folgende (universelle) Eigenschaft gilt: Wann immer $\Phi: R \to L$ ein injektiver Ringmorphismus in einen Körper ist, dann gibt es genau einen Körpermorphismus $\eta: k \to L$, sodass das folgende Diagramm kommutiert.
 		
 		\begin{center}
 			\begin{tikzpicture}
@@ -1365,10 +1366,10 @@
 				0_k = \frac01 \qquad 1_k = \frac11 \qquad \text{falls $a \neq 0$ dann} \left( \frac{a}{b} \right)^{-1} = \frac{b}{a}
 			\end{equation*}
 			
-			\item Beweis der universellen Eigenschaft
+			\item Beweis der \emph{universellen Eigenschaft}
 			
-			Sei Körper $L$ gegeben und ein injektiver Ringmorphismus $\Phi: R \to L$, dann müssen wir zeigen $\exists! \eta: k \to L$ sodass \textellipsis
-			%hier fehlt noch was?
+			Sei Körper $L$ gegeben und ein injektiver Ringmorphismus $\Phi: R \to L$, dann müssen wir zeigen $\exists! \eta: k \to L$ sodass \textellipsis \\
+			%TODO hier fehlt noch was?
 			\heading{Eindeutigkeit:} Angenommen wir hätten $\eta$ sodass das folgende Diagramm kommutiert
 			\begin{center}
 				\begin{tikzpicture}
@@ -1389,7 +1390,7 @@
 			\end{equation*}
 			Falls $a \neq 0$ ist gilt
 			\begin{equation*}
-				\eta\left( \frac{1}{a} \right) = \eta\left( \left( \frac{a}{1} \right)^{-1} \right) \overset{\text{Körpermorphismus}}{=} \eta \left( \frac{a}{1} \right)^{-1}
+				\eta\left( \frac{1}{a} \right) = \eta\left( \left( \frac{a}{1} \right)^{-1} \right) \overset{\substack{\text{Körper-} \\ \text{morphismus}}}{=} \eta \left( \frac{a}{1} \right)^{-1}
 			\end{equation*}
 			also gilt für alle $\frac{a}{b} \in k$
 			\begin{equation*}
@@ -1407,7 +1408,7 @@
 				&& \Phi(a) \Phi(b)^{-1} &= \Phi(a') \Phi(b')^{-1} \\
 				&\Leftrightarrow& \Phi(a) \cdot \Phi(b') &= \Phi(a') \Phi(b) \\
 				&\Leftrightarrow& \Phi(ab') &= \Phi(a'b) \\
-				&\Leftrightarrow& \text{Wahr,}& \text{ wegen Annahme}
+				&\Leftrightarrow& \text{wahr,}& \text{ wegen Annahme}
 			\end{align*}
 			Nachrechnen: das ist ein Körperisomorphismus.
 		\end{enumerate}
