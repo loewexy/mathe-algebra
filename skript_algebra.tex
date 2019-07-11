@@ -1416,13 +1416,13 @@
 \newpage
 	\begin{example}""
 		\begin{itemize}
-			\item $R = \setZ$ dann ist $Q(\setZ) = \setQ$
-			\item $R$ ein Körper, dann ist $Q(R) = R$
+			\item $R = \setZ$. Dann ist $Q(\setZ) = \setQ$
+			\item Ist $R$ ein Körper, dann ist $Q(R) = R$
 			\item $R = \setZ[2 + \sqrt{-5}]$, dann ist $Q(R) = \setQ(2 + \sqrt{-5}) \subset \setC$
 			
-			Grund: Wir haben eine Inklusion $R \subset \setQ(2 + \sqrt{-5})$ deshalb gibt es Körpermorphismus $Q(R) \to \setQ(2 + \sqrt{-5})$.
+			Grund: Wir haben eine Inklusion $R \subset \setQ(2 + \sqrt{-5})$. Deshalb gibt es einen Körpermorphismus $Q(R) \to \setQ(2 + \sqrt{-5})$.
 			
-			Dieser ist injektiv, denn $Q(R)$ enthält das Element $a = 2 + \sqrt{-5}$. Wir wissen aber $\setQ(2 + \sqrt{-5})$ ist der kleinste Körper der dieses Element enthält.
+			Dieser ist injektiv, denn $Q(R)$ enthält das Element $a = 2 + \sqrt{-5}$. Wir wissen aber, dass $\setQ(2 + \sqrt{-5})$ der kleinste Körper ist, der dieses Element enthält.
 			\item Sei $R$ faktoriell. Wähle Repräsentantensystem $P \subset R$. Dann können wir alle Elemente von $Q(R)$ auf eindeutige Weise schreiben als
 			\begin{equation*}
 				\varepsilon \cdot \prod_{p \in P} p^{\alpha_p}
@@ -1464,11 +1464,11 @@
 		
 		\textit{Ziel:} Schreibe $f$ als Produkt $f = q'(x) \cdot p'(x)$ wobei $q',p' \in R[x]$ echte Teiler sind.
 		
-		\textit{Beobachtung:} Wenn $\gamma \in R$ jeden Koeffizienten von $f$ teilt und $\gamma \notin R^*, \gamma \neq 0$ dann ist $\gamma$ ein echter Teiler von $f$ und wir sind fertig. Wir nehmen also ab sofort an, dass die Koeffizienten von $f$ teilerfremd sind.
+		\textit{Beobachtung:} Wenn $\gamma \in R$ jeden Koeffizienten von $f$ teilt und $\gamma \notin R^*, \gamma \neq 0$, dann ist $\gamma$ ein echter Teiler von $f$ und wir sind fertig. Wir nehmen also ab sofort an, dass die Koeffizienten von $f$ teilerfremd sind.
 		
-		Wende Vorbemerkung auf Polynome $p(x), q(x)$ an, erhalte $a,b \in Q(R)$ sodass $a \cdot p(x) \in R[x]$ und $b \cdot q(x) \in R[x]$ und Koeffizienten dieser Polynome jeweils teilerfremd in $R$.
+		Wende Vorbemerkung auf Polynome $p(x), q(x)$ an und erhalte $a,b \in Q(R)$, sodass $a \cdot p(x) \in R[x]$ und $b \cdot q(x) \in R[x]$ und Koeffizienten dieser Polynome jeweils teilerfremd in $R$ sind.
 		
-		Durch Multiplikation erhalte Gleichung
+		Durch Multiplikation erhalten wir die Gleichung
 		\begin{equation*}
 			a \cdot b \cdot f(x) = a \cdot p(x) \cdot b \cdot q(x) \in R[x] \tag{$*$}
 		\end{equation*}
@@ -1476,7 +1476,7 @@
 		
 		\textit{Behauptung:} Es ist $a \cdot b \in R$.
 		
-		\textit{Beweis:} Angenommen $a \cdot b \notin R$, das heißt es existiert ein Primelement $p \in R$, welches in der Darstellung von $a \cdot b$ mit negativem Exponenten auftritt. Da aber $a \cdot b \cdot f(x) \in R[x]$, muss die Darstellung jedes Koeffizienten das Element $p$ mit positivem Exponenten enthalten. Also $p \mid \text{Koeffizienten}$ $\lightning$ zu $\operatorname{ggT(\text{Koeffizienten})} = 1$
+		\textit{Beweis:} Angenommen $a \cdot b \notin R$, das heißt es existiert ein Primelement $p \in R$, welches in der Darstellung von $a \cdot b$ mit negativem Exponenten auftritt. Da aber $a \cdot b \cdot f(x) \in R[x]$, muss die Darstellung jedes Koeffizienten das Element $p$ mit positivem Exponenten enthalten. Also $p \mid \text{Koeffizienten}$ $\lightning$ zu $\operatorname{ggT(\text{Koeffizienten})} = 1$.
 		
 		\textit{Behauptung:} Es gilt sogar $a \cdot b \in R^*$
 		
@@ -1516,13 +1516,13 @@
 	
 	$\Rightarrow h - f = 0$
 	
-	Damit haben wir folgendes Verfahren, um Irreduzibilität in $\setZ[x]$ und also auch in $\setQ[x]$ zu testen.
+	Damit haben wir folgendes Verfahren, um Irreduzibilität in $\setZ[x]$ und also auch in $\setQ[x]$ zu testen:
 	
 	Gegeben $f(x) \in \setZ[x]$ von Grad $\leq n$ so, dass $\operatorname{ggT}(\text{Koeffizienten}) = 1$.
 	
 	Wähle $a_1, \dots, a_{n+1} \in \setZ$ so, dass $f(a_i) \neq 0$ und betrachte $f(a_1), \dots, f(a_n) \in \setZ$.
 	
-	Wir wissen, wenn $g(x)$ ein Teiler von $f(x)$ in $\setZ[x]$ ist, dann gilt für alle $i$ $q(a_i) \mid f(a_i)$
+	Wir wissen, wenn $g(x)$ ein Teiler von $f(x)$ in $\setZ[x]$ ist, dann gilt für alle $i$ : $q(a_i) \mid f(a_i)$
 	
 	Für $g(a_i)$ gibt es also nur endlich viele Möglichkeiten.
 	
@@ -1554,11 +1554,11 @@
 		
 		Per Annahme $p^2 \nmid a_0$ kann $p$ nicht beide Elemente teilen. Wir nehmen also $p \mid \alpha_0$ und $p \nmid \beta_0$ an.
 		
-		Weil $\operatorname{ggT}(a_0, \dots, a_n) = 1$ wissen wir $p$ teilt nicht alle $\alpha_i$. Sei also $i$ minimal sodass $p \nmid \alpha_i$. Wir wissen schon mal $i < n$, insbesondere $p \mid a_i$.
+		Weil $\operatorname{ggT}(a_0, \dots, a_n) = 1$, wissen wir: $p$ teilt nicht alle $\alpha_i$. Sei also $i$ minimal, sodass $p \nmid \alpha_i$. Wir wissen schon mal $i < n$, insbesondere $p \mid a_i$.
 		
 		Es ist aber
 		\begin{equation*}
-			a_i = \underbrace{\alpha_0 \beta_i}_\text{Vielfaches von $p$} + \underbrace{\alpha_i \beta_{i-1}}_\text{Vielfaches von $p$} + \underbrace{\alpha_2 \beta_{i-2}}_\text{Vielfaches von $p$} + \dots + \underbrace{\alpha_i \beta_0}_\text{kein Vielfaches von $p$}
+			a_i = \underbrace{\alpha_0 \beta_i}_{\substack{\text{Vielfaches} \\ \text{von $p$}}} + \underbrace{\alpha_i \beta_{i-1}}_{\substack{\text{Vielfaches} \\ \text{von $p$}}} + \underbrace{\alpha_2 \beta_{i-2}}_{\substack{\text{Vielfaches} \\ \text{von $p$}}} + \dots + \underbrace{\alpha_i \beta_0}_{\substack{\text{kein} \\ \text{Vielfaches von $p$}}}
 		\end{equation*}
 		
 		$\lightning$ zu Teilbarkeitsregeln.
@@ -1572,7 +1572,7 @@
 
 	\subsection{Hilfe bei der Anwendung des Eisenstein-Kriteriums}
 	
-	Sei $R$ faktoriell und $\varphi: R[x] \to S$ ein Ringmorphismus in einen Integritätsring $S$. Angenommen $\varphi$ hat die Eigenschaft dass $\forall f \in R[x]: \deg f > 0 \Rightarrow \varphi(f) \notin S^*$.
+	Sei $R$ faktoriell und $\varphi: R[x] \to S$ ein Ringmorphismus in einen Integritätsring $S$. Angenommen $\varphi$ hat die Eigenschaft, dass $\forall f \in R[x]: \deg f > 0 \Rightarrow \varphi(f) \notin S^*$.
 	
 	Wenn jetzt ein $f \in R[x]$ gegeben ist mit $f(x) = a_0 + a_1 x + \dots + a_n x^n$ mit $n > 0$ und $\operatorname{ggT}(a_0, \dots, a_n) = 1$ und $\varphi(f)$ irreduzibel ist, dann ist $f$ irreduzibel.
 	
@@ -1661,7 +1661,7 @@
 		\begin{equation*}
 			(0, 2\pi) \to \setC, \varphi \mapsto e^{i \varphi}
 		\end{equation*}
-		ist injektiv hat also überabzählbar viele Bildpunkte, es gibt aber nur abzählbar viele algebraische Zahlen. Also ist $e^{i \varphi}$ transzendent für fast alle $\varphi$.
+		ist injektiv, hat also überabzählbar viele Bildpunkte, es gibt aber nur abzählbar viele algebraische Zahlen. Also ist $e^{i \varphi}$ transzendent für fast alle $\varphi$.
 	\end{remark}
 
 	Für dieses Problem betrachte bei gegebenem $\varphi$ die Menge $M = \{ 0, 1, e^{i \varphi} \}$. Ist $e^{i \frac{\varphi}{3}} \in \operatorname{Kons(M)}$? Also betrachten wir
@@ -1693,7 +1693,7 @@
 		$\eta$ ist surjektiv weil $e^{i \varphi} = \eta(y)$ im Bild liegt und $k$ der kleinste Körper ist, der $e^{i \varphi}$ enthält.
 	\end{proof}
 
-	Wir wollen entscheiden ob $f(x) = x^3 - e^{i \varphi} \in k[x]$ irreduzibel ist. Wir können also auch untersuchen, ob $x^3 - y$ in $(\setQ(y))[x]$ irreduzibel ist.
+	Wir wollen entscheiden, ob $f(x) = x^3 - e^{i \varphi} \in k[x]$ irreduzibel ist. Wir können also auch untersuchen, ob $x^3 - y$ in $(\setQ(y))[x]$ irreduzibel ist.
 	
 	$\Leftrightarrow$ Ist $x^3 - y \in (\setQ[y])[x]$ irreduzibel?
 	
@@ -1750,7 +1750,7 @@
 			\item $R = \setZ, a \in \setZ$ ein Element $I = \{ \text{alle Vielfachen von $a$} \}$
 			\item Besonders einfache Ideale: sei $R$ ein Ring, $I \subset R$ ein Ideal. Nenne $I$ ein Hauptideal falls $\exists a \in I: I = (a)$. Nenne $R$ Hauptidealring falls alle Ideale Hauptideale sind. z.B. $\setZ$ ist ein Hauptidealring.
 			
-			Sei $I \subset \setZ$ ein Ideal, $I \neq (0)$. Wir wissen: $I$ enthält positive Elemente. Sei $a \in I$ das kleinste positive Element. Will zeigen $I = (a)$. Inklusion $\supset$ ist klar. Sei also $b \in I \setminus \{ 0 \}$ irgendein Element. oBdA sei $b > 0$. Division mit Rest:
+			Sei $I \subset \setZ$ ein Ideal, $I \neq (0)$. Wir wissen: $I$ enthält positive Elemente. Sei $a \in I$ das kleinste positive Element. Will zeigen: $I = (a)$. Inklusion $\supset$ ist klar. Sei also $b \in I \setminus \{ 0 \}$ irgendein Element. oBdA sei $b > 0$. Division mit Rest:
 			\begin{equation*}
 				\underbrace{b}_{\in I} = \underbrace{* \cdot a}_{\in I} + c, \text{ wobei } 0 \leq c < a.
 			\end{equation*}
@@ -1810,7 +1810,7 @@
 	\end{example}
 
 	\begin{definition}
-		Sei $R$ ein Ring. Sage "in $R$ gilt der Teilerkettensatz für Ideale", falls jede aufsteigende Kette von Idealen
+		Sei $R$ ein Ring. Sage "`in $R$ gilt der Teilerkettensatz für Ideale"', falls jede aufsteigende Kette von Idealen
 		\begin{equation*}
 			I_1 \subseteq I_2 \subseteq I_3 \subseteq \dots
 		\end{equation*}
@@ -1869,11 +1869,11 @@
 		
 		Setze $n_i = \deg f_i$, $a_i = $ Leitkoeffizient von $f_i \in R$.
 		
-		Will zeigen, dass folgende Kette von Idealen in $R$ nicht stationär wird.
+		Wir wollen zeigen, dass folgende Kette von Idealen in $R$ nicht stationär wird:
 		\begin{equation*}
 			(a_1) \subseteq (a_1, a_2) \subseteq (a_1, a_2, a_3) \subseteq \dots
 		\end{equation*}
-		dann wird klar sein, dass $R$ nicht Noethersch war.
+		Denn dann wird klar sein, dass $R$ nicht Noethersch war.
 		
 		Angenommen es gäbe $k$ mit $(a_1, \dots, a_k) = (a_1, \dots, a_{k+1}) \Leftrightarrow a_{k+1} \in (a_1 \dots, a_k)$
 		
@@ -1924,7 +1924,7 @@
 			1 = \alpha_2 \beta_2 p^2 + (\alpha_1 \beta_2 a + \alpha_2 \beta_1 b)p + \alpha_1 a \beta_1 b
 		\end{equation*}
 		
-		$\Rightarrow p \nmid \alpha_1 \beta_1 a b$ denn sonst würde $p$ die Summe teilen, also auch $p \mid 1$.
+		$\Rightarrow p \nmid \alpha_1 \beta_1 a b$, denn sonst würde $p$ die Summe teilen, also auch $p \mid 1$.
 		
 		$\Rightarrow p \nmid a \cdot b$
 	\end{proof}
@@ -1932,7 +1932,7 @@
 	\heading{Quotienten:} Sei $R$ ein Ring, $I \subset R$ ein Ideal. Dann definiere $r,s \in R$ als äquivalent, falls $r - s \in I$.
 	
 	\begin{theorem}
-		Es gibt auf Quotientenmengen eindeutige Verknüpfungen $+, \cdot$ sodass die Quotientenabbildung
+		Es gibt auf Quotientenmengen eindeutige Verknüpfungen $+$, $\cdot$, sodass die Quotientenabbildung
 		\begin{equation*}
 			q: R \to R/I
 		\end{equation*}
