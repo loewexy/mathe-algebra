@@ -416,19 +416,22 @@
 	\end{equation*}
 	
 	\begin{theorem}
-		Sei $L/k$ eine Körpererweiterung, $a \in L$ dann gilt
-		\begin{equation*}
+		Sei $L/k$ eine Körpererweiterung, $a \in L$ dann gilt:
+		$
 			[a: k] = [k(a): k]
- 		\end{equation*}
+ 		$
 	\end{theorem}
 
 	\begin{proof}
 		Falls $a$ transzendent, dann sind $1,a,a^2,\dots$ $k$-linear unabhängig, also ist $\dim_k k(a) = \infty$.
 		
-		Betrachte also den Fall, wo $a$ algebraisch ist mit Minimalpolynom $f(x) = x^n + b_{n-1} + \dots + b_0 \in k[x]$.
+		Betrachte also den Fall, wo $a$ algebraisch ist mit Minimalpolynom 
+		\begin{equation*}
+			f(x) = x^n + b_{n-1} \cdot x^{n-1} + \dots + b_0 \in k[x]
+		\end{equation*}
 		
-		\heading{Klar ist:} Die Elemente $1,a,a^2, \dots, a^{n-1} \in k(a)$ %TODO müssen hier nicht bs stehen?
-		sind linear unabhängig, denn jede lineare Relation gäbe ein Polynom $g(x)$ vom Grad $< n$ mit $g(a) = 0$ $\lightning$.
+		\heading{Klar ist:} Die Elemente $1,a,a^2, \dots, a^{n-1} \in k(a)$ 
+		sind linear unabhängig, denn jede lineare Relation gäbe ein Polynom $g(x)$ mit $\deg (g) < n$ mit $g(a) = 0$ $\lightning$.
 		
 		\heading{Also:} $\dim_k k(a) \geq n$
 		
@@ -440,14 +443,15 @@
 		
 		\heading{Zwischenbehauptung:} Sei $s = \sum_{i=0}^{n-1} \lambda_i a^i \in \tilde{k}$ ein beliebiges Element. Dann ist $a \cdot s \in \tilde{k}$.
 		
-		Wir wissen:
-		\begin{equation*}
+		Wir wissen bereits:
+		$
 			a \cdot s = \underbrace{\sum_{i=0}^{n-2} \lambda_i a^{i+1}}_{\in \tilde{k}} + \lambda_{n-1} a^n
-		\end{equation*}
-		Ein Blick auf das Minimalpolynom zeigt:
-		\begin{equation*}
+		$.
+		
+		Ein Blick auf das Minimalpolynom zeigt jetzt:
+		$
 			a^n = - \sum_{i = 0}^{n-1} b_i \cdot a^i \in \tilde{k}
-		\end{equation*}
+		$.
 		
 		\heading{Konsequenz:} Wenn $s,t \in \tilde{k}$ beliebig sind, dann $s \cdot t \in \tilde{k}$, also gilt die Abgeschlossenheit unter Multiplikation.
 		
@@ -458,8 +462,8 @@
 		\heading{Beobachtung:} $p_0 \neq 0$, denn sonst könnten wir $x$ ausklammern, $p$ wäre nicht minimal. Demnach können wir schreiben:
 		\begin{align*}
 			&0 = p(s) = s^m + p_{m-1} s^{m-1} + \dots + p_0 \\
-			\Leftrightarrow& - p_0 = s(s^{m-1} + p_{m-1} s^{m-1} + \dots + p_1) \\
-			\Leftrightarrow& \frac{1}{s} = \underbrace{\frac{1}{-p_0}}_{\in k} \underbrace{(s^{m-1 + p_{m-1} s^{m-2} + \dots + p_1})}_{\substack{\text {$\in \tilde{k}$} \\ \text{ wegen Abgeschlossenheit} \\ \text{unter Multiplikation}}} \in \tilde{k}
+			\Leftrightarrow& - p_0 = s(s^{m-1} + p_{m-1} s^{m-2} + \dots + p_1) \\
+			\Leftrightarrow& \frac{1}{s} = \underbrace{\frac{1}{-p_0}}_{\in k} \underbrace{(s^{m-1} + p_{m-1} s^{m-2} + \dots + p_1)}_{\substack{\text {$\in \tilde{k}$ wegen Abgeschlossenheit} \\ \text{unter Multiplikation}}} \in \tilde{k}
 		\end{align*}
 	\end{proof}
 
@@ -496,7 +500,7 @@
 	\begin{proof}\textit{(von Proposition \ref{prop:umkehrungDerBeobachtung})}
 		Wähle $a \in L$ wie im Lemma. Dann ist klar $[a:k] = 2$. Also existieren $\lambda_1, \lambda_0 \in k$, sodass $a^2 + \lambda_1 a + \lambda_0 = 0$ ist. Also:
 		\begin{equation*}
-			a \in \underbrace{\frac{- \lambda_1}{2}}_{\in k} \pm \underbrace{\sqrt{\left( \frac{\lambda_1}{2} \right)^2 - \lambda_0}}_{=b}
+			a \in \underbrace{\frac{- \lambda_1}{2}}_{\in k} \pm \underbrace{\sqrt{\left( \frac{\lambda_1}{2} \right)^2 - \lambda_0}}_{=:b}
 		\end{equation*}
 		Weil $a$ und $b$ sich nur um Elemente von $k$ unterscheiden, ist $k(a) = k(b)$. Das Element $b$ ist aber Quadratwurzel!
 	\end{proof}
@@ -534,14 +538,14 @@
 		
 		\heading{Lineare Unabhängigkeit:} Sei eine lineare Relation
 		\begin{equation*}
-			0 = \sum_{i,j} \mu_j{ij} \cdot (m_i \cdot l_j)
+			0 = \sum_{i,j} \mu_{ij} \cdot (m_i \cdot l_j)
 		\end{equation*}
-		gegeben, wobei $\mu_j{ij} \in k$. Dann gilt
-		\begin{equation*}
+		gegeben, wobei $\mu_{ij} \in k$. Dann gilt: 
+		$
 			0 = \sum_{i} \underbrace{\left( \sum_{j} \mu_{ij} \cdot l_j \right)}_{\in L} \cdot m_i
-		\end{equation*}
-		Weil die $m_i$ per Wahl aber $L$-linear unabhängig sind, folgt für alle $i$, dass $\sum_{j} \underbrace{\mu_{ij}}_{\in k} \cdot l_j = 0$.
+		$
 		
+		Weil die $m_i$ per Wahl aber $L$-linear unabhängig sind, folgt für alle $i$, dass $\sum_{j} \underbrace{\mu_{ij}}_{\in k} \cdot l_j = 0$.
 		Weil die $l_j$ per Wahl aber $k$-linear unabhängig sind, ist $\forall i \forall j: \mu_{ij} = 0$.
 	\end{proof}
 
@@ -657,7 +661,7 @@
 	
 	\heading{Warum Ringe betrachten?} Gegeben eine Körpererweiterung $L/k$ und $a \in L$ und wir suchen das Minimalpolynom $f_a(x) \in k[x]$.
 	
-	Häufig findet man $g \in k[x]$ mit $g(a) = 0$ und muss dann entscheiden ob $g$ das Minimalpolynom ist. Das ist gar nicht leicht!
+	Häufig findet man $g \in k[x]$ mit $g(a) = 0$ und muss dann entscheiden, ob $g$ das Minimalpolynom ist. Das ist gar nicht leicht!
 	
 	\heading{Beobachtung:} Polynomdivision zeigt:
 	\begin{equation*}
@@ -713,12 +717,13 @@
  	\end{corollary}
  
  	\begin{proof}
- 		Seien $f,g \in R[x] \setminus \{0\}$.
- 		
- 		Wir müssen zeigen: $f \cdot g \not\equiv 0 \in R[x]$ $(*)$.
+ 		Seien $f,g \in R[x] \setminus \{0\}$. 		
+ 		Wir müssen zeigen: 
+ 		\begin{equation*}
+ 			f \cdot g \not\equiv 0 \in R[x] \tag{$*$}
+ 		\end{equation*}
  		
  		Falls $\deg f = \deg g = 0$, folgt $(*)$ weil $R$ ein Integritätsring ist.
- 		
  		Ansonsten folgt $(*)$, weil $\deg f \cdot g = \deg f + \deg g > 0$.
  	\end{proof}
  
