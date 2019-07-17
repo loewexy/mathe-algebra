@@ -1,0 +1,91 @@
+\documentclass[a4paper,ngerman,12pt,addpoints]{exam}
+\usepackage{babel}
+\usepackage[top=3.5cm,headsep=0.5cm,headheight=3cm,left=1.5cm,right=1.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{booktabs} % schöne Tabellen
+\usepackage{graphicx}
+\usepackage{csquotes} % Anführungszeichen
+\usepackage{paralist} % kompakte Aufzählungen
+\usepackage{amsmath,textcomp,tikz,amssymb,amstext,mathtools,amsthm} %diverses
+\usepackage{eso-pic} % Bilder im Hintergrund
+\usepackage{mdframed}%Boxen
+
+
+\pointpoints{Punkt}{Punkte}
+\bonuspointpoints{Bonuspunkt}{Bonuspunkte}
+\renewcommand{\solutiontitle}{\noindent\textbf{Lösung:}\enspace}
+\chqword{Frage}
+\chpgword{Seite}
+\chpword{Punkte}
+\chbpword{Bonus Punkte}
+\chsword{Erreicht}
+\chtword{Gesamt}
+\hpword{Punkte:} % Punktetabelle
+\hsword{Ergebnis:}
+\hqword{Aufgabe:}
+\htword{Summe:}
+
+\newcommand{\setN}{\mathbb{N}}
+\newcommand{\setZ}{\mathbb{Z}}
+\newcommand{\setQ}{\mathbb{Q}}
+\newcommand{\setR}{\mathbb{R}}
+\newcommand{\setC}{\mathbb{C}}
+
+\DeclareMathOperator{\Gal}{Gal}
+
+\newcommand{\dozent}{Prof. Kebekus}
+\newcommand{\fach}{Algebra und Zahlentheorie}
+
+\pagestyle{headandfoot}
+\firstpageheadrule
+\firstpageheader{\dozent}{\fach}{WS 2018/19}
+\firstpagefooter{}{}{\thepage\,/\,\numpages}
+
+
+
+
+\begin{document}
+		\begin{questions}
+		\question[12]
+			Sind folgende Polynome irreduzibel in $\setQ[x]$? Geben Sie alle Kriterien, die Sie verwenden, detailliert wieder.
+			\begin{enumerate}[a)]
+				\item $x^3+3x^2-5x-2$
+				\item $x^{2019}+2018x^2+10x+14$
+			\end{enumerate}
+		\question[12]
+			\begin{enumerate}[a)]
+				\item Sei $K$ ein K"orper, $f \in K[x]$ irreduzibles Polynom.\\ $\mathrm{Z\kern-.3em\raise-0.5ex\hbox{Z}}$: $K[x]/(f)$ ist ein K"orper.
+				\item $R, S$ kommutative Ringe mit 1, $I \subset S$ ein Ideal von $S$, $f: R \longrightarrow S$ Morphismus.\\
+				$\mathrm{Z\kern-.3em\raise-0.5ex\hbox{Z}}$: $f^{-1}(I)$ ist Ideal von $R$ und $f^{-1}(I)$ ist Primideal $\Leftrightarrow I$ Primzahl.
+			\end{enumerate}
+		\question[12]
+			$K \subset L \subset M$ K"orpererweiterungen.
+			\begin{enumerate}[a)]
+				\item Definiere $[L:K]$.
+				\item Gegeben $S \subset L$, definiere $K(s)$.
+				\item Definiere: Was bedeutet $L/K$ algebraisch?
+				\item Seien $L/K$ und $M/L$ algebraisch.\\ $\mathrm{Z\kern-.3em\raise-0.5ex\hbox{Z}}$: $M/K$ algebraisch.
+			\end{enumerate}
+		\question[12]
+			Betrachte $\alpha = \sqrt{3}+\sqrt{7}$
+			\begin{enumerate}[a)]
+				\item Identifiziere die Galois-Gruppe $\Gal{\setQ(\alpha)/\setQ}$.
+				\item Bestimme alle Zwischenk"orper $\setQ \subsetneq K \subsetneq \setQ(\alpha)$ und bestimme f"ur jeden Zwischenk"orper $K$ ein Element $\beta_K$, sodass $K=\setQ(\beta_K)$
+			\end{enumerate}
+		\question[12]
+			\begin{enumerate}[a)]
+				\item Definition: normale Untergruppe
+				\item Beispiel (mit Beweis): Gruppe $G$ und normale Untergruppe $N \subset G$, wobei $N \neq \{1\}$ und $N \neq G$.
+				\item $G$ eine endliche Gruppe, die auf einer Menge $M$ wirkt. W"ahle $x \in M$. \\
+				$\mathrm{Z\kern-.3em\raise-0.5ex\hbox{Z}}$: $\#(G \cdot x) \mid \#G$
+				\item $G$ eine Gruppe, $Z$ das Zentrum von $G$.\\
+				$\mathrm{Z\kern-.3em\raise-0.5ex\hbox{Z}}$: $G/Z$ ist zyklisch $\Rightarrow G$ abelsch.
+			\end{enumerate}
+	\end{questions}
+	\begin{center}
+		\gradetable[h][questions]
+	\end{center}
+\end{document}
