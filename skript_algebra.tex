@@ -764,9 +764,9 @@
  		
  		$2) \Rightarrow 1)$ Aus $s \mid r$ und $r \mid s$ $\Rightarrow$ wir finden $a,b \in R: s \cdot a = r$ und $r \cdot b = s$.
  		
- 		$\Rightarrow (r \cdot b) \cdot a \Rightarrow r(ba - 1) = 0$
+ 		$\Rightarrow (r \cdot b) \cdot a = r \Rightarrow r \cdot (b \cdot a - 1) = 0$
  		
- 		Da $R$ Integritätsring ist: $\Rightarrow ba = 1 \qquad \Rightarrow b,a, \in R^*$
+ 		Da $R$ Integritätsring ist: $\Rightarrow b \cdot a = 1 \qquad \Rightarrow b,a \in R^*$
  		
  		(geht so nur für $r \neq 0$, der Fall muss extra behandelt werden)
  	\end{proof}
@@ -814,7 +814,7 @@
  	\end{example}
  
  	\begin{definition}
- 		Sei $R$ ein Integritätsring. Eine Teilerkette ist eine Folge $(r_i)_{i \in \setN}$ von Elementen aus $R$, sodass $\forall i \; r_{i+1} \mid r_i$. Wir sagen, im Ring $R$ gilt der Teilerkettensatz für Elemente, falls in jeder Teilerkette die stärkere Bedingung $r_{i+1} \parallel r_i$ nur endlich oft gilt.
+ 		Sei $R$ ein Integritätsring. Eine Teilerkette ist eine Folge $(r_i)_{i \in \setN}$ von Elementen aus $R$, sodass $\forall i : r_{i+1} \mid r_i$. Wir sagen, im Ring $R$ gilt der Teilerkettensatz für Elemente, falls in jeder Teilerkette die stärkere Bedingung $r_{i+1} \parallel r_i$ nur endlich oft gilt.
  	\end{definition}
  
  	\begin{example}
@@ -824,11 +824,11 @@
  	\end{example}
  
  	\begin{theorem}
- 		Sei $R$ ein Integritätsring in dem der Teilerkettensatz für Elemente gilt. Dann ist jedes $r \in R, r \notin R^*, r \neq 0$ als Produkt von endlich vielen irreduziblen Elementen darstellbar.
+ 		Sei $R$ ein Integritätsring, in dem der Teilerkettensatz für Elemente gilt. Dann ist jedes $r \in R, r \notin R^*, r \neq 0$ als Produkt von endlich vielen irreduziblen Elementen darstellbar.
  	\end{theorem}
  
  	\begin{proof}(Noether Rekursion)
- 		Wir wollen zeigen, dass $M = \{ r \in R \mid r \notin R^*, r \neq 0 \text{ und $r$ nicht als Produkt von endlich vielen Irreduziblen darstellbar} \}$ leer ist. Widerspruchsbeweis: angenommen $M \neq \emptyset$.
+ 		Wir wollen zeigen, dass $M = \{ r \in R \mid r \notin R^*, r \neq 0 \text{ und $r$ \emph{nicht} als Produkt von endlich vielen Irreduziblen darstellbar} \}$ leer ist. Widerspruchsbeweis: angenommen $M \neq \emptyset$.
  		
  		Beobachtungen:
  		\begin{enumerate}
@@ -836,7 +836,7 @@
  			\item $\exists r \in M$, sodass alle echten Teiler von $r$ nicht mehr in $M$ liegen (denn sonst nehme echten Teiler aus $M$, wiederhole das Verfahren, erhalte unendliche Teilerkette wo wir in jedem Schritt echte Teiler haben, $\lightning$ zur Annahme)
  		\end{enumerate}
  	
- 		Also gegeben $r$ wie in Beobachtung 2), dann ist jeder echte Teiler als Produkt von endlich vielen Irreduziblen darstellbar, also auch $r$ selbst. (Schreibe $r = r_1 \cdot r_2$ mit $r_1, r_2$ echte Teiler. Dann $r_1 = a_1 \cdots a_n, r_2 = b_1 \dots b_m$ mit $\forall i,j a_i, b_j$ irreduzibel dann $r = a_1 \dots a_n b_1 \dots b_m$) $\lightning$.
+ 		Also gegeben $r$ wie in Beobachtung 2), dann ist jeder echte Teiler als Produkt von endlich vielen Irreduziblen darstellbar, also auch $r$ selbst. (Schreibe $r = r_1 \cdot r_2$ mit $r_1, r_2$ echte Teiler. Dann $r_1 = a_1 \cdots a_n, r_2 = b_1 \dots b_m$ mit $\forall i,j : a_i, b_j$ irreduzibel, dann $r = a_1 \dots a_n b_1 \dots b_m$) $\lightning$.
  	\end{proof}
  
  	\begin{definition}
@@ -854,7 +854,7 @@
  	\end{definition}
  
  	\begin{remark}
- 		In Ringen, in denen der Teilerkettensatz gilt, sind Darstellungen nicht immer äquivalent! Zum Beispiel $R = \setZ{\sqrt{-5}}$.
+ 		In Ringen, in denen der Teilerkettensatz gilt, sind Darstellungen nicht immer äquivalent! Zum Beispiel $R = \setZ[{\sqrt{-5}}]$.
  		
  		Das Problem ist, dass die irreduziblen Elemente in $\setZ[\sqrt{-5}]$ nicht unbedingt prim sind.
  	\end{remark}
@@ -903,15 +903,13 @@
 		
 		Division mit Rest liefert
 		\begin{align*}
-		 	a &= x \cdot a + a' & \text{wobei $a' < p$}\\
+		 	a &= x \cdot p + a' & \text{wobei $a' < p$}\\
 		 	b &= y \cdot p + b' & \text{wobei $b' < p$}
 		\end{align*}
 		Sehe sofort $p \nmid a'$ und $p \nmid b'$.
 		
-		Sehe auch $a \cdot b = x y p^2 + (x b' + a' y) p + a'b'$ also $p \mid a' b'$.
-		
-		Wähle also $a,b$ so, dass $ab$ minimal ist, und dann ist $a < p, b < p, ab < p^2$.
-		
+		Sehe auch $a \cdot b = x y p^2 + (x b' + a' y) p + a'b'$, also $p \mid a' b'$.
+		Wähle also $a,b$ so, dass $a \cdot b$ minimal ist, und dann ist $a < p, b < p, ab < p^2$.
 		Finde $h \in \setN: p \cdot h = a \cdot b$.
 		
 		Sei jetzt $p'$ ein irreduzibler Teiler von $h, p' > 0$. Dann existiert $h' > 0, h = p' \cdot h'$ und $p' \leq h < p$. Nach Wahl von $p$ (kleinstes irreduzibles das nicht prim ist) ist $p'$ prim und $p \cdot p' \cdot h' = a \cdot b$.
@@ -940,13 +938,13 @@
 		
 		Nach Annahme können $r_i, r_{i+1},h$ als Produkt von endlich vielen Irreduziblen geschrieben werden:
 		\begin{align*}
-			r_i &= a_1 \cdot a_n \\
+			r_i &= a_1 \cdots a_n \\
 			r_{i+1} &= b_1 \cdots b_m \\
 			h &= c_1 \cdots c_k
 		\end{align*}
 		Dann gilt
 		\begin{equation*}
-			\underbrace{b_1 \cdots b_m}_{\substack{\text{Darstellung} \\ \text{von $r_{i+1}$}}} \cdot c_1 \cdots c_k = \underbrace{a_1 \cdots a_n}_{\substack{\text{Darstellung } \text{von $r_i$}}}
+			\underbrace{b_1 \cdots b_m}_{\substack{\text{Darstellung} \\ \text{von $r_{i+1}$}}} \cdot c_1 \cdots c_k = \underbrace{a_1 \cdots a_n}_{\substack{\text{Darstellung }\\ \text{von $r_i$}}}
 		\end{equation*}
 		Da alle Darstellungen äquivalent sind, folgt $n = m + k > m$.
 		
