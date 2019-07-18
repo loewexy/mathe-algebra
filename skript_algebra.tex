@@ -1231,7 +1231,7 @@
 	\begin{remark}
 		Körpermorphismen $k \overset{\eta}{\to} L$ sind immer injektiv! Denn wäre $a \in k \setminus \{0\}, a \in \ker(\eta)$, dann
 		\begin{equation*}
-			1_L = \eta(1_k) = \eta(a \cdot a^{-1}) = \underbrace{\eta(a)}_{= O_L} \cdot ?
+			1_L = \eta(1_k) = \eta(a \cdot a^{-1}) = \underbrace{\eta(a)}_{= 0_L} \cdot \eta (a^{-1})=0_L
 		\end{equation*} 
 		Widerspruch!
 	\end{remark}
@@ -1334,14 +1334,12 @@
 			\begin{equation*}
 				k \coloneqq B / \sim
 			\end{equation*}
-			
 			\textit{Notation:} Die Äquivalenzklasse von $(a,b)$ wird mit $\frac{a}{b}$ bezeichnet.
 			
 			Betrachte die Abbildung
-			\begin{equation*}
+			$
 				\varphi: R \to k, a \mapsto \frac{a}{1}
-			\end{equation*}
-			
+			$.
 			Diese Abbildung ist injektiv, denn 
 			\begin{equation*}
 				\varphi(a) = \varphi(a') \quad\Leftrightarrow\quad \frac{a}{1} = \frac{a'}{1} \overset{\text{Def.}}{\quad\Leftrightarrow\quad} a \cdot 1 = a' \cdot 1 \quad\Leftrightarrow\quad a = a'
@@ -1403,20 +1401,21 @@
 			also ist $\eta$ eindeutig.
 			
 			\heading{Existenz:} Definiere
-			\begin{equation*}
+			$
 				\eta: k \to L, \quad \frac{a}{b} \mapsto \Phi(a) \cdot \Phi(b)^{-1}
-			\end{equation*}
-			Wieder ist Wohldefiniertheit zu prüfen: Seien $\frac{a}{b} = \frac{a'}{b'}$. Wir müssen zeigen:
+			$.
+			
+			Wieder ist auf Wohldefiniertheit zu prüfen: Seien dazu $\frac{a}{b} = \frac{a'}{b'}$. Wir müssen zeigen:
 			\begin{align*}
-				&& \Phi(a) \Phi(b)^{-1} &= \Phi(a') \Phi(b')^{-1} \\
-				&\Leftrightarrow& \Phi(a) \cdot \Phi(b') &= \Phi(a') \Phi(b) \\
-				&\Leftrightarrow& \Phi(ab') &= \Phi(a'b) \\
+				&& \Phi(a) \cdot \Phi(b)^{-1} &= \Phi(a') \cdot \Phi(b')^{-1} \\
+				&\Leftrightarrow& \Phi(a) \cdot \Phi(b') &= \Phi(a') \cdot \Phi(b) \\
+				&\Leftrightarrow \text{($\Phi$ ist Ringmorphismus)}& \Phi(ab') &= \Phi(a'b) \\
 				&\Leftrightarrow& \text{wahr,}& \text{ wegen Annahme}
 			\end{align*}
-			Nachrechnen: das ist ein Körperisomorphismus.
+			Nachrechnen: das ist ein Körpermorphismus.
 		\end{enumerate}
 	\end{proof}
-\newpage
+
 	\begin{example}""
 		\begin{itemize}
 			\item $R = \setZ$. Dann ist $Q(\setZ) = \setQ$
@@ -1427,9 +1426,9 @@
 			
 			Dieser ist injektiv, denn $Q(R)$ enthält das Element $a = 2 + \sqrt{-5}$. Wir wissen aber, dass $\setQ(2 + \sqrt{-5})$ der kleinste Körper ist, der dieses Element enthält.
 			\item Sei $R$ faktoriell. Wähle Repräsentantensystem $P \subset R$. Dann können wir alle Elemente von $Q(R)$ auf eindeutige Weise schreiben als
-			\begin{equation*}
+			$
 				\varepsilon \cdot \prod_{p \in P} p^{\alpha_p}
-			\end{equation*}
+			$,
 			wobei $\varepsilon \in R^*, \alpha_p \in \setZ$ und fast alle $\alpha_p = 0$.
 		\end{itemize}
 	\end{example}
@@ -1502,7 +1501,7 @@
 		\end{equation*}
 	\end{proof}
 
-	\heading{Zusammenfassung:} Wir sind jetzt in der Lage, für ganzzahlige Polynome zu entscheiden, ob sie in $\setQ[x]$ irreduzibel sind. (z.B. $x^3 - 2$ ist irreduzibel in $\setQ[x]$, Folgerung $[\setQ(\sqrt[3]{2}): \setQ] = 3$ denn wir wissen jetzt, dass $x^3 - 2$ das Minimalpolynom von $\sqrt[3]{2}$ ist)
+	\heading{Zusammenfassung:} Wir sind jetzt in der Lage, für ganzzahlige Polynome zu entscheiden, ob sie in $\setQ[x]$ irreduzibel sind. (z.B. $x^3 - 2$ ist irreduzibel in $\setQ[x]$, Folgerung: $[\setQ(\sqrt[3]{2}): \setQ] = 3$, denn wir wissen jetzt, dass $x^3 - 2$ das Minimalpolynom von $\sqrt[3]{2}$ ist)
 	
 	\heading{Erinnerung:} Das geht so:
 	
