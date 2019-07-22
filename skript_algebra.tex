@@ -1212,7 +1212,6 @@
 	
 	\begin{definition}
 		Sei $R$ ein Integritätsring. Ein \emph{Quotientenkörper von $R$} ist ein Körper $k$ zusammen mit einem injektiven Ringmorphismus $\varphi: R \to k$, sodass folgende (universelle) Eigenschaft gilt: Wann immer $\Phi: R \to L$ ein injektiver Ringmorphismus in einen Körper ist, dann gibt es genau einen Körpermorphismus $\eta: k \to L$, sodass das folgende Diagramm kommutiert.
-		
 		\begin{center}
 			\begin{tikzpicture}
 				\node(R1) at (0,0){$R$};
@@ -1237,8 +1236,7 @@
 	\end{remark}
 
 	\begin{theorem}
-		Sei $R$ ein Integritätsring. Dann existiert ein Quotientenkörper $(k, \varphi: R \to k)$. Dieser ist eindeutig bis auf kanonische Isomorphie. Das bedeutet: Wenn $(k', \varphi': R \to k')$ ein weiterer Quotientenkörper ist, dann existiert genau ein Körperisomorphismus $\eta: k \to k'$ sodass das folgende Diagramm kommutiert.
-		
+		Sei $R$ ein Integritätsring. Dann existiert ein Quotientenkörper $(k, \varphi: R \to k)$. Dieser ist eindeutig bis auf kanonische Isomorphie. Das bedeutet: Wenn $(k', \varphi': R \to k')$ ein weiterer Quotientenkörper ist, dann existiert genau ein Körperisomorphismus $\eta: k \to k'$ sodass das folgende Diagramm kommutiert.		
 		\begin{center}
 			\begin{tikzpicture}
 				\node(R1) at (0,0){$R$};
@@ -1552,7 +1550,7 @@
 		
 		Beobachte: $a_0 = \alpha_0 \cdot \beta_0$
 		
-		Per Annahme gilt: $p \mid a_0 \underset{\text{$R$ faktoriell}}{\Rightarrow} p \mid \alpha_0$ oder $p \mid \beta_0$.
+		Per Annahme gilt: $p \mid a_0 \underset{\substack{\text{$R$}\\\text{faktoriell}}}{\Rightarrow} p \mid \alpha_0$ oder $p \mid \beta_0$.
 		
 		Per Annahme $p^2 \nmid a_0$ kann $p$ nicht beide Elemente teilen. Wir nehmen also $p \mid \alpha_0$ und $p \nmid \beta_0$ an.
 		
@@ -1685,10 +1683,7 @@
 		\end{equation*}
 		Die Funktion ist injektiv weil $e^{i \varphi}$ transzendent ist.
 		
-		Außerdem gilt
-		\begin{equation*}
-			\setQ[y] \to Q(\setQ[y]) = \setQ(y)
-		\end{equation*}
+		Außerdem gilt: $\setQ[y] \to Q(\setQ[y]) = \setQ(y)$
 		
 		Die universelle Eigenschaft liefert einen Isomorphismus $\eta: \setQ(y) \to k$.
 		
@@ -1711,9 +1706,9 @@
 		Das regelmäßige $p$-Eck ist konstruierbar $\Leftrightarrow$ $e^{\frac{2 \pi i}{p}} \in \operatorname{Kons}(M)$.
 		
 		Falls das so ist, ist
-		\begin{equation*}
+		$
 			\left[ \setQ(e^{\frac{2 \pi i}{p}}) : \setQ \right] = 2^n
-		\end{equation*}
+		$
 		für ein $n \in \setN$.
 		
 		Wir wissen $e^{\frac{2 \pi i}{p}}$ ist Nullstelle von $x^p - 1 \in \setQ[x]$.
