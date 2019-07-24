@@ -925,8 +925,8 @@
 	\begin{theorem}
 		Sei $R$ ein Integritätsring. Dann ist äquivalent:
 		\begin{enumerate}
-			\item Jedes $r \in R, r \notin R^*, r \neq 0$ ist als Produkt von endlich vielen Irreduziblen darstellbar und je zwei Darstellungen sind äquivalent.
-			\item In $R$ gilt der Teilerkettensatz für Elemente und alle Irreduziblen sind prim.
+			\item Jedes $r \in R, r \notin R^*, r \neq 0$ ist als \emph{Produkt von endlich vielen Irreduziblen} darstellbar und je \emph{zwei Darstellungen} sind \emph{äquivalent}.
+			\item In $R$ gilt der \emph{Teilerkettensatz} für Elemente und alle \emph{Irreduziblen sind prim}.
 		\end{enumerate}
 		Falls diese Eigenschaften gelten, nenne $R$ faktoriell oder UFD.
 	\end{theorem}
@@ -1929,7 +1929,7 @@
 	\heading{Quotienten:} Sei $R$ ein Ring, $I \subset R$ ein Ideal. Dann definiere $r,s \in R$ als äquivalent, falls $r - s \in I$.
 	
 	\begin{theorem}
-		Es gibt auf Quotientenmengen eindeutige Verknüpfungen $+$, $\cdot$, sodass die Quotientenabbildung
+		Es gibt auf Quotientenmengen eindeutige Verknüpfungen $+$ und $\cdot$, sodass die Quotientenabbildung
 		\begin{equation*}
 			q: R \to R/I
 		\end{equation*}
@@ -1966,7 +1966,7 @@
 	\end{example}
 
 	\begin{theorem}[Universelle Eigenschaft]
-		Sei $R$ ein Ring, sei $I \subset R$ ein Ideal. Sei $q: R \to R/I$ die Restklassenabbildung. Dann gilt folgende universelle Eigenschaft: für jeden surjektiven Ringmorphismus $\varphi: R \to S$ mit $\ker(\varphi) \supseteq I$ gibt es genau einen Ringmorphismus $\eta: R/I \to S$ sodass das folgende Diagramm kommutiert:
+		Sei $R$ ein Ring, sei $I \subset R$ ein Ideal. Sei $q: R \to R/I$ die Restklassenabbildung. Dann gilt folgende universelle Eigenschaft: Für jeden surjektiven Ringmorphismus $\varphi: R \to S$ mit $\ker(\varphi) \supseteq I$ gibt es genau einen Ringmorphismus $\eta: R/I \to S$ sodass das folgende Diagramm kommutiert:
 		
 		\begin{center}
 			\begin{tikzpicture}
@@ -2082,9 +2082,9 @@
 			und $J = q^{-1}((0)) = \varphi^{-1}(\eta^{-1}(0))$, setze $I = \eta^{-1}(0)$, fertig.
 			\item Sei $J \subset R$ ein Ideal. Wir müssen zeigen
 			
-			\heading{C 1}: Wenn $a,b \in \varphi(J)$, dann ist $a + b \in \varphi(J)$. $\exists a', b' \in J$ mit $a =  \varphi(a'), b = \varphi(b')$ und dann $a + b = \varphi(\underbrace{a' + b'}_{\in J})$
+			\heading{C1}: Wenn $a,b \in \varphi(J)$, dann ist $a + b \in \varphi(J)$. $\exists a', b' \in J$ mit $a =  \varphi(a'), b = \varphi(b')$ und dann $a + b = \varphi(\underbrace{a' + b'}_{\in J})$
 			
-			\heading{C2:} Sei $a \in \varphi(J)$, sei $b \in S$ beliebig. Dann ist $s \cdot a \in \varphi(J)$. Weil $\varphi$ surjektiv ist, $\exists s' \in R: s = \varphi(s')$. Außerdem $\exists a' \in J: a = \varphi(a')$ und $\varphi(\underbrace{s' a'}_{\in J}) = \varphi(s') \varphi(a') = sa$
+			\heading{C2}: Sei $a \in \varphi(J)$, sei $b \in S$ beliebig. Dann ist $s \cdot a \in \varphi(J)$. Weil $\varphi$ surjektiv ist, $\exists s' \in R: s = \varphi(s')$. Außerdem $\exists a' \in J: a = \varphi(a')$ und $\varphi(\underbrace{s' a'}_{\in J}) = \varphi(s') \varphi(a') = sa$
 			
 			\item Sei $r \in R$. Es gilt
 			\begin{align*}
@@ -2422,7 +2422,7 @@
 	
 	\subsection{Der algebraische Abschluss}
 	
-	\heading{Beobachtung:} Das Polynom $x^2 + 2$ hat in $\setQ$ keine Nullstelle, aber im Oberkörper $\setC$. Es gilt sogar jedes nicht konstante $f \in \setC[x]$ hat in $\setC$ eine Nullstelle.
+	\heading{Beobachtung:} Das Polynom $x^2 + 2$ hat in $\setQ$ keine Nullstelle, aber im Oberkörper $\setC$. Es gilt sogar: jedes nicht konstante $f \in \setC[x]$ hat in $\setC$ eine Nullstelle.
 	
 	\heading{Ziel:} Wir wollen Ähnliches für beliebige Körper konstruieren. Gegeben Körper $k$, konstruiere einen Oberkörper $\overline{k}$, sodass alle nicht konstanten Polynome $f \in \overline{k}[x]$ in $\overline{k}$ eine Nullstelle haben.
 	
@@ -2905,7 +2905,7 @@
 		(Nicht-irreduzible) separable Polynome können mehrfache Nullstellen haben.
 	\end{remark}
 
-	\heading{Konstruktion mit Frobenius-Morphismus:} Sei $R$ ein Ring ein Ringmorphismus $R \to S$. Dieser induziert einen Ringmorphismus $R[x] \to S[x]$. Für $S = R$ und den Frobenius-Morphismus erhalten wir den Ringmorphismus
+	\heading{Konstruktion mit Frobenius-Morphismus:} Sei $R$ ein Ring sowie $R \to S$ ein Ringmorphismus. Dieser induziert einen Ringmorphismus $R[x] \to S[x]$. Für $S = R$ und den Frobenius-Morphismus erhalten wir den Ringmorphismus
 	\begin{equation*}
 		\eta: R[x] \to R[x], \quad \sum a_i x^i \mapsto a_i^p x^i
 	\end{equation*}
@@ -3149,7 +3149,7 @@
 		\end{equation*}
 	\end{definition}
 
-	\heading{Beobachtung:} $\Gal(L/k)$ ist eine Gruppe mit Einheit $Id_L$ und der Hintereinanderausführung als Gruppenverknüpfung. Die Inversen sind die Umkehrabbildungen.
+	\heading{Beobachtung:} $\Gal(L/k)$ ist eine Gruppe mit Einheit $\operatorname{Id}_L$ und der Hintereinanderausführung als Gruppenverknüpfung. Die Inversen sind die Umkehrabbildungen.
 	
 	\textit{Diese Gruppe heißt Galoisgruppe}
 	
@@ -3192,7 +3192,7 @@
 			
 			\textit{Fakt:} Die Galoisgruppe ist von $F$ erzeugt, d.h. alle Elemente sind von der Form
 			\begin{itemize}
-				\item $Id_k$
+				\item $\operatorname{Id}_k$
 				\item $\underbrace{F \circ \dots \circ F}_\text{$n$-mal}$
 				\item $\underbrace{F^{-1} \circ \dots \circ F^{-1}}_\text{$n$-mal}$
 			\end{itemize}
@@ -3210,9 +3210,9 @@
 	\end{equation*}
 	
 	Falls $L/k$ endlich ist, wissen wir: Es existieren höchstens $[L:k]$ viele $k$-Morphismen $L \to \overline{k}$. Also
-	\begin{equation*}
+	\begin{equation}
 		\#\Gal(L/k) \leq [L:k]
-	\end{equation*}
+	\end{equation}
 	
 	\heading{Frage:} Haben wir Gleichheit?
 	
