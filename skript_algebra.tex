@@ -1,19 +1,21 @@
 % !TeX spellcheck = de_DE
-\documentclass[12pt,parskip=full]{scrartcl}
+\documentclass[a4paper,12pt,numbers=noenddot,parskip=full]{scrartcl}
  
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage[ngerman]{babel}
 \usepackage{color}
+\usepackage[hidelinks]{hyperref}
 \usepackage{amsmath,amssymb,amstext,mathtools,amsthm}
 \usepackage{subcaption}
 \usepackage{float}
 \usepackage{wasysym}
 \usepackage{stmaryrd}
 \usepackage{bbm}
-\usepackage[hidelinks]{hyperref}
 \hypersetup{bookmarksnumbered}
+
+
 
 \usepackage{tikz}
 \usetikzlibrary{positioning}
@@ -40,8 +42,10 @@
 \DeclareMathOperator{\Kons}{Kons}
 \DeclareMathOperator{\charac}{char}
 \DeclareMathOperator{\Gal}{Gal}
- 
-\theoremstyle{definition}
+
+\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{}{\newline}{}
+	
+\theoremstyle{dotless}
 \newtheorem{theorem}{Satz}[section]
 \newtheorem{corollary}[theorem]{Folgerung}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -50,18 +54,37 @@
 \newtheorem{example}[theorem]{Beispiel}
 \newtheorem*{axiom}{Axiom}
 
- 
+\makeatletter
+\g@addto@macro\th@remark{\thm@headpunct{:}}
+\makeatother 
+
+
 \theoremstyle{remark}
 \newtheorem*{remark}{Bemerkung}
  
 \hfuzz=5pt 
  
-\title{Skript Algebra}
-\author{Lukas Metzger}
+\title{Algebra und Zahlentheorie}
+
+\subtitle{Wintersemester 2018/19 \\ Mitschrift von Lukas Metzger}
+\author{gehalten von Prof. Dr. Stefan Kebekus \\ Albert-Ludwigs-Universität Freiburg \\ Mathematisches Institut}
 \date{\today}
  
 \begin{document}
-	\maketitle
+	\pagestyle{headings}
+\begin{titlepage}
+	\maketitle	
+	\thispagestyle{empty}
+\end{titlepage}
+\newpage 
+\thispagestyle{empty}
+\quad 
+\newpage
+\tableofcontents 
+\thispagestyle{empty}
+
+\newpage
+\setcounter{page}{1}
 	
 	\setcounter{section}{-1}
 	\section{Konstruktion mit Zirkel und Lineal}
@@ -73,32 +96,32 @@
 		\end{center}
 	\end{example}
 
-	\heading{Erste Frage:} Gegeben $n \in \setN$, kann ich das regelmäßige $n$-Eck konstruieren?
+	\heading{Erste Frage:} Gegeben $n \in \setN$, können wir das regelmäßige $n$-Eck konstruieren?
 	
-	\heading{Beispielproblem:} Betrachte Das $5$-Eck, sei $a$ die Kantenkänge und $s$ die Sekantenlänge.
+	\heading{Beispielproblem:} Betrachte Das $5$-Eck, sei $a$ die Kantenlänge und $s$ die Sekantenlänge.
 	
 	Dann ist $\frac{s}{a} \notin \setQ$.
 	
 	\begin{proof}
-		Angenommen $\frac{s}{a}$ wäre in $\setQ$. Dann schreibe $\frac{s}{a} = \frac{p}{q}$ mit $p,q \in \setN$. Dann gibt es also eine Länge $d \in \setR$, so dass $s$ und $a$ beides ganzzahlige Vielfache von $d$ sind. $\exists n,m \in \setN$  $a = n \cdot d, s= m \cdot d$.
+		Angenommen $\frac{s}{a}$ wäre in $\setQ$. Dann schreibe $\frac{s}{a} = \frac{p}{q}$ mit $p,q \in \setN$. Dann gibt es also eine Länge $d \in \setR$, sodass $s$ und $a$ beide ganzzahlige Vielfache von $d$ sind. $\exists n,m \in \setN$  $a = n \cdot d, s= m \cdot d$.
 		
-		Betrachte/Erweitere die Konstruktion des $5$-Ecks und erhalte kleines (blaues) $5$-Eck wie gezeichnet mit Sekantenlänge $s' = a$ und Kantenlänge $a' = s - a$.
+		Betrachte/Erweitere die Konstruktion des $5$-Ecks und erhalte ein kleines $5$-Eck (vgl. blaues $5$-Eck in der Abbildung unten) mit Sekantenlänge $s' = a$ und Kantenlänge $a' = s - a$.
 		
 		\begin{center}
 			\includegraphics[width=0.8\linewidth]{bilder/bild2.png}
 		\end{center}
 	
-		Dann sind aber sowohl $a'$ als auch $s'$ wieder Vielfache von $d$. Das Verfahren kann ich wiederholen und erhalte immer kleinere $5$-Ecke, deren Größe nach $0$ konvergiert, wo Kanten- und Sekantenlänge ganzzahlige Vielfache von $d$ sind. $\lightning$
+		Dann sind aber sowohl $a'$ als auch $s'$ wieder Vielfache von $d$. Das Verfahren können wir wiederholen und erhalte immer kleinere $5$-Ecke, deren Größe nach $0$ konvergiert, wo Kanten- und Sekantenlänge ganzzahlige Vielfache von $d$ sind. $\lightning$
 	\end{proof}
 
 	\heading{Weitere Konstruktionsprobleme:}
 	\begin{itemize}
 		\item $3$-Teilung des Winkels
-		\item Verdoppelung des Würfels (d.h. Verdoppelung des Volumens)
+		\item Verdopplung des Würfels (d.h. Verdopplung des Volumens)
 		\item Quadratur des Kreises (Gegeben ein Kreis, konstruiere Quadrat mit demselben Flächeninhalt)
 	\end{itemize}
 
-	\heading{Wiederholung:} Was kann ich mit Zirkel und Lineal eigentlich machen?
+	\heading{Wiederholung:} Was können wir mit Zirkel und Lineal eigentlich machen?
 	
 	Antwort: $3$ Konstruktionen
 	\begin{enumerate}
@@ -125,11 +148,11 @@
 
 	\heading{In dieser Sprache}
 	\begin{itemize}
-		\item Konstruktionsproblem: $n$-Eck ist äquivalent zu, kann ich die $n$-ten Einheitswurzeln $e^{\frac{i 2 \pi}{n}}$ aus $M = \{ 0,1 \}$ konstruieren?
+		\item Konstruktionsproblem: $n$-Eck ist äquivalent zu, können wir die $n$-ten Einheitswurzeln $e^{\frac{i 2 \pi}{n}}$ aus $M = \{ 0,1 \}$ konstruieren?
 		Ist $e^{\frac{2\pi i}{n}} \in \Kons(\{0,1\})$?
 		\item Verdopplung des Würfels $\Leftrightarrow$ Ist $\sqrt[3]{2} \in \Kons(\{0,1\})$
 		\item Quadratur des Kreises $\Leftrightarrow$ Ist $\sqrt{\pi} \in \Kons(\{0,1\})$
-		\item $3$-teilung des Winkels $\Leftrightarrow$ Ist für gegebenes $\varphi \in (0,2\pi)$ $e^{\frac{i \varphi}{3}} \in \Kons(\{ 0, 1, e^{i \varphi} \})$
+		\item $3$-teilung des Winkels $\Leftrightarrow$ Für gegebenes $\varphi \in (0,2\pi)$ ist $e^{\frac{i \varphi}{3}} \in \Kons(\{ 0, 1, e^{i \varphi} \})$
 	\end{itemize}
 
 	\heading{Zentrale Beobachtung}
@@ -138,7 +161,7 @@
 	
 	Dann ist $\Kons(M) \subset \setC$ ein Unterkörper.
 	
-	\textit{Dazu zu prüfen:} Konstruierbarkeit von Summen, Differenzen, Produkten, Quotienten \dots.
+	\textit{Dazu zu prüfen:} Konstruierbarkeit von Summen, Differenzen, Produkten, Quotienten \dots (vgl. Übungsaufgabe!)
 	
 	\heading{Zusammenfassung/zentrales Thema der Vorlesung}
 	
@@ -149,7 +172,7 @@
 	\subsection{Ultrakurzwiederholung zentraler Begriffe}
 	
 	\begin{definition}[Gruppe]
-		Eine Gruppe ist eine Menge $G$ zusammen mit einer Abbildung $m: G \times G \to G$ so dass folgendes gilt:
+		Eine Gruppe ist eine Menge $G$ zusammen mit einer Abbildung $m: G \times G \to G$ sodass folgendes gilt:
 		\begin{enumerate}
 			\item Assoziativ: $\forall a,b,c \in G \, m(m(a,b), c) = m(a, m(b,c))$
 			\item Neutrales Element: $\exists n \in G \forall a \in G: m(n,a) = m(a,n) = a$
@@ -166,7 +189,7 @@
 	\end{lemma}
 
 	\begin{definition}[Abelsche Gruppe]
-		Nenne Gruppe $(G,m)$ Abelsch, falls $\forall a,b \in G: m(a,b) = m(b,a)$.
+		Nenne Gruppe $(G,m)$ Abel'sch, falls $\forall a,b \in G: m(a,b) = m(b,a)$.
 	\end{definition}
 
 	\heading{Notation:} Statt $m$ schreibt man oft $+$ oder $\cdot$, wobei $+$ hauptsächlich für Abelsche Gruppen verwendet wird.
@@ -174,20 +197,20 @@
 	\begin{example}
 		Beispiele für Gruppen:
 		\begin{itemize}
-			\item Abelsche Gruppen: $(\setZ, +)$, $(\setZ / p\setZ, +)$, $(Vektorraum, +)$
-			\item Nicht-Abelsche Gruppen: Sei $M$ eine Menge mit $>2$ Elementen. Die bijektiven Abbildungen $M \to M$ mit der Hintereinanderausführung ist eine nicht-Abelsche Gruppe.
+			\item \emph{Abelsch}: $(\setZ, +)$, $(\setZ / p\setZ, +)$, $(Vektorraum, +)$
+			\item \emph{Nicht-Abelsch}: Sei $M$ eine Menge mit $>2$ Elementen. Die bijektiven Abbildungen $M \to M$ mit der Hintereinanderausführung ist eine nicht-Abelsche Gruppe.
 			
-			Sei $K$ ein Schiefkörper, z.B. $K = \setR, \setC, \setH$. Sei $K^* K \setminus \{0\}$. Dann ist $(K^*, \cdot)$ eine Gruppe.
-			\item Nicht-Beispiel: $G = \setR^3$. Ich erhalte durch das Kreuzprodukt keine Gruppenkonstruktion.
+			\item \emph{Nicht-Abelsch}: Sei $K$ ein Schiefkörper, z.B. $K = \setR, \setC, \setH$. Sei $K^* K \setminus \{0\}$. Dann ist $(K^*, \cdot)$ eine Gruppe.
+			\item \emph{Nicht-Beispiel}: $G = \setR^3$. Wir erhalten durch das Kreuzprodukt keine Gruppenkonstruktion.
 		\end{itemize}
 	\end{example}
 
 	\begin{definition}[Ring]
-		Ein Ring ist eine Menge $R$ mit $2$ Verknüpfungen $+$ und $\cdot$ so dass gilt:
+		Ein Ring ist eine Menge $R$ mit $2$ Verknüpfungen $+$ und $\cdot$ sodass gilt:
 		\begin{itemize}
 			\item $(R,+)$ ist eine Abelsche Gruppe
 			\item Distributivgesetz: $\forall a,b,c \in R \; (a+b) \cdot c = ac + bc$ und $a(b+c) = ab + ac$
-			\item $(R \setminus 0, \cdot)$ ist fast Gruppe nämlich assoziativ und es existiert ein neutrales Element
+			\item $(R \setminus 0, \cdot)$ ist fast Gruppe, nämlich assoziativ und es existiert ein neutrales Element
 		\end{itemize}
 	\end{definition}
 
@@ -201,22 +224,22 @@
 	\end{example}
 
 	\begin{remark}
-		Mit Ringen kann ich fast rechnen wie mit Zahlen, aber ACHTUNG
+		Mit Ringen können wir fast rechnen wie mit Zahlen, aber \uppercase{Achtung}:
 		\begin{itemize}
 			\item Nicht jedes Element in $R \setminus 0$ hat ein multiplikatives Inverses
-			\item Ich kann aus $a \cdot b = 0$ und $a \neq 0$ im Allgemeinen nicht folgern, dass $b = 0$
-			\item Ich kann aus $ab = ac$ und $a \neq 0$ im allgemeinen nicht folgern, dass $b = c$ ist
+			\item Wir können aus $a \cdot b = 0$ und $a \neq 0$ im Allgemeinen nicht folgern, dass $b = 0$
+			\item Wir können aus $ab = ac$ und $a \neq 0$ im Allgemeinen nicht folgern, dass $b = c$ ist
 		\end{itemize}
 	\end{remark}
 
 	\begin{definition}[Nullteiler]
-		Sei $R$ ein Ring, $a \in R \setminus \{0\}$. Falls $b \neq 0$ existiert mit $a \cdot b = 0$, nenne ich $a$ einen Nullteiler.
+		Sei $R$ ein Ring, $a \in R \setminus \{0\}$. Falls $b \neq 0$ existiert mit $a \cdot b = 0$, nennen wir $a$ einen Nullteiler.
 		
-		Ringe ohne Nullteiler heißen Nullteilerfrei oder Integritätsringe.
+		Ringe ohne Nullteiler heißen nullteilerfrei oder Integritätsringe.
 	\end{definition}
 
 	\begin{definition}[Abelscher Ring]
-		Ein Ring heißt abelsch, falls $\forall a,b \in R \; ab = ba$.
+		Ein Ring heißt abel'sch, falls $\forall a,b \in R \; ab = ba$.
 	\end{definition}
 
 	\begin{remark}
@@ -234,7 +257,7 @@
 	\end{example}
 
 	\begin{remark}
-		Sei $R$ ein Ringe. Die Menge der Elemente, die ein multiplikatives Inverses haben, wir mit $R^*$ bezeichnet.
+		Sei $R$ ein Ringe. Die Menge der Elemente, die ein multiplikatives Inverses haben, wird mit $R^*$ bezeichnet.
 		
 		\begin{itemize}
 			\item $\setZ^* = \{ 1, -1 \}$
@@ -266,7 +289,7 @@
 			\item Quaternionen sind Schiefkörper
 			\item $\setQ, \setR, \setC, \setZ / p \setZ$ sind Körper
 			\item $\Kons(\{ 0 , 1 \})$ ist Unterkörper von $\setC$
-			\item Die Menge der Rationale Funktionen über einem Körper bilden wieder einen Körper
+			\item Die Menge der rationalen Funktionen über einem Körper bilden wieder einen Körper
 		\end{itemize}
 	\end{example}
 
@@ -282,7 +305,7 @@
 	\end{itemize}
 
 	\begin{definition}
-		Situation wie oben. Sei $a \in L$ gegeben. Nenne $a$ algebraisch über $k$ falls es ein Polynom gibt $f \in k[x]$ und $f \neq 0$ so dass $f(a) = 0$.
+		Situation wie oben. Sei $a \in L$ gegeben. Nenne $a$ algebraisch über $k$, falls es ein Polynom $f \in k[x]$ und $f \neq 0$ gibt, sodass $f(a) = 0$.
 	\end{definition}
 
 	\begin{remark}
@@ -322,7 +345,7 @@
 	\begin{remark}
 		Sei $k \subset L$ eine Körpererweiterung, sei $a \in L$ algebraisch über $k$ und sei $f \in k[x]$ ein Polynom $\neq 0$ mit $f(a) = 0$.
 		
-		Solche Polynome gibt es viele, wir interessieren uns für $f$'s mit mimimalem Grad. Wenn so ein $f$ gegeben ist:
+		Solche Polynome gibt es viele, wir interessieren uns für $f$'s mit minimalem Grad. Wenn so ein $f$ gegeben ist:
 		\begin{equation*}
 			f = a_n x^n + a_{n-1} x^{n-1} + \dots + a_0
 		\end{equation*}
@@ -332,7 +355,7 @@
 		\end{equation*}
 		mit $a$ als Nullstelle.
 		
-		Falls $\hat{f}$ und $\overline{f}$ in $k[x]$ zwei normierte Polynome von minimalem Grad sind mit $\hat{f}(a) = \overline{f}(a) = 0$, dann betrachte Polynom $(\hat{f} - \overline{f}) \in k[x]$. Dann gilt
+		Falls $\hat{f}$ und $\overline{f}$ in $k[x]$ zwei normierte Polynome minimalen Grades sind mit $\hat{f}(a) = \overline{f}(a) = 0$, dann betrachte Polynom $(\hat{f} - \overline{f}) \in k[x]$. Dann gilt
 		\begin{equation*}
 			(\hat{f} - \overline{f})(a) = \hat{f}(a) - \overline{f}(a) = 0 - 0 = 0
 		\end{equation*}
@@ -340,7 +363,7 @@
 	\end{remark}
 
 	\begin{theorem}
-		Sei $k \subset L$ eine Körpererweiterung, sei $a \in L$ algebraisch über $k$. Dann gibt es genau ein Polynom $f \in k[x] \setminus \{ 0 \}$ so dass gilt:
+		Sei $k \subset L$ eine Körpererweiterung, sei $a \in L$ algebraisch über $k$. Dann gibt es genau ein Polynom $f \in k[x] \setminus \{ 0 \}$ sodass gilt:
 		\begin{enumerate}
 			\item $f(a) = 0$
 			\item $\deg f$ ist minimal unter den Graden der Polynome die $a$ als Nullstelle haben:
@@ -349,9 +372,9 @@
 			\end{equation*}
 			\item $f$ ist normiert (d.h. Leitkoeffizient $= 1$)
 		\end{enumerate}
-		Nenne dieses $f$ das Minimalpolynom von $a$ über $k$.
+		Nenne dieses $f$ das \emph{Minimalpolynom} von $a$ über $k$.
 		
-		Die Zahl $\deg f$ wird als Grad von $a$ über $k$ bezeichnet, in Symbolen $[a: k]$
+		Die Zahl $\deg f$ wird als \emph{Grad} von $a$ über $k$ bezeichnet, in Symbolen $[a: k]$
 	\end{theorem}
 
 	\begin{remark}
@@ -364,21 +387,21 @@
 	
 	Dann ist auch $K \coloneqq \bigcap_{i \in I} L_i$ ein Körper.
 	
-	\heading{Nutzanwendung:} Sei $A \subset L$ irgendeine Teilmenge. Sei $(L_i)_{i \in I}$ die Menge der Zwischenkörper $k \subseteq L_i \subseteq L$ so dass $\forall i: A \subset L_i$. Dann betrachte $K$ und es gilt:
+	\heading{Nutzanwendung:} Sei $A \subset L$ irgendeine Teilmenge. Sei $(L_i)_{i \in I}$ die Menge der Zwischenkörper $k \subseteq L_i \subseteq L$ sodass $\forall i: A \subset L_i$. Dann betrachte $K$ und es gilt:
 	\begin{itemize}
 		\item $k \subseteq K \subset L$, also $K$ ist Zwischenkörper
 		\item $A \subseteq K$
-		\item $K$ ist der kleinste Zwischenkörper der $A$ enthält
+		\item $K$ ist der kleinste Zwischenkörper, der $A$ enthält
 	\end{itemize}
 
 	\begin{remark}
 		Bezeichne $K$ mit $k(A)$ und sage $k(A)$ entsteht aus $k$ durch Adjunktion der Elemente von A.
 	\end{remark}
 
-	\heading{Spezialfall:} $A = \{ a \}$ dann schreibe ich $k(a)$. Das ist dann der kleinste Unterkörper von $L$, der sowohl $k$ als auch $a$ enthält.
+	\heading{Spezialfall:} $A = \{ a \}$ dann schreiben wir $k(a)$. Das ist dann der kleinste Unterkörper von $L$, der sowohl $k$ als auch $a$ enthält.
 	
 	\begin{definition}[Einfache Körpererweiterung]
-		Eine Körpererweiterung $k \subset L$ heißt einfach, falls $a$ existiert, so dass $L = k(a)$.
+		Eine Körpererweiterung $k \subset L$ heißt einfach, falls $a$ existiert, sodass $L = k(a)$.
 	\end{definition}
 
 	\begin{definition}[Grad der Körpererweiterung]
@@ -393,18 +416,22 @@
 	\end{equation*}
 	
 	\begin{theorem}
-		Sei $L/k$ eine Körpererweiterung, $a \in L$ dann gilt
-		\begin{equation*}
+		Sei $L/k$ eine Körpererweiterung, $a \in L$ dann gilt:
+		$
 			[a: k] = [k(a): k]
- 		\end{equation*}
+ 		$
 	\end{theorem}
 
 	\begin{proof}
-		Falls $a$ tanszendent, dann sind $1,a,a^2,\dots$ $k$-linear unabhängig, also ist $\dim_k k(a) = \infty$.
+		Falls $a$ transzendent, dann sind $1,a,a^2,\dots$ $k$-linear unabhängig, also ist $\dim_k k(a) = \infty$.
 		
-		Betrachte also den Fall, wo $a$ algebraisch ist mit Minimalpolynom $f(x) = x^n + b_{n-1} + \dots + b_0 \in k[x]$.
+		Betrachte also den Fall, wo $a$ algebraisch ist mit Minimalpolynom 
+		\begin{equation*}
+			f(x) = x^n + b_{n-1} \cdot x^{n-1} + \dots + b_0 \in k[x]
+		\end{equation*}
 		
-		\heading{Klar ist:} Die Elemente $1,a,a^2, \dots, a^{n-1} \in k(a)$ sind linear unabhängig, denn jede lineare Relation gäbe ein Polynom $g(x)$ vom Grad $< n$ mit $g(a) = 0$ $\lightning$.
+		\heading{Klar ist:} Die Elemente $1,a,a^2, \dots, a^{n-1} \in k(a)$ 
+		sind linear unabhängig, denn jede lineare Relation gäbe ein Polynom $g(x)$ mit $\deg (g) < n$ mit $g(a) = 0$ $\lightning$.
 		
 		\heading{Also:} $\dim_k k(a) \geq n$
 		
@@ -416,26 +443,27 @@
 		
 		\heading{Zwischenbehauptung:} Sei $s = \sum_{i=0}^{n-1} \lambda_i a^i \in \tilde{k}$ ein beliebiges Element. Dann ist $a \cdot s \in \tilde{k}$.
 		
-		Wir wissen:
-		\begin{equation*}
+		Wir wissen bereits:
+		$
 			a \cdot s = \underbrace{\sum_{i=0}^{n-2} \lambda_i a^{i+1}}_{\in \tilde{k}} + \lambda_{n-1} a^n
-		\end{equation*}
-		Ein Blick auf das Minimalpolynom zeigt:
-		\begin{equation*}
+		$.
+		
+		Ein Blick auf das Minimalpolynom zeigt jetzt:
+		$
 			a^n = - \sum_{i = 0}^{n-1} b_i \cdot a^i \in \tilde{k}
-		\end{equation*}
+		$.
 		
 		\heading{Konsequenz:} Wenn $s,t \in \tilde{k}$ beliebig sind, dann $s \cdot t \in \tilde{k}$, also gilt die Abgeschlossenheit unter Multiplikation.
 		
-		\heading{Letzte Aufgabe:} Existenz von multiplikativen Inversen. Sei also $s \in \tilde{k}, s \neq 0$ gegeben. Wegen abgeschlossenheit unter Multiplikation ist $s, s^2, s^3, \dots$ wieder in $\tilde{k}$. Also ist $1,s, \dots, s^n$ linear abhängig $\Rightarrow$ $s$ ist algebraisch über $k$.
+		\heading{Letzte Aufgabe:} Existenz von multiplikativen Inversen. Sei also $s \in \tilde{k}, s \neq 0$ gegeben. Wegen Abgeschlossenheit unter Multiplikation ist $s, s^2, s^3, \dots$ wieder in $\tilde{k}$. Also ist $1,s, \dots, s^n$ linear abhängig $\Rightarrow$ $s$ ist algebraisch über $k$.
 		
 		Sei $p(x) = x^m + p_{m-1} \cdot x^{m-1} + \dots + p_0$ das Minimalpolynom.
 		
-		\heading{Beobachtung:} $p_0 \neq 0$, denn sonst könnte ich $x$ ausklammern, $p$ wäre nicht minimal. Damnach kann ich schreiben:
+		\heading{Beobachtung:} $p_0 \neq 0$, denn sonst könnten wir $x$ ausklammern, $p$ wäre nicht minimal. Demnach können wir schreiben:
 		\begin{align*}
 			&0 = p(s) = s^m + p_{m-1} s^{m-1} + \dots + p_0 \\
-			\Leftrightarrow& - p_0 = s(s^{m-1} + p_{m-1} s^{m-1} + \dots + p_1) \\
-			\Leftrightarrow& \frac{1}{s} = \underbrace{\frac{1}{-p_0}}_{\in k} \underbrace{(s^{m-1 + p_{m-1} s^{m-2} + \dots + p_1)}}_{\in \tilde{k} \text{ wegen Abg. unter Mult.}} \in \tilde{k}
+			\Leftrightarrow& - p_0 = s(s^{m-1} + p_{m-1} s^{m-2} + \dots + p_1) \\
+			\Leftrightarrow& \frac{1}{s} = \underbrace{\frac{1}{-p_0}}_{\in k} \underbrace{(s^{m-1} + p_{m-1} s^{m-2} + \dots + p_1)}_{\substack{\text {$\in \tilde{k}$ wegen Abgeschlossenheit} \\ \text{unter Multiplikation}}} \in \tilde{k}
 		\end{align*}
 	\end{proof}
 
@@ -462,7 +490,7 @@
 	\end{proposition}
 
 	\begin{lemma}
-		Sei $L/k$ eine algebraische Körpererweiterung, so dass der Erweiterungsgrad $[L:k]$ eine Primzahl ist. Dann ist die Erweiterung einfach, das heißt $\exists a \in L: L = k(a)$.
+		Sei $L/k$ eine algebraische Körpererweiterung, sodass der Erweiterungsgrad $[L:k]$ eine Primzahl ist. Dann ist die Erweiterung einfach, das heißt $\exists a \in L: L = k(a)$.
 	\end{lemma}
 
 	\begin{proof}
@@ -470,9 +498,9 @@
 	\end{proof}
 
 	\begin{proof}\textit{(von Proposition \ref{prop:umkehrungDerBeobachtung})}
-		Wähle $a \in L$ wie im Lemma. Dann ist klar $[a:k] = 2$. Also existieren $\lambda_1, \lambda_0 \in k$, so dass $a^2 + \lambda_1 a + \lambda_0 = 0$ ist. Also:
+		Wähle $a \in L$ wie im Lemma. Dann ist klar $[a:k] = 2$. Also existieren $\lambda_1, \lambda_0 \in k$, sodass $a^2 + \lambda_1 a + \lambda_0 = 0$ ist. Also:
 		\begin{equation*}
-			a \in \underbrace{\frac{- \lambda_1}{2}}_{\in k} \pm \underbrace{\sqrt{\left( \frac{\lambda_1}{2} \right)^2 - \lambda_0}}_{=b}
+			a \in \underbrace{\frac{- \lambda_1}{2}}_{\in k} \pm \underbrace{\sqrt{\left( \frac{\lambda_1}{2} \right)^2 - \lambda_0}}_{=:b}
 		\end{equation*}
 		Weil $a$ und $b$ sich nur um Elemente von $k$ unterscheiden, ist $k(a) = k(b)$. Das Element $b$ ist aber Quadratwurzel!
 	\end{proof}
@@ -481,7 +509,7 @@
 		Falls $\charac(k) = 2$ ist, muss man die Lösungsformel richtig hinschreiben.
 	\end{remark}
 
-	\begin{theorem}
+	\begin{theorem}[Gradformel]
 		Sei $k \subseteq L \subseteq M$ eine Kette von Körpern. Dann ist
 		\begin{equation*}
 			[M:k] = [M:L] \cdot [L:k]
@@ -500,29 +528,29 @@
 		\end{equation*}
 		mit $\lambda_i \in L$.
 		
-		Dann kann ich jedes $\lambda_i$ schreiben als
+		Dann können wir jedes $\lambda_i$ schreiben als
 		\begin{equation*}
 			\lambda_i = \sum_{j = 1}^{b} \mu_j^i \cdot l_j
 		\end{equation*}
 		mit $\mu_j \in k$.
 		
-		Einsetzten zeigt $m$ kann geschrieben werden als $k$-Linearkombination der Produkte $m_i \cdot l_j$.
+		Einsetzen zeigt: $m$ kann geschrieben werden als $k$-Linearkombination der Produkte $m_i \cdot l_j$.
 		
 		\heading{Lineare Unabhängigkeit:} Sei eine lineare Relation
 		\begin{equation*}
-			0 = \sum_{i,j} \mu_j{ij} \cdot (m_i \cdot l_j)
+			0 = \sum_{i,j} \mu_{ij} \cdot (m_i \cdot l_j)
 		\end{equation*}
-		gegeben, wobei $\mu_j{ij} \in k$. Dann gilt
-		\begin{equation*}
+		gegeben, wobei $\mu_{ij} \in k$. Dann gilt: 
+		$
 			0 = \sum_{i} \underbrace{\left( \sum_{j} \mu_{ij} \cdot l_j \right)}_{\in L} \cdot m_i
-		\end{equation*}
-		Weil die $m_i$ per Wahl aber $L$-linear unabhängig sind folgt für alle $i$ $\sum_{j} \underbrace{\mu_{ij}}_{\in k} \cdot l_j = 0$.
+		$
 		
-		Weil die $l_j$ per Wahl aber $k$-linear unabhängig sind, ist $\forall i \forall j \mu_{ij} = 0$.
+		Weil die $m_i$ per Wahl aber $L$-linear unabhängig sind, folgt für alle $i$, dass $\sum_{j} \underbrace{\mu_{ij}}_{\in k} \cdot l_j = 0$.
+		Weil die $l_j$ per Wahl aber $k$-linear unabhängig sind, ist $\forall i \forall j: \mu_{ij} = 0$.
 	\end{proof}
 
 	\begin{corollary}
-		Wenn eine Kette von Körpererweiterungen gegeben ist, $k \subseteq L \subseteq M$ und wenn $[M:k] < \infty$ dann ist $[L:k] < \infty$ und sogar ein Teiler von $[M:k]$.
+		Wenn eine Kette von Körpererweiterungen $k \subseteq L \subseteq M$ gegeben ist, und wenn $[M:k] < \infty$, dann ist $[L:k] < \infty$ und sogar ein Teiler von $[M:k]$.
 	\end{corollary}
 
 	\begin{theorem}
@@ -530,7 +558,7 @@
 		Sei $L/k$ eine Körpererweiterung, dann ist äquivalent:
 		\begin{enumerate}
 			\item $[L:k] < \infty$
-			\item $L$ ist algebraisch über $k$, und es gibt endlich viele $a_1, \dots, a_n \in L: L = k(a_1, \dots, a_n)$
+			\item $L$ ist algebraisch über $k$, und es gibt endlich viele $a_1, \dots, a_n \in L$ sodass $L = k(a_1, \dots, a_n)$
 			\item Es gibt endlich viele $a_1 \dots, a_n \in L$, die algebraisch über $k$ sind und $L = k(a_1, \dots, a_n)$
 		\end{enumerate}
 	\end{theorem}
@@ -545,7 +573,7 @@
 		\begin{equation*}
 			\underbrace{k}_{\eqqcolon k_0} \subseteq \underbrace{k(a_1)}_{\eqqcolon k_1} \subseteq \underbrace{k(a_1, a_2)}_{\eqqcolon k_2} \subseteq \dots \subseteq \underbrace{k(a_1, \dots, a_n)}_{\eqqcolon k_n}
 		\end{equation*}
-		Dann klar: $\forall i: a_i \text{ ist algebraisch über } k_{i-1}$ (sogar algebraisch über $k_0$) also $[k_i: k_{i-1}] < \infty$, dann $k_i = k_{i-1}(a_i)$ und $[L:k] = \prod_i [k_i: k_{i-1}] < \infty$.
+		Dann klar: $\forall i: a_i \text{ ist algebraisch über } k_{i-1}$ (sogar algebraisch über $k_0$), also $[k_i: k_{i-1}] < \infty$, dann $k_i = k_{i-1}(a_i)$ und $[L:k] = \prod_i [k_i: k_{i-1}] < \infty$.
 	\end{proof}
 
 	\begin{lemma}[Nutzanwendung (Transitivität der Algebraizität)]
@@ -579,7 +607,7 @@
 	\end{proof}
 
 	\begin{remark}
-		Achtung: Es gibt einen anderen Begriff von (absolutem) algebraischen Abschluss, der nicht von einem Oberkörper $L \supseteq k$ abhängt.
+		Achtung: Es gibt einen anderen Begriff des (absoluten) algebraischen Abschlusses, der nicht von einem Oberkörper $L \supseteq k$ abhängt.
 	\end{remark}
 
 	\subsection{Lösungsformel für Polynome}
@@ -588,14 +616,14 @@
 	
 	\heading{Wissen seit der Renaissance:} Haben Formeln für Gleichungen von Grad 3 und 4.
 	
-	\heading{Beispiel:} $x^3 + a x^2 + bx + c = 0$ Setze:
+	\heading{Beispiel:} $x^3 + a x^2 + bx + c = 0$. Setze:
 	\begin{equation*}
 		h = - \frac12 c + \frac16 a b - \frac{1}{24} a^3
 	\end{equation*}
 	\begin{align*}
 		w_1 &= \sqrt{-3 (a^2 b^2 - 4 a^3c - 4b^3 + 18abc - 27c^2)} \\
 		w_2 &= \sqrt[3]{h + \frac{1}{18} w_1} \\
-		w_2 &= \sqrt[3]{h - \frac{1}{18} w_1}
+		w_2 &= \sqrt[3]{h - \frac{1}{18} w_1}.
 	\end{align*}
 	
 	Dann ist
@@ -606,20 +634,20 @@
 	
 	\heading{Frage:} Gibt es eine Lösungsformel für Gleichungen vom Grad 5?
 	
-	\heading{Bescheidener:} Kann ich die Lösung überhaupt hinschreiben? (als komplizierten Ausdruck in Wurzeln/Polynomen)
+	\heading{Bescheidener:} Können wir die Lösung überhaupt hinschreiben? (als komplizierten Ausdruck in Wurzeln/Polynomen)
 	
 	\begin{definition}
-		Sei $L/k$ eine Körpererweiterung, nenne diese Erweiterung Radikalerweiterung, falls es $a_1, \dots, a_n \in L$ und $m_1, \dots, m_n \in \setN$ gibt, so dass
+		Sei $L/k$ eine Körpererweiterung. Nenne diese Erweiterung Radikalerweiterung, falls es $a_1, \dots, a_n \in L$ und $m_1, \dots, m_n \in \setN$ gibt, sodass
 		\begin{enumerate}
 			\item $L = k(a_1, \dots, a_n)$
-			\item $\forall i a_i^{m_i} \in k(a_1, \dots, a_{i-1})$ also $a_i$ ist die $m_i$-te Wurzel eines Elementes aus $k(a_1, \dots a_{i-1})$.
+			\item $\forall i : a_i^{m_i} \in k(a_1, \dots, a_{i-1})$. Also $a_i$ ist die $m_i$-te Wurzel eines Elementes aus $k(a_1, \dots a_{i-1})$.
 		\end{enumerate}
 	\end{definition}
 
 	\heading{Was bedeutet das?}
 	\begin{enumerate}
-		\item $a_1^{m_1} \in k$ Also $k(a_1) = \langle 1 , a_1, a_1^2, \dots, a_1^{m_1 - 1} \rangle_k$
-		\item $a_2^{m_2} \in k(a_1)$ Also $k(a_1, a_2) = \langle 1 , a_2, a_2^2, \dots, a_2^{m_2 - 1} \rangle_{k(a_1)}$
+		\item $a_1^{m_1} \in k$, also $k(a_1) = \langle 1 , a_1, a_1^2, \dots, a_1^{m_1 - 1} \rangle_k$
+		\item $a_2^{m_2} \in k(a_1)$, also $k(a_1, a_2) = \langle 1 , a_2, a_2^2, \dots, a_2^{m_2 - 1} \rangle_{k(a_1)}$
 		\item \textellipsis
 	\end{enumerate}
 
@@ -627,19 +655,19 @@
 	\begin{equation*}
 		f(x) = \sum_{i=1}^{n} a_i x^i \in \setQ[x] \text{ oder } \setR[x]
 	\end{equation*}
-	gibt es dann eine Radikalerweiterung $L/\setQ(a_0, \dots, a_n)$ (beziehungsweise $L/\setR$) so dass $f$ in $L$ eine Nullstelle hat? Gerne $L \subseteq \setC$.
+	gibt es dann eine Radikalerweiterung $L/\setQ(a_0, \dots, a_n)$ (beziehungsweise $L/\setR$) sodass $f$ in $L$ eine Nullstelle hat? Gerne $L \subseteq \setC$.
 	
 	\section{Ringe}
 	
-	\heading{Warum Ringe betrachten?} Gegeben eine Körpererweiterung $L/k$ und $a \in L$ und ich suche das Minimalpolynom $f_a(x) \in k[x]$.
+	\heading{Warum Ringe betrachten?} Gegeben eine Körpererweiterung $L/k$ und $a \in L$ und wir suchen das Minimalpolynom $f_a(x) \in k[x]$.
 	
-	Häufig findet man $g \in k[x]$ mit $g(a) = 0$ und muss dann entscheiden ob $g$ das Minimalpolynom ist. Das ist gar nicht leicht!
+	Häufig findet man $g \in k[x]$ mit $g(a) = 0$ und muss dann entscheiden, ob $g$ das Minimalpolynom ist. Das ist gar nicht leicht!
 	
 	\heading{Beobachtung:} Polynomdivision zeigt:
 	\begin{equation*}
 		g(x) = s(x) \cdot f_a(x) + \operatorname{rest}(x)
 	\end{equation*}
-	wobei $\deg \operatorname{rest}(x) < \deg f_a(x)$. $a$ einsetzen ergibt
+	wobei $\deg \operatorname{rest}(x) < \deg f_a(x)$. Einsetzen von $a$ ergibt
 	\begin{equation*}
 		\underbrace{g(a)}_{= 0} = s(a) \cdot \underbrace{f_a(a)}_{=0} + \operatorname{rest}(a) \Rightarrow \operatorname{rest}(a) = 0
  	\end{equation*}
@@ -657,13 +685,13 @@
  		Sei $R$ ein Ring. Dann bezeichne mit $R[x]$ den Ring der Polynome mit Variable $x$ und Koeffizienten aus $R$.
  	\end{definition}
  
- 	\heading{Warnung:} Polynome geben Funktionen $R \to R$ aber Polynome sind nicht Funktionen.
+ 	\heading{Warnung:} Polynome geben Funktionen $R \to R$, aber Polynome sind nicht Funktionen!
  	
  	\begin{definition}
  		Sei $f \in R[x]$ ein Polynom. Dann definiere den Grad von $f$ wie üblich.
  	\end{definition}
  
- 	\begin{lemma}
+ 	\begin{lemma}[Gradformel f"ur Polynome]
  		Sei $R$ ein Integritätsring, $f,g \in R[x]$. Dann ist
  		\begin{equation*}
 	 		\deg(f \cdot g) = \deg(f) + \deg(g)
@@ -671,7 +699,7 @@
  	\end{lemma}
  
  	\begin{proof}
- 		Sei $n_f = \deg(f)$ und $n_g = \deg(g)$ schreibe
+ 		Sei $n_f = \deg(f)$ und $n_g = \deg(g)$. Schreibe
  		\begin{align*}
 	 		f(x) &= a_f \cdot x^{n_f} + (\text{kleinere Terme}), a_f \neq 0 \\
 	 		g(x) &= a_g \cdot x^{n_g} + (\text{kleinere Terme})
@@ -689,12 +717,13 @@
  	\end{corollary}
  
  	\begin{proof}
- 		Seien $f,g \in R[x] \setminus \{0\}$.
- 		
- 		Wir müssen zeigen: $f \cdot g \not\equiv 0 \in R[x]$ $(*)$.
+ 		Seien $f,g \in R[x] \setminus \{0\}$. 		
+ 		Wir müssen zeigen: 
+ 		\begin{equation*}
+ 			f \cdot g \not\equiv 0 \in R[x] \tag{$*$}
+ 		\end{equation*}
  		
  		Falls $\deg f = \deg g = 0$, folgt $(*)$ weil $R$ ein Integritätsring ist.
- 		
  		Ansonsten folgt $(*)$, weil $\deg f \cdot g = \deg f + \deg g > 0$.
  	\end{proof}
  
@@ -717,7 +746,7 @@
  	\end{remark}
  
  	\begin{definition}
- 		Sei $R$ ein Ring, seien $s, r \in R$ Elemente. Ich sage: $s$ ist Teiler von $r$ (in Symbolen $s \mid r$), wenn es $a \in R$ gibt, so dass $s \cdot a = r$.
+ 		Sei $R$ ein Ring, seien $s, r \in R$ Elemente. Wir sagen: $s$ ist Teiler von $r$ (in Symbolen $s \mid r$), wenn es $a \in R$ gibt, sodass $s \cdot a = r$.
  	\end{definition}
  
  	\begin{lemma}
@@ -727,23 +756,23 @@
  			\item $s \mid r$ und $r \mid s$
  		\end{enumerate}
  	
- 	Wenn diese Bedingungen erfüllt sind, nenne ich $s$ und $r$ assoziiert (in Symbolen $s \sim r$).
+ 	Wenn diese Bedingungen erfüllt sind, nennen wir $s$ und $r$ \emph{assoziiert} (in Symbolen $s \sim r$).
  	\end{lemma}
  
  	\begin{proof}
  		$1) \Rightarrow 2) \checkmark$
  		
- 		$2) \Rightarrow 1)$ Aus $s \mid r$ und $r \mid s$ $\Rightarrow a,b \in R: s \cdot a = r$ und $r \cdot b = s$.
+ 		$2) \Rightarrow 1)$ Aus $s \mid r$ und $r \mid s$ $\Rightarrow$ wir finden $a,b \in R: s \cdot a = r$ und $r \cdot b = s$.
  		
- 		$\Rightarrow (r \cdot b) \cdot a \Rightarrow r(ba - 1) = 0$
+ 		$\Rightarrow (r \cdot b) \cdot a = r \Rightarrow r \cdot (b \cdot a - 1) = 0$
  		
- 		Da $R$ Integritätsring ist: $\Rightarrow ba = 1 \qquad \Rightarrow b,a, \in R^*$
+ 		Da $R$ Integritätsring ist: $\Rightarrow b \cdot a = 1 \qquad \Rightarrow b,a \in R^*$
  		
  		(geht so nur für $r \neq 0$, der Fall muss extra behandelt werden)
  	\end{proof}
  
  	\begin{definition}
- 		Sei $R$ ein Integritätsring, seien $s,r \in R$ Elemente. Dannn nenne $s$ einen echten Teiler von $r$ (in Symbolen $s \parallel r$) falls gilt:
+ 		Sei $R$ ein Integritätsring, seien $s,r \in R$ Elemente. Dann nenne $s$ einen \emph{echten Teiler} von $r$ (in Symbolen $s \parallel r$), falls gilt:
  		\begin{enumerate}
  			\item $s \mid r$
  			\item $s \notin R^*$
@@ -752,7 +781,7 @@
  	\end{definition}
  
  	\begin{definition}
- 		Sei $R$ ein Integritätsring. Ein Element $r \in R$ heißt irreduzibel, falls $r \notin R^*$ und falls $r$ keine echten Teiler hat.
+ 		Sei $R$ ein Integritätsring. Ein Element $r \in R$ heißt \emph{irreduzibel}, falls $r \notin R^*$ und falls $r$ keine echten Teiler hat.
  	\end{definition}
  
  	\begin{example}
@@ -777,7 +806,7 @@
  	\begin{example}
  		Betrachte $R = \setZ[\sqrt{-5}] = \{ a + b \cdot \sqrt{-5} \mid a,b \in \setZ \} \subset \setC$
  		
- 		Dieser Ring ist ein Unterring von $\setC$ und deshalb Nullteilerfrei und
+ 		Dieser Ring ist ein Unterring von $\setC$ und deshalb nullteilerfrei und
  		\begin{equation*}
  			9 = 3 \cdot 3 = \underbrace{(2 + \sqrt{-5})(2 - \sqrt{-5})}_{2^2 - (\sqrt{-5})^2}
  		\end{equation*}
@@ -785,7 +814,7 @@
  	\end{example}
  
  	\begin{definition}
- 		Sei $R$ ein Integritätsring. Eine Teilerkette ist eine Folge $(r_i)_{i \in \setN}$ von Elementen aus $R$, so dass $\forall i \; r_{i+1} \mid r_i$. Ich sage, im Ring $R$ gilt der Teilerkettensatz für Elemente, falls in jeder Teilerkette die stärkere Bedigung $r_{i+1} \parallel r_i$ nur endlich oft gilt.
+ 		Sei $R$ ein Integritätsring. Eine Teilerkette ist eine Folge $(r_i)_{i \in \setN}$ von Elementen aus $R$, sodass $\forall i : r_{i+1} \mid r_i$. Wir sagen, im Ring $R$ gilt der Teilerkettensatz für Elemente, falls in jeder Teilerkette die stärkere Bedingung $r_{i+1} \parallel r_i$ nur endlich oft gilt.
  	\end{definition}
  
  	\begin{example}
@@ -795,19 +824,19 @@
  	\end{example}
  
  	\begin{theorem}
- 		Sei $R$ ein Integritätsring in dem der Teilerkettensatz für Elemente gilt. Dann ist jedes $r \in R, r \notin R^*, r \neq 0$ als Produkt von endliche vielen irreduziblen Elementen darstellbar.
+ 		Sei $R$ ein Integritätsring, in dem der Teilerkettensatz für Elemente gilt. Dann ist jedes $r \in R, r \notin R^*, r \neq 0$ als Produkt von endlich vielen irreduziblen Elementen darstellbar.
  	\end{theorem}
  
  	\begin{proof}(Noether Rekursion)
- 		Wir wollen zeigen, dass $M = \{ r \in R \mid r \notin R^*, r \neq 0 \text{ und $r$ nicht als Produkt von endlich vielen irreduziblen darstellbar} \}$ leer ist. Widerspruchsbeweis: angenommen $M \neq \emptyset$.
+ 		Wir wollen zeigen, dass $M = \{ r \in R \mid r \notin R^*, r \neq 0 \text{ und $r$ \emph{nicht} als Produkt von endlich vielen Irreduziblen darstellbar} \}$ leer ist. Widerspruchsbeweis: angenommen $M \neq \emptyset$.
  		
  		Beobachtungen:
  		\begin{enumerate}
- 			\item $\forall r \in M$ $r$ ist nicht irreduziblen (denn sonst wäre $r$ eine Darstellung), also hat $r$ echte Teiler
- 			\item $\exists r \in M$, so dass alle echten Teiler von $r$ nicht mehr in $M$ liegen (denn sonst nehme echten Teiler aus $M$, widerhole das Verfahren, erhalte unendliche Teilerkette wo ich in jedem Schritt echte Teiler habe $\lightning$ zur Annahme)
+ 			\item $\forall r \in M$ gilt: $r$ ist nicht irreduzibel (denn sonst wäre $r$ eine Darstellung), also hat $r$ echte Teiler
+ 			\item $\exists r \in M$, sodass alle echten Teiler von $r$ nicht mehr in $M$ liegen (denn sonst nehme echten Teiler aus $M$, wiederhole das Verfahren, erhalte unendliche Teilerkette wo wir in jedem Schritt echte Teiler haben, $\lightning$ zur Annahme)
  		\end{enumerate}
  	
- 		Also gegeben $r$ wie in Beobachtung 2), dann ist jeder echte Teiler als Produkt von endlich vielen irreduziblen darstellbar, also auch $r$ selbst. (Schreibe $r = r_1 \cdot r_2$ mit $r_1, r_2$ echte Teiler. Dann $r_1 = a_1 \cdots a_n, r_2 = b_1 \dots b_m$ mit $\forall i,j a_i, b_j$ irreduzibel dann $r = a_1 \dots a_n b_1 \dots b_m$) $\lightning$.
+ 		Also gegeben $r$ wie in Beobachtung 2), dann ist jeder echte Teiler als Produkt von endlich vielen Irreduziblen darstellbar, also auch $r$ selbst. (Schreibe $r = r_1 \cdot r_2$ mit $r_1, r_2$ echte Teiler. Dann $r_1 = a_1 \cdots a_n, r_2 = b_1 \dots b_m$ mit $\forall i,j : a_i, b_j$ irreduzibel, dann $r = a_1 \dots a_n b_1 \dots b_m$) $\lightning$.
  	\end{proof}
  
  	\begin{definition}
@@ -820,18 +849,18 @@
  		Nenne die Darstellung äquivalent, falls gilt
  		\begin{enumerate}
  			\item gleich lang: $n = m$
- 			\item $\exists$ Permutation $\sigma \in S_n$ und Einheiten $\varepsilon_1 \cdots \varepsilon_n \in R^*$ so dass $\forall i: a_i = \varepsilon_i \cdot b_{\sigma(i)}$
+ 			\item $\exists$ Permutation $\sigma \in S_n$ und Einheiten $\varepsilon_1 \cdots \varepsilon_n \in R^*$ sodass $\forall i: a_i = \varepsilon_i \cdot b_{\sigma(i)}$
  		\end{enumerate}
  	\end{definition}
  
  	\begin{remark}
- 		In Ringen, in denen der Teilerkettensatz gilt, sind Darstellungen nicht immer äquivalent! Zum Beispiel $R = \setZ{\sqrt{-5}}$.
+ 		In Ringen, in denen der Teilerkettensatz gilt, sind Darstellungen nicht immer äquivalent! Zum Beispiel $R = \setZ[{\sqrt{-5}}]$.
  		
  		Das Problem ist, dass die irreduziblen Elemente in $\setZ[\sqrt{-5}]$ nicht unbedingt prim sind.
  	\end{remark}
 
 	\begin{definition}
-		Sei $R$ ein Integritätsring, $r \in R, r \neq 0$ ein Element. Nenne $r$ prim falls $\forall a,b \in R$
+		Sei $R$ ein Integritätsring, $r \in R, r \neq 0$ ein Element. Nenne $r$ prim, falls $\forall a,b \in R$
 		\begin{equation*}
 			r \mid (a \cdot b) \qquad \Longrightarrow \qquad r \mid a \text{ oder } r \mid b
 		\end{equation*}
@@ -854,9 +883,9 @@
 	\begin{proof}
 		zu 1)
 		
-		Sei $p$ prim. Angenommen $p$ habe echten Teiler $a \in R$. Dann sei $b \in R$ so dass $p = a \cdot b$, insbesondere $p \mid ab$. Also $p \mid a$ oder $p \mid b$. oBdA gelte $p \mid a$.
+		Sei $p$ prim. Angenommen $p$ habe echten Teiler $a \in R$. Dann sei $b \in R$ sodass $p = a \cdot b$, insbesondere $p \mid ab$. Also $p \mid a$ oder $p \mid b$. oBdA gelte $p \mid a$.
 		
-		Also $\exists h \in R, p \cdot h = a$. Einsetzen liefert
+		Also $\exists h \in R : p \cdot h = a$. Einsetzen liefert
 		\begin{equation*}
 			p = p \cdot h \cdot b \qquad \Longleftrightarrow \qquad p(1-hb) = 0 \qquad \underset{\text{$R$ Integritätsring}}{\Longleftrightarrow} \qquad 1 = h \cdot b
 		\end{equation*}
@@ -868,38 +897,36 @@
 	\end{theorem}
 
 	\begin{proof}
-		Angenommen es existiert in $\setZ$ ein irreduzibles Element $p$, das nicht prim ist. Dann ist $-p$ irreduzibel und auch nicht prim. Wir können also oBdA annehmen $p > 0$. Wir können auch annehmen das $p$ das kleinste positive, irreduzible Element ist, das nicht prim ist.
+		Angenommen es existiert in $\setZ$ ein irreduzibles Element $p$, das nicht prim ist. Dann ist $-p$ irreduzibel und auch nicht prim. Wir können also oBdA annehmen $p > 0$. Wir können auch annehmen, dass $p$ das kleinste positive, irreduzible Element ist, das nicht prim ist.
 		
 		Also $\exists a,b \in \setN: p \mid a \cdot b$ aber $p \nmid a$ und $p \nmid b$.
 		
 		Division mit Rest liefert
 		\begin{align*}
-		 	a &= x \cdot a + a' & \text{wobei $a' < p$}\\
+		 	a &= x \cdot p + a' & \text{wobei $a' < p$}\\
 		 	b &= y \cdot p + b' & \text{wobei $b' < p$}
 		\end{align*}
 		Sehe sofort $p \nmid a'$ und $p \nmid b'$.
 		
-		Sehe auch $a \cdot b = x y p^2 + (x b' + a' y) p + a'b'$ also $p \mid a' b'$.
-		
-		Wähle also $a,b$ so, dass $ab$ minimal ist, und dann ist $a < p, b < p, ab < p^2$.
-		
+		Sehe auch $a \cdot b = x y p^2 + (x b' + a' y) p + a'b'$, also $p \mid a' b'$.
+		Wähle also $a,b$ so, dass $a \cdot b$ minimal ist, und dann ist $a < p, b < p, ab < p^2$.
 		Finde $h \in \setN: p \cdot h = a \cdot b$.
 		
 		Sei jetzt $p'$ ein irreduzibler Teiler von $h, p' > 0$. Dann existiert $h' > 0, h = p' \cdot h'$ und $p' \leq h < p$. Nach Wahl von $p$ (kleinstes irreduzibles das nicht prim ist) ist $p'$ prim und $p \cdot p' \cdot h' = a \cdot b$.
 		
-		Also gilt $p' \mid a \cdot b \underset{\text{$p' prim$}}{\Rightarrow} p' \mid a$ oder $p' \mid b$. oBdA gelte $p' \mid a$. Finde also $a' < a$ so dass $p' \cdot a' = a$. Einsetzen liefert 
+		Also gilt $p' \mid a \cdot b \underset{\text{$p' prim$}}{\Rightarrow} p' \mid a$ oder $p' \mid b$. oBdA gelte $p' \mid a$. Finde also $a' < a$ sodass $p' \cdot a' = a$. Einsetzen liefert 
 		\begin{equation*}
 			p \cdot p' \cdot h' = p' \cdot a' \cdot b \underset{\text{$\setZ$ Integritätsring}}{\Longrightarrow} p \cdot h' = a' b \qquad\Longrightarrow\qquad p \mid a' b
 		\end{equation*}
 		
-		Da $a' b < ab$ ist gilt nach Wahl von $a \cdot b$ ($a,b$ Gegenbeispiel zur Prim-Eigenschaft mit minimalem Produkt) also $p \mid a'$ oder $p \mid b$. Da $a' \mid a$ ist folgt $p \mid a$ oder $p \mid b$. $\lightning$
+		Da $a' b < ab$ ist, gilt nach Wahl von $a \cdot b$ ($a,b$ Gegenbeispiel zur Prim-Eigenschaft mit minimalem Produkt) also $p \mid a'$ oder $p \mid b$. Da $a' \mid a$ ist folgt $p \mid a$ oder $p \mid b$. $\lightning$
 	\end{proof}
 
 	\begin{theorem}
 		Sei $R$ ein Integritätsring. Dann ist äquivalent:
 		\begin{enumerate}
-			\item Jedes $r \in R, r \notin R^*, r \neq 0$ ist als Produkt von endlich vielen Irreduziblen darstellbar und je zwei Darstellungen sind äquivalent.
-			\item In $R$ gilt der Teilerkettensatz für Elemente und alle irreduziblen sind prim.
+			\item Jedes $r \in R, r \notin R^*, r \neq 0$ ist als \emph{Produkt von endlich vielen Irreduziblen} darstellbar und je \emph{zwei Darstellungen} sind \emph{äquivalent}.
+			\item In $R$ gilt der \emph{Teilerkettensatz} für Elemente und alle \emph{Irreduziblen sind prim}.
 		\end{enumerate}
 		Falls diese Eigenschaften gelten, nenne $R$ faktoriell oder UFD.
 	\end{theorem}
@@ -907,23 +934,23 @@
 	\begin{proof}
 		\heading{1) $\Rightarrow$ 2)}
 		
-		\textit{Teilerkettensatz}: Sei $(r_i)_{i \in \setN}$ eine Teilerkette. Sei $i$ so dass $r_{i+1} \parallel r_i$ das heißt $\exists h: h \notin R^*, h \neq 0: r_{i+1} \cdot h = r_i$.
+		\textit{Teilerkettensatz}: Sei $(r_i)_{i \in \setN}$ eine Teilerkette. Sei $i$ sodass $r_{i+1} \parallel r_i$, das heißt $\exists h: h \notin R^*, h \neq 0: r_{i+1} \cdot h = r_i$.
 		
-		Nach Annahme, kann $r_i, r_{i+1},h$ als Produkt von endlich vielen irreduziblen geschrieben werden
+		Nach Annahme können $r_i, r_{i+1},h$ als Produkt von endlich vielen Irreduziblen geschrieben werden:
 		\begin{align*}
-			r_i &= a_1 \cdot a_n \\
+			r_i &= a_1 \cdots a_n \\
 			r_{i+1} &= b_1 \cdots b_m \\
 			h &= c_1 \cdots c_k
 		\end{align*}
 		Dann gilt
 		\begin{equation*}
-			\underbrace{b_1 \cdots b_m}_\text{Darstellung von $r_{i+1}$} \cdot c_1 \cdots c_k = \underbrace{a_1 \cdots a_n}_\text{Darstellung von $r_i$}
+			\underbrace{b_1 \cdots b_m}_{\substack{\text{Darstellung} \\ \text{von $r_{i+1}$}}} \cdot c_1 \cdots c_k = \underbrace{a_1 \cdots a_n}_{\substack{\text{Darstellung }\\ \text{von $r_i$}}}
 		\end{equation*}
 		Da alle Darstellungen äquivalent sind, folgt $n = m + k > m$.
 		
-		Also in der Teilerkette gibt es höchstens endlich viele echte Teiler, nämlich höchstens so viele, wie eine (jede) Darstellung von $r_1$ lang ist. $\Rightarrow$ Teilerkettensatz gilt
+		Also: In der Teilerkette gibt es höchstens endlich viele echte Teiler, nämlich höchstens so viele, wie eine (jede) Darstellung von $r_1$ lang ist. $\Rightarrow$ Teilerkettensatz gilt
 		
-		\textit{Irreduzibel $\Rightarrow$ Prim}: Sei $r$ irreduzibel und seien $a,b \in R \setminus \{ 0 \}$ so dass $r \mid ab$. Also existiert $h \in R \setminus \{ 0 \}$, so dass $r \cdot h = a \cdot b$. Wir wissen $h,a,b$ haben Darstellung
+		\textit{Irreduzibel $\Rightarrow$ Prim}: Sei $r$ irreduzibel und seien $a,b \in R \setminus \{ 0 \}$ sodass $r \mid ab$. Also existiert $h \in R \setminus \{ 0 \}$, sodass $r \cdot h = a \cdot b$. Wir wissen $h,a,b$ haben Darstellung
 		\begin{equation*}
 			a = a_1 \cdots a_n, \qquad b = b_1 \cdots b_m, \qquad h = h_1 \cdots h_k
 		\end{equation*}
@@ -937,9 +964,9 @@
 		
 		\heading{2) $\Rightarrow 1)$}
 		
-		Wir haben schon bewiesen: Teilerkettensatz $\Rightarrow$ Darstellbarkeit, es fehlt noch die Äquivalenz $\forall r \in R, r \notin R^*, r \neq 0$ und für alle Darstellungen $r =  a_1 \cdots a_n \underset{(*)}{=} b_1 \cdots b_m$ mit $n \neq m$ gilt, dass beide Darstellungen äquivalent sind.
+		Wir haben schon bewiesen: Teilerkettensatz $\Rightarrow$ Darstellbarkeit, es fehlt noch die Äquivalenz $\forall r \in R, r \notin R^*, r \neq 0$ und für alle Darstellungen $r =  \underbrace{a_1 \cdots a_n = b_1 \cdots b_m}_{(*)}$ mit $n \neq m$ gilt, dass beide Darstellungen äquivalent sind.
 		
-		\textit{Beweis per Induktion über $n$}
+		\textit{Beweis per Induktion über $n$}:
 		
 		Induktionsanfang: $n = 1: a_1 = b_1 \cdots b_m$
 		
@@ -949,7 +976,7 @@
 		
 		Induktionsschritt: Sei die Aussage für alle Zahlen $< n$ schon bewiesen.
 		
-		Wieder gilt $a_1 \mid b_1 \cdots b_m \Rightarrow \exists j: a_1 \sim b_j$. oBdA sei $j = 1$ also existiert eine Einheit $\varepsilon \in R^*$ so dass $a_1 = \varepsilon b_1$.
+		Wieder gilt $a_1 \mid b_1 \cdots b_m \Rightarrow \exists j: a_1 \sim b_j$. oBdA sei $j = 1$, also existiert eine Einheit $\varepsilon \in R^*$ sodass $a_1 = \varepsilon b_1$.
 		
 		$R$ ist also Integritätsring, kann also in $(*)$ kürzen, erhalte
 		\begin{equation*}
@@ -985,18 +1012,19 @@
 		
 		\textit{Hausaufgabe:} Also gilt der Teilerkettensatz auch in $R[x]$.
 		
-		\heading{zu 2):} Widerspruchsbeweis! Angenommen es gibt $r(x) \in R[x], r \neq 0, r \notin R[x]^* = R^*$ so dass $r$ zwei Darstellungen hat, die nicht äquivalent sind
+		\heading{zu 2):} Widerspruchsbeweis! Angenommen es gibt $r(x) \in R[x], r \neq 0, r \notin R[x]^* = R^*$ sodass $r$ zwei Darstellungen hat, die nicht äquivalent sind
 		\begin{equation*}
-			r(x) = p_1(x) \cdots p_\alpha(x) = q_1(x) \cdots q_\beta(x) \qquad\qquad\qquad (*)
+			\tag{$*$}
+			r(x) = p_1(x) \cdots p_\alpha(x) = q_1(x) \cdots q_\beta(x)
 		\end{equation*}
-		Ich kann oBdA einige Annahmen treffen
+		Wir können oBdA einige Annahmen treffen
 		\begin{itemize}
-			\item $\deg r(x)$ ist minimal unter allen Polynomen die nicht äquivalente Darstellungen haben
-			\item die irreduziblen Polynome $p_1, \dots, p_\alpha, q_1, \dots, q_\beta$ sind nach Graden sortiert also $\deg p_1 \geq \deg p_2 \geq \dots \geq \deg p_\alpha$ und $\deg q_1 \geq \deg q_2 \geq \dots \geq \deg q_\beta$
+			\item $\deg (r(x))$ ist minimal unter allen Polynomen, die nicht äquivalente Darstellungen haben
+			\item die irreduziblen Polynome $p_1, \dots, p_\alpha, q_1, \dots, q_\beta$ sind nach Graden sortiert, also $\deg p_1 \geq \deg p_2 \geq \dots \geq \deg p_\alpha$ und $\deg q_1 \geq \deg q_2 \geq \dots \geq \deg q_\beta$
 			\item $\deg q_1 \geq \deg p_1$
 		\end{itemize}
 	
-		Sei $n \coloneqq \deg p_1, m = \deg q_1$. Seien $a,b$ die Leitkoeffizienten von $p_1$ beziehungsweise $q_1$. Das heißt:
+		Sei $n \coloneqq \deg p_1, m \coloneqq \deg q_1$. Seien $a,b$ die Leitkoeffizienten von $p_1$ beziehungsweise $q_1$. Das heißt:
 		\begin{align*}
 			p_1 &= a \cdot x^n + (\text{lot}) \\
 			p_1 &= b \cdot x^m + (\text{lot})
@@ -1004,35 +1032,35 @@
 		
 		Beobachtungen:
 		\begin{itemize}
-			\item $\deg r(x) > 0$, denn sonst wären $r(x)$ und alle $q_i(x), p_j(x)$ konstant, also in $R$. Per Annahme das $R$ faktoriell ist müssten die Darstellungen dann äquivalent sein.
+			\item $\deg r(x) > 0$, denn sonst wären $r(x)$ und alle $q_i(x), p_j(x)$ konstant, also in $R$. Per Annahme das $R$ faktoriell ist, müssten die Darstellungen dann äquivalent sein.
 			
 			$\Rightarrow$ $n > 0$ und $m > 0$
 			
-			\item Angenommen es gäbe $j$: $p_1 \sim q_j$. Dann könnte ich in $(*)$ auf beiden Seiten $p_1$ kürzen und erhielte Polynom von Grade $(\deg r(x)) - n < \deg r(x)$, das zwei nicht äquivalente Darstellungen hat $\lightning$ zur Minimalität von $\deg r(x)$.
+			\item Angenommen es gäbe ein $j$, sodass $p_1 \sim q_j$. Dann könnten wir in $(*)$ auf beiden Seiten $p_1$ kürzen und erhielten Polynom vom Grad $(\deg r(x)) - n < \deg r(x)$, das zwei nicht äquivalente Darstellungen hat. $\lightning$ zur Minimalität von $\deg r(x)$.
 		\end{itemize}
 	
 		Betrachte Hilfspolynom:
 		\begin{equation*}
-			s(x) = \underbrace{\left[ b \cdot p_1(x) \cdot x^{m-n} - a \cdot q_1(x) \right]}_{\deg < \deg q_1(x)} \cdot q_2 \cdots q_\beta \tag{\sun}
+			s(x) = \underbrace{\left[ b \cdot p_1(x) \cdot x^{m-n} - a \cdot q_1(x) \right]}_{\deg (\cdot) < \deg q_1(x)} \cdot q_2 \cdots q_\beta \tag{\sun}
 		\end{equation*}
 		
-		Wir erhalten zwei offensichtliche Fälle
+		Wir erhalten zwei offensichtliche Fälle:
 		\begin{enumerate}
 			\item $s(x) = 0$: Dann ist
 			\begin{equation*}
-				b \cdot p_1(x) \cdot x^{m-n} - a \cdot q_1(x)
+				b \cdot p_1(x) \cdot x^{m-n} - a \cdot q_1(x) = 0
 			\end{equation*}
 			\item $s(x) \neq 0$: Wir sehen $\deg s(x) < \deg r(x)$. Also sind je zwei Darstellungen von $s(x)$ äquivalent! Schreibe $s(x)$ um:
 			\begin{align*}
-				s(x) &= b \cdot p_1(X) x^{m-n} \cdot q_2 \cdots q_\beta - a \underbrace{q_1 \cdots q\beta}_{r(x)} \\
-				&= b \cdot p_1 x ^{m-n} \cdot q_2 \cdot q_\beta - a \cdot p_1 \cdots p_\alpha \\
+				s(x) &= b \cdot p_1(x) x^{m-n} \cdot q_2 \cdots q_\beta - a \underbrace{q_1 \cdots q_\beta}_{r(x)} \\
+				&= b \cdot p_1 x ^{m-n} \cdot q_2 \cdots q_\beta - a \cdot p_1 \cdots p_\alpha \\
 				&= p_1(x) \left[ b \cdot x^{m-n} \cdot q_2(x) \cdots q_\beta(x) - a \cdot p_2(x) \cdots p_\alpha(x) \right] \tag{\leftmoon}
 			\end{align*}
 		\end{enumerate}
 	
-		Wir können die Ausdrücke $(\sun)$ und $(\leftmoon)$ verfeinern zu Produkten von irreduziblen indem wir die Ausdrücke in $[\dots]$ als Produkt von irreduziblen schreiben. Diese Darstellungen von $s(x)$ müssen dann äquivalent sein.
+		Wir können die Ausdrücke $(\sun)$ und $(\leftmoon)$ verfeinern zu Produkten von Irreduziblen, indem wir die Ausdrücke in $[\dots]$ als Produkt von Irreduziblen schreiben. Diese Darstellungen von $s(x)$ müssen dann per Annahme äquivalent sein.
 		
-		\textit{Konsequenz:} In der Darstellung von $(\sun)$ muss es einen Faktor geben, der zu $p_1$ assoziiert ist. Da $p_1 \nsim 1_2 \dots p_1 \nsim q_\beta$ muss $p_1$ ein Primfaktor vom $[\dots]$-Ausdruck in $(\sun)$ sein.
+		\textit{Konsequenz:} In der Darstellung von $(\sun)$ muss es einen Faktor geben, der zu $p_1$ assoziiert ist. Da $p_1 \nsim q_2  \dots p_1 \nsim q_\beta$, muss $p_1$ ein Primfaktor vom $[\dots]$-Ausdruck in $(\sun)$ sein.
 		\begin{equation*}
 			\Rightarrow \qquad p_1 \mid (b p_1 \cdot x^{m-n} - a q_1) \qquad \Rightarrow p_1 \mid a q_1
 		\end{equation*}
@@ -1048,20 +1076,20 @@
 		
 		\textit{Anwendung der Zwischenbehauptung:} Schreibe $a$ als Produkt von Irreduziblen. Wenn jetzt $p$ einer der irreduziblen Faktoren ist, dann $p \mid p_1 \cdot h$.
 		
-		$\Rightarrow p \mid p_1$ oder $p \mid h$. $p \mid p_1$ kann nicht sein, denn $p_1$ ist irreduzibel, hat also überhaupt keine echten Teiler.
+		$\Rightarrow \underbrace{p \mid p_1}_{\substack{\text{kann nicht sein, denn $p_1$ ist irreduzibel,}\\\text{hat also überhaupt keine echten Teiler.}}}$ oder $p \mid h$.
 		
-		Also kann ich aus $(\bell)$ $p$ herausteilen und erhalte
+		Also können wir $p$ aus $(\bell)$ herausteilen und erhalten:
 		\begin{equation*}
-			p_1 \cdot \frac{h}{p} = \frac{a}{p} q_1
+			p_1 \cdot \frac{h}{p} = \frac{a}{p} \cdot q_1
 		\end{equation*}
-		Das geht mit jedem Primfaktor von $a$ erhalte also am Ende:
+		Das geht mit jedem Primfaktor von $a$, erhalte also am Ende:
 		\begin{equation*}
 			p_1 \cdot \frac{h}{a} = q_1 \qquad\Rightarrow p_1 \mid q_1 \qquad\Rightarrow p_1 \sim q_1 \qquad\Rightarrow \lightning
 		\end{equation*}
 	
 		\textit{Zwischenbehauptung (jetzt der Beweis):} Sei $p \in R$ irreduzibel. Dann ist das konstante Polynom $p \in R[x]$ prim.
 		
-		Sei $p \in R$ irreduzibel. Ich zeige die Kontraposition: wenn $a(x), b(x) \in R[x]$ Polynome sind mit $p \nmid a(x)$ und $p \nmid b(x)$ $\Rightarrow p \nmid (a \cdot b)(x)$
+		Sei $p \in R$ irreduzibel. Wir zeigen die Kontraposition: wenn $a(x), b(x) \in R[x]$ Polynome sind mit $p \nmid a(x)$ und $p \nmid b(x)$, dann gilt $p \nmid (a \cdot b)(x)$
 		
 		Seien also $a(x), b(x)$ gegeben. Schreibe
 		\begin{align*}
@@ -1071,25 +1099,25 @@
 		
 		\textit{Erinnere:} $p \mid a(x) \Leftrightarrow \forall i: p \mid a_i$
 		
-		Kann also minimale Indizes $i$ und $j$ wählen, so dass $p \nmid a_i$ und $p \nmid b_j$. Betrachte Produktpolynom $(a \cdot b)(x)$ und rechne den Koeffizienten von $x^{i+j}$ im Produktpolynom aus. Dieser Koeffizient ist
+		Kann also minimale Indizes $i$ und $j$ wählen, sodass $p \nmid a_i$ und $p \nmid b_j$. Betrachte Produktpolynom $(a \cdot b)(x)$ und rechne den Koeffizienten von $x^{i+j}$ im Produktpolynom aus. Dieser Koeffizient ist
 		\begin{equation*}
 			\gamma \coloneqq \sum_{\substack{\alpha + \beta = i + j \\ \alpha, \beta \in \setN}} a_\alpha \cdot b_\beta
 		\end{equation*}
 		
-		In dieser Summe sind alle Summanden durch $p$ teilbar, weil stets $\alpha < i$ oder $\beta < j$ mit der Ausnahme des Summanden $\alpha = i, \beta = j, (= a_i \cdot b_j)$.
+		In dieser Summe sind alle Summanden durch $p$ teilbar, weil stets $\alpha < i$ oder $\beta < j$ gilt, mit der Ausnahme des Summanden $\alpha = i, \beta = j, (= a_i \cdot b_j)$.
 		
-		Weil $R$ faktoriell ist per Annahme und $p \in R$ deshalb prim ist $\Rightarrow p \nmid a_i \cdot b_j$
+		Weil $R$ per Annahme faktoriell ist, und $p \in R$ deshalb prim ist, folgt $ p \nmid a_i \cdot b_j$
 		
 		$\Rightarrow p \nmid \gamma \qquad \Rightarrow p \nmid (a \cdot b)(x)$
 	\end{proof}
 
 	\heading{Was tun wir mit faktoriellen Ringen?}
 	
-	Sei $R$ ein faktorieller Ring, betrachte die Äquivalenzrelation $a \sim b \Leftrightarrow a \text{ assoziiert zu } b$
+	Sei $R$ ein faktorieller Ring. Betrachte die Äquivalenzrelation $a \sim b \Leftrightarrow a \text{ assoziiert zu } b$.
 	
-	Wähle Repräsentantensystem $P \subset R$ für die irreduziblen Elemente (= zu jedem irreduziblen $a \in R$ gibt es genau ein $b \in P$ mit $a \sim b$)
+	Wähle Repräsentantensystem $P \subset R$ für die irreduziblen Elemente (= zu jedem irreduziblen $a \in R$ gibt es genau ein $b \in P$ mit $a \sim b$).
 	
-	Wenn dann irgendein $a \in R$ gegeben ist, dann kann ich schreiben
+	Wenn dann irgendein $a \in R$ gegeben ist, dann können wir schreiben:
 	\begin{equation*}
 		a = \varepsilon \cdot \prod_{p \in P} p^{\alpha_p}
 	\end{equation*}
@@ -1111,8 +1139,8 @@
 	Sei $R$ ein Integritätsring, seien $a,b \in R \setminus R^*, a \cdot b \neq 0$
 	
 	\begin{enumerate}
-		\item Ein Element $c \in R$ heißt größter Gemeinsamer Teiler wenn gilt $c \mid a$ und $c \mid b$ und wenn für jedes andere $c'$ mit $c' \mid a$ und $c' \mid b$ gilt $c' \mid c$.
-		\item Ein Element $c \in R$ heißt kleinstes gemeinsames Vielfaches, wenn $a \mid c$ und $b \mid c$ ist und für alle $c' \in R$ mit $a \mid c'$ und $b \mid c'$ gilt $c \mid c'$.
+		\item Ein Element $c \in R$ heißt \emph{größter gemeinsamer Teiler (ggT)}, wenn gilt: $c \mid a$ und $c \mid b$ und wenn für jedes andere $c'$ mit $c' \mid a$ und $c' \mid b$ gilt: $c' \mid c$.
+		\item Ein Element $c \in R$ heißt \emph{kleinstes gemeinsames Vielfaches (kgV)}, wenn $a \mid c$ und $b \mid c$ ist und für alle $c' \in R$ mit $a \mid c'$ und $b \mid c'$ gilt: $c \mid c'$.
 	\end{enumerate}
 
 	\begin{theorem}
@@ -1149,7 +1177,7 @@
 			r_{n-2} = q_n \cdot r_{n-1} + r_n \tag{n}
 		\end{equation*}
 		
-		\textit{Beobachtung:} Die Grade der Polynome $r_1, r_2, \dots$ werden immer kleiner. Der Prozess stoppt also nach endlich vielen Schritten das heißt irgendwann geht die Division auf. Es existiert also $n \in \setN$ so dass
+		\textit{Beobachtung:} Die Grade der Polynome $r_1, r_2, \dots$ werden immer kleiner. Der Prozess stoppt also nach endlich vielen Schritten, das heißt irgendwann geht die Division auf. Es existiert also $n \in \setN$ sodass
 		\begin{equation*}
 			r_{n-1} = q_{n+1} \cdot r_n + 0 \tag{n+1}
 		\end{equation*}
@@ -1178,13 +1206,12 @@
 
 	\subsection{Der Quotientenkörper eines Integritätsrings}
 	
-	\heading{Ziel:} Gegeben ein Ring $R$, suche einen möglichst kleinen Körper $k$ s.d. $R \subset k$ (besser: so dass es einen injektiven Ringmorphismus $R \hookrightarrow k$ gibt). Wir denken an $\setZ \hookrightarrow \setQ$.
+	\heading{Ziel:} Gegeben ein Ring $R$, suche einen möglichst kleinen Körper $k$ sodass: $R \subset k$ (besser: sodass es einen injektiven Ringmorphismus $R \hookrightarrow k$ gibt). Wir denken an $\setZ \hookrightarrow \setQ$.
 	
 	\heading{Beobachtung:} So etwas kann es nicht geben, wenn $R$ Nullteiler hat! Betrachte also nur Integritätsringe.
 	
 	\begin{definition}
-		Sei $R$ ein Integritätsring. Ein Quotientenkörper von $R$ ist ein Körper $k$ zusammen mit einem injektiven Ringmorphismus $\varphi: R \to k$ so dass folgende (universelle) Eigenschaft gilt: Wann immer $\Phi: R \to L$ ein injektiver Ringmorphismus in einen Körper ist, dann gibt es genau einen Körpermorphismus $\eta: k \to L$ so dass das folgende Diagramm kommutiert.
-		
+		Sei $R$ ein Integritätsring. Ein \emph{Quotientenkörper von $R$} ist ein Körper $k$ zusammen mit einem injektiven Ringmorphismus $\varphi: R \to k$, sodass folgende (universelle) Eigenschaft gilt: Wann immer $\Phi: R \to L$ ein injektiver Ringmorphismus in einen Körper ist, dann gibt es genau einen Körpermorphismus $\eta: k \to L$, sodass das folgende Diagramm kommutiert.
 		\begin{center}
 			\begin{tikzpicture}
 				\node(R1) at (0,0){$R$};
@@ -1201,16 +1228,15 @@
 	\end{definition}
 
 	\begin{remark}
-		Körpermorphismen $k \overset{\eta}{\to} L$ sind immer injektiv! Denn wäre $a \in k \setminus \{0\}, a \in \ker(\eta)$. Dann
+		Körpermorphismen $k \overset{\eta}{\to} L$ sind immer injektiv! Denn wäre $a \in k \setminus \{0\}, a \in \ker(\eta)$, dann
 		\begin{equation*}
-			1_L = \eta(1_k) = \eta(a \cdot a^{-1}) = \underbrace{\eta(a)}_{= O_L} \cdot ?
+			1_L = \eta(1_k) = \eta(a \cdot a^{-1}) = \underbrace{\eta(a)}_{= 0_L} \cdot \eta (a^{-1})=0_L
 		\end{equation*} 
 		Widerspruch!
 	\end{remark}
 
 	\begin{theorem}
-		Sei $R$ ein Integritätsring. Dann existiert ein Quotientenkörper $(k, \varphi: R \to k)$. Dieser ist eindeutig bis auf kanonische Isomorphie. Das bedeutet: Wenn $(k', \varphi': R \to k')$ ein weiterer Quotientenkörper ist, dann existiert genau ein Körperisomorphismus $\eta: k \to k'$ so das das folgende Diagramm kommutiert.
-		
+		Sei $R$ ein Integritätsring. Dann existiert ein Quotientenkörper $(k, \varphi: R \to k)$. Dieser ist eindeutig bis auf kanonische Isomorphie. Das bedeutet: Wenn $(k', \varphi': R \to k')$ ein weiterer Quotientenkörper ist, dann existiert genau ein Körperisomorphismus $\eta: k \to k'$ sodass das folgende Diagramm kommutiert.		
 		\begin{center}
 			\begin{tikzpicture}
 				\node(R1) at (0,0){$R$};
@@ -1227,7 +1253,7 @@
 	\end{theorem}
 
 	\begin{proof}		
-		\heading{Eindeutigkeit:} Seien Quotientenkörper $(k, \varphi: R \to k)$ sowie $(k', \varphi': R \to k')$ gegeben. Nach der universellen Eigenschaft existiert dann genau ein Körpermorphismus $\eta: k \to k'$ so dass das folgende Diagramm kommutiert:
+		\heading{Eindeutigkeit:} Seien Quotientenkörper $(k, \varphi: R \to k)$ sowie $(k', \varphi': R \to k')$ gegeben. Nach der universellen Eigenschaft existiert dann genau ein Körpermorphismus $\eta: k \to k'$ sodass das folgende Diagramm kommutiert:
 		\begin{center}
 			\begin{tikzpicture}
 				\node(R1) at (0,0){$R$};
@@ -1241,7 +1267,7 @@
 				\draw[->] (k1) -- (k2) node[midway,right]{$\eta$};
 			\end{tikzpicture}
 		\end{center}
-		Wir wissen auch: Weil $k'$ Quotientenkörper ist, existiert genau ein Körpermorphismus $\eta': k' \to k$ so dass das folgende Diagramm kommutiert:
+		Wir wissen auch: Weil $k'$ Quotientenkörper ist, existiert genau ein Körpermorphismus $\eta': k' \to k$ sodass das folgende Diagramm kommutiert:
 		\begin{center}
 			\begin{tikzpicture}
 				\node(R1) at (0,0){$R$};
@@ -1281,13 +1307,13 @@
 		
 		Genauso folgt $\eta \circ \eta'= \mathbbm{1}_{k'}$. Also ist der Körpermorphismus $\eta'$ die Umkehrung von $\eta$.
 		
-		\heading{Existenz:} Ich konstruiere den Quotientenkörper wie folgt:
+		\heading{Existenz:} Wir konstruieren den Quotientenkörper wie folgt:
 		\begin{enumerate}
 			\item Betrachte die Menge
 			\begin{equation*}
 				B = \{ (a,b) \in R \times R \mid b \neq 0 \}
 			\end{equation*}
-			und sage $(a,b)$ ist äquivalent zu $(a', b')$ wenn gilt $a b' = a' b$. Das ist eine Äquivalenzrelation. Symmetrie und Reflexivität sind klar per Definition. Wir müssen also noch die Transitivität zeigen: Seien also Tupel gegeben so dass
+			und sage $(a,b)$ ist äquivalent zu $(a', b')$ wenn gilt $a b' = a' b$. Das ist eine Äquivalenzrelation. Symmetrie und Reflexivität sind klar per Definition. Wir müssen also noch die Transitivität zeigen: Seien also Tupel gegeben, sodass
 			\begin{align*}
 				&&(a,b) &\sim (a', b') & (a', b') &\sim (a'',b'') \\
 				&\Leftrightarrow& ab' &= a'b & a'b'' &= a''b'
@@ -1306,14 +1332,12 @@
 			\begin{equation*}
 				k \coloneqq B / \sim
 			\end{equation*}
-			
 			\textit{Notation:} Die Äquivalenzklasse von $(a,b)$ wird mit $\frac{a}{b}$ bezeichnet.
 			
 			Betrachte die Abbildung
-			\begin{equation*}
+			$
 				\varphi: R \to k, a \mapsto \frac{a}{1}
-			\end{equation*}
-			
+			$.
 			Diese Abbildung ist injektiv, denn 
 			\begin{equation*}
 				\varphi(a) = \varphi(a') \quad\Leftrightarrow\quad \frac{a}{1} = \frac{a'}{1} \overset{\text{Def.}}{\quad\Leftrightarrow\quad} a \cdot 1 = a' \cdot 1 \quad\Leftrightarrow\quad a = a'
@@ -1336,16 +1360,16 @@
 			
 			\textit{Hausaufgabe:} Dasselbe für Multiplikation
 			
-			\textit{Lästige Rechnerei:} Diese Verknüpfungen definieren eine Körperstruktur auf $k$ so dass die Abbildung $\varphi: R \to k$ ein Ringmorphismus ist. Es gilt
+			\textit{Lästige Rechnerei:} Diese Verknüpfungen definieren eine Körperstruktur auf $k$, sodass die Abbildung $\varphi: R \to k$ ein Ringmorphismus ist. Es gilt
 			\begin{equation*}
 				0_k = \frac01 \qquad 1_k = \frac11 \qquad \text{falls $a \neq 0$ dann} \left( \frac{a}{b} \right)^{-1} = \frac{b}{a}
 			\end{equation*}
 			
-			\item Beweis der universellen Eigenschaft
+			\item Beweis der \emph{universellen Eigenschaft}
 			
-			Sei Körper $L$ gegeben und ein injektiver Ringmorphismus $\Phi: R \to L$, dann müssen wir zeigen $\exists! \eta: k \to L$ so dass \textellipsis
-			
-			\heading{Eindeutigkeit:} Angenommen wir hätten $\eta$ so dass das folgende Diagramm kommutiert
+			Sei Körper $L$ gegeben und ein injektiver Ringmorphismus $\Phi: R \to L$, dann müssen wir zeigen $\exists! \eta: k \to L$ sodass \textellipsis \\
+			%TODO hier fehlt noch was?
+			\heading{Eindeutigkeit:} Angenommen wir hätten $\eta$ sodass das folgende Diagramm kommutiert
 			\begin{center}
 				\begin{tikzpicture}
 					\node(R1) at (0,0){$R$};
@@ -1365,7 +1389,7 @@
 			\end{equation*}
 			Falls $a \neq 0$ ist gilt
 			\begin{equation*}
-				\eta\left( \frac{1}{a} \right) = \eta\left( \left( \frac{a}{1} \right)^{-1} \right) \overset{\text{Körpermorphismus}}{=} \eta \left( \frac{a}{1} \right)^{-1}
+				\eta\left( \frac{1}{a} \right) = \eta\left( \left( \frac{a}{1} \right)^{-1} \right) \overset{\substack{\text{Körper-} \\ \text{morphismus}}}{=} \eta \left( \frac{a}{1} \right)^{-1}
 			\end{equation*}
 			also gilt für alle $\frac{a}{b} \in k$
 			\begin{equation*}
@@ -1375,46 +1399,47 @@
 			also ist $\eta$ eindeutig.
 			
 			\heading{Existenz:} Definiere
-			\begin{equation*}
+			$
 				\eta: k \to L, \quad \frac{a}{b} \mapsto \Phi(a) \cdot \Phi(b)^{-1}
-			\end{equation*}
-			Wieder ist Wohldefiniertheit zu prüfen: Seien $\frac{a}{b} = \frac{a'}{b'}$. Wir müssen zeigen:
+			$.
+			
+			Wieder ist auf Wohldefiniertheit zu prüfen: Seien dazu $\frac{a}{b} = \frac{a'}{b'}$. Wir müssen zeigen:
 			\begin{align*}
-				&& \Phi(a) \Phi(b)^{-1} &= \Phi(a') \Phi(b')^{-1} \\
-				&\Leftrightarrow& \Phi(a) \cdot \Phi(b') &= \Phi(a') \Phi(b) \\
-				&\Leftrightarrow& \Phi(ab') &= \Phi(a'b) \\
-				&\Leftrightarrow& \text{Wahr,}& \text{ wegen Annahme}
+				&& \Phi(a) \cdot \Phi(b)^{-1} &= \Phi(a') \cdot \Phi(b')^{-1} \\
+				&\Leftrightarrow& \Phi(a) \cdot \Phi(b') &= \Phi(a') \cdot \Phi(b) \\
+				&\Leftrightarrow \text{($\Phi$ ist Ringmorphismus)}& \Phi(ab') &= \Phi(a'b) \\
+				&\Leftrightarrow& \text{wahr,}& \text{ wegen Annahme}
 			\end{align*}
-			Nachrechnen: das ist ein Körperisomorphismus.
+			Nachrechnen: das ist ein Körpermorphismus.
 		\end{enumerate}
 	\end{proof}
 
 	\begin{example}""
 		\begin{itemize}
-			\item $R = \setZ$ dann ist $Q(\setZ) = \setQ$
-			\item $R$ ein Körper, dann ist $Q(R) = R$
+			\item $R = \setZ$. Dann ist $Q(\setZ) = \setQ$
+			\item Ist $R$ ein Körper, dann ist $Q(R) = R$
 			\item $R = \setZ[2 + \sqrt{-5}]$, dann ist $Q(R) = \setQ(2 + \sqrt{-5}) \subset \setC$
 			
-			Grund: Wir haben eine Inklusion $R \subset \setQ(2 + \sqrt{-5})$ deshalb gibt es Körpermorphismus $Q(R) \to \setQ(2 + \sqrt{-5})$.
+			Grund: Wir haben eine Inklusion $R \subset \setQ(2 + \sqrt{-5})$. Deshalb gibt es einen Körpermorphismus $Q(R) \to \setQ(2 + \sqrt{-5})$.
 			
-			Dieser ist injektiv, denn $Q(R)$ enthält das Element $a = 2 + \sqrt{-5}$. Wir wissen aber $\setQ(2 + \sqrt{-5})$ ist der kleinste Körper der dieses Element enthält.
-			\item Sei $R$ faktoriell. Wähle Repräsentantensystem $P \subset R$. Dann kann ich alle Elemente von $Q(R)$ auf eindeutige Weise schreiben als
-			\begin{equation*}
+			Dieser ist injektiv, denn $Q(R)$ enthält das Element $a = 2 + \sqrt{-5}$. Wir wissen aber, dass $\setQ(2 + \sqrt{-5})$ der kleinste Körper ist, der dieses Element enthält.
+			\item Sei $R$ faktoriell. Wähle Repräsentantensystem $P \subset R$. Dann können wir alle Elemente von $Q(R)$ auf eindeutige Weise schreiben als
+			$
 				\varepsilon \cdot \prod_{p \in P} p^{\alpha_p}
-			\end{equation*}
+			$,
 			wobei $\varepsilon \in R^*, \alpha_p \in \setZ$ und fast alle $\alpha_p = 0$.
 		\end{itemize}
 	\end{example}
 
 	\heading{Warum das alles?}
 	
-	Wenn $R$ faktoriell ist, kann ich manchmal entscheiden, ob Polynome in $R[x]$ irreduzibel sind.
+	Wenn $R$ faktoriell ist, können wir manchmal entscheiden, ob Polynome in $R[x]$ irreduzibel sind.
 	
 	\textit{Beispiel:} $f(x) = x^3 - 2 \in \setZ[x]$
 	
 	Behauptung: $f$ ist irreduzibel in $\setZ[x]$
 	
-	Angenommen es gäbe einen echten Teiler, dann gäbe es einen linearen Teiler das heißt
+	Angenommen es gäbe einen echten Teiler, dann gäbe es einen linearen Teiler, das heißt
 	\begin{equation*}
 		\exists a,b \in \setZ, a \neq 0: f(x) = (ax + b) g(x)
 	\end{equation*}
@@ -1430,32 +1455,32 @@
 		Sei $R$ ein faktorieller Ring. Falls $f(x) \in R[x]$ irreduzibel als Element von $R[x]$, dann ist $f$ auch irreduzibel als Element von $Q(R)[x]$.
 	\end{theorem}
 
-	\heading{Vorbemerkung:} Sei $f \in Q(R)[x]$ irgendein Polynom. Dann existiert $a \in Q(R)$ so dass $a \cdot f(x) \subset R[x]$ und $\operatorname{ggT}(\text{Koeffizienten von } a \cdot f(x)) = 1$ (Koeffizienten sind Teilerfremd).
+	\heading{Vorbemerkung:} Sei $f \in Q(R)[x]$ irgendein Polynom. Dann existiert $a \in Q(R)$, sodass $a \cdot f(x) \subset R[x]$ und $\operatorname{ggT}(\text{Koeffizienten von } a \cdot f(x)) = 1$ (Koeffizienten sind teilerfremd).
 	
 	Beweis dazu: Auf Hauptnenner bringen und durch größten gemeinsamen Teiler der Koeffizienten teilen.
 	
 	\begin{proof}
-		Angenommen wir haben $f(x) \in R[x]$ welches als Polynom in $Q(R)[x]$ reduzibel ist. Das heißt es existieren Polynome $q(x), p(x) \in Q(R)[x]$ mit $q,p$ nicht konstant, so dass $f(x) = q(x) \cdot p(x)$.
+		Angenommen wir haben $f(x) \in R[x]$ welches als Polynom in $Q(R)[x]$ reduzibel ist. Das heißt es existieren Polynome $q(x), p(x) \in Q(R)[x]$ mit $q,p$ nicht konstant, sodass $f(x) = q(x) \cdot p(x)$.
 		
 		\textit{Ziel:} Schreibe $f$ als Produkt $f = q'(x) \cdot p'(x)$ wobei $q',p' \in R[x]$ echte Teiler sind.
 		
-		\textit{Beobachtung:} Wenn $\gamma \in R$ jeden Koeffizienten von $f$ teilt und $\gamma \notin R^*, \gamma \neq 0$ dann ist $\gamma$ ein echter Teiler von $f$ und wir sind fertig. Wir nehmen also ab sofort an, dass die Koeffizienten von $f$ teilerfremd sind.
+		\textit{Beobachtung:} Wenn $\gamma \in R$ jeden Koeffizienten von $f$ teilt und $\gamma \notin R^*, \gamma \neq 0$, dann ist $\gamma$ ein echter Teiler von $f$ und wir sind fertig. Wir nehmen also ab sofort an, dass die Koeffizienten von $f$ teilerfremd sind.
 		
-		Wende Vorbemerkung auf Polynome $p(x), q(x)$ an, erhalte $a,b \in Q(R)$ so dass $a \cdot p(x) \in R[x]$ und $b \cdot q(x) \in R[x]$ und Koeffizienten dieser Polynome jeweils Teilerfremd in $R$.
+		Wende Vorbemerkung auf Polynome $p(x), q(x)$ an und erhalte $a,b \in Q(R)$, sodass $a \cdot p(x) \in R[x]$ und $b \cdot q(x) \in R[x]$ und Koeffizienten dieser Polynome jeweils teilerfremd in $R$ sind.
 		
-		Durch Multiplikation erhalte Gleichung
+		Durch Multiplikation erhalten wir die Gleichung
 		\begin{equation*}
 			a \cdot b \cdot f(x) = a \cdot p(x) \cdot b \cdot q(x) \in R[x] \tag{$*$}
 		\end{equation*}
-		Beachte die linke Seite ist in $R[x]$, weil beide Faktoren der rechten Seite in $R[x]$ sind.
+		\textit{Beachte:} die linke Seite ist in $R[x]$, weil beide Faktoren der rechten Seite in $R[x]$ sind.
 		
 		\textit{Behauptung:} Es ist $a \cdot b \in R$.
 		
-		\textit{Beweis:} Angenommen $a \cdot b \notin R$ das heißt es existiert Primelement $p \in R$, welches in der Darstellung von $a \cdot b$ mit negativem Exponenten auftritt. Da aber $a \cdot b \cdot f(x) \in R[x]$ muss die Darstellung jedes Koeffizienten das Element $p$ mit positivem Exponenten enthalten. Also $p \mid \text{Koeffizienten}$ $\lightning$ zu $\operatorname{ggT(\text{Koeffizienten})} = 1$
+		\textit{Beweis:} Angenommen $a \cdot b \notin R$, das heißt es existiert ein Primelement $p \in R$, welches in der Darstellung von $a \cdot b$ mit negativem Exponenten auftritt. Da aber $a \cdot b \cdot f(x) \in R[x]$, muss die Darstellung jedes Koeffizienten das Element $p$ mit positivem Exponenten enthalten. Also $p \mid \text{Koeffizienten}$ $\lightning$ zu $\operatorname{ggT(\text{Koeffizienten})} = 1$.
 		
 		\textit{Behauptung:} Es gilt sogar $a \cdot b \in R^*$
 		
-		\textit{Beweis:} Angenommen $a \cdot b \notin R^*$. Dann hätte ich einen echten irreduziblen Teiler $\gamma \in R$ irreduzibel mit $\gamma \mid a \cdot b$.
+		\textit{Beweis:} Angenommen $a \cdot b \notin R^*$. Dann hätten wir einen echten irreduziblen Teiler $\gamma \in R$ irreduzibel mit $\gamma \mid a \cdot b$.
 		\begin{equation*}
 			\Rightarrow \gamma \mid a \cdot b \cdot f(x) \qquad \Rightarrow \gamma \mid [a \cdot p(x)][b \cdot q(x)]
 		\end{equation*}
@@ -1468,17 +1493,17 @@
 		\end{equation*}
 		oBdA sei $\gamma \mid a \cdot p(x)$ $\lightning$ zur Wahl von $a$.
 		
-		Damit kann ich $(*)$ umschreiben zu
+		Damit können wir $(*)$ umschreiben zu
 		\begin{equation*}
 			f(x) = \underbrace{\left[ (a \cdot b)^{-1} \cdot a \cdot p(x) \right]}_{\in R[x]} \cdot \underbrace{\left[ b \cdot q(x) \right]}_{\in R[x]}
 		\end{equation*}
 	\end{proof}
 
-	\heading{Zusammenfassung:} Wir sind jetzt inder Lage, für ganzzahlige Polynome zu entscheiden, ob sie in $\setQ[x]$ irreduzibel sind. (z.B. $x^3 - 2$ ist irreduzibel in $\setQ[x]$, Folgerung $[\setQ(\sqrt[3]{2}): \setQ] = 3$ denn wir wissen jetzt, dass $x^3 - 2$ das Minimalpolynom von $\sqrt[3]{2}$ ist)
+	\heading{Zusammenfassung:} Wir sind jetzt in der Lage, für ganzzahlige Polynome zu entscheiden, ob sie in $\setQ[x]$ irreduzibel sind. (z.B. $x^3 - 2$ ist irreduzibel in $\setQ[x]$, Folgerung: $[\setQ(\sqrt[3]{2}): \setQ] = 3$, denn wir wissen jetzt, dass $x^3 - 2$ das Minimalpolynom von $\sqrt[3]{2}$ ist)
 	
 	\heading{Erinnerung:} Das geht so:
 	
-	Lagrangesche Interpolationsformel (= Polynom von Grad $\leq n$ ist durch seine Werte an $n+1$ Stellen festgelegt) Sei $k$ Körper, $f(x) \in k[x]$ Polynome von Grad $\leq n$, seien $a_1, \dots, a_{n+1} \in k$ unterschiedliche Körperlementente. Dann ist $f$ durch die Werte $f(a_i)$ eindeutig festgelegt, nämlich
+	Lagrangesche Interpolationsformel (= Polynom von Grad $\leq n$ ist durch seine Werte an $n+1$ Stellen festgelegt) Sei $k$ Körper, $f(x) \in k[x]$ Polynome von Grad $\leq n$, seien $a_1, \dots, a_{n+1} \in k$ unterschiedliche Körperelemente. Dann ist $f$ durch die Werte $f(a_i)$ eindeutig festgelegt, nämlich
 	\begin{equation*}
 		f(x) = \sum_{j=1}^{n+1} f(a_j) \prod_{k \neq j} \frac{x - a_k}{a_j - a_k} \eqqcolon h(x) \in k[x]
 	\end{equation*}
@@ -1491,13 +1516,13 @@
 	
 	$\Rightarrow h - f = 0$
 	
-	Damit haben wir folgendes Verfahren, um irreduzibilität in $\setZ[x]$ und also auch in $\setQ[x]$ zu testen.
+	Damit haben wir folgendes Verfahren, um Irreduzibilität in $\setZ[x]$ und also auch in $\setQ[x]$ zu testen:
 	
-	Gegeben $f(x) \in \setZ[x]$ von Grad $\leq n$ so dass $\operatorname{ggT}(\text{Koeffizienten}) = 1$.
+	Gegeben $f(x) \in \setZ[x]$ von Grad $\leq n$ so, dass $\operatorname{ggT}(\text{Koeffizienten}) = 1$.
 	
-	Wähle $a_1, \dots, a_{n+1} \in \setZ$ so dass $f(a_i) \neq 0$ und betrachte $f(a_1), \dots, f(a_n) \in \setZ$.
+	Wähle $a_1, \dots, a_{n+1} \in \setZ$ so, dass $f(a_i) \neq 0$ und betrachte $f(a_1), \dots, f(a_n) \in \setZ$.
 	
-	Wir wissen, wenn $g(x)$ ein Teiler von $f(x)$ in $\setZ[x]$ ist, dann gilt für alle $i$ $q(a_i) \mid f(a_i)$
+	Wir wissen, wenn $g(x)$ ein Teiler von $f(x)$ in $\setZ[x]$ ist, dann gilt für alle $i$ : $q(a_i) \mid f(a_i)$
 	
 	Für $g(a_i)$ gibt es also nur endlich viele Möglichkeiten.
 	
@@ -1507,11 +1532,11 @@
 		Sei $R$ ein faktorieller Ring, sei\begin{equation*}
 			f(x) = a_0 + a_1 x + \dots + a_n x^n \in R[x]
 		\end{equation*}
-		mit $n > 0$ und $\operatorname{ggT}(a_0, \dots, a_n) = 1$. Falls es ein irreduzibles gibt $p \in R$ so dass $p \mid a_0, p \mid a_1, \dots, p \mid a_{n-1}$ und $p^2 \nmid a_0$. Dann ist $f$ irreduzibel in $R[x]$ und also auch in $Q(R)[x]$.
+		mit $n > 0$ und $\operatorname{ggT}(a_0, \dots, a_n) = 1$. Falls es ein irreduzibles $p \in R$ gibt, sodass $p \mid a_0, p \mid a_1, \dots, p \mid a_{n-1}$ und $p^2 \nmid a_0$, dann ist $f$ irreduzibel in $R[x]$ und also auch in $Q(R)[x]$.
 	\end{theorem}
 
 	\begin{proof}
-		Sei $f$ wie im Satz gegeben. Angenommen ich kann $f$ schreiben als Produkt
+		Sei $f$ wie im Satz gegeben. Angenommen wir können $f$ schreiben als Produkt
 		\begin{equation*}
 		f(x) = \alpha(x) \cdot \beta(x)
 		\end{equation*}
@@ -1525,29 +1550,29 @@
 		
 		Beobachte: $a_0 = \alpha_0 \cdot \beta_0$
 		
-		Per Annahme gilt: $p \mid a_0 \underset{\text{$R$ faktoriell}}{\Rightarrow} p \mid \alpha_0$ oder $p \mid \beta_0$.
+		Per Annahme gilt: $p \mid a_0 \underset{\substack{\text{$R$}\\\text{faktoriell}}}{\Rightarrow} p \mid \alpha_0$ oder $p \mid \beta_0$.
 		
 		Per Annahme $p^2 \nmid a_0$ kann $p$ nicht beide Elemente teilen. Wir nehmen also $p \mid \alpha_0$ und $p \nmid \beta_0$ an.
 		
-		Weil $\operatorname{ggT}(a_0, \dots, a_n) = 1$ wissen wir $p$ teilt nicht alle $\alpha_i$. Sei also $i$ minimal so dass $p \nmid \alpha_i$. Wir wissen schon mal $i < n$, insbesondere $p \mid a_i$.
+		Weil $\operatorname{ggT}(a_0, \dots, a_n) = 1$, wissen wir: $p$ teilt nicht alle $\alpha_i$. Sei also $i$ minimal, sodass $p \nmid \alpha_i$. Wir wissen schon mal $i < n$, insbesondere $p \mid a_i$.
 		
 		Es ist aber
 		\begin{equation*}
-			a_i = \underbrace{\alpha_0 \beta_i}_\text{Vielfaches von $p$} + \underbrace{\alpha_i \beta_{i-1}}_\text{Vielfaches von $p$} + \underbrace{\alpha_2 \beta_{i-2}}_\text{Vielfaches von $p$} + \dots + \underbrace{\alpha_i \beta_0}_\text{kein Vielfaches von $p$}
+			a_i = \underbrace{\alpha_0 \beta_i}_{\substack{\text{Vielfaches} \\ \text{von $p$}}} + \underbrace{\alpha_i \beta_{i-1}}_{\substack{\text{Vielfaches} \\ \text{von $p$}}} + \underbrace{\alpha_2 \beta_{i-2}}_{\substack{\text{Vielfaches} \\ \text{von $p$}}} + \dots + \underbrace{\alpha_i \beta_0}_{\substack{\text{kein} \\ \text{Vielfaches von $p$}}}
 		\end{equation*}
 		
 		$\lightning$ zu Teilbarkeitsregeln.
 	\end{proof}
 
 	\begin{remark}
-		Polynome welche die Annahmen des Satzes erfüllen heißen Eisensteinpolynome.
+		Polynome, welche die Annahmen des Satzes erfüllen, heißen Eisensteinpolynome.
 		
 		Ein Beispiel dafür ist $R = \setZ, f(x) = x^3 - 2$.
 	\end{remark}
 
 	\subsection{Hilfe bei der Anwendung des Eisenstein-Kriteriums}
 	
-	Sei $R$ faktoriell und $\varphi: R[x] \to S$ ein Ringmorphismus in einen Integritätsring $S$. Angenommen $\varphi$ hat die Eigenschaft dass $\forall f \in R[x]: \deg f > 0 \Rightarrow \varphi(f) \notin S^*$.
+	Sei $R$ faktoriell und $\varphi: R[x] \to S$ ein Ringmorphismus in einen Integritätsring $S$. Angenommen $\varphi$ hat die Eigenschaft, dass $\forall f \in R[x]: \deg f > 0 \Rightarrow \varphi(f) \notin S^*$.
 	
 	Wenn jetzt ein $f \in R[x]$ gegeben ist mit $f(x) = a_0 + a_1 x + \dots + a_n x^n$ mit $n > 0$ und $\operatorname{ggT}(a_0, \dots, a_n) = 1$ und $\varphi(f)$ irreduzibel ist, dann ist $f$ irreduzibel.
 	
@@ -1559,14 +1584,14 @@
 		Also hat $\varphi(f)$ echte Teiler in $S$ und ist damit nicht irreduzibel.
 	\end{proof}
 
-	\heading{Wie finde ich $\varphi$?}: Keine Ahnung wir müssen Rumprobieren
+	\heading{Wie finden wir $\varphi$?}: Keine Ahnung, wir müssen rumprobieren.
 	
 	\heading{Beispielhafte Konstruktionen}
 	
 	\begin{enumerate}
-		\item Gegeben ein Ringmorphismus $\phi: R \to S$ (z.B. $\setZ \to \setZ / p \setZ$ oder $\setZ / p \setZ \to \setZ / p \setZ, a \mapsto a^p$)
+		\item Gegeben ein Ringmorphismus $\phi: R \to S$ (z.B. $\setZ \to \setZ / p \setZ$, oder $\setZ / p \setZ \to \setZ / p \setZ$ mit $ a \mapsto a^p$)
 		
-		Betrachte dann Morphismus von Polynomringen
+		Betrachte dann folgenden Morphismus von Polynomringen
 		\begin{equation*}
 			\varphi: R[x] \to S[x], \sum a_i x^i \mapsto \sum \phi(a_i) x^i
 		\end{equation*}
@@ -1586,11 +1611,11 @@
 	\begin{equation*}
 		f(x) = x^{p-1} + x^{p-2} + \dots + x + 1 \in \setZ[x]
 	\end{equation*}
-	Das ist kein Eisenstein Polynom.
+	Das ist kein Eisenstein-Polynom.
 	
 	Beobachte aber auch $(x-1)f(x) = x^p -1$.
 	
-	Das legt nahe folgenden Morphismus zu probieren
+	Das legt nahe, folgenden Morphismus zu probieren:
 	\begin{equation*}
 		\varphi: \setZ[x] \to \setZ[x], g(x) \mapsto g(x + 1)
 	\end{equation*}
@@ -1600,7 +1625,7 @@
 	\begin{equation*}
 		\varphi(x^p - 1) = \varphi((x-1)f) = \underbrace{\varphi(x-1)}_{=x} \cdot \varphi(f)
 	\end{equation*}
-	und außerdem
+	und außerdem:
 	\begin{equation*}
 		\varphi(x^p - 1) = (x+1)^p - 1 = \sum_{i=1}^{p} \binom{p}{i} x^i - 1
 	\end{equation*}
@@ -1608,31 +1633,27 @@
 	\begin{equation*}
 		\Rightarrow \varphi(f) = \sum_{i = 1}^p \binom{p}{i} \cdot x^{i-1}
 	\end{equation*}
-	das ist ein Eisenstein Polynom.
+	das ist ein Eisenstein-Polynom.
 	
 	Also ist $f(x)$ irreduzibel in $\setZ[x]$, also auch in $\setQ[x]$.
 	
-	\heading{Ernte einfahren:} Wir können mit unseren Methoden einige Fragen beantworten.
+	\heading{Ernte einfahren:} Wir können mit unseren Methoden einige Fragen beantworten!
 	
 	\heading{Erinnerung:} Gegeben $M \subset \setC$, eine Menge die $0,1$ enthält. $\operatorname{Konst}(M) =$ Menge der aus $M$ konstruierbaren Punkte.
 	
 	\begin{enumerate}
 		\item $\operatorname{Kons}(M)$ ist ein Unterkörper von $\setC$
-		\item Wenn $z \in \operatorname{Kons}(M) \subset \setC$, dann gibt es $n \in \setN$ so dass $[k(z): k] = 2^n$ wobei $k = \setQ(M \cup \overline{M})$ und $M = \{ \overline{m} \mid m \in M \}$.
+		\item Wenn $z \in \operatorname{Kons}(M) \subset \setC$, dann gibt es $n \in \setN$ sodass $[k(z): k] = 2^n$ wobei $k = \setQ(M \cup \overline{M})$ und $M = \{ \overline{m} \mid m \in M \}$.
 	\end{enumerate}
 	
 	\begin{example}
-		$z = \sqrt[3]{2}$. Ist nicht aus $M = \{ 0, 1 \}$ konstruierbar, denn in diesem Fall wäre $\overline{M} = M$ und $k = \setQ(0,1) = \setQ$ aber $[\setQ(\sqrt[3]{2}: \setQ)] = 3$, denn wir wissen: $x^3 - 2$ ist das Minimalpolynom.
+		Das Element $z = \sqrt[3]{2}$ ist nicht aus $M = \{ 0, 1 \}$ konstruierbar, denn in diesem Fall wäre $\overline{M} = M$ und $k = \setQ(0,1) = \setQ$ aber $[\setQ(\sqrt[3]{2}: \setQ)] = 3$, denn wir wissen: $x^3 - 2$ ist das Minimalpolynom.
 	\end{example}
 
 	Dieselbe Argumentation liefert mehr!
 	
 	\begin{theorem}
-		Sei $\varphi \in (0,2\pi)$ so dass $e^{i \varphi} \in \setC$ transzendent ist. Dann ist der Winkel
-		
-		TODO winkel durch $e^{i\varphi}$
-		
-		nicht durch Zirkel und Lineal $3$-teilbar.
+		Sei $\varphi \in (0,2\pi)$ sodass $e^{i \varphi} \in \setC$ transzendent ist. Dann ist der Winkel $\angle e^{i\varphi}$, aufgespannt durch x-Achse und $e^{i\varphi}$ nicht durch Zirkel und Lineal $3$-teilbar.
 	\end{theorem}
 
 	\begin{remark}
@@ -1640,14 +1661,14 @@
 		\begin{equation*}
 			(0, 2\pi) \to \setC, \varphi \mapsto e^{i \varphi}
 		\end{equation*}
-		ist injektiv hat also überabzählbar viele Bildpunkte, es gibt aber nur abzählbar viele algebraische Zahlen. Also ist $e^{i \varphi}$ transzendent für fast alle $\varphi$.
+		ist injektiv, hat also überabzählbar viele Bildpunkte, es gibt aber nur abzählbar viele algebraische Zahlen. Also ist $e^{i \varphi}$ transzendent für fast alle $\varphi$.
 	\end{remark}
 
-	Für dieses Problem betrachte bei gegebenem $\varphi$ die Menge $M = \{ 0, 1, e^{i \varphi} \}$. Ist $e^{i \frac{\varphi}{3}} \in \operatorname{Kons(M)}$? Also betrachte ich
+	Für dieses Problem betrachte bei gegebenem $\varphi$ die Menge $M = \{ 0, 1, e^{i \varphi} \}$. Ist $e^{i \frac{\varphi}{3}} \in \operatorname{Kons(M)}$? Also betrachten wir
 	\begin{equation*}
 		k = \setQ(M \cup \overline{M}) = \setQ(z) = \setQ(e^{i \varphi})
 	\end{equation*}
-	Muss diskutieren: $[k(e^{i \frac{\varphi}{3}}): k]$ das ist eine $2$-er Potenz falls $e^{i \frac{\varphi}{3}}$ konstruierbar ist.
+	Müssen diskutieren: $[k(e^{i \frac{\varphi}{3}}): k]$ das ist eine $2$-er Potenz falls $e^{i \frac{\varphi}{3}}$ konstruierbar ist.
 	
 	Wir sehen $e^{i \frac{\varphi}{3}}$ ist Nullstelle des Polynoms $f(x) = x^3 - e^{i \varphi} \in k[x]$. Falls $f$ das Minimalpolynom ist, ist $[k(e^{i \frac{\varphi}{3}}): k] = 3$, also $e^{i \frac{\varphi}{3}} \notin \operatorname{Kons}(M)$.
 	
@@ -1656,23 +1677,20 @@
 	\heading{Behauptung:} $k$ ist isomorph zum Körper der rationalen Funktionen $\setQ(y)$
 	
 	\begin{proof}
-		Ich betrachte einen Ringmorphismus
+		Wir betrachten einen Ringmorphismus
 		\begin{equation*}
 			\setQ[y] \to k = \setQ(e^{i \varphi}), f(y) \mapsto f(e^{i \varphi})
 		\end{equation*}
 		Die Funktion ist injektiv weil $e^{i \varphi}$ transzendent ist.
 		
-		Außerdem gilt
-		\begin{equation*}
-			\setQ[y] \to Q(\setQ[y]) = \setQ(y)
-		\end{equation*}
+		Außerdem gilt: $\setQ[y] \to Q(\setQ[y]) = \setQ(y)$
 		
 		Die universelle Eigenschaft liefert einen Isomorphismus $\eta: \setQ(y) \to k$.
 		
 		$\eta$ ist surjektiv weil $e^{i \varphi} = \eta(y)$ im Bild liegt und $k$ der kleinste Körper ist, der $e^{i \varphi}$ enthält.
 	\end{proof}
 
-	Wir wollen entscheiden ob $f(x) = x^3 - e^{i \varphi} \in k[x]$ irreduzibel ist. Wir können also auch untersuchen ob $x^3 - y$ in $(\setQ(y))[x]$ irreduzibel ist.
+	Wir wollen entscheiden, ob $f(x) = x^3 - e^{i \varphi} \in k[x]$ irreduzibel ist. Wir können also auch untersuchen, ob $x^3 - y$ in $(\setQ(y))[x]$ irreduzibel ist.
 	
 	$\Leftrightarrow$ Ist $x^3 - y \in (\setQ[y])[x]$ irreduzibel?
 	
@@ -1688,9 +1706,9 @@
 		Das regelmäßige $p$-Eck ist konstruierbar $\Leftrightarrow$ $e^{\frac{2 \pi i}{p}} \in \operatorname{Kons}(M)$.
 		
 		Falls das so ist, ist
-		\begin{equation*}
+		$
 			\left[ \setQ(e^{\frac{2 \pi i}{p}}) : \setQ \right] = 2^n
-		\end{equation*}
+		$
 		für ein $n \in \setN$.
 		
 		Wir wissen $e^{\frac{2 \pi i}{p}}$ ist Nullstelle von $x^p - 1 \in \setQ[x]$.
@@ -1709,16 +1727,16 @@
 	\end{definition}
 
 	\begin{remark}
-		Für nicht-kommutative Ringe definiert man Linksideale (wie oben) und Rechtsideale (mit $ar$ statt $ra$ in 2)).
+		Für nicht-kommutative Ringe definiert man Linksideale (wie oben) und Rechtsideale (mit $ar$ statt $ra$ in \textit{2)}).
 	\end{remark}
 
 	\begin{remark}
 		\begin{itemize}
 			\item Die $0$ ist in jedem Ideal enthalten
 			\item $\{ 0 \}, R$ sind immer Ideale
-			\item Fall $R$ ein Körper ist, sind $\{ 0 \}$ und $R$ die einzigen Ideale, denn
+			\item Falls $R$ ein Körper ist, sind $\{ 0 \}$ und $R$ die einzigen Ideale, denn:
 			
-			Sei $k$ ein Körper, $I \subset k$ ein Ideal. Angenommen $\exists a \in I \setminus \{ 0 \}$. Sei $b \in k$ gegeben dann ist $b = (b \cdot a^{-1}). a \in I$.
+			\textit{Sei $k$ ein Körper, $I \subset k$ ein Ideal. Angenommen $\exists a \in I \setminus \{ 0 \}$. Sei $b \in k$ gegeben; dann ist $b = (b \cdot a^{-1})\cdot a \in I$.}
 			
 			\item Falls $I \subset R$ ein Ideal und $1 \in I \Rightarrow I = R$
 		\end{itemize}
@@ -1729,17 +1747,17 @@
 			\item $R = \setZ, a \in \setZ$ ein Element $I = \{ \text{alle Vielfachen von $a$} \}$
 			\item Besonders einfache Ideale: sei $R$ ein Ring, $I \subset R$ ein Ideal. Nenne $I$ ein Hauptideal falls $\exists a \in I: I = (a)$. Nenne $R$ Hauptidealring falls alle Ideale Hauptideale sind. z.B. $\setZ$ ist ein Hauptidealring.
 			
-			Sei $I \subset \setZ$ ein Ideal, $I \neq (0)$. Wir wissen: $I$ enthält positive Elemente. Sei $a \in I$ das kleinste positive Element. Will zeigen $I = (a)$. Inklusion $\supset$ ist klar. Sei also $b \in I \setminus \{ 0 \}$ irgendein Element. oBdA sei $b > 0$. Division mit Rest:
+			Sei $I \subset \setZ$ ein Ideal, $I \neq (0)$. Wir wissen: $I$ enthält positive Elemente. Sei $a \in I$ das kleinste positive Element. Will zeigen: $I = (a)$. Inklusion $\supset$ ist klar. Sei also $b \in I \setminus \{ 0 \}$ irgendein Element. oBdA sei $b > 0$. Division mit Rest:
 			\begin{equation*}
 				\underbrace{b}_{\in I} = \underbrace{* \cdot a}_{\in I} + c, \text{ wobei } 0 \leq c < a.
 			\end{equation*}
 			Damit ist $c \in I$ aber auch $c < a \Rightarrow c = 0$ und damit $b \in (a)$.
 			
-			Das gleiche gilt falls $k$ ein Körper und $R = k[x]$ ist.
+			Das gleiche gilt, falls $k$ ein Körper und $R = k[x]$ ist.
 			
 			$R = k[x,y]$ ist kein Hauptidealring, denn $I = (x,y)$ ist kein Hauptideal, denn
 			\begin{enumerate}
-				\item $I \neq R$ Genauer $1 \notin I$, denn alle Elemente von $I$ außer $0$ haben positiven Grad.
+				\item $I \neq R$ genauer $1 \notin I$, denn alle Elemente von $I$ außer $0$ haben positiven Grad.
 				\item Wenn $I$ ein Hauptideal wäre, $I = (a)$, dann $a \mid x$ und $a \mid y$, Aber $\operatorname{ggT}(x,y) = 1$. Also wäre $a$ Einheit, $I = R$ $\lightning$.
 			\end{enumerate}
 		
@@ -1766,7 +1784,7 @@
 	\end{example}
 
 	\begin{definition}
-		Sei $R$ ein Ring und $I \subset R$ ein Ideal. Nenne $I$ endlich erzeugt, falls es endlich viele $a_1, \dots, a_n \in I$ gibt, so dass
+		Sei $R$ ein Ring und $I \subset R$ ein Ideal. Nenne $I$ endlich erzeugt, falls es endlich viele $a_1, \dots, a_n \in I$ gibt, sodass
 		\begin{equation*}
 			I = (a_1, \dots, a_n)
 		\end{equation*}
@@ -1789,7 +1807,7 @@
 	\end{example}
 
 	\begin{definition}
-		Sei $R$ ein Ring. Sage in $R$ gilt der Teilerkettensatz für Ideale, falls jede aufsteigende Kette von Idealen
+		Sei $R$ ein Ring. Sage "`in $R$ gilt der Teilerkettensatz für Ideale"', falls jede aufsteigende Kette von Idealen
 		\begin{equation*}
 			I_1 \subseteq I_2 \subseteq I_3 \subseteq \dots
 		\end{equation*}
@@ -1797,13 +1815,13 @@
 	\end{definition}
 
 	\begin{theorem}
-		Sei $R$ ein Ring, dann ist äquivalent
+		Sei $R$ ein Ring, dann sind äquivalent:
 		\begin{enumerate}
 			\item Jedes Ideal ist endlich erzeugt
 			\item In $R$ gilt der Teilerkettensatz für Ideale
 			\item In jeder nicht-leeren Menge von Idealen gibt es ein Element, das bezüglich Inklusion maximal ist
 		\end{enumerate}
-		Falls diese Eigenschaften gelten, nenne $R$ Noethersch
+		Falls diese Eigenschaften gelten, nenne $R$ Noethersch.
 	\end{theorem}
 
 	\begin{proof}
@@ -1812,11 +1830,11 @@
 		\begin{equation*}
 			I = \bigcup_{i=0}^\infty I_i
 		\end{equation*}
-		ist ein Ideal, also per Annahme endlich erzeugt: $I = (a_1, \dots, a_n)$ für geeignete $a_1, \dots, a_n \in \bigcup I_i$. Dann gibt es also $i_1, \dots, i_n$ so dass $a_i \in I_{i_1}, a_2 \in I_{i_2}$ wenn $m = \max \{ i_1, \dots, i_n \}$ dann $a_1 \in I_m, a_2 \in I_m, \dots$ damit gilt:
+		ist ein Ideal, also per Annahme endlich erzeugt: $I = (a_1, \dots, a_n)$ für geeignete $a_1, \dots, a_n \in \bigcup I_i$. Dann gibt es also $i_1, \dots, i_n$ sodass $a_i \in I_{i_1}, a_2 \in I_{i_2}$ wenn $m = \max \{ i_1, \dots, i_n \}$. Dann gilt $a_1 \in I_m, a_2 \in I_m, \dots$ und somit:
 		\begin{equation*}
 			(a_1, \dots, a_n) \subset I_m \subset I = (a_1, \dots, a_m)
 		\end{equation*}
-		also $I_m = I_{m+1} = I_{m+2} = \dots$
+		also auch $I_m = I_{m+1} = I_{m+2} = \dots$
 		
 		\heading{2) $\Rightarrow$ 3)}
 		Sei $M$ eine nicht-leere Menge von Idealen ohne maximales Element. Sei $I_i \in M$ irgendein Element. Finde dann $I_2 \in M$ mit $I_1 \subsetneq I_2$. Da $I_2$ auch nicht maximal ist finde also $I_3 \in M$ mit $I_2 \subsetneq I_3$. Erhalte so eine Kette
@@ -1844,15 +1862,15 @@
 		
 		Wähle in $I$ ein Element $f$ von minimalem Grad. Dann ist $I \subsetneq (f_1)$, also $I \setminus (f_1) \neq \emptyset$, wähle $f_2 \in I \setminus (f_1)$ von minimalem Grad. $I \supsetneq (f_1, f_2)$ wähle $f_3 \in I \setminus (f_1, f_2)$ von minimalem Grad.
 		
-		Erhalte Folge von Polynomen $f_1, f_2, f_3, \dots$ so dass $\deg f_1 \leq \deg f_2 \leq \deg f_3 \leq \dots$
+		Erhalte Folge von Polynomen $f_1, f_2, f_3, \dots$ sodass $\deg f_1 \leq \deg f_2 \leq \deg f_3 \leq \dots$
 		
 		Setze $n_i = \deg f_i$, $a_i = $ Leitkoeffizient von $f_i \in R$.
 		
-		Will zeigen, dass folgende Kette von Idealen in $R$ nicht stationär wird.
+		Wir wollen zeigen, dass folgende Kette von Idealen in $R$ nicht stationär wird:
 		\begin{equation*}
 			(a_1) \subseteq (a_1, a_2) \subseteq (a_1, a_2, a_3) \subseteq \dots
 		\end{equation*}
-		dann wird klar sein, dass $R$ nicht Noethersch war.
+		Denn dann wird klar sein, dass $R$ nicht Noethersch war.
 		
 		Angenommen es gäbe $k$ mit $(a_1, \dots, a_k) = (a_1, \dots, a_{k+1}) \Leftrightarrow a_{k+1} \in (a_1 \dots, a_k)$
 		
@@ -1864,7 +1882,7 @@
 		\begin{equation*}
 			s(x) = \sum_{i = 1}^k r_i \cdot x^{n_{k+1} - n_i} \cdot f_i(x)
 		\end{equation*}
-		Wesentliche Eigenschaft von $s$:
+		Wesentliche Eigenschaften von $s$:
 		\begin{enumerate}
 			\item $\deg s = n_{k+1} = \deg f_{k+1}$
 			\item Leitkoeffizient $(s) = a_{k+1}$
@@ -1883,11 +1901,11 @@
 	\end{theorem}
 
 	\begin{proof}
-		Sei $p$ irreduzibel, seien $a,b \in R$. $p \nmid a, p \nmid b$. Dann müssen wir zeigen: $p \nmid a \cdot b$.
+		Sei $p$ irreduzibel, seien $a,b \in R$, sowie $p \nmid a, p \nmid b$. Dann müssen wir zeigen: $p \nmid a \cdot b$.
 		
-		Wir wissen: $(p,a)$ ist ein Hauptideal, also $\exists c \in R$ so dass $(p,a) = (c)$. Also $p$ ist Vielfaches von $c$, also $c \mid p$. Aber $p$ ist irreduzibel hat also keine echten Teiler. Also $c \in R^*$ oder $c \sim p$.
+		Wir wissen: $(p,a)$ ist ein Hauptideal, also $\exists c \in R$ sodass $(p,a) = (c)$. Also $p$ ist Vielfaches von $c$, also $c \mid p$. Aber $p$ ist irreduzibel, hat also keine echten Teiler. Also $c \in R^*$ oder $c \sim p$.
 		
-		Aber $c \sim p \Leftrightarrow p \mid a$ was wir per Annahme ausschließen!
+		Aber $c \sim p \Leftrightarrow p \mid a$, was wir per Annahme ausschließen!
 		
 		Also $c \in R^* \quad\Rightarrow (a,p) = (1)$. Es gibt also eine Linearkombination
 		\begin{equation*}
@@ -1903,7 +1921,7 @@
 			1 = \alpha_2 \beta_2 p^2 + (\alpha_1 \beta_2 a + \alpha_2 \beta_1 b)p + \alpha_1 a \beta_1 b
 		\end{equation*}
 		
-		$\Rightarrow p \nmid \alpha_1 \beta_1 a b$ denn sonst würde $p$ die Summe teilen, also auch $p \mid 1$.
+		$\Rightarrow p \nmid \alpha_1 \beta_1 a b$, denn sonst würde $p$ die Summe teilen, also auch $p \mid 1$.
 		
 		$\Rightarrow p \nmid a \cdot b$
 	\end{proof}
@@ -1911,11 +1929,11 @@
 	\heading{Quotienten:} Sei $R$ ein Ring, $I \subset R$ ein Ideal. Dann definiere $r,s \in R$ als äquivalent, falls $r - s \in I$.
 	
 	\begin{theorem}
-		Es gibt auf Quotientenmengen eindeutige Verknüpfungen $+, \cdot$ so dass die Quotientenabbildung
+		Es gibt auf Quotientenmengen eindeutige Verknüpfungen $+$ und $\cdot$, sodass die Quotientenabbildung
 		\begin{equation*}
 			q: R \to R/I
 		\end{equation*}
-		Ringmorphismus ist.
+		ein Ringmorphismus ist.
 	\end{theorem}
 
 	\begin{example}
@@ -1948,7 +1966,7 @@
 	\end{example}
 
 	\begin{theorem}[Universelle Eigenschaft]
-		Sei $R$ ein Ring, sei $I \subset R$ ein Ideal. Sei $q: R \to R/I$ die Restklassenabbildung. Dann gilt folgende universelle Eigenschaft: für jeden surjektiven Ringmorphismus $\varphi: R \to S$ mit $\ker(\varphi) \supseteq I$ gibt es genau einen Ringmorphismus $\eta: R/I \to S$ so dass das folgende Diagramm kommutiert:
+		Sei $R$ ein Ring, sei $I \subset R$ ein Ideal. Sei $q: R \to R/I$ die Restklassenabbildung. Dann gilt folgende universelle Eigenschaft: Für jeden surjektiven Ringmorphismus $\varphi: R \to S$ mit $\ker(\varphi) \supseteq I$ gibt es genau einen Ringmorphismus $\eta: R/I \to S$ sodass das folgende Diagramm kommutiert:
 		
 		\begin{center}
 			\begin{tikzpicture}
@@ -1977,7 +1995,7 @@
 	\end{example}
 
 	\begin{proof}
-		Nach universeller Eigenschaft gibt es genau eine Abbildung $\eta: R/\ker(\varphi) \to S$ so dass das folgende Diagramm kommutiert.
+		Nach universeller Eigenschaft gibt es genau eine Abbildung $\eta: R/\ker(\varphi) \to S$ sodass das folgende Diagramm kommutiert.
 		
 		\begin{center}
 			\begin{tikzpicture}
@@ -1993,7 +2011,7 @@
 			\end{tikzpicture}
 		\end{center}
 		
-		Behauptung: $\eta$ ist Isomorphismus. Muss zeigen: $\eta$ bijektiv also injektiv und surjektiv. Surjektivität folgt sofort aus Kommutativität des Diagramms und der surjektivität von $\varphi$. Noch zu zeigen $\eta$ injektiv bzw. $\ker(\eta) = 0_{R/\ker(\varphi)}$.
+		Behauptung: $\eta$ ist Isomorphismus. Muss zeigen: $\eta$ bijektiv also injektiv und surjektiv. Surjektivität folgt sofort aus Kommutativität des Diagramms und der Surjektivität von $\varphi$. Noch zu zeigen $\eta$ injektiv bzw. $\ker(\eta) = 0_{R/\ker(\varphi)}$.
 		
 		Sei also $[a] \in \ker(\eta)$. Wegen der Kommutativität des Diagramms:
 		\begin{equation*}
@@ -2006,7 +2024,7 @@
 	
 	Wir betrachten Körpererweiterung $L/k$ und algebraische Elemente $a \in L$.
 	
-	Wir wissen $a$ hat Minimalpolynom $f \in k[x]$. Jedes andere Polynom $g \in k[x]$ mit $g(a) = 0$ ist Vielfaches von $f$. ($g(a) = 0 \Leftrightarrow g \in (f)$).
+	Wir wissen: $a$ hat das Minimalpolynom $f \in k[x]$. Jedes andere Polynom $g \in k[x]$ mit $g(a) = 0$ ist Vielfaches von $f$. ($g(a) = 0 \Leftrightarrow g \in (f)$).
 	
 	Betrachte Abbildung:
 	\begin{align*}
@@ -2017,7 +2035,7 @@
 	Wir wissen:
 	\begin{itemize}
 		\item $\ker(\varphi) = (f)$
-		\item Die Elemente von $k(a)$ kann ich schreiben als $\lambda_1 + \lambda_2 a + \dots + \lambda_n a^{n-1}$ mit $\lambda_i \in k$ $\Rightarrow$ $\varphi$ ist surjektiv!
+		\item Die Elemente von $k(a)$ können wir schreiben als $\lambda_1 + \lambda_2 a + \dots + \lambda_n a^{n-1}$ mit $\lambda_i \in k$ $\Rightarrow$ $\varphi$ ist surjektiv!
 	\end{itemize}
 
 	Insgesamt:
@@ -2047,7 +2065,7 @@
 	\begin{proof}
 		\begin{enumerate}
 			\item Hausaufgabe!
-			\item Weil $\varphi$ per Annahme surjektiv ist, ist die Abbildung $\alpha$ injektiv. Also noch surjektivität zu zeigen. Sei also $J \subset R$ ein Ideal, das $\ker(\varphi)$ enthält. Wir wissen $S \simeq R/\ker(\varphi)$ also gibt es nach universeller Eigenschaft ein Diagramm
+			\item Weil $\varphi$ per Annahme surjektiv ist, ist die Abbildung $\alpha$ injektiv. Also noch Surjektivität zu zeigen. Sei also $J \subset R$ ein Ideal, das $\ker(\varphi)$ enthält. Wir wissen: $S \simeq R/\ker(\varphi)$. Also gibt es nach universeller Eigenschaft ein Diagramm
 			\begin{center}
 				\begin{tikzpicture}
 					\node(R1) at (0,0){$R$};
@@ -2062,11 +2080,11 @@
 				\end{tikzpicture}
 			\end{center}
 			und $J = q^{-1}((0)) = \varphi^{-1}(\eta^{-1}(0))$, setze $I = \eta^{-1}(0)$, fertig.
-			\item Sei $J \subset R$ ein Ideal. Muss zeigen
+			\item Sei $J \subset R$ ein Ideal. Wir müssen zeigen
 			
-			\heading{C 1}: Wenn $a,b \in \varphi(J)$, dann ist $a + b \in \varphi(J)$. $\exists a', b' \in J$ mit $a =  \varphi(a'), b = \varphi(b')$ und dann $a + b = \varphi(\underbrace{a' + b'}_{\in J})$
+			\heading{C1}: Wenn $a,b \in \varphi(J)$, dann ist $a + b \in \varphi(J)$. $\exists a', b' \in J$ mit $a =  \varphi(a'), b = \varphi(b')$ und dann $a + b = \varphi(\underbrace{a' + b'}_{\in J})$
 			
-			\heading{C2:} Sei $a \in \varphi(J)$, sei $b \in S$ beliebig. Dann ist $s \cdot a \in \varphi(J)$. Weil $\varphi$ surjektiv ist, $\exists s' \in R: s = \varphi(s')$. Außerdem $\exists a' \in J: a = \varphi(a')$ und $\varphi(\underbrace{s' a'}_{\in J}) = \varphi(s') \varphi(a') = sa$
+			\heading{C2}: Sei $a \in \varphi(J)$, sei $b \in S$ beliebig. Dann ist $s \cdot a \in \varphi(J)$. Weil $\varphi$ surjektiv ist, $\exists s' \in R: s = \varphi(s')$. Außerdem $\exists a' \in J: a = \varphi(a')$ und $\varphi(\underbrace{s' a'}_{\in J}) = \varphi(s') \varphi(a') = sa$
 			
 			\item Sei $r \in R$. Es gilt
 			\begin{align*}
@@ -2100,10 +2118,10 @@
 		Wir wissen $\ker(\eta) = q_I^{-1}(J/I) = J$. Also folgt die Aussage.
 	\end{proof}
 
-	\heading{Haben 2 wichtige Typen von Idealen}
+	\heading{Wir haben 2 wichtige Typen von Idealen}
 	\begin{itemize}
 		\item Primideale: $R$ ein Ring, $I \subseteq R$ ein Ideal. Nenne $I$ prim, falls $\forall a,b \in R: a \cdot b \in I \Rightarrow a \in I \lor b \in I$
-		\item Maximale Ideale: $R$ ein Ring. Ein Ideal $I \subset R$ heißt maximal falls gilt
+		\item Maximale Ideale: $R$ ein Ring. Ein Ideal $I \subset R$ heißt maximal, falls gilt
 		\begin{enumerate}
 			\item $I \neq R$
 			\item Wenn $J \supsetneq I$ ein echt größeres Ideal ist, dann ist $J = R$.
@@ -2115,13 +2133,13 @@
 			\item Sei $R$ ein Ring, $p \in R$ ein prim-Element. Dann ist $(p)$ ein Primideal.
 			\item Sei $k$ ein Körper, $R = k[x_1, \dots, x_n]$ und
 			\begin{equation*}
-				I = (x_1, x_2, \dots, x_n)= \{ \underbrace{x_1 f_1 + x_2 f_2 + \cdots + x_n f_n}_\text{Haben stets Nullstelle am Ursprung!} \mid f_i \in k[x_1, \dots, x_n] \}
+				I = (x_1, x_2, \dots, x_n)= \{ \underbrace{x_1 f_1 + x_2 f_2 + \cdots + x_n f_n}_\text{haben stets Nullstelle am Ursprung!} \mid f_i \in k[x_1, \dots, x_n] \}
 			\end{equation*}
 			Wir wissen $1 \notin I$, denn $1$ hat keine Nullstelle.
 			
-			Beobachte: Ein Polynom liegt genau dann in $I$ wenn der konstante Teil gleich Null ist (d.h. wenn $f(0) = 0_k$).
+			Beobachte: Ein Polynom liegt genau dann in $I$, wenn der konstante Teil gleich Null ist (d.h. wenn $f(0) = 0_k$).
 			
-			Sei jetzt $J \supsetneq I$ echt größer! Sei $f \in J \setminus I$ Dann
+			Sei jetzt $J \supsetneq I$ echt größer! Sei $f \in J \setminus I$. Dann
 			\begin{equation*}
 				\underbrace{f}_{\in J} = \text{const}^{\neq 0} + (\underbrace{\text{Polynom ohne konstanten Teil}}_{\in I \subset J})
 			\end{equation*}
@@ -2153,11 +2171,11 @@
 			\item $I$ ist prim $\Leftrightarrow$ $R/I$ ist Integritätsring
 			\item $I$ ist maximal $\Leftrightarrow$ $R/I$ ist ein Körper
 		\end{enumerate}
-		Insbesonders maximale Ideale sind prim (denn Körper sind Integritätsringe)
+		\heading {Insbesondere:} maximale Ideale sind prim (denn Körper sind Integritätsringe)
 	\end{theorem}
 
 	\begin{proof}
-		\heading{$1) \Rightarrow$:} Sei $I$ prim. Seien $[a],[b] \in R/I$ Äquivalenzklassen von Elementen $a,b \in R$ so dass $[a] \neq 0_{R/I}$ und $[b] \neq 0_{R/I}$. Dann gilt $a \notin I$ und $b \notin I$.
+		\heading{$1) \Rightarrow$:} Sei $I$ prim. Seien $[a],[b] \in R/I$ Äquivalenzklassen von Elementen $a,b \in R$ sodass $[a] \neq 0_{R/I}$ und $[b] \neq 0_{R/I}$. Dann gilt $a \notin I$ und $b \notin I$.
 		
 		Da $I$ prim $a \cdot b \notin I \Rightarrow [a \cdot b] \neq 0_{R/I}$
 		
@@ -2167,7 +2185,7 @@
 		
 		\heading{$2) \Rightarrow$:} Sei $I$ maximal. Sei $a \in R$ mit $[a] \neq 0_{R/I}$ d.h. $a \notin I$.
 		
-		Dann betrachte $J = (I, a)$. Wir wissen $J \supsetneq I$ also $(1) = J$. Also kann ich schreiben:
+		Dann betrachte $J = (I, a)$. Wir wissen $J \supsetneq I$ also $(1) = J$. Also können wir schreiben:
 		\begin{equation*}
 			1 = f + g \cdot a \qquad \text{mit $f \in I, g \in R$}
 		\end{equation*}
@@ -2178,7 +2196,7 @@
 		
 		\heading{$2) \Leftarrow$:} Sei $R/I$ ein Körper, sei $J \supsetneq I$ ein echtes Oberideal. Dann gibt es $a \in J \setminus I$.
 		
-		Wir wissen $[a] \neq 0_{R/I}$, per Annahme $\exists b \in R$ mit $[a] \cdot [b] = [1]$. Das bedeutet $\exists f \in I$ so dass
+		Wir wissen $[a] \neq 0_{R/I}$, per Annahme $\exists b \in R$ mit $[a] \cdot [b] = [1]$. Das bedeutet $\exists f \in I$ sodass
 		\begin{equation*}
 			\underbrace{a \cdot b}_{\in J} + \underbrace{f}_{\in I \subset J} = 1
 		\end{equation*}
@@ -2186,7 +2204,7 @@
 	\end{proof}
 
 	\begin{remark}
-		Teil 2) des Satzes gibt neuartige Methode, um Beispiele von Körpern zu konstruieren!
+		Teil 2) des Satzes liefert neuartige Methode, um Beispiele von Körpern zu konstruieren!
 	\end{remark}
 
 	\heading{Weitere Beobachtungen/Konstruktionen mit Idealen}
@@ -2206,10 +2224,10 @@
 	\end{example}
 
 	\begin{definition}
-		Zwei Ideale $I_1, I_2$ heißen Teilerfremd, wenn $I_1 + I_2 = (1)$.
+		Zwei Ideale $I_1, I_2$ heißen teilerfremd, wenn $I_1 + I_2 = (1)$.
 	\end{definition}
 
-	\heading{Nutzanwendung:} Manchmal hat man Aufgaben der Form: egeben Ring $R$ gegeben Ideale $I_1, \dots, I_n$ und Elemente $r_1, \dots, r_n \in R$. Finde ein/alle $r \in R$
+	\heading{Nutzanwendung:} Manchmal hat man Aufgaben der Form: gegeben ein Ring $R$, Ideale $I_1, \dots, I_n$ und Elemente $r_1, \dots, r_n \in R$. Finde ein/alle $r \in R$
 	\begin{align*}
 		r &\equiv r_1 \mod I_1 \\
 		r &\equiv r_2 \mod I_2 \\
@@ -2227,16 +2245,16 @@
 	\begin{proof}
 		Aussage über $\ker(\varphi)$ ist trivial. Müssen surjektiv zeigen!
 		
-		Seien $k \neq l$ gegeben. Wir wissen $(1) = I_k + I_l$. Also existieren Elemente $a_{kl} \in I_k$ und $b_{kl} \in I_l$ so dass $1 = a_{kl} + b_{kl}$
+		Seien $k \neq l$ gegeben. Wir wissen $(1) = I_k + I_l$. Also existieren Elemente $a_{kl} \in I_k$ und $b_{kl} \in I_l$ sodass $1 = a_{kl} + b_{kl}$
 		
 		Setze
 		\begin{equation*}
 			s_l = \prod_{k \neq l} a_{kl} = \prod_{k \neq l} (1 - b_{kl}) \in R
 		\end{equation*}
 		
-		\textit{Beobachtung:} Seien $k \neq l$ gegeben. Dann $s_l \equiv 0 \mod I_k$ denn Faktor $a_{kl}$ aus dem 1. Produkt ist $\equiv 0 \mod I_k$.
+		\textit{Beobachtung:} Seien $k \neq l$ gegeben. Dann $s_l \equiv 0 \mod I_k$, denn der Faktor $a_{kl}$ aus dem 1. Produkt ist $\equiv 0 \mod I_k$.
 		
-		$s_l \equiv 1 \mod I_l$, denn es ist stets $b_kl \equiv 0 \mod I_l$, also jeder Faktor des Rechen Produktes $\equiv 1 \mod I_l$.
+		$s_l \equiv 1 \mod I_l$, denn es ist stets $b_kl \equiv 0 \mod I_l$, also jeder Faktor des rechten Produktes $\equiv 1 \mod I_l$.
 		
 		Seien $r_1, \dots, r_n \in R$ gegeben.
 		
@@ -2249,7 +2267,7 @@
 	\heading{Einschub Mengenlehre}
 	
 	\begin{definition}
-		Sei $M$ eine Menge. $\leq$ sei eine Relation. Ich nenne $\leq$ eine Halbordnung falls gilt:
+		Sei $M$ eine Menge. $\leq$ sei eine Relation. Wie nennen $\leq$ eine Halbordnung, falls gilt:
 		\begin{enumerate}
 			\item $\forall a \in M: a \leq a$
 			\item Wenn $a,b,c \in M$ gegeben sind mit
@@ -2258,7 +2276,7 @@
 			\end{equation*}
 			\item $\forall a,b \in M: a \leq b$ und $b \leq a \Rightarrow a = b$
 		\end{enumerate}
-		Wir fordern nicht dass $\forall a,b \in M: a \leq b$ oder $b \leq a$ gilt. (Falls das gilt nenne $\leq$ vollständig)
+		Wir fordern nicht, dass $\forall a,b \in M: a \leq b$ oder $b \leq a$ gilt. (Falls das gilt nenne $\leq$ vollständig)
 	\end{definition}
 
 	\begin{example}
@@ -2268,11 +2286,11 @@
 	\end{example}
 
 	\begin{definition}
-		Sei $(M, \leq)$ eine Mengen mit Halbordnung. Eine Kette ist eine Teilmenge $N \subset M$, so dass die auf $N$ induzierte Halbordnung vollständig ist. Ein Element $m \in M$ heißt obere Schranke der Kette $N$, falls $\forall n \in N: n \leq m$.
+		Sei $(M, \leq)$ eine Menge mit Halbordnung. Eine Kette ist eine Teilmenge $N \subset M$, sodass die auf $N$ induzierte Halbordnung vollständig ist. Ein Element $m \in M$ heißt obere Schranke der Kette $N$, falls gilt: $\forall n \in N: n \leq m$.
 	\end{definition}
 
 	\begin{example}
-		Sei $(M, \leq)$ gegeben. Sei $(n_i)_{i \in \setN}$ eine Folge von Elementen so dass $n_1 \leq n_2 \leq \dots$ ist. Dann ist $N = \{ n_i \mid i \in \setN \}$ eine Kette.
+		Sei $(M, \leq)$ gegeben. Sei $(n_i)_{i \in \setN}$ eine Folge von Elementen sodass $n_1 \leq n_2 \leq \dots$ ist. Dann ist $N = \{ n_i \mid i \in \setN \}$ eine Kette.
 	\end{example}
 
 	\begin{example}
@@ -2280,19 +2298,19 @@
 	\end{example}
 
 	\begin{theorem}[Lemma von Zorn]
-		Sei $(M, \leq)$ eine halbgeordnete Megne, $M \neq \emptyset$. Falls jede Kette eine obere Schranke besitzt, dann gibt es in $M$ ein maximales Element.
+		Sei $(M, \leq)$ eine halbgeordnete Menge, $M \neq \emptyset$. Falls jede Kette eine obere Schranke besitzt, dann gibt es in $M$ ein maximales Element.
 	\end{theorem}
 
 	\begin{remark}
-		Dies ist Äquivalent zum Auswahlaxiom. Sei $(M_\alpha)_{\alpha \in A}$ eine Familie von Mengen. Dann gibt es eine Abbildung
+		Dies ist äquivalent zum Auswahlaxiom. Sei $(M_\alpha)_{\alpha \in A}$ eine Familie von Mengen. Dann gibt es eine Abbildung
 		\begin{equation*}
 			A \to \bigcup_{\alpha \in A} M_\alpha
 		\end{equation*}
-		so dass $\forall \alpha \in A: \varphi(\alpha) \in M_\alpha$.
+		sodass $\forall \alpha \in A: \varphi(\alpha) \in M_\alpha$.
 	\end{remark}
 
 	\begin{theorem}
-		Sei $R$ ein Ring. $I \subset R$ ein Ideal. Dann gibt es ein maximales Ideal $m \subset R$, das $I$ enthält
+		Sei $R$ ein Ring, $I \subset R$ ein Ideal. Dann gibt es ein maximales Ideal $m \subset R$, das $I$ enthält
 	\end{theorem}
 	
 	\begin{proof}
@@ -2316,12 +2334,12 @@
 	
 	\subsection{Grundbegriffe}
 	
-	\heading{Beobachtung:} Sei $k$ ein Körper sei $1_k$ das neutrale Element der Multiplikation. Dann betrachte Ringmorphismus
+	\heading{Beobachtung:} Sei $k$ ein Körper, sei $1_k$ das neutrale Element der Multiplikation. Dann betrachte Ringmorphismus
 	\begin{align*}
 		\eta: \setZ &\to k \\
 		n &\mapsto \begin{cases}
 			\underbrace{1_k + \dots + 1_k}_\text{$n$ mal} & \text{falls } n \geq 0 \\
-			\underbrace{-(1_k + \dots + 1_k)}_\text{$-n$ mal} & \text{falls } n < 0 \\
+			\underbrace{-(1_k + \dots + 1_k)}_\text{$n$ mal} & \text{falls } n < 0 \\
 		\end{cases}
 	\end{align*}
 	
@@ -2334,7 +2352,7 @@
 	wieder ein Unterkörper.
 	
 	\begin{definition}
-		Gegeben ein Körper $k$ betrachte
+		Gegeben ein Körper $k$, betrachte
 		\begin{equation*}
 			k' \coloneqq \bigcap_{\substack{k'' \subseteq k \\ \text{Unterkörper}}} k''
 		\end{equation*}
@@ -2361,11 +2379,11 @@
 		\end{tikzpicture}
 	\end{center}
 
-	\heading{Beachte:} $\operatorname{Bild}(\varphi)$ ist Unterkörper des Primkörpers, welcher der kleinste Unterkörper von $k$ ist, also $\operatorname{Bild}(\varphi) = \text{Primkörper}$. Also insgesamt: Falls $\eta$ injektiv ist ist der Primkörper kanonisch isomorph zu $\setQ$.
+	\heading{Beachte:} $\operatorname{Bild}(\varphi)$ ist Unterkörper des Primkörpers, welcher der kleinste Unterkörper von $k$ ist, also $\operatorname{Bild}(\varphi) = \text{Primkörper}$. Also insgesamt: Falls $\eta$ injektiv ist, ist der Primkörper kanonisch isomorph zu $\setQ$.
 	
 	\heading{Fall $\eta$ nicht injektiv:} Dann ist $\ker(\eta) \subseteq \setZ$ ein nicht-triviales Ideal.
 	
-	Weil $\eta(1_\setZ) = 1_k \neq 0_k$, ist $\ker(\eta) \subsetneq \setZ$ also Hauptideal der Form $(p)$ für ein $p \in \setN$. Weil $k$ nullteilerfrei ist, ist $p$ eine Primzahl und nach universeller Eigenschaft von Quotienten habe ich ein Diagramm.
+	Weil $\eta(1_\setZ) = 1_k \neq 0_k$, ist $\ker(\eta) \subsetneq \setZ$ also Hauptideal der Form $(p)$ für ein $p \in \setN$. Weil $k$ nullteilerfrei ist, ist $p$ eine Primzahl und nach universeller Eigenschaft von Quotienten haben wir ein Diagramm.
 	
 	\begin{center}
 		\begin{tikzpicture}
@@ -2404,20 +2422,20 @@
 	
 	\subsection{Der algebraische Abschluss}
 	
-	\heading{Beobachtung:} Das Polynom $x^2 + 2$ hat in $\setQ$ keine Nullstelle, aber im Oberkörper $\setC$. Es gilt sogar jedes nicht konstante $f \in \setC[x]$ hat in $\setC$ eine Nullstelle.
+	\heading{Beobachtung:} Das Polynom $x^2 + 2$ hat in $\setQ$ keine Nullstelle, aber im Oberkörper $\setC$. Es gilt sogar: jedes nicht konstante $f \in \setC[x]$ hat in $\setC$ eine Nullstelle.
 	
-	\heading{Ziel:} Wir wollen ähnliches für beliebige Körper konstruieren. Gegeben Körper $k$. Konstruiere einen Oberkörper $\overline{k}$ so dass alle nicht konstanten Polynome $f \in \overline{k}[x]$ in $\overline{k}$ eine Nullstelle haben.
+	\heading{Ziel:} Wir wollen Ähnliches für beliebige Körper konstruieren. Gegeben Körper $k$, konstruiere einen Oberkörper $\overline{k}$, sodass alle nicht konstanten Polynome $f \in \overline{k}[x]$ in $\overline{k}$ eine Nullstelle haben.
 	
 	\heading{Aber:} $\overline{k}$ erfüllt keine gute universelle Eigenschaft $\leadsto$ Galois-Theorie: Symmetrie von Erweiterungen
 	
 	\heading{Spielwiese:} Betrachte $\setQ$ und $k = \setQ[x]/(x^2 + 1)$.
 	
-	Ich kann $\setQ$ in $k$ einbetten durch
+	Wir können $\setQ$ in $k$ einbetten durch
 	\begin{align*}
 		\setQ &\hookrightarrow k \\
 		q &\mapsto [q]
 	\end{align*}
-	Also $k$ ist Oberkörper von $\setQ$.
+	Also ist $k$ Oberkörper von $\setQ$.
 	
 	Betrachte das Element $a \coloneqq [x] \in k$
 	
@@ -2428,17 +2446,17 @@
 	Wie soll die Konstruktion von $\overline{k}$ gehen? Grundidee: so wie in der Spielwiese.
 	
 	\begin{theorem}
-		Sei $k$ ein Körper, sei $f \in k[x]$ nicht konstant. Dann gibt es einen Oberkörper $L \supseteq k$ so dass $f$ als Polynom in $L[x]$ eine Nullstelle in $L$ hat.
+		Sei $k$ ein Körper, sei $f \in k[x]$ nicht konstant. Dann gibt es einen Oberkörper $L \supseteq k$, sodass $f$ als Polynom in $L[x]$ eine Nullstelle in $L$ hat.
 	\end{theorem}
 
 	\begin{proof}
 		Sei $p(x)$ ein irreduzibler Faktor von $f$. Setze
-		\begin{equation*}
+		$
 			L \coloneqq k[x] / (p)
-		\end{equation*}
-		das ist ein Körper, weil $(p)$ maximales Ideal ist.
+		$.
+		Das ist ein Körper, weil $(p)$ ein maximales Ideal ist.
 		
-		Bette $k$ mit Hilfe des injektiven Körpermorphismus
+		Bette $k$ mit Hilfe des injektiven Körpermorphismuses
 		\begin{align*}
 			k &\to L \\
 			a &\mapsto [a]
@@ -2446,17 +2464,17 @@
 		in $L$ ein. Beachte, dass $a \coloneqq [x] \in L$ eine Nullstelle von $p$ und also auch von $f$ ist.
 	\end{proof}
 
-	\heading{Beobachtung:} Wir wissen schon: wenn ich diese Konstruktion anwende auf $k = \setR, f = x^2 + 1$ dann erhalte ich $\setC$. Ich sehe schon an diesem Beispiel, dass die so erhaltene Erweiterung Symmetrien besitzt, nämlich die komplexe Konjugation. Also ist es nicht richtig, dass $\setC$ eindeutig ist bis auf kanonische Isomorphie.
+	\heading{Beobachtung:} Wir wissen schon: wenn wir diese Konstruktion anwenden auf $k = \setR, f = x^2 + 1$, dann erhalten wir $\setC$. Wir sehen schon an diesem Beispiel, dass die so erhaltene Erweiterung Symmetrien besitzt, nämlich die komplexe Konjugation. Also ist es nicht richtig, dass $\setC$ bis auf kanonische Isomorphie eindeutig ist.
 	
 	\begin{theorem}
 		Sei $k$ ein Körper. Dann ist äquivalent:
 		\begin{enumerate}
-			\item Jedes nicht-konstante Polynom in $k[x]$ hat Nullstelle in $k$.
-			\item Jedes nicht-konstante Polynom zerfällt in Linearfaktoren
-			\item Jedes irreduzible Polynom ist linear
-			\item Wenn $L/k$ eine algebraische Körpererweiterung ist, dann ist $L = k$
+			\item Jedes nicht-konstante Polynom in $k[x]$ hat eine Nullstelle in $k$.
+			\item Jedes nicht-konstante Polynom zerfällt in Linearfaktoren.
+			\item Jedes irreduzible Polynom ist linear.
+			\item Wenn $L/k$ eine algebraische Körpererweiterung ist, dann ist $L = k$.
 		\end{enumerate}
-		Nenne $k$ algebraisch abgeschlossen falls diese Bedingungen erfüllt sind.
+		Nenne $k$ algebraisch abgeschlossen, falls diese Bedingungen erfüllt sind.
 	\end{theorem}
 
 	\begin{proof}
@@ -2464,16 +2482,17 @@
 		
 		\heading{$2) \Rightarrow 3)$:} trivial
 		
-		\heading{$3) \Rightarrow 4)$:} Sei $L/k$ eine algebraische Körpererweiterung. Sei $a \in L$ gegeben. Dann $a$ ist algebraisch über $k$. Sei $f \in k[x]$ das Minimalpolynom. Dann $f$ irreduzibel, also linear, also $f(x) = x - a \in k[x]$ $\Rightarrow a \in k$.
+		\heading{$3) \Rightarrow 4)$:} Sei $L/k$ eine algebraische Körpererweiterung. Sei $a \in L$ gegeben. Dann ist $a$ algebraisch über $k$. Sei $f \in k[x]$ das Minimalpolynom. Dann ist $f$ irreduzibel, also linear, also $f(x) = x - a \in k[x]$ $\Rightarrow a \in k$.
 		
 		\heading{$4) \Rightarrow 1)$:} Sei $f \in k[x]$ nicht konstant. Sei $p(x)$ ein irreduzibler Faktor von $f$. Setze
 		\begin{equation*}
 			L = k[x]/(p)
 		\end{equation*}
-		das ist eine endliche Erweiterung, denn $\dim_k L = \deg p < \infty$, also ist $L$ algebraisch.  Außerdem gilt: $f$ hat in $L$ eine Nullstelle. Nach 4) ist $L = k$ also hat $f$ bereits in $k$ eine Nullstelle.
+		Das ist eine endliche Erweiterung, denn $\dim_k L = \deg p < \infty$, also ist $L$ algebraisch.  Außerdem gilt: $f$ hat in $L$ eine Nullstelle. Nach 4) ist $L = k$, also hat $f$ bereits in $k$ eine Nullstelle.
+	\end{proof}
 		
 		\begin{definition}
-			Sei $k$ ein Körper. Ein Oberkörper $\overline{k}/k$ heißt algebraischer Abschluss von $k$ falls gilt:
+			Sei $k$ ein Körper. Ein Oberkörper $\overline{k}/k$ heißt algebraischer Abschluss von $k$, falls gilt:
 			\begin{enumerate}
 				\item $\overline{k}$ ist algebraisch abgeschlossen
 				\item $\overline{k} / k$ ist algebraisch
@@ -2483,11 +2502,9 @@
 		\heading{Achtung:} $\setC$ ist kein algebraischer Abschluss von $\setQ$!
 		
 		\heading{Nicht verwechseln} mit algebraischer Abschluss von $k$ in einem Oberkörper $L$ $= \{ l \in L \mid \text{$l$ ist algebraisch über $k$} \}$. 
-	\end{proof}
 
 	\begin{definition}
 		Seien $R,S$ Ringe (später meistens Körper) die beide den Ring $T$ als Unterring besitzen.
-		
 		Ein Ringmorphismus $\varphi: R \to S$ heißt $T$-Morphismus, falls $\varphi \mid_T = id_T$.
 	\end{definition}
 
@@ -2502,26 +2519,26 @@
 
 	\begin{theorem}
 		\label{thm:schwacherErsatzFürUniverselleEigenschaft}
-		Sei $k$ ein Körper, $\overline{k}$ ein algebraischer Abschluss von $k$. Sei $L/k$ algebraisch, sei $L_0$ ein Zwischenkörper $k \subseteq L_0 \subseteq L$. Sei weiter ein $k$-Morphismus $\varphi_0: L_0 \to \overline{k}$ gegeben. Dann existiert eine Fortsetzung $\varphi: L \to \overline{k}$ (d.h. ein Körpermorphismus $\varphi$, so dass $\varphi \mid_T{L_0} = \varphi_0$).
+		Sei $k$ ein Körper, $\overline{k}$ ein algebraischer Abschluss von $k$. Sei $L/k$ algebraisch, sei $L_0$ ein Zwischenkörper $k \subseteq L_0 \subseteq L$. Sei weiter ein $k$-Morphismus $\varphi_0: L_0 \to \overline{k}$ gegeben. \\Dann existiert eine Fortsetzung $\varphi: L \to \overline{k}$ (d.h. ein Körpermorphismus $\varphi$, sodass $\varphi \mid_T{L_0} = \varphi_0$).
 		
-		Insbesondere $(L_0 = k)$ jede algebraische Körpererweiterung von $k$ bettet in $\overline{k}$ ein.
+		Insbesondere $(L_0 = k)$: jede algebraische Körpererweiterung von $k$ bettet in $\overline{k}$ ein.
 	\end{theorem}
 
 	\heading{Typische Anwendung:} Sei $k$ ein Körper, seien $\overline{k}$ und $\overline{k}'$ zwei algebraische Abschlüsse von $k$. Dann $\overline{k} \simeq \overline{k}'$.
 	
 	\begin{proof}
-		Wende den Satz \ref{thm:schwacherErsatzFürUniverselleEigenschaft} an mit $L = \overline{k}', L_0 = k$ und $\varphi_0 = Id_k$. Satz sagt dann, es gibt Körpermorphismus (sogar $k$-Morphismus)
+		Wende den Satz \ref{thm:schwacherErsatzFürUniverselleEigenschaft} an mit $L = \overline{k}', L_0 = k$ und $\varphi_0 = Id_k$. Der Satz sagt dann, dass es einen Körpermorphismus (sogar $k$-Morphismus) gibt
 		\begin{equation*}
 			\varphi: \overline{k}' \to \overline{k}
 		\end{equation*}
-		Wissen: $\varphi$ ist injektiv. Ich behaupte: sogar surjektiv. Grund: Haben Kette von Körpern $k \subseteq \operatorname{Bild}(\varphi) \subseteq \overline{k}$.
+		Wir wissen: $\varphi$ ist injektiv. Wir behaupten: $\varphi$ ist sogar surjektiv. Der Grund dafür ist: Wir haben eine Kette von Körpern $k \subseteq \operatorname{Bild}(\varphi) \subseteq \overline{k}$.
 		
-		Wissen $\operatorname{Bild}(\varphi) \simeq \overline{k}'$ ist algebraisch abgeschlossen. $\overline{k}/k$ ist algebraisch $\Rightarrow$ $\overline{k} / \operatorname{Bild}(\varphi)$ ist algebraisch.
+		Wir wissen auch: $\operatorname{Bild}(\varphi) \simeq \overline{k}'$ ist algebraisch abgeschlossen. $\overline{k}/k$ ist algebraisch $\Rightarrow$ $\overline{k} / \operatorname{Bild}(\varphi)$ ist algebraisch.
 		
 		Insgesamt: $\overline{k} = \operatorname{Bild}(\varphi)$, denn algebraisch abgeschlossene Körper haben keine echten algebraischen Erweiterungen.
 	\end{proof}
 
-	\begin{proof} zu Satz \ref{thm:schwacherErsatzFürUniverselleEigenschaft}
+	\begin{proof} \textit{(zu Satz \ref{thm:schwacherErsatzFürUniverselleEigenschaft})}
 		Verwende Zorns Lemma und betrachte
 		\begin{align*}
 			M = \{ (L', \varphi') \mid &L' \text{ ist Zwischenkörper } L_0 \subseteq L' \subseteq L \text{ und } \\
@@ -2537,11 +2554,11 @@
 		
 		\textit{Zwischenbehauptung:} In $(M, \leq)$ hat jede Kette eine obere Schranke.
 		
-		Sei $(L_\lambda, \varphi_\lambda)_{\lambda \in \Lambda}$ eine Kette. Dann ist $L' \coloneqq \bigcup_{\lambda \in \Lambda} L_\lambda$ ein Unterkörper von $L$ (sogar Zwischenkörper: $L_0 \subseteq L' \subseteq L$). Sei $a \in L'$ und seien $\lambda_1, \lambda_2 \in \Lambda$ so dass $a \in L_{\lambda_1}$ und $a \in L_{\lambda_2}$ ist. Dann gilt:
+		Sei $(L_\lambda, \varphi_\lambda)_{\lambda \in \Lambda}$ eine Kette. Dann ist $L' \coloneqq \bigcup_{\lambda \in \Lambda} L_\lambda$ ein Unterkörper von $L$ (sogar Zwischenkörper: $L_0 \subseteq L' \subseteq L$). Sei $a \in L'$ und seien $\lambda_1, \lambda_2 \in \Lambda$ sodass $a \in L_{\lambda_1}$ und $a \in L_{\lambda_2}$ ist. Dann gilt:
 		\begin{equation*}
 			\varphi_{\lambda_1}(a) = \varphi_{\lambda_2}(a)
 		\end{equation*}
-		Auswahlaxiom sagt: finde Abbildung $\eta: L' \to \Lambda$ so dass für alle $a$ $L_{\eta(a)} \ni a$.
+		Auswahlaxiom sagt: finde Abbildung $\eta: L' \to \Lambda$ sodass für alle $a$ $L_{\eta(a)} \ni a$.
 		
 		Definiere dann:
 		\begin{align*}
@@ -2551,15 +2568,15 @@
 		
 		Das ist ein Körpermorphismus, der $\varphi_0$ fortsetzt. Also ist $(L', \varphi')$ eine obere Schranke für die Kette.
 		
-		Insgesamt sagt Zorns Lemma: Es gibt ein maximales Element $(L_\text{max}, \varphi_\text{max}) \in M$. Ich bin fertig, wenn ich zeige:
-		$L_\text{max} = L$. Angenommen es gibt $a \in L \setminus L_\text{max}$.
+		Insgesamt sagt Zorns Lemma: Es gibt ein maximales Element $(L_\text{max}, \varphi_\text{max}) \in M$. Wir sind fertig, wenn wir zeigen:
+		$L_\text{max} = L$. \\Angenommen es gibt $a \in L \setminus L_\text{max}$.
 		
-		\textit{Wissen:} $a$ ist algebraisch über $L_\text{max}$, mit Minimalpolynom
+		\textit{Wir wissen:} $a$ ist algebraisch über $L_\text{max}$, mit Minimalpolynom
 		\begin{equation*}
 			f(x) = \sum \lambda_i x^i \in L_\text{max}[x]
 		\end{equation*}
 		
-		\textit{Wissen auch:}
+		\textit{Wir wissen auch:}
 		\begin{equation*}
 			L_\text{max}(a) \simeq L_\text{max}[x] / (f)
 		\end{equation*}
@@ -2569,7 +2586,7 @@
 			\overline{f} = \sum \varphi_\text{max}(\lambda_i) \cdot x^i \in \operatorname{Bild}(\varphi_\text{max})[x] \subset \overline{k}[x]
 		\end{equation*}
 		
-		\textit{Wissen:} $\overline{f}$ hat eine Nullstelle $\overline{a} \in \overline{k}$ und 
+		\textit{Wir wissen:} $\overline{f}$ hat eine Nullstelle $\overline{a} \in \overline{k}$ und 
 		\begin{equation*}
 			\operatorname{Bild}(\varphi_\text{max})(\overline{a}) \simeq \operatorname{Bild}(\varphi_\text{max})[x] / (\overline{f}) \simeq L_\text{max}[x]/ (f) \simeq L_\text{max}(a)
 		\end{equation*}
@@ -2580,11 +2597,11 @@
 		
 		Per Konstruktion ist $\varphi_\text{mmax} \mid_{L_\text{max}} = \varphi_\text{max}$
 		
-		Insgesamt: $(L_\text{max}, \varphi_\text{max}) \lneq (L_\text{max}(a), \varphi_\text{mmax})$ $\lightning$ zur Maximalität von $(L_\text{max}, \varphi_\text{max})$.
+		Insgesamt: $(L_\text{max}, \varphi_\text{max}) \lneq (L_\text{max}(a), \varphi_\text{mmax})$, $\lightning$ zur Maximalität von $(L_\text{max}, \varphi_\text{max})$.
 	\end{proof}
 
 	\begin{definition}[Polynomringe in $\infty$ vielen Variablen]
-		Sei $(x_\lambda)_{\lambda \in \Lambda}$ eine Menge von Variablennamen, sei $R$ ein Ring Dann betrachte
+		Sei $(x_\lambda)_{\lambda \in \Lambda}$ eine Menge von Variablennamen, sei $R$ ein Ring. Dann betrachte:
 		\begin{equation*}
 			R[(x_\lambda)_{\lambda \in \Lambda}] = \bigcup_{ \{ x_{\lambda_1}, \dots, x_{\lambda_n} \} \text{ endl.} } R[x_{\lambda_1}, \dots, x_{\lambda_n}]
 		\end{equation*}
@@ -2594,7 +2611,7 @@
 		Polynome enthalten immer nur endlich viele Terme und endlich viele Variablen!
 	\end{remark}
 
-	\heading{Fakt:} (universelle Eigenschaft) Gegeben sei ein Ringmorphismus $\varphi: R \to S$ und eine beliebige Abbildung: $\alpha: \Lambda \to S$. Dann ibt es genau einen Ringmorphismus $\Phi: R[(x_\lambda)_{\lambda \in \Lambda}] \to S$ so dass $\Phi_{\mid R} = \varphi$
+	\heading{Fakt:} (universelle Eigenschaft) Gegeben sei ein Ringmorphismus $\varphi: R \to S$ und eine beliebige Abbildung: $\alpha: \Lambda \to S$. Dann gibt es genau einen Ringmorphismus $\Phi: R[(x_\lambda)_{\lambda \in \Lambda}] \to S$ sodass $\Phi_{\mid R} = \varphi$
 	\begin{equation*}
 		\exists \lambda \in \Lambda: \Phi(x_\lambda) = \alpha(\lambda)
 	\end{equation*}
@@ -2617,17 +2634,17 @@
 		\end{itemize}
 		\textit{Behauptung 1:} $I \subsetneq P$ d.h. $1 \notin I$
 		
-		\textit{Beweis:} Angenommen es wäre $1 \in I$. Dann kann ich schreiben
+		\textit{Beweis:} Angenommen es wäre $1 \in I$. Dann können wir schreiben:
 		\begin{equation*}
 			1 = \sum_{i=1}^n g_i \cdot f_i(x_{f_i})
 		\end{equation*}
 		für geeignete $f_1, \dots, f_n \in \Lambda, g_1, \dots, g_n \in P$. Das kann nicht sein!
 		
-		\textit{Erinnerung:} Es gibt eine Körpererweiterung $k_1 / k$ so dass $f_1$ eine Nullstelle $a_1 \in k_1$ hat.
+		\textit{Erinnerung:} Es gibt eine Körpererweiterung $k_1 / k$ sodass $f_1$ eine Nullstelle $a_1 \in k_1$ hat.
 		
-		Wiederholte Anwendung: Es gibt eine Körpererweiterung $k' /  k$ so dass für alle $i$ gilt $f_i$ hat in $k'$ eine Nullstelle $a_i \in k'$.
+		Wiederholte Anwendung: Es gibt eine Körpererweiterung $k' /  k$ sodass für alle $i$ gilt: $f_i$ hat in $k'$ eine Nullstelle $a_i \in k'$.
 		
-		\textit{Universelle Eigenschaft:} Es gibt Ringmorphismus $\Phi: P \to k'$ so dass für alle $i$ gilt $x_{f_i} \mapsto a_i$.
+		\textit{Universelle Eigenschaft:} Es gibt Ringmorphismus $\Phi: P \to k'$ sodass für alle $i$ gilt $x_{f_i} \mapsto a_i$.
 		
 		Dann ist
 		\begin{equation*}
@@ -2643,23 +2660,23 @@
 		\begin{enumerate}
 			\item Haben Abbildung $k \to P \to E_1 = P/m, a \mapsto \text{konst. Pol. $a$}$. Diese Abbildung ist injektiv, deshalb Inklusion von Körpern. Fasse ab sofort $k$ als Unterkörper von $E_1$ auf.
 			\item Die Polynome $f \in \Lambda$ haben Nullstellen in $E_1$, nämlich $f(x_f) \in I \subset m$, also $f([x_f]) = 0$ in $E_1 = P / m$
-			\item Die Körpererweiterung $E_1 / k$ ist algebraisch. Sei $a \in E_1$ irgendein Element. Schreibe $a = [g]$ wobei $g \in P$ ein Polynom in den endlich vielen Variablen $x_{\lambda_1}, \dots, x_{\lambda_n}$ ist.
+			\item Die Körpererweiterung $E_1 / k$ ist algebraisch. Sei $a \in E_1$ irgendein Element. Schreibe $a = [g]$, wobei $g \in P$ ein Polynom in den endlich vielen Variablen $x_{\lambda_1}, \dots, x_{\lambda_n}$ ist.
 			Dann $a \in k([x_{\lambda_1}], \dots, [x_{\lambda_n}]) \subset E_1$.
 			
-			Wir wissen aber für alle $i$ ist $[x_{\lambda_i}]$ Nullstelle des Polynoms $\lambda_i \in \Lambda$.
+			Wir wissen aber: für alle $i$ ist $[x_{\lambda_i}]$ Nullstelle des Polynoms $\lambda_i \in \Lambda$.
 		\end{enumerate}
 	
 		\textit{Beobachtung:} Es ist nicht klar, dass $E_1$ ein algebraischer Abschluss von $k$ ist.
 		
-		\textit{Wissen:} Polnyome mit Koeffizienten in $k$ haben in $E_1$ Nullstelle.
+		\textit{Wir wissen:} Polynome mit Koeffizienten in $k$ haben in $E_1$ eine Nullstelle.
 		
-		\textit{Wissen nicht:} Polynome mit Koeffizienten in $E_1$ haben in $E_1$ Nullstelle.
+		\textit{Wir wissen nicht:} Polynome mit Koeffizienten in $E_1$ haben in $E_1$ eine Nullstelle.
 		
-		Wiederhole diese Konstruktion, erhalte Erweiterungen
+		Wir wiederholen diese Konstruktion und erhalten die Erweiterungen
 		\begin{equation*}
 			k \subseteq E_1 \subseteq E_2 \subseteq \dots
 		\end{equation*}
-		so dass für alle $i \in \setN$ jedes nicht-konstante Polynom in $E_i[x]$ hat Nullstelle in $E_{i+1}$ und $E_{i+1} / E_i$ ist algebraisch. Insbesondere ist $E_i / k$ algebraisch.
+		sodass für alle $i \in \setN$ jedes nicht-konstante Polynom in $E_i[x]$ eine Nullstelle in $E_{i+1}$ hat und $E_{i+1} / E_i$ algebraisch ist. Insbesondere ist $E_i / k$ algebraisch.
 		
 		Setze
 		\begin{equation*}
@@ -2667,16 +2684,16 @@
 		\end{equation*}
 		dann gilt:
 		\begin{enumerate}
-			\item Weil ich eine Kette habe, ist $E$ ein Körper
-			\item Gegeben $a \in E$. Dann $\exists x: a \in E_i$, also $a$ algebraisch über $k$. $\Rightarrow E/k$ ist algebraisch.
-			\item Sei $f \in E[x]$ ein Polynom, $f(x) = \sum_{j=1}^n e_j x^j$. Dann gibt es ein $i \in \setN: \forall j: e_j \in E_i$. Also $f \in E_i[x]$ hat also eine Nullstelle in $E_{i+1} \subseteq E$.
+			\item Weil wir eine Kette haben, ist $E$ ein Körper
+			\item Gegeben $a \in E$. Dann $\exists x: a \in E_i$, also ist $a$ algebraisch über $k$. $\Rightarrow E/k$ ist algebraisch.
+			\item Sei $f \in E[x]$ ein Polynom, $f(x) = \sum_{j=1}^n e_j x^j$. Dann gibt es ein $i \in \setN: \forall j: e_j \in E_i$. Das Polynom $f \in E_i[x]$ hat also eine Nullstelle in $E_{i+1} \subseteq E$.
 		\end{enumerate}
 	\end{proof}
 
 	\begin{definition}
 		Sei $k$ ein Körper, $f$ ein nicht konstantes Polynom, $f \in k[x]$. Eine Erweiterung $L/k$ heißt Zerfällungskörper von $f$, falls gilt:
 		\begin{enumerate}
-			\item $f$ zerfällt in $L[x]$ in Produkt von linearen Polynomen
+			\item $f$ zerfällt in $L[x]$ in ein Produkt von linearen Polynomen
 			\begin{equation*}
 				f = \operatorname{const} \cdot \prod (x - a_i) \in L[x]
 			\end{equation*}
@@ -2699,11 +2716,11 @@
 	\end{theorem}
 
 	\begin{proof}
-		\heading{1)} Sei $f$ gegeben. Seien $a_1, \dots, a_n \in \overline{k}$ die Nullstellen, dann setze $L = k(a_1, \dots, a_n) \subseteq \overline{k}$
+		\heading{1)} Sei $f$ gegeben. Seien $a_1, \dots, a_n \in \overline{k}$ die Nullstellen, dann setze $L = k(a_1, \dots, a_n) \subseteq \overline{k}$.
 		
 		\heading{2)} Sei $f$ gegeben. Wähle $L$ wie in Schritt 1), sei $L'$ ein weiterer Zerfällungskörper, seien $a_1', \dots, a_n'$ die Nullstellen von $f$ in $L'$.
 		
-		\textit{Wir wissen:} $L'/k$ ist algebraisch. Nach universeller Eigenschaft habe ich einen $k$-Morphismus
+		\textit{Wir wissen:} $L'/k$ ist algebraisch. Nach universeller Eigenschaft haben wir einen $k$-Morphismus
 		\begin{equation*}
 			\varphi: L' \to \overline{k} \supseteq L
 		\end{equation*}
@@ -2721,9 +2738,9 @@
 		
 		\textit{Andererseits:} $\operatorname{Bild}(\varphi)$ ist ein Zerfällungkörper, enthält alle $n$ Nullstellen $\Rightarrow \operatorname{Bild}(\varphi) = L$.
 		
-		$\Rightarrow \varphi$ ist isomorphismus
+		$\Rightarrow \varphi$ ist Isomorphismus
 		
-		\heading{3)} Sei $f$ gegeben, seien $a_1, \dots, a_n \in L$ die Nullstellen. Dann ist $L = k(a_1, \dots, a_n)$ und habe Kette.
+		\heading{3)} Sei $f$ gegeben, seien $a_1, \dots, a_n \in L$ die Nullstellen. Dann ist $L = k(a_1, \dots, a_n)$ und wir haben eine Kette
 		\begin{equation*}
 			k \subseteq k(a_1) \subseteq k(a_1, a_2) \subseteq \dots
 		\end{equation*}
@@ -2737,7 +2754,7 @@
 			\begin{equation*}
 				[k(a_1, a_2) : k(a_1)] \leq n - 1
 			\end{equation*}
-			\item Wiederholte Anwendung:
+			\item Wiederholte Anwendung liefert:
 			\begin{equation*}
 				[L:k] \leq n!
 			\end{equation*}
@@ -2746,15 +2763,15 @@
 	\end{proof}
 
 	\begin{example}
-		$k = \setQ$, $f = x^2 - 2$. Dann ist Zerfällungskörper
-		\begin{equation*}
+		$k = \setQ$, $f = x^2 - 2$. \\Dann ist
+		$
 			L = \setQ(- \sqrt{2}, \sqrt{2})
-		\end{equation*}
-		und
+		$
+		der Zerfällungskörper und
 		\begin{equation*}
 			[\setQ(\sqrt{2}) : \setQ] = 2
 		\end{equation*}
-		und
+		sowie
 		\begin{equation*}
 			[\setQ(\sqrt{2}, - \sqrt{2}) : \setQ(\sqrt{2})] = 1
 		\end{equation*}
@@ -2779,9 +2796,9 @@
 		$\Rightarrow [L : \setQ] = 6$
 	\end{example}
 
-	\heading{Nächstes Ziel:} Zerfällungskörper verstehen. Dazu Nullstellenmenge von (irreduziblen) Polynomen verstehen.
+	\heading{Nächstes Ziel:} Zerfällungskörper verstehen. Dazu Nullstellenmengen von (irreduziblen) Polynomen verstehen.
 	
-	\heading{Dazu Sprache:} Sei $S \supseteq R$ eine Erweiterung von Ringen und sei $(a_\lambda)_{\lambda \in \Lambda}$ eine Familie von Elementen aus $S$ dann betrachte
+	\heading{Dazu Sprache:} Sei $S \supseteq R$ eine Erweiterung von Ringen und sei $(a_\lambda)_{\lambda \in \Lambda}$ eine Familie von Elementen aus $S$. Betrachte dann:
 	\begin{equation*}
 		\bigcap_{\substack{\text{Zwischenringe} R \subseteq A \subseteq S \\ \forall \lambda \in \Lambda, a_\lambda \in A}} A = R[(a_\lambda)_{\lambda \in \Lambda}]
 	\end{equation*}
@@ -2802,7 +2819,7 @@
 	\begin{equation*}
 		k \subseteq k[A] \overset{i}{\hookrightarrow} k(A) \subseteq L
 	\end{equation*}
-	und wir haben $k[A] \hookrightarrow Q(k[A])$. Und wir erhalten genau ein $\eta: Q(k[A]) \to k(A)$ wobei $\eta$ durch die universelle Eigenschaft des Quotientenkörpers gegeben ist.
+	und wir haben $k[A] \hookrightarrow Q(k[A])$. Zudem erhalten wir genau ein $\eta: Q(k[A]) \to k(A)$ wobei $\eta$ durch die universelle Eigenschaft des Quotientenkörpers gegeben ist.
 	
 	\heading{Klar:} $\operatorname{Bild}(\eta)$ ist Unterkörper von $k(A)$, der $k[A]$ enthält $\Rightarrow \operatorname{Bild}(\eta) = k(A)$. Also $\eta$ ist isomorph.
 	
@@ -2817,17 +2834,17 @@
 	\begin{example}
 		$k = \setR$, $L = \setC = \setR(i)$
 		
-		Wissen: jede komplexe Zahl kann ich schreiben als $r_1 + i r_2$, also $\setR[i] = \setR(i) = \setC$.
+		Wir wissen: jede komplexe Zahl können wir schreiben als $r_1 + i r_2$, also $\setR[i] = \setR(i) = \setC$.
 	\end{example}
 
-	\heading{Allgemein:} Sei $L/k$ eine Körpererweiterung, sei $a \in L$ algebraisch über $k$. Dann kann ich alle Elemente von $k(a)$ schreiben als $k_0 + k_1 \cdot a + k_2 a^2 + \dots + k_{n-1} a^{n-1}$ wobei $n = [a : k]$. Also $k(a) = k[a]$.
+	\heading{Allgemein:} Sei $L/k$ eine Körpererweiterung, sei $a \in L$ algebraisch über $k$. Dann können wir alle Elemente von $k(a)$ schreiben als $k_0 + k_1 \cdot a + k_2 a^2 + \dots + k_{n-1} a^{n-1}$, wobei $n = [a : k]$. Also $k(a) = k[a]$.
 	
 	\begin{example}
-		$L/k$ Körpererweiterung, $a \in L$ sei transzendent über $k$. Dann haben wir Abbildung
+		$L/k$ Körpererweiterung, $a \in L$ sei transzendent über $k$. Dann haben wir eine Abbildung
 		\begin{equation*}
-			k[x] \to k[a] \subseteq k(a), \quad f(x) \mapsto f(a)
+			\varphi :k[x] \to k[a] \subseteq k(a), \quad f(x) \mapsto f(a)
 		\end{equation*}
-		per Definition ist $\varphi$ surjektiv. Per Annahme $a$ transzendent ist $\varphi$ injektiv. $\Rightarrow k[a] \cong k[x]$. Insbesonders $k[a]$ kein Körper also $\neq k(a)$. Induktiv beweist man:
+		Per Definition ist $\varphi$ surjektiv. Per Annahme $a$ transzendent ist $\varphi$ injektiv. $\Rightarrow k[a] \cong k[x]$. Insbesondere ist $k[a]$ kein Körper, also $\neq k(a)$. Induktiv beweist man:
 	\end{example}
 
 	\begin{theorem}
@@ -2839,7 +2856,7 @@
 	\end{theorem}
 
 	\begin{remark}
-		Achtung: für $\infty$ viele Elemente ist das Falsch! z.B. sei $L/k$ beliebig. $A = L$, dann ist $k[A] = k(A)$.
+		Achtung: für $\infty$ viele Elemente ist das falsch! z.B. sei $L/k$ beliebig, $A = L$. \\Dann ist $k[A] = k(A)$.
 	\end{remark}
 
 	\subsection{Separable und Inseparable Körpererweiterungen}
@@ -2866,14 +2883,14 @@
 		Alle bekannten Ableitungsregeln gelten.
 	\end{theorem}
 
-	\heading{Zurück zur Frage:} Wenn $k$ ein beliebiger Körper der Charakteristik $0$ ist, und $a$ eine mehrfache Nullstelle von $f$ ist (d.h. in $L[x]$) kann ich schreiben
+	\heading{Zurück zur Frage:} Wenn $k$ ein beliebiger Körper der Charakteristik $0$ ist, und $a$ eine mehrfache Nullstelle von $f$ ist (d.h. in $L[x]$), können wir schreiben:
 	\begin{equation*}
 		f = (x-a)(x-a) \cdot \text{rest}
 	\end{equation*}
-	Dann sagt Ketten/Produkt-Regel dass $f'$ das $a$ immer noch als Nullstelle hat. Weil $\operatorname{char}(k) = 0$. $f' \not\equiv 0$. Also $\lightning$ wie oben.
+	Dann sagt die Ketten-/Produkt-Regel dass $f'$ das Element $a$ immer noch als Nullstelle hat, wegen $\operatorname{char}(k) = 0$ und $f' \not\equiv 0$. Also $\lightning$ wie oben.
 	
 	\begin{remark}
-		In $\operatorname{char}(k) = p > 0$ immer noch wahr, dass $f'(a) = 0$ ist, aber es könnte sein, dass $f' \equiv 0$.
+		In $\operatorname{char}(k) = p > 0$ ist immer noch wahr, dass $f'(a) = 0$ ist, aber es könnte sein, dass $f' \equiv 0$.
 	\end{remark}
 
 	\begin{definition}
@@ -2888,20 +2905,20 @@
 		(Nicht-irreduzible) separable Polynome können mehrfache Nullstellen haben.
 	\end{remark}
 
-	\heading{Konstruktion mit Frobenius-Morphismus:} Sei $R$ ein Ring ein Ringmorphismus $R \to S$ induziert einen Ringmorphismus $R[x] \to S[x]$. Für $S = R$ und den Frobenius-Morphismus erhalten Ringmorphismus
+	\heading{Konstruktion mit Frobenius-Morphismus:} Sei $R$ ein Ring sowie $R \to S$ ein Ringmorphismus. Dieser induziert einen Ringmorphismus $R[x] \to S[x]$. Für $S = R$ und den Frobenius-Morphismus erhalten wir den Ringmorphismus
 	\begin{equation*}
 		\eta: R[x] \to R[x], \quad \sum a_i x^i \mapsto a_i^p x^i
 	\end{equation*}
 	Falls $R$ Integritätsring ist, ist $\eta$ injektiv.
 	
-	$\operatorname{Bild}(\eta) = (R^p)[x] \subseteq R[x]$ und die Abbildung $\eta: R[x] \to R^p[x]$ ist Isomorphismus.
+	$\operatorname{Bild}(\eta) = (R^p)[x] \subseteq R[x]$ und die Abbildung $\eta: R[x] \to R^p[x]$ ist ein Isomorphismus.
 	
 	\begin{theorem}[Charakterisierung inseparabler Polynome]
 		Sei $k$ ein Körper, sei $f \in k[x]$ irreduzibel. Dann sind äquivalent
 		\begin{enumerate}
 			\item $f$ ist inseparabel
 			\item $f' \equiv 0$
-			\item $p = \operatorname{char}(k)$ ist eine Primzahl. Es gibt ein irreduzibles separables $g \in k[x]$ und $n \in \setN$ so dass $f(x) = g(x^{p \cdot n}) = g((x^p)^n)$.
+			\item $p = \operatorname{char}(k)$ ist eine Primzahl. Es gibt ein irreduzibles separables $g \in k[x]$ und $n \in \setN$ sodass $f(x) = g(x^{p \cdot n}) = g((x^p)^n)$.
 		\end{enumerate}
 	\end{theorem}
 
@@ -2914,17 +2931,17 @@
 		\end{equation*}
 		wobei $i$ hier $\varphi(i) = \underbrace{1 + \dots + 1}_\text{$i$-mal}$.
 		
-		Falls $\operatorname{char}(k) = 0$ wäre dann ist $\forall i$ mit $a_i \neq 0$ auch $i \cdot a_i \neq 0$ also $f'(x) \not\equiv 0$ $\lightning$. Also ist $\operatorname{char}(k) = p > 0$. Die Zahl $p$ ist prim weil $k$ ein Körper ist.
+		Falls $\operatorname{char}(k) = 0$ wäre, dann wäre $\forall i$ mit $a_i \neq 0$ auch $i \cdot a_i \neq 0$, also $f'(x) \not\equiv 0$ $\lightning$. Somit ist $\operatorname{char}(k) = p > 0$. Die Zahl $p$ ist prim weil $k$ ein Körper ist.
 		
-		\textit{Beobachtung:} Falls $i$ kein Vielfaches von $p$ ist, dann $\varphi(i) \neq 0$. Es ist aber $a_i \cdot \varphi(i) = 0 \Rightarrow a_i = 0$ für alle $i$ die kein Vielfaches von $p$ sind. Also
+		\textit{Beobachtung:} Falls $i$ kein Vielfaches von $p$ ist, dann $\varphi(i) \neq 0$. Es ist aber $a_i \cdot \varphi(i) = 0 \Rightarrow a_i = 0$ für alle $i$, die kein Vielfaches von $p$ sind. Also
 		\begin{equation*}
 			f(x) = \sum_{j = 0}^{n/p} a_{j \cdot p} x^{j \cdot p}
 		\end{equation*}
 		Setze $g_1(x) = \sum_{j = 0}^{n/p} a_{j \cdot p} x^j$. Dann $f(x) = g_1(x^p)$.
 		
-		\textit{Idee:} Falls $g_1$ inseparabel ist, wiederhole Prozedur, finde $g_2(x)$ so dass $g_1(x) = g_2(x^p)$ ($\Rightarrow f(x) = g_2(x^{2p})$). Weil der Grad der Polynome dabei sinkt terminiert diese Prozedur nach endlich vielen Schritten, finde $g = g_n$ so dass $f(x) = g(x^{n \cdot p})$ und $g$ separabel ist.
+		\textit{Idee:} Falls $g_1$ inseparabel ist, wiederhole Prozedur, finde $g_2(x)$ sodass $g_1(x) = g_2(x^p)$ ($\Rightarrow f(x) = g_2(x^{2p})$). Weil der Grad der Polynome dabei sinkt, endet diese Prozedur nach endlich vielen Schritten, finde $g = g_n$ sodass $f(x) = g(x^{n \cdot p})$ und $g$ separabel ist.
 		
-		Damit das funktioniert muss ich zeigen, dass $g_1$ irreduzibel ist (per Induktion sind dann auch $g_2, \dots, g_n = g$ irreduzibel).
+		Damit das funktioniert, müssen wir zeigen, dass $g_1$ irreduzibel ist (per Induktion sind dann auch $g_2, \dots, g_n = g$ irreduzibel).
 		
 		\textit{Erinnerung:} hatten Morphismen
 		\begin{equation*}
@@ -2958,7 +2975,7 @@
 	\end{remark}
 
 	\begin{proof}
-		\textit{Beobachtung 1:} Wir wissen schon: Die Elemente von $M$ kann ich schreiben als
+		\textit{Beobachtung 1:} Wir wissen schon: Die Elemente von $M$ können wir schreiben als
 		\begin{equation*}
 			\lambda_0 + \lambda_1 a + \lambda_2 a^2 + \dots + \lambda_{n-1} a^{n-1}
 		\end{equation*}
@@ -2966,21 +2983,21 @@
 		\begin{equation*}
 			\varphi(\lambda_0 + \lambda_1 a + \dots + \lambda_{n-1} a^{n-1}) = \sum \lambda_i \varphi(a)^i
 		\end{equation*}
-		das bedeutet: $\varphi$ ist durch $\varphi(a)$ eindeutig festgelegt!
+		Das bedeutet: $\varphi$ ist durch $\varphi(a)$ eindeutig festgelegt!
 		
-		\textit{Beobachtung 2:} Gegeben einen $k$-Morphismus $\varphi$, dann ist $\varphi(a)$ eine Nullstelle des Polynoms $f(x) \in k[x]$ habe aber nur $m$ unterschiedliche Nullstellen!
+		\textit{Beobachtung 2:} Gegeben einen $k$-Morphismus $\varphi$, dann ist $\varphi(a)$ eine Nullstelle des Polynoms $f(x) \in k[x]$, wir haben aber nur $m$ unterschiedliche Nullstellen!
 		
 		Insgesamt also höchstens $m$ unterschiedliche Morphismen!
 		
-		Noch zu zeigen: Wenn $b \in \overline{k}$ eine Nullstelle von $f$ ist, dann existiert ein $k$-Morphismus $\varphi: M \to \overline{k}$ so dass $\varphi(a) = b$ ist.
+		Noch zu zeigen: Wenn $b \in \overline{k}$ eine Nullstelle von $f$ ist, dann existiert ein $k$-Morphismus $\varphi: M \to \overline{k}$ sodass $\varphi(a) = b$ ist.
 		
-		\textit{Erinnerung:} Wir wissen $M \simeq k[x]/(f)$ wobei $a$ mit $[x]$ identifiziert wird.
+		\textit{Erinnerung:} Wir wissen $M \simeq k[x]/(f)$, wobei $a$ mit $[x]$ identifiziert wird.
 		
 		Haben Morphismus:
 		\begin{equation*}
 			\Omega: k[x] \to \overline{k}, \quad g \mapsto g(b)
 		\end{equation*}
-		Dann $f \in \operatorname{Ker}(\Omega)$, der Kern ist ein Hauptideal und $f$ irreduzibel also: $(f) = \operatorname{ker}(\Omega)$. Also erhalte (nach universeller Eigenschaft) einen Morphismus $k[x]/(f) \to \overline{k}$ wobei $[x] \mapsto b$
+		Dann $f \in \operatorname{Ker}(\Omega)$, der Kern ist ein Hauptideal und $f$ irreduzibel, also: $(f) = \operatorname{ker}(\Omega)$. Also erhalte (nach universeller Eigenschaft) einen Morphismus $k[x]/(f) \to \overline{k}$ wobei $[x] \mapsto b$.
 		
 		Erhalte $M \to \overline{k}$ durch Komposition der Morphismen.
 		
@@ -3010,13 +3027,13 @@
 	\end{theorem}
 
 	\begin{proof}
-		Vorbereitung: Wegen der Endlichkeit, finde $a_1, \dots, a_l \in L$ so dass $L = k(a_1, \dots, a_l)$. Betrachte Kette von Erweiterungen
+		Vorbereitung: Wegen der Endlichkeit, finde $a_1, \dots, a_l \in L$ sodass $L = k(a_1, \dots, a_l)$. Betrachte Kette von Erweiterungen
 		\begin{equation*}
 			k \subseteq k(a_1) \subseteq k(a_1, a_2) \subseteq \dots \subseteq k(a_1, \dots, k_l) = L
 		\end{equation*}
 		Sei $k_0 = k$ und $k_l = k_{l-1}(a_l)$.
 		
-		\heading{1)} Erinnerung es gibt höchstens $[a_1: k_0]$ viele unterschiedliche $k$-Morphismen $\sigma_1: k_1 \to \overline{k}$.
+		\heading{1)} \textit{Erinnerung:} es gibt höchstens $[a_1: k_0]$ viele unterschiedliche $k$-Morphismen $\sigma_1: k_1 \to \overline{k}$.
 		
 		\textit{Erinnerung:} Gegeben $\sigma_1: k_1 \to \overline{k}$, dann gibt es maximal $[a_2 : k_1]$ viele Fortsetzungen von $\sigma_1$ zu Morphismen $\sigma_2: k_2 \to \overline{k}$.
 		
@@ -3032,11 +3049,11 @@
 		
 		Aber: $f_{k_i} \mid f_k$ also klar, dass $f_{k_i}$ keine mehrfachen Nullstellen hat.
 		
-		\heading{b) $\Leftarrow$} Angenommen $L/k$ nicht separabel. Kann die $a_i$ so wählen, dass bereits $a_1/k$ nicht separabel ist.
+		\heading{b) $\Leftarrow$} Angenommen $L/k$ nicht separabel. Wir können die $a_i$ so wählen, dass bereits $a_1/k$ nicht separabel ist.
 		
-		$\Rightarrow$ haben weniger als $[a_1: k_0]$ viele $k$-Morphismen $\sigma_i: k_1 \to \overline{k}$.
+		$\Rightarrow$ wir haben weniger als $[a_1: k_0]$ viele $k$-Morphismen $\sigma_i: k_1 \to \overline{k}$.
 		
-		$\Rightarrow$ haben insgesamt weniger als $[L:k]$ viele $k$-Morphismen $\sigma_l: L \to \overline{k}$.
+		$\Rightarrow$ wir haben insgesamt weniger als $[L:k]$ viele $k$-Morphismen $\sigma_l: L \to \overline{k}$.
 	\end{proof}
 
 	\begin{corollary}
@@ -3048,7 +3065,7 @@
 	\end{proof}
 
 	\begin{corollary}
-		Sei $L/k$ endlich. $L = k(a_1, \dots, a_l)$. Falls für alle $i$ gilt $a_{i+1}$ ist separabel über $k(a_1, \dots, a_i)$ dann gibt es genau $[L:k]$-viele $k$-Morphismen $L \to \overline{k}$.
+		Sei $L/k$ endlich. $L = k(a_1, \dots, a_l)$. Falls für alle $i$ gilt, dass $a_{i+1}$ separabel über $k(a_1, \dots, a_i)$ ist, dann gibt es genau $[L:k]$-viele $k$-Morphismen $L \to \overline{k}$.
 	\end{corollary}
 
 	\begin{corollary}
@@ -3056,7 +3073,7 @@
 	\end{corollary}
 
 	\begin{corollary}
-		Sei $k \subseteq L \subseteq M$ eine Kette von Körpererweiterungen so dass $L/k$ und $M/L$ jeweils separabel sind, dann ist $M/k$ separabel.
+		Sei $k \subseteq L \subseteq M$ eine Kette von Körpererweiterungen sodass $L/k$ und $M/L$ jeweils separabel sind, dann ist $M/k$ separabel.
 	\end{corollary}
 
 	\begin{proof}
@@ -3070,7 +3087,7 @@
 		\begin{equation*}
 			L'' = k(a_0, \dots, a_{n-1}, m)
 		\end{equation*}
-		Wende letzte Folgerung auf $L''$ an, erhalten mit Satz dass $L''/k$ separabel ist. Also ist $m/k$ separabel.
+		Wir wenden die letzte Folgerung auf $L''$ an, somit erhalten wir mit dem vorherigen Satz, dass $L''/k$ separabel ist. Also ist $m/k$ separabel.
 	\end{proof}
 
 	\begin{corollary}
@@ -3107,20 +3124,20 @@
 		\end{enumerate}
 	\end{theorem}
 	\begin{proof}
-		\heading{$1) \Rightarrow 2)$} Beweis der Kontraposition: Sei $F$ nicht surjektiv. Sei also $k \in k \setminus k^p$. Sei $b \in \overline{k}$ so dass $b^p = a$. (Erinnerung $F: \overline{k} \to \overline{k}$ ist injektiv, das heißt $b$ ist eindeutig).
+		\heading{$1) \Rightarrow 2)$} Beweis der Kontraposition: Sei $F$ nicht surjektiv. Sei also $k \in k \setminus k^p$. Sei $b \in \overline{k}$ sodass $b^p = a$. (Erinnerung $F: \overline{k} \to \overline{k}$ ist injektiv, das heißt $b$ ist eindeutig).
 		
-		Betrachte die Erweiterung $k(b)/k$. Das Minimalpolynom von $b$ ist Teiler von $x^p - a$ (das hat lediglich $b$ als Nullstelle) hat also nur eine Nullstelle, nämlich $b$.
+		Betrachte die Erweiterung $k(b)/k$. Das Minimalpolynom von $b$ ist Teiler von $x^p - a$ (das hat lediglich $b$ als Nullstelle), hat also nur eine Nullstelle, nämlich $b$.
 		
 		\heading{$2) \Rightarrow 1)$} Angenommen $F$ wäre surjektiv, $k = k^p$. Angenommen $k$ wäre nicht vollkommen, dann gäbe es ein inseparables, irreduzibles Prolynom $f(x) \in k[x]$.
 		
-		\textit{Erinnerung:} Es gibt $g \in k[x]$ so dass $f(x) = g(x^p)$. Schreibe $g(x) = \sum_{i=0}^n g_i \cdot x^i$.
+		\textit{Erinnerung:} Es gibt $g \in k[x]$ sodass $f(x) = g(x^p)$. Schreibe $g(x) = \sum_{i=0}^n g_i \cdot x^i$.
 		
 		Per Annahme $\forall i \exists h_i \in k$ mit $g_i = (h_i)^p$. Also
 		\begin{align*}
 			g(x) &= \sum (h_i)^p x^i \\
 			g(x^p) &= \sum (h_i x^i)^p = \left( \sum h_i x^i \right)^p
 		\end{align*}
-		also $\sum h_i x^i$ ist echter Teiler von $f(x)$ in $k[x]$ $\lightning$ zur Irreduzibilität von $f$.
+		also ist $\sum h_i x^i$ ein echter Teiler von $f(x)$ in $k[x]$. $\lightning$ zur Irreduzibilität von $f$.
 	\end{proof}
 
 	\subsection{Galoissche Körpererweiterungen}
@@ -3132,7 +3149,7 @@
 		\end{equation*}
 	\end{definition}
 
-	\heading{Beobachtung:} $\Gal(L/k)$ ist eine Gruppe mit Einheit $Id_L$ und der Hintereinanderausführung als Gruppenverknüpfung. Die Inversen sind die Umkehrabbildungen.
+	\heading{Beobachtung:} $\Gal(L/k)$ ist eine Gruppe mit Einheit $\operatorname{Id}_L$ und der Hintereinanderausführung als Gruppenverknüpfung. Die Inversen sind die Umkehrabbildungen.
 	
 	\textit{Diese Gruppe heißt Galoisgruppe}
 	
@@ -3169,13 +3186,13 @@
 			\end{align*}
 			Das heißt für alle $a \in \mathbb{F}_p$ gilt $F(a) = a$.
 			
-			\textit{Beobachte auch:} Die $a \in k$ für die $F(a) = a$ gilt sind exakt die Nullstellen des Polynoms $x^p - x$. Dieses Polynom hat höchstens $p$ Nullstellen. Also für alle $a \in k$ gilt $F(a) = a \Leftrightarrow a \in \mathbb{F}_p$.
+			\textit{Beobachte auch:} Die $a \in k$, für die $F(a) = a$ gilt, sind exakt die Nullstellen des Polynoms $x^p - x$. Dieses Polynom hat höchstens $p$ Nullstellen. Also für alle $a \in k$ gilt $F(a) = a \Leftrightarrow a \in \mathbb{F}_p$.
 			
 			\textit{Insgesamt:} Der Frobenius-Morphismus ist ein $\mathbb{F}_p$-Automorphismus von $k$. $F \in \Gal(k/\mathbb{F}_p)$.
 			
 			\textit{Fakt:} Die Galoisgruppe ist von $F$ erzeugt, d.h. alle Elemente sind von der Form
 			\begin{itemize}
-				\item $Id_k$
+				\item $\operatorname{Id}_k$
 				\item $\underbrace{F \circ \dots \circ F}_\text{$n$-mal}$
 				\item $\underbrace{F^{-1} \circ \dots \circ F^{-1}}_\text{$n$-mal}$
 			\end{itemize}
@@ -3192,14 +3209,14 @@
 		L \to L \subseteq \overline{k}
 	\end{equation*}
 	
-	Falls $L/k$ endlich ist wissen wir: Es existieren höchstens $[L:k]$ viele $k$-Morphismen $L \to \overline{k}$. Also
-	\begin{equation*}
+	Falls $L/k$ endlich ist, wissen wir: Es existieren höchstens $[L:k]$ viele $k$-Morphismen $L \to \overline{k}$. Also
+	\begin{equation}
 		\#\Gal(L/k) \leq [L:k]
-	\end{equation*}
+	\end{equation}
 	
 	\heading{Frage:} Haben wir Gleichheit?
 	
-	\heading{Antwort:} Im allgemeinen nein!
+	\heading{Antwort:} Im Allgemeinen nein!
 	\begin{itemize}
 		\item Falls $L/k$ inseparabel ist, dann weniger als $[L:k]$ viele $k$-Morphismen $L \to \overline{k}$.
 		\item Es kann passieren, dass für gegebenes $\sigma: L \to \overline{k}$, $\operatorname{Bild}(\sigma) \neq L$ ist. $\Rightarrow$ dieses $\sigma$ liefert kein Element von $\Gal(L/k)$.
@@ -3222,7 +3239,7 @@
 		Sei $L/k$ eine algebraische Körpererweiterung. Dann sind folgende Aussagen äquivalent:
 		\begin{enumerate}
 			\item $L/k$ ist normal
-			\item Es gibt eine Familie $(f_\lambda)_{\lambda \in \Lambda}$ von Polynomen in $k[x]$ so dass $L$ aus $k$ entsteht durch Adjunktion sämtlicher Nullstellen der $f_\lambda$ in $\overline{L}$.
+			\item Es gibt eine Familie $(f_\lambda)_{\lambda \in \Lambda}$ von Polynomen in $k[x]$, sodass $L$ durch Adjunktion sämtlicher Nullstellen der $f_\lambda$ in $\overline{L}$ aus $k$ entsteht.
 			\item Jeder $k$-Morphismus $\sigma: L \to \overline{L}$ hat $\operatorname{Bild}(\sigma) = L$
 		\end{enumerate}
 	\end{theorem}
@@ -3230,23 +3247,23 @@
 	\begin{proof}
 		$L/k$ ist algebraisch. Wir betrachten $L$ daher als Unterkörper von $\overline{k}$.
 		
-		\heading{$1) \Rightarrow 2):$} Finde Elemente $(a_\lambda)_{\lambda \in \Lambda}$ von $L$, so dass $L = k(a_\lambda \mid \lambda \in \Lambda)$. Die $a_\lambda$ sind algebraisch über $k$ und haben Minimalpolynome $f_\lambda$. Jedes der $f_\lambda$ hat eine Nullstelle in $L$ (nämlich $a_\lambda$), zerfällt also über $L$ (da $L/k$ normal). Sei jetzt $(b_\mu)_{\mu \in M}$ die Familie der Nullstellen aller $f_\lambda$. Per Annahme: alle $b_\mu \in L$ und $L = k(b_\mu \mid \mu \in M)$ da $L \subseteq \{ b_\mu \mid \mu \in M \} \supseteq \{ a_\lambda \mid \lambda \in \Lambda \}$.
+		\heading{$1) \Rightarrow 2):$} Finde Elemente $(a_\lambda)_{\lambda \in \Lambda}$ von $L$, sodass $L = k(a_\lambda \mid \lambda \in \Lambda)$. Die $a_\lambda$ sind algebraisch über $k$ und haben Minimalpolynome $f_\lambda$. Jedes der $f_\lambda$ hat eine Nullstelle in $L$ (nämlich $a_\lambda$), zerfällt also über $L$ (da $L/k$ normal). Sei jetzt $(b_\mu)_{\mu \in M}$ die Familie der Nullstellen aller $f_\lambda$. Per Annahme: alle $b_\mu \in L$ und $L = k(b_\mu \mid \mu \in M)$, da $L \subseteq \{ b_\mu \mid \mu \in M \} \supseteq \{ a_\lambda \mid \lambda \in \Lambda \}$.
 		
-		\heading{$2) \Rightarrow 3):$} Sei $L$ wie in 2) gegeben. Das heißt es gibt Familie $(f_\lambda)_{\lambda \in \Lambda}$ von Polynomen, so dass $L = k(b_\mu \mid \mu \in M)$wobei $(b_\mu)_{\mu \in M}$ die Familie der Nullstellen der $f_\lambda$ in $\overline{k}$ ist. Weiter sei ein $k$-Morphismus $\sigma: L \to \overline{k}$ gegeben. Muss zeigen $\operatorname{Bild}(\sigma) = L$.
+		\heading{$2) \Rightarrow 3):$} Sei $L$ wie in 2) gegeben. Das heißt es gibt Familie $(f_\lambda)_{\lambda \in \Lambda}$ von Polynomen, sodass $L = k(b_\mu \mid \mu \in M)$wobei $(b_\mu)_{\mu \in M}$ die Familie der Nullstellen der $f_\lambda$ in $\overline{k}$ ist. Weiter sei ein $k$-Morphismus $\sigma: L \to \overline{k}$ gegeben. Wir müssen zeigen: $\operatorname{Bild}(\sigma) = L$.
 		
-		\textit{Schritt 1:} Zeige: $\operatorname{Bild}(\sigma) \subseteq L$. Da $L = k(b_\mu \mid \mu \in M)$ ist, genügt es zu zeigen dass für alle $\mu$ $\sigma(b_\mu) \in L$. Sei $\mu$ gegeben, per Definition finde ich ein $\lambda$ so dass $f_\lambda(b_\mu) = 0$. Erinnerung: $\sigma$ ist ein $k$-Morphismus und $f_\lambda \in k[x]$. Das bedeutet $\sigma(b_\mu)$ ist wieder eine Nullstelle von $f_\lambda$. Also $\sigma(b_\mu) \in L$.
+		\textit{Schritt 1:} Zeige: $\operatorname{Bild}(\sigma) \subseteq L$. Da $L = k(b_\mu \mid \mu \in M)$ ist, genügt es zu zeigen dass für alle $\mu$ $\sigma(b_\mu) \in L$. Sei $\mu$ gegeben, per Definition finden wir ein $\lambda$ sodass $f_\lambda(b_\mu) = 0$. Erinnerung: $\sigma$ ist ein $k$-Morphismus und $f_\lambda \in k[x]$. Das bedeutet $\sigma(b_\mu)$ ist wieder eine Nullstelle von $f_\lambda$. Also $\sigma(b_\mu) \in L$.
 		
-		\textit{Schritt 2:} Zeige: $\operatorname{Bild}(\sigma) \supseteq L$. Es genügt zu zeigen: Für alle $\mu$ gilt $b_\mu \in \operatorname{Bild}(\sigma)$. Sei also ein $\mu$ gegeben. Wieder finde $\lambda$ so dass $f_\lambda(b_\mu) = 0$. Das $f_\lambda$ hat weitere Nullstellen $b_\mu, b_{\mu_1}, \dots, b_{\mu_d}$ wobei $d = \deg(f_\lambda) - 1$. Wir wissen: $\sigma$ bildet die $d$ Nullstellen $b_\mu, b_{\mu_1}, \dots, b_{\mu_d}$ injektiv auf die Nullstellen von $f_\lambda$ ab. $\Rightarrow$ $\sigma(b_\mu) = b_\mu$ oder es gibt $1 \leq i \leq d$ so dass $\sigma(b_{\mu_i}) = b_\mu$.
+		\textit{Schritt 2:} Zeige: $\operatorname{Bild}(\sigma) \supseteq L$. Es genügt zu zeigen: Für alle $\mu$ gilt $b_\mu \in \operatorname{Bild}(\sigma)$. Sei also ein $\mu$ gegeben. Wieder finde $\lambda$ sodass $f_\lambda(b_\mu) = 0$. Das $f_\lambda$ hat weitere Nullstellen $b_\mu, b_{\mu_1}, \dots, b_{\mu_d}$ wobei $d = \deg(f_\lambda) - 1$. Wir wissen: $\sigma$ bildet die $d$ Nullstellen $b_\mu, b_{\mu_1}, \dots, b_{\mu_d}$ injektiv auf die Nullstellen von $f_\lambda$ ab. $\Rightarrow$ $\sigma(b_\mu) = b_\mu$, oder es gibt $1 \leq i \leq d$ sodass $\sigma(b_{\mu_i}) = b_\mu$.
 		
-		\heading{$3) \Rightarrow 1):$} Muss zeigen: jedes irreduzible $f \in k[x]$, das in $L$ eine Nullstelle hat, zerfällt über $L$ in Linearfaktoren. Sei also $f \in k[x]$ wie oben gegeben, sei $a \in L$ eine Nullstelle von $f$, sei $b \in \overline{k}$ eine weitere Nullstelle. Muss zeigen: $b \in L$. Wir wissen: es gibt $k$-Isomorphismen
+		\heading{$3) \Rightarrow 1):$} Wir Müssen zeigen: jedes irreduzible $f \in k[x]$, das in $L$ eine Nullstelle hat, zerfällt über $L$ in Linearfaktoren. Sei also $f \in k[x]$ wie oben gegeben, sei $a \in L$ eine Nullstelle von $f$, sei $b \in \overline{k}$ eine weitere Nullstelle. Wir müssen zeigen: $b \in L$. Wir wissen: es gibt $k$-Isomorphismen
 		\begin{equation*}
 			k(a) \longleftarrow k[x]/(f) \longrightarrow k(b)
 		\end{equation*}
-		so dass für die Komposition $\varphi$ gilt $\varphi(a) = b$. Insgesamt habe ich
+		sodass für die Komposition $\varphi$ gilt $\varphi(a) = b$. Insgesamt haben wir
 		\begin{equation*}
 			L \supseteq k(a) \overset{\varphi}{\longrightarrow} k(b) \subseteq \overline{k}
 		\end{equation*}
-		Universelle Eigenschaft von $\overline{k}$. Ich kann Morphismus $\varphi$ fortsetzen zu $\sigma: L \to \overline{k}$. Per Annahme: $\operatorname{Bild}(\sigma) = L$, aber $b \in \operatorname{Bild}(\sigma)$.
+		Universelle Eigenschaft von $\overline{k}$. Wir können Morphismus $\varphi$ fortsetzen zu $\sigma: L \to \overline{k}$. Per Annahme: $\operatorname{Bild}(\sigma) = L$, aber $b \in \operatorname{Bild}(\sigma)$.
 	\end{proof}
 
 	\begin{corollary}
@@ -3260,24 +3277,24 @@
 	\begin{proof}
 		\heading{$2) \Rightarrow 1):$} folgt aus dem Satz
 		
-		\heading{$1) \Rightarrow 2):$} $L/k$ ist endlich also gibt es $a_1, \dots, a_n \in L$ so dass $L = k(a_1, \dots, a_n)$. Sei $f_1, \dots, f_n$ die Minimalpolynome. Behauptung: $L$ ist Zerfällungskörper von $f = f_1 \cdot \ldots \cdot f_n$.
+		\heading{$1) \Rightarrow 2):$} $L/k$ ist endlich, also gibt es $a_1, \dots, a_n \in L$ sodass $L = k(a_1, \dots, a_n)$. Seien $f_1, \dots, f_n$ die Minimalpolynome. Behauptung: $L$ ist Zerfällungskörper von $f = f_1 \cdot \ldots \cdot f_n$.
 		
 		Seien $(b_\mu)_{\mu \in M}$ die Nullstellen von $f$. Weil $L/k$ normal ist, folgt
 		\begin{equation*}
 			L = k(a_1, \dots, a_n) = k(b_\mu \mid \mu \in M)
 		\end{equation*}
-		also ist $L$ der Zerfällungskörper.
+		Also ist $L$ der Zerfällungskörper.
 	\end{proof}
 
 	\begin{corollary}
-		Sei $L/k$ eine algebraische Körpererweiterung. Dann gibt es einen Oberkörper $k \subseteq L \subseteq N \subseteq \overline{k}$ so dass gilt
+		Sei $L/k$ eine algebraische Körpererweiterung. Dann gibt es einen Oberkörper $k \subseteq L \subseteq N \subseteq \overline{k}$ sodass gilt
 		\begin{enumerate}
 			\item $N/k$ ist normal
-			\item Wenn ich einen Zwischenkörper habe
-			\begin{equation*}
+			\item Wenn wir einen Zwischenkörper 
+			$
 				k \subseteq L \subseteq N' \subseteq N
-			\end{equation*}
-			so dass $N'/k$ normal ist $\Rightarrow N = N'$
+			$ haben,
+			sodass $N'/k$ normal ist, so folgt: $ N = N'$
 		\end{enumerate}
 		Wenn $\tilde{N}$ ein weiterer Oberkörper ist mit Eigenschaften 1) und 2) $\Rightarrow$ $\tilde{N}$ und $\tilde{N}$ sind $k$-Isomorph.
 		
@@ -3287,13 +3304,13 @@
 	\begin{proof}
 		Schreibe $L = k(a_\lambda \mid \lambda \in \Lambda)$. Seien $f_\lambda$ die Minimalpolynome der $a_\lambda$. Sei $(b_\mu)_{\mu \in M}$ die Familie aller Nullstellen. Setze $N \coloneqq k(b_\mu \mid \mu \in M)$. Mit Satz folgt $N$ ist normal.
 		
-		Sei $N'$ ein Zwischenkörper. Um zu zeigen $N = N'$ muss ich zeigen: alle $b_\mu \in N'$. Sei also $\mu$ gegeben, wähle $\lambda$ so dass $f_\lambda(b_\mu) = 0$. Dann $f_\lambda$ hat Nullstelle in $N'$ (nämlich $a_\lambda$) also zerfällt $f_\lambda$ über $N'$, das heißt $b_\mu \in N'$ $\Rightarrow$ $N = N'$
+		Sei $N'$ ein Zwischenkörper. Um zu zeigen $N = N'$ müssen wir zeigen: alle $b_\mu \in N'$. Sei also $\mu$ gegeben, wähle $\lambda$ sodass $f_\lambda(b_\mu) = 0$. Dann $f_\lambda$ hat Nullstelle in $N'$ (nämlich $a_\lambda$) also zerfällt $f_\lambda$ über $N'$, das heißt $b_\mu \in N'$ $\Rightarrow$ $N = N'$
 		
 		Sei jetzt $\tilde{N}$ gegeben. Finde Einbettung $\sigma: \tilde{N} \to \overline{k}$. Es ist $\tilde{N} \simeq \operatorname{Bild}(\sigma)$. Also genügt es, den Fall zu betrachten, wo $\tilde{N} \subseteq \overline{k}$ und für jedes solche $\tilde{N}$ zu zeigen: $N = \tilde{N}$.
 		
 		\textit{Beobachte:} $N \cap \tilde{N}$ ist ein Oberkörper von $L$, der wieder normal ist.
 		
-		Also habe ich
+		Also haben wir
 		\begin{equation*}
 			k = \subseteq L \subseteq N' \subseteq N
 		\end{equation*}
@@ -3313,13 +3330,13 @@
 	\end{theorem}
 
 	\begin{proof}
-		\heading{$1) \Rightarrow 2)$} $L$ ist der Zerfällungskörper eines $f \in K[x]$. Die irreduziblen Faktoren von $f$ können keine mehrfache Nullstelle haben, denn ein solche Faktor ist das Minimalpolynom eines separablen Elements $\in L$.
+		\heading{$1) \Rightarrow 2)$} $L$ ist der Zerfällungskörper eines $f \in K[x]$. Die irreduziblen Faktoren von $f$ können keine mehrfache Nullstelle haben, denn ein solcher Faktor ist das Minimalpolynom eines separablen Elements $\in L$.
 		
 		\heading{$2) \Rightarrow 1)$} $L$ ist separabel, weil $f$ separabel ist. $L$ ist normal, denn es ist ein Zerfällungskörper über $K$.
 		
-		\heading{$1) \Leftrightarrow 2)$} Sei $\overline{L}$ ein algebraischer Abschluss von $L$. $\sigma \in \Gal(L/K)$ kann zu einem $K$-morphismus $L \to \overline{L}$ fortgesetzt werden.
+		\heading{$1) \Leftrightarrow 2)$} Sei $\overline{L}$ ein algebraischer Abschluss von $L$. $\sigma \in \Gal(L/K)$ kann zu einem $K$-Morphismus $L \to \overline{L}$ fortgesetzt werden.
 		
-		Angenommen $[L:K] = n$, dann gibt es maximal $n$ $K$-morphismen $L \to \overline{L}$ und es gibt genau $n$ weil $L$ separabel ist. Außerdem ist $L/K$ genau dann normal wenn für jeden $K$-morphismus $\tau: L \to \overline{K}$ gilt $\tau(L) = L$ deshalb ist $\tau$ ein Element von $\Gal(L/K)$.
+		Angenommen $[L:K] = n$, dann gibt es maximal $n$ $K$-Morphismen $L \to \overline{L}$ und es gibt genau $n$ weil $L$ separabel ist. Außerdem ist $L/K$ genau dann normal, wenn für jeden $K$-Morphismus $\tau: L \to \overline{K}$ gilt $\tau(L) = L$; deshalb ist $\tau$ ein Element von $\Gal(L/K)$.
 	\end{proof}
 
 	\begin{corollary}
@@ -3355,11 +3372,11 @@
 		\heading{$3)$} Seien $a$ und $b$ Nullstellen von $f$. Dann ist \begin{equation*}
 			L \supset K(a) \cong K[x]/(f) \cong K(b) \subset L
 		\end{equation*}
-		Und damit einen Isomorphismus $\sigma: K(a) \to L$. $\sigma$ kann zu einem $K$-morphismus $L \hookrightarrow \overline{L}$ erweitert werden. Da $L/K$ normal ist, gilt $\sigma(L) = L$, also $\sigma \in \Gal(L/K)$.
+		Und damit: ein Isomorphismus $\sigma: K(a) \to L$. $\sigma$ kann zu einem $K$-morphismus $L \hookrightarrow \overline{L}$ erweitert werden. Da $L/K$ normal ist, gilt $\sigma(L) = L$, also $\sigma \in \Gal(L/K)$.
 	\end{proof}
 
 	\begin{definition}
-		Sei $L/K$ eine Galoissche Körpererweiterung und $\alpha \in L$ ein beliebiges Element, dann nennen wir die Elemente $\sigma(\alpha), \sigma \in \Gal(L/K)$, die konjugierten von $\alpha$. Die Menge $\{ \sigma(\alpha) \mid \sigma \in \Gal(L(K)) \}$ ist die Menge der Nullstellen des Minimalpolynoms von $\alpha$.
+		Sei $L/K$ eine Galoissche Körpererweiterung und $\alpha \in L$ ein beliebiges Element. Dann nennen wir die Elemente $\sigma(\alpha), \sigma \in \Gal(L/K)$, die Konjugierten von $\alpha$. Die Menge $\{ \sigma(\alpha) \mid \sigma \in \Gal(L(K)) \}$ ist die Menge der Nullstellen des Minimalpolynoms von $\alpha$.
 	\end{definition}
 
 	\begin{example}
@@ -3401,7 +3418,7 @@
 		
 		Wir haben gesehen dass $\mathbb{F}_p = \{ \alpha \in K \mid F(\alpha) = \alpha \} = \operatorname{Fix}(F)$.
 		
-		Also gibt es $\tilde{m} \in \setZ_{>0}$ so dass $F^{\tilde{m}} = Id_K$. Also ist
+		Also gibt es $\tilde{m} \in \setZ_{>0}$ sodass $F^{\tilde{m}} = Id_K$. Also ist
 		\begin{equation*}
 			G = \{ Id, F, F^2, \dots, F^{\tilde{m} - 1} \} \subset \operatorname{Aut}(K)
 		\end{equation*}
@@ -3426,7 +3443,7 @@
 	\end{definition}
 
 	\begin{theorem}
-		Seien $\sigma_1, \dots, \sigma_n$ paarweise verschiedene Charakter eine Gruppe $H$ mit Werten in einem Körper $L$. Seien $a_1, \dots, a_n \in L$ so dass die Linearkombination
+		Seien $\sigma_1, \dots, \sigma_n$ paarweise verschiedene Charakter eine Gruppe $H$ mit Werten in einem Körper $L$. Seien $a_1, \dots, a_n \in L$ sodass die Linearkombination
 		\begin{equation*}
 			\sum_{i = 1}^n a_i \sigma_i: H \to L, h \mapsto \sum_{i = 1}^n a_i \sigma_i(h)
 		\end{equation*}
@@ -3442,7 +3459,7 @@
 		\begin{equation*}
 			\sum_{i = 1}^n a_i \sigma_i(h) = 0 \qquad \forall h \in H
 		\end{equation*}
-		Da $\sigma_1 \neq \sigma_n$, also gibt es $g \in H$ so dass $\sigma_1(g) \neq \sigma_n(g)$.
+		Da $\sigma_1 \neq \sigma_n$, also gibt es $g \in H$ sodass $\sigma_1(g) \neq \sigma_n(g)$.
 		\begin{equation*}
 			\sum_{i = 1}^n a_i \sigma_n(g) \sigma_i(h) = 0 \qquad \forall h \in H \tag{$*$}
 		\end{equation*}
@@ -3558,9 +3575,9 @@
 	
 	\textit{Erinnerung:} Wir wissen: $L = \setQ(\underbrace{\sqrt[3]{2}}_{a_1}, \underbrace{\xi \sqrt[3]{2}}_{a_2}, \underbrace{\xi^2 \sqrt[3]{2}}_{a_3})$ wobei $\xi = e^{\frac{2 \pi i}{3}}$.
 	
-	Wissen auch $[L: \setQ] = 6$
+	Wir wissen auch $[L: \setQ] = 6$
 	
-	Wissen auch $L = \setQ(\sqrt[3]{2}, i \cdot \sqrt[2]{3})$
+	Zudem wissen wir $L = \setQ(\sqrt[3]{2}, i \cdot \sqrt[2]{3})$
 	
 	\textit{Frage:} Welche Zwischenkörper gibt es? Welche sind Galois?
 	
@@ -3572,7 +3589,7 @@
 	\end{equation*}
 	Wissen auch: die Elemente von $\Gal(L/K)$ sind durch die Permutation eindeutig bestimmt. Also ist $\alpha$ injektiv.
 	
-	Wissen auch: $L/K$ ist Galos, also
+	Wissen auch: $L/K$ ist Galois, also
 	\begin{equation*}
 		6 = [L:k] = \#\Gal(L/K) = \#S_3
 	\end{equation*}
@@ -3605,7 +3622,7 @@
 	
 	$\operatorname{Fix}(Id, (12)(3) = k(a_3)$
 	
-	Denn: Klar ist das Elemente von $k$ und $a_3$ fix sind, also $k(a_3) \subseteq \operatorname{Fix}(Id, (12)(3))$. Wende 3) an mit $H_2 = S_3, H_1 = (Id, (12)(3))$ also
+	Denn: Klar ist, dass Elemente von $k$ und $a_3$ fix sind, also $k(a_3) \subseteq \operatorname{Fix}(Id, (12)(3))$. Wende 3) an mit $H_2 = S_3, H_1 = (Id, (12)(3))$ also
 	\begin{equation*}
 		\Rightarrow [\operatorname{Fix}(H_1): \operatorname{Fix}(H2)] = [H_2: H_1] = 3
 	\end{equation*}
@@ -3629,7 +3646,7 @@
 	\begin{proof}[Beweis des Hauptsatzes]
 		\heading{1)} ist bereits bewiesen
 		
-		\heading{2)} Muss zeigen: Für jeden Zwischenkörper $Z$ ist $\operatorname{Fix}(\Gal(L/Z)) = Z$
+		\heading{2)} Wir müssen zeigen: Für jeden Zwischenkörper $Z$ ist $\operatorname{Fix}(\Gal(L/Z)) = Z$
 		
 		Und für jede Untergruppe $H$ ist
 		\begin{equation*}
@@ -3640,13 +3657,13 @@
 		
 		Sei $Z$ gegeben. Klar per Definition $\operatorname{Fix}(\Gal(L/Z)) \supseteq Z$. Will Gleichheit zeigen mit Hilfe des Gradargumentes.
 		
-		\textit{Artin} $L/\operatorname{Fix}(\Gal(L/Z))$ ist Galoisch, $[L: \operatorname{Fix}(\Gal(L/Z))] = \#\Gal(L/Z)$
+		\textit{Artin} $L/\operatorname{Fix}(\Gal(L/Z))$ ist Galois'sch, $[L: \operatorname{Fix}(\Gal(L/Z))] = \#\Gal(L/Z)$
 		
-		\textit{Wir} $L/Z$ ist auch Galoisch, also $[L:Z] = \#\Gal(L/Z)$.
+		\textit{Wir} $L/Z$ ist auch Galois'sch, also $[L:Z] = \#\Gal(L/Z)$.
 		
 		\textit{Also:} $[\operatorname{Fix}(\Gal(L/Z)): Z] = 1$
 		
-		\heading{3)} Beweise nur die zweite Aussage. Seien also Gruppen $H_1 \subseteq H_2 \subseteq \Gal(L/K)$ gegeben. Klar ist: jedes $l \in L$, das fix ist unter $H_2$ ist auch fix unter $H_1$ $\Rightarrow$ $\operatorname{Fix}(H_2) \subseteq \operatorname{Fix}(H_1)$ Inklusionsumkehr ist also bewiesen.
+		\heading{3)} Wir beweisen nur die zweite Aussage. Seien also Gruppen $H_1 \subseteq H_2 \subseteq \Gal(L/K)$ gegeben. Klar ist: jedes $l \in L$, das fix ist unter $H_2$ ist auch fix unter $H_1$ $\Rightarrow$ $\operatorname{Fix}(H_2) \subseteq \operatorname{Fix}(H_1)$ Inklusionsumkehr ist also bewiesen.
 		
 		\textit{Artin} $[L: \operatorname{Fix}(H_1)] = \#H_1$ und $[L: \operatorname{Fix}(H_2)] = \#H_2$
 		
@@ -3672,7 +3689,7 @@
 			\tau &\mapsto \sigma \tau \sigma^{-1}
 		\end{align*}
 		
-		\textit{Beobachtung:} $L/Z$ ist Galoisch
+		\textit{Beobachtung:} $L/Z$ ist Galois'sch
 		\begin{equation*}
 			\#\Gal(L/Z) = [L:Z] = [\sigma(L): \sigma(Z)] = [L: \sigma(Z)] = \#\Gal(L/\sigma(Z))
 		\end{equation*}
@@ -3680,11 +3697,11 @@
 		
 		\heading{5)} Sei $Z$ ein Zwischenkörper.
 		
-		\textit{Beobachtung 1:} $Z/K$ ist separabel. Also: $Z/K$ ist Galoisch $\Leftrightarrow$ $Z/K$ ist normal $\Leftrightarrow$ für jede $k$-Morphismus $\sigma: Z \to \overline{L}$ ist $\sigma(Z) = Z$.
+		\textit{Beobachtung 1:} $Z/K$ ist separabel. Also: $Z/K$ ist Galois'sch $\Leftrightarrow$ $Z/K$ ist normal $\Leftrightarrow$ für jede $k$-Morphismus $\sigma: Z \to \overline{L}$ ist $\sigma(Z) = Z$.
 		
-		\textit{Beobachtung 2:} Jeder Morphismus $\sigma: Z \to \overline{L}$ setzt sich fort zu Morphismus $\overline{\sigma}: L \to \overline{L}$. Weil $L/K$ per Annahme Galoisch, also normal ist, gilt: $\overline{sigma}(L) = L$.
+		\textit{Beobachtung 2:} Jeder Morphismus $\sigma: Z \to \overline{L}$ setzt sich fort zu Morphismus $\overline{\sigma}: L \to \overline{L}$. Weil $L/K$ per Annahme Galois'sch, also normal ist, gilt: $\overline{sigma}(L) = L$.
 		
-		\textit{Zusammenfassung:} $Z/K$ ist Galoisch $\Leftrightarrow$ $\forall \sigma \in \Gal(L/K) \sigma(Z) = Z$.
+		\textit{Zusammenfassung:} $Z/K$ ist Galois'sch $\Leftrightarrow$ $\forall \sigma \in \Gal(L/K) \sigma(Z) = Z$.
 		
 		$\overset{2)}{\Rightarrow} \forall \sigma \in \Gal(L/K): \Gal(L/\sigma(Z)) = \Gal(L/Z)$
 		
@@ -3692,12 +3709,12 @@
 		
 		$\Leftrightarrow \Gal(L/Z)$ ist normale Untergruppe von $\Gal(L/K)$
 		
-		Falls $Z/K$ Galoisch ist, habe ich Einschränkung
+		Falls $Z/K$ Galois'sch ist, haben wir Einschränkung
 		\begin{equation*}
 			r: \Gal(L/K) \to \Gal(Z/K)
 		\end{equation*}
 		
-		die Abbildung $r$ ist surjektiv, weil ich Morphismen fortsetzen kann. $\ker(r) = \Gal(L/Z)$.
+		die Abbildung $r$ ist surjektiv, weil wir Morphismen fortsetzen können. $\ker(r) = \Gal(L/Z)$.
  		
 	\end{proof}
 
@@ -3710,7 +3727,7 @@
 		\begin{equation*}
 			\alpha: G \times M \to M
 		\end{equation*}
-		so dass
+		sodass
 		\begin{enumerate}
 			\item $\forall m \in M: \; \alpha(e,m) = m$
 			\item $\forall m \in M, \forall g,h \in G \; \alpha(h, \alpha(g,m)) = \alpha(h \cdot g, m)$
@@ -3723,7 +3740,7 @@
 			\alpha_g: M &\longrightarrow M\\
 			m &\longmapsto \alpha(g,m)
 		\end{align*}
-		(translation). Die Axiome 1) und 2) sagen:
+		(Translation). Die Axiome 1) und 2) sagen:
 		\begin{equation*}
 			\alpha_e = id_M, \forall g,h: \alpha_h \circ \alpha_g = \alpha_{h \cdot g}
 		\end{equation*}
@@ -3759,7 +3776,7 @@
 				m: \setR \times \setR &\longrightarrow \setR \\
 				(a,b) &\longmapsto \exp(a) b
 			\end{align*}
-			\item $k$ ein Körper, $f$ ein Polynom mit Zerfällungskörper $L$. Sei $G = \Gal(L/K)$. Dann habe ich natürliche Wirkungen
+			\item $k$ ein Körper, $f$ ein Polynom mit Zerfällungskörper $L$. Sei $G = \Gal(L/K)$. Dann haben wir natürliche Wirkungen
 			\begin{itemize}
 				\item $G$ wirkt auf $L$
 				\item $G$ wirkt auf die Nullstellenmenge von $f$
@@ -3780,7 +3797,7 @@
 				&r: H \times G \to G \quad (h,m) \mapsto m h^{-1} \\
 				&c: H \times G \to G \quad (h,m) \mapsto h m h^{-1}
 			\end{align*}
-			\item Sei ODE auf $M$ gegeben, so dass Anfangswertprobleme für alle Zeilen lösbar sind. Dann ist die Lösungsabbildung
+			\item Sei ODE auf $M$ gegeben, sodass Anfangswertprobleme für alle Zeilen lösbar sind. Dann ist die Lösungsabbildung
 			\begin{align*}
 				\setR \times M &\longrightarrow M \\
 				(t,m) &\longmapsto \text{Lösung des AWP zum Wert $m$ und Zeit $t$}
@@ -3793,13 +3810,13 @@
 		\label{def:transivGruppe}
 		Sei $\alpha: G \times M \to M$ eine Gruppenwirkung.
 		\begin{enumerate}
-			\item Schreibe statt $\alpha(g,m)$ oft $g \cdot m$.
-			\item Gegeben $m \in M$. Dann betrachte alle Elemente, die ich von $m$ erreichen kann
+			\item Wir schreiben statt $\alpha(g,m)$ oft $g \cdot m$.
+			\item Gegeben $m \in M$. Dann betrachte alle Elemente, die wir von $m$ erreichen können
 			\begin{equation*}
 			G \cdot m = \{ g \cdot m \mid g \in G \}
 			\end{equation*}
 			Dies heißt die Bahn von $m$.
-			\item Gegeben Teilmenge $N \subseteq M$ betrachte Untergruppen
+			\item Gegeben Teilmenge $N \subseteq M$, betrachte Untergruppen
 			\begin{equation*}
 				\operatorname{Fix}(N) = \{ g \in G \mid \forall n \in N: g \cdot n = n \}
 			\end{equation*}
@@ -3807,7 +3824,7 @@
 				\operatorname{Stab}(N) = \{ g \in G \mid g \cdot N = N \}
 			\end{equation*}
 			Spezialfall: $m \in M$ gegeben. Dann nenne $\operatorname{Fix}(\{ m \})$ die Isotropiegruppe von $m$.
-			\item Ein Element $m \in M$ so dass $\forall g \in G: g \cdot m = m$ heißt Fixpunkt der Gruppenwirkung.
+			\item Ein Element $m \in M$ sodass $\forall g \in G: g \cdot m = m$ heißt Fixpunkt der Gruppenwirkung.
 			\item Eine Gruppenwirkung heißt transitiv, falls es nur eine Bahn gibt.
 		\end{enumerate}
 	\end{definition}
@@ -3817,7 +3834,7 @@
 	\begin{proof}
 		Sei $m_3$ ein Schnittpunkt. Das heißt finde $g_1, g_2 \in G: m_3 = g_1 \cdot m_1 = g_2 \cdot m_2$.
 		
-		Sei $n \in G m_1$ jetzt irgend ein Element, also $n = h \cdot m_1$, dann $n = h g_1^{-1} g_2 m_2$ also $n \in G \cdot m_2$.
+		Sei $n \in G m_1$ jetzt irgendein Element, also $n = h \cdot m_1$, dann $n = h g_1^{-1} g_2 m_2$ also $n \in G \cdot m_2$.
 		
 		$\Rightarrow G \cdot m_1 \subseteq G \cdot m_2$. Andere Inklusion analog!
 	\end{proof}
@@ -3875,7 +3892,7 @@
 	\begin{corollary}
 		Sei $G$ endlich. $G$ wirke auf Menge $M$. Sei $m \in M$ dann $\# (G \cdot m) = [G: \operatorname{Iso}(m)]$.
 	\end{corollary}
-
+	\newpage
 	\heading{Wesentliches weiteres Beispiel}
 	
 	$G$ wirkt auf sich selbst durch Konjugation. Die Bahnen heißen Konjugationsklassen. Gegeben Untergruppe $H \subseteq G$, betrachte $\operatorname{Fix}(H) = \{ g \in G \mid g h g^{-1} = h, \forall h \in H \} = Z(H) \subseteq G$ diese Untergruppe heißt Zentralisator von $H$.
@@ -3884,7 +3901,7 @@
 	
 	\textit{Beobachtung:} $H \subseteq \operatorname{Stab}(H)$ ist normale Untergruppe.
 	
-	\textit{Klassengleichung:} Die Gruppe $G$ zerlegt sich in Konjugationsklassen. Wenn ich aus jeder Klassen einen Vertreter wähle $h_1, \dots, h_n \in G$. Dann
+	\textit{Klassengleichung:} Die Gruppe $G$ zerlegt sich in Konjugationsklassen. Wenn wir aus jeder Klassen einen Vertreter wählen $h_1, \dots, h_n \in G$. Dann
 	\begin{equation*}
 		\#G = \sum_{i=1}^{n} H \cdot h_i = \sum_{i=1}^{n} [G: Z(h_i)] = \#Z(H) + \sum_{\substack{i = 1 \dots n \\ h_i \notin Z(H)}} [G:Z(h_i)]
 	\end{equation*}
@@ -3940,14 +3957,14 @@
 				\begin{equation*}
 					g^m = {\underbrace{\left( g^{\operatorname{ord}(g)} \right)}_{=e}}^{m/\operatorname{ord}(g)} = e
 				\end{equation*}
-				Also: alle $g \in G$ sind Nullstellen des Polynoms $x^m - 1$. Dieses Polynom hat maximal $m$ Nullstellen $\Rightarrow \#G \leq m$. Wenn ich $g \in G$ nehme mit $\operatorname{ord}(g) = m$ dann ist $\#(g) = m$. Insbesondere $G = (g)$, $G$ ist zyklisch.
+				Also: alle $g \in G$ sind Nullstellen des Polynoms $x^m - 1$. Dieses Polynom hat maximal $m$ Nullstellen $\Rightarrow \#G \leq m$. Wenn wir $g \in G$ nehmen, mit $\operatorname{ord}(g) = m$, dann ist $\#(g) = m$. Insbesondere $G = (g)$, $G$ ist zyklisch.
 			\end{proof}
 		\end{enumerate}
 	\end{example}
 
 	\subsection{Die Sätze von Sylow}
 	
-	\heading{Frage:} Wenn $G$ endliche Gruppe ist, $H \subseteq G$ eine Untergruppe, dann $\#H \mid \#G$. Wenn ich $n \in \setN$ habe mit $n \mid \#G$ gibt es dann auch eine Untergruppe $H$ mit $\# H = n$?
+	\heading{Frage:} Wenn $G$ endliche Gruppe ist, $H \subseteq G$ eine Untergruppe, dann $\#H \mid \#G$. Wenn wir $n \in \setN$ haben, mit $n \mid \#G$, gibt es dann auch eine Untergruppe $H$ mit $\# H = n$?
 	
 	Sylow-Sätze geben Teilantwort. Die Zentrale Beobachtung ist einfach!
 	
@@ -3961,11 +3978,11 @@
 	\end{proof}
 
 	\begin{theorem}[Satz von Cauchy]
-		Sei $G$ endliche Gruppe und sei $p$ eine Primzahl so dass $p \mid \#G$. Dann gibt es ein $g \in G: \operatorname{ord}(g) = p$.
+		Sei $G$ endliche Gruppe und sei $p$ eine Primzahl sodass $p \mid \#G$. Dann gibt es ein $g \in G: \operatorname{ord}(g) = p$.
 	\end{theorem}
 
 	\begin{proof}
-		Betrachte $(\setZ/p\setZ, +)$. Diese Gruppe wirkt auf $\underbrace{G \times \dots \times G}_{p-\text{mal}}$ durch Zyklische Vertauschung:
+		Betrachte $(\setZ/p\setZ, +)$. Diese Gruppe wirkt auf $\underbrace{G \times \dots \times G}_{p-\text{mal}}$ durch zyklische Vertauschung:
 		\begin{equation*}
 			1: (g_1, \dots, g_p) \mapsto (g_p, g_1, \dots, g_{p-1})
 		\end{equation*}
@@ -3974,7 +3991,7 @@
 		
 		Beobachte: $\#M = (\#G)^{p-1}$
 		
-		Beobachte: Fixpunkte der $\setZ/p\setZ$-wirkung auf $M$ sind Elemente der Form $\underbrace{(g, \cdots , g)}_{p-\text{mal}}$ mit $g^p = e$.
+		Beobachte: Fixpunkte der $\setZ/p\setZ$-Wirkung auf $M$ sind Elemente der Form $\underbrace{(g, \cdots , g)}_{p-\text{mal}}$ mit $g^p = e$.
 		
 		$\Rightarrow g = e$ oder $\operatorname{ord}(g) = p$.
 		
@@ -4046,7 +4063,7 @@
 
 	\begin{proof}
 		Klar ist $\#G_p = \# g G_p g^{-1}$ also ist $g G_p g^{-1}$ schon mal eine $p$-Gruppe.
-		Angenommen $g G_p g^{-1}$ wäre nicht maximal das heißt $p$-Gruppe $U$ mit $g G_p g^{-1} \subsetneq U$ $\Rightarrow G_p \subsetneq g^{-1} U g$ und $g^{-1} U g \simeq U$ also $p$-Gruppe.
+		Angenommen $g G_p g^{-1}$ wäre nicht maximal, das heißt $p$-Gruppe $U$ mit $g G_p g^{-1} \subsetneq U$ $\Rightarrow G_p \subsetneq g^{-1} U g$ und $g^{-1} U g \simeq U$ also $p$-Gruppe.
 		
 		$\Rightarrow G_p$ nicht Sylow!
 	\end{proof}
@@ -4056,11 +4073,11 @@
 		\begin{equation*}
 			[G:U] = [N(U): U] \mod p
 		\end{equation*}
-		(Erinnerung: $N(U) = \{ g \in G \mid g U g^{-1} = U \}$ Das ist eine Untergruppe von $G$ und $U$ ist normal in $N(U)$)
+		(Erinnerung: $N(U) = \{ g \in G \mid g U g^{-1} = U \}$. Das ist eine Untergruppe von $G$ und $U$ ist normal in $N(U)$)
 	\end{lemma}
 	
 	\begin{proof}
-		Betrachte die Wirkung von $U$ auf $G$ durch linkstranslation. Sei $M = \text{Quot}$. Anders gesagt $M = \text{Menge der Bahnen}$ also
+		Betrachte die Wirkung von $U$ auf $G$ durch Linkstranslation. Sei $M = \text{Quot}$. Anders gesagt $M = \text{Menge der Bahnen}$ also
 		\begin{equation*}
 			M = \{ U \cdot g \mid g \in G \}
 		\end{equation*}
@@ -4102,7 +4119,7 @@
 		
 		Cauchy: Es existiert eine Untergruppe mit $p$ Elementen. Per Induktion genügt es also Teil 2) zu zeigen.
 		
-		Sei also $0 \leq i < n$ gegeben, sei $U$ mit $p^i$ Elementen gegeben. Wissen dann (Lemma und Zusatz) $N(U) \supsetneq U$. Weil $U$ normal ist in $N(U)$ kann ich Quotientengruppe betrachten!
+		Sei also $0 \leq i < n$ gegeben, sei $U$ mit $p^i$ Elementen gegeben. Wissen dann (Lemma und Zusatz) $N(U) \supsetneq U$. Weil $U$ normal ist in $N(U)$ können wir Quotientengruppe betrachten!
 		
 		\begin{equation*}
 			\pi: N(U) \longrightarrow N(U) / U
@@ -4132,7 +4149,7 @@
 		
 		Mit Lemma \ref{lemma:sylowKeyLemma} folgt $M_0 \neq \emptyset$.
 		
-		Also gibt es $g \in G$ so dass $gP \in G/P$ Fixpunkt von $H$ ist.
+		Also gibt es $g \in G$ sodass $gP \in G/P$ Fixpunkt von $H$ ist.
 		
 		Für alle $h \in H$ gilt $h \cdot g \cdot P = g \cdot P$.
 		
@@ -4164,7 +4181,7 @@
 		
 		Beobachte: $P$ und $Q$ sind $p$-Sylow Untergruppen von $N(Q)$.
 		
-		Nach Sylow-Satz 2 sind beide zueinander konjugiert: Es gibt also $h \in N(Q)$ so dass $P = h^{-1} Q h = Q$. $\Rightarrow M_0 = \{ P \}$. Mit Lemma \ref{lemma:sylowKeyLemma} folgt $s_p \equiv \# M_0 = 1 \mod p$.
+		Nach Sylow-Satz 2 sind beide zueinander konjugiert: Es gibt also $h \in N(Q)$ sodass $P = h^{-1} Q h = Q$. $\Rightarrow M_0 = \{ P \}$. Mit Lemma \ref{lemma:sylowKeyLemma} folgt $s_p \equiv \# M_0 = 1 \mod p$.
 	\end{proof}
 
 	\subsection{Abelsche Gruppen}
@@ -4174,7 +4191,7 @@
 	Beachte: Für $n \in \setZ$, und $g,h \in G$ gilt $n(a + b) = n a + n b$.
 	
 	\begin{definition}
-		Eine abelsche Gruppe $G$ ist endlich erzeugt, falls es eine endliche liste von Elementen $g_1, \dots, g_n \in G$ gibt, so dass jedes $g \in G$ als Linearkombination geschrieben werden kann.
+		Eine abelsche Gruppe $G$ ist endlich erzeugt, falls es eine endliche Liste von Elementen $g_1, \dots, g_n \in G$ gibt, sodass jedes $g \in G$ als Linearkombination geschrieben werden kann.
 		\begin{equation*}
 			g = \sum_{i = 1}^n n_i g_i, \quad n_i \in \setZ
 		\end{equation*}
@@ -4194,7 +4211,7 @@
 	\end{lemma}
 
 	\begin{theorem}
-		Sei $G$ eine endlich erzeugte abelsche Gruppe. Dann gibt es $r \in \setZ_{\geq 0}$ und $a_1, \dots, a_n \in \setZ_{>0}$ mit $a_i \mid a_{i+1} \; \forall i \in \{ 1, \dots, n-1 \}$ so dass
+		Sei $G$ eine endlich erzeugte abelsche Gruppe. Dann gibt es $r \in \setZ_{\geq 0}$ und $a_1, \dots, a_n \in \setZ_{>0}$ mit $a_i \mid a_{i+1} \; \forall i \in \{ 1, \dots, n-1 \}$ sodass
 		\begin{equation*}
 			G \cong \setZ^r \oplus \setZ/(a_1) \oplus \dots \oplus \setZ/(a_n)
 		\end{equation*}
@@ -4206,7 +4223,7 @@
 			\item Wir nennen $r$ den Rang von $G$ und $a_1, \dots, a_n$ die Elementarteiler von $G$.
 			\item Die Summe $\setZ/(a_1) \oplus \dots \oplus \setZ/(a_n)$ ist der Torsionsanteil von $G$ und $\setZ^r$ der freie Anteil von $G$.
 			\item Der Torsionsteil ist eindeutig bestimmte Untergruppe von $G$ und ist $\operatorname{Tors}(G) = \{ g \in G \mid \operatorname{ord}(g) < \infty \}$.
-			\item der freie Anteil von $G$ ist nicht notwendigerweise eindeutig bestimmt als Untergruppe, aber es gilt $\setZ^r \cong G/\operatorname{Tors}(G)$
+			\item Der freie Anteil von $G$ ist nicht notwendigerweise eindeutig bestimmt als Untergruppe, aber es gilt $\setZ^r \cong G/\operatorname{Tors}(G)$
 		\end{enumerate}
 	\end{remark}
 
@@ -4221,7 +4238,7 @@
 		\begin{equation*}
 			G = N_k \supset N_{k-1} \supset N_{k-2} \supset \dots \supset N_1 \supset N_0 = \{ e \}
 		\end{equation*}
-		gibt, so dass $N_i$ normal in $N_{i+1}$ ist und dass $N_{i+1}/N_i$ abelsch ist für alle $i$.
+		gibt, sodass $N_i$ normal in $N_{i+1}$ ist und dass $N_{i+1}/N_i$ abelsch ist für alle $i$.
 	\end{definition}
 
 	\begin{theorem}
@@ -4260,7 +4277,7 @@
 		\begin{equation*}
 			\{ e \} \subset N_1 \subset \dots \subset N_k \subset G
 		\end{equation*}
-		so dass
+		sodass
 		\begin{enumerate}
 			\item $N \in \{ \{e\}, N_1, \dots, N_k, G \}$
 			\item $N_{i+1}/N_i$ ist zyklisch mit primer Ordnung
@@ -4278,7 +4295,7 @@
 		
 		\heading{2)} Wenn $\{ N_i \}$ eine Auflösungskette ist, dann ist $N_{i+1}/N_i = \setZ/(a_1) \oplus \dots \oplus \setZ/(a_m)$ abelsch.
 		
-		Sei $p$ eine Primzahl die $\abs{N_{i+1}/N_i}$ teilt. Dann sagt der Satz von Cauchy dass $N_{i+1} / N_i$ eine zyklische Untergruppe $H$ der Ordnung $p$ hat so dass $\{ e \} \subset H \subset N_{i+1}/N_i$.
+		Sei $p$ eine Primzahl die $\abs{N_{i+1}/N_i}$ teilt. Dann sagt der Satz von Cauchy dass $N_{i+1} / N_i$ eine zyklische Untergruppe $H$ der Ordnung $p$ hat sodass $\{ e \} \subset H \subset N_{i+1}/N_i$.
 		\begin{equation*}
 			\{ e \} \subset N_1 \subset N_2 \subset \dots \subset N_i \subset q^{-1}(H) \subset N_{i+1} \subset \dots \subset N_k
 		\end{equation*}
@@ -4391,7 +4408,7 @@
 			\{ \text{Zwischenkörper} \} \overset{\phi}{\to} \underbrace{\{ \text{norm. Polynome in $L[x]$, die Teiler von $f_k$ sind} \}}_{\text{endl. weil $L[x]$ faktoriell ist}}
 		\end{equation*}
 		
-		\textit{Möchte zeigen:} diese Abbildung ist injektiv. Dazu hätte ich gerne eine Abbildung $\eta$ so dass $\eta \circ \phi = Id$.
+		\textit{Wir möchten zeigen:} diese Abbildung ist injektiv. Dazu hätten wir gerne eine Abbildung $\eta$ sodass $\eta \circ \phi = Id$.
 		
 		\textit{Das geht so:} Gegeben Polynom $f(x) = \sum_{i = 0}^{n-1} b_i x^i + x^n$. Dann betrachte den Körper $\eta(f) = k(b_0, \dots, b_{n-1})$.
 		
@@ -4399,7 +4416,7 @@
 		
 		Da die Koeffizienten von $f_Z$ alle aus $Z$ sind, ist $\eta(f_Z) \subseteq Z$.
 		
-		\textit{Sehe:} $f_Z \in n(f_Z)[x]$ ist irreduzibel hat also Nullstelle $\Rightarrow$ $f_Z$ ist Minimalpolynom von $a$ über $\eta(f_Z)$.
+		\textit{Sehe:} $f_Z \in n(f_Z)[x]$ ist irreduzibel, hat also Nullstelle $\Rightarrow$ $f_Z$ ist Minimalpolynom von $a$ über $\eta(f_Z)$.
 		
 		$\Rightarrow [L:Z] = [Z(a):Z] = \deg f_Z = [L: \eta(f_Z)] = [\eta(f_Z)(a): \eta(f_z)]$
 		
@@ -4409,28 +4426,28 @@
 		
 		\textit{$L$ ist algebraisch:} Widerspruch! Angenommen es gäbe ein transzendentes Element $a$. Dann $L \supseteq k(a) \supseteq k$ ein Zwischenkörper, und $k(a) \simeq k(x)$ den rationalen Funktionen in einer Variablen.
 		
-		Dann habe ich aber Unterkörper $k(a) \supsetneq k(a^2) \supsetneq k(a^4) \dots$. Habe also $\infty$ viele Zwischenkörper. $\lightning$
+		Dann haben wir aber Unterkörper $k(a) \supsetneq k(a^2) \supsetneq k(a^4) \dots$\\ Wir haben also $\infty$ viele Zwischenkörper. $\lightning$
 		
 		\textit{$L$ ist einfach:} Die Körpererweiterung $L/k$ ist sogar endlich, also $L = k(a_1, \dots, a_n)$ für geeignete $a_i \in L$. Denn durch Adjunktion
 		\begin{equation*}
 			k \subseteq k(a_1) \subseteq k(a_1, a_2) \subseteq \dots
 		\end{equation*}
-		konstruiere ich Ketten von Zwischenkörpern, es gibt aber nur endlich viele!
+		konstruieren wir Ketten von Zwischenkörpern, es gibt aber nur endlich viele!
 		
-		Falls $k$ endlich ist, dann ist $L$ auch endlich (weil endliche Erweiterungen von endlichem Körper) und $L^*$ ist zyklisch. Finde also $a \in L^*$ so dass $L^* = \{ a, a^2, a^3, \dots, a^n \}$
+		Falls $k$ endlich ist, dann ist $L$ auch endlich (weil endliche Erweiterungen von endlichem Körper) und $L^*$ ist zyklisch. Finde also $a \in L^*$ sodass $L^* = \{ a, a^2, a^3, \dots, a^n \}$
 		
 		$\Rightarrow k(a) = L$, also ist $a$ primitiv!
 		
 		Sei also ab sofort $k$ unendlich.
 		
-		Wir wissen schon es gibt endlich viele $a_1, \dots, a_n \in L$ so dass $L = k(a_1, \dots, a_n)$. Betrachte Abbildung
+		Wir wissen schon: es gibt endlich viele $a_1, \dots, a_n \in L$ sodass $L = k(a_1, \dots, a_n)$. Betrachte Abbildung
 		\begin{align*}
 			k &\longrightarrow \text{Zwischenkörper} \\
 			\lambda &\longmapsto k(a_1 + \lambda a_2)
 		\end{align*}
-		Finde also $\lambda_1 \neq \lambda_2 \in k$ so dass $k(a_1 + \lambda_1 a_2) = k(a_1 + \lambda_2 a_2) = Z$.
+		Finde also $\lambda_1 \neq \lambda_2 \in k$ sodass $k(a_1 + \lambda_1 a_2) = k(a_1 + \lambda_2 a_2) = Z$.
 		
-		Wissen: $Z \subseteq k(a_1, a_2)$ und wissen auch: $\lambda_2(a_1 + \lambda_1 a_2) - \lambda_1(a_1 + \lambda_2 a_2) = (\lambda_2 - \lambda_1) a_1 \in Z$. $\Rightarrow a_1 \in Z$.
+		Wir wissen: $Z \subseteq k(a_1, a_2)$ und wissen auch: $\lambda_2(a_1 + \lambda_1 a_2) - \lambda_1(a_1 + \lambda_2 a_2) = (\lambda_2 - \lambda_1) a_1 \in Z$. $\Rightarrow a_1 \in Z$.
 		
 		Analog folgt auch $a_2 \in Z$.
 		
@@ -4446,7 +4463,7 @@
 	\end{theorem}
 
 	\begin{proof}
-		Sei $N \subset \overline{k}$ die normale Hülle von $L$. Dann ist $N/k$ endlich und galois. Dann gibt es maximal endlich viele Zwischenkörper $N \supseteq \dots \supseteq k$. (genau so viele wie $\Gal(N/k)$ Untergruppen hat) $\Rightarrow L/k$ hat endlich viele Zwischenkörper und ist damit einfach.
+		Sei $N \subset \overline{k}$ die normale Hülle von $L$. Dann ist $N/k$ endlich und galois'sch. Dann gibt es maximal endlich viele Zwischenkörper $N \supseteq \dots \supseteq k$. (genau so viele wie $\Gal(N/k)$ Untergruppen hat) $\Rightarrow L/k$ hat endlich viele Zwischenkörper und ist damit einfach.
 	\end{proof}
 
 	\subsection{Kreisteilungskörper}
@@ -4455,9 +4472,9 @@
 	
 	Dazu betrachte Zerfällungskörper $L_n$ von $x^n - 1 \in \setQ[x]$, genannt $n$-te Kreisteilungskörper.
 	
-	\textit{Wissen:} $L_n \subseteq \setC$, die Nullstellen von $x^n -1$ heißen $n$-te Einheitswurzeln. Die Menge der $n$-ten Einheitswurzeln bilden zyklische Untergruppe von $\setC^*$, eine Einheitswurzel heißt primitiv, wenn sie die Gruppe erzeugt.
+	\textit{Wir wissen:} $L_n \subseteq \setC$, die Nullstellen von $x^n -1$ heißen $n$-te Einheitswurzeln. Die Menge der $n$-ten Einheitswurzeln bilden zyklische Untergruppe von $\setC^*$, eine Einheitswurzel heißt primitiv, wenn sie die Gruppe erzeugt.
 	
-	Ganz allgemein identifiziere die Gruppe der $n$-ten Einheitswurzeln $\{ e^{\frac{2\pi i}{n} \cdot j} \mid 1 \leq j \leq n \}$ und $\setZ/(n)$.
+	Ganz allgemein: Identifiziere die Gruppe der $n$-ten Einheitswurzeln $\{ e^{\frac{2\pi i}{n} \cdot j} \mid 1 \leq j \leq n \}$ und $\setZ/(n)$.
 	
 	\textit{Wissen schon:} Die $j$-te Einheitswurzel ist primitiv $\Leftrightarrow \operatorname{ggT}(j,n) = 1$ $\Leftrightarrow$ Restklasse von $j$ ist Einheit in $\setZ/(n)$.
 	
@@ -4572,7 +4589,7 @@
 		ist Gruppenmorphismus. Die Abbildung ist injektiv, denn $\sigma$ ist durch $\operatorname{Bild}(\sigma(\xi))$ festgelegt, denn $L_n = \setQ(\xi)$.
 	\end{proof}
 
-	\begin{theorem}[Nach ein Satz von Gauß]
+	\begin{theorem}[nach ein Satz von Gauß]
 		Das reguläre $n$-Eck ist genau dann konstruierbar, wenn $n$ von der Form
 		\begin{equation*}
 			n = 2^\alpha \cdot p_1 \cdot \dots \cdot p_r
@@ -4588,7 +4605,7 @@
 		keine Primzahl.
 			
 		Inhalt...
-		Konsequenz: Bei den Zahlen $2^{n_i} + 1$ aus dem Satz von Gauß darf $n_i$ keine ungeraden primteiler haben. d.h. $n_i$ ist $2$-er Potenz.
+		Konsequenz: Bei den Zahlen $2^{n_i} + 1$ aus dem Satz von Gauß darf $n_i$ keine ungeraden Primteiler haben. d.h. $n_i$ ist $2$-er Potenz.
 		
 		Sprache: Primzahlen der Form
 		\begin{equation*}
@@ -4597,10 +4614,10 @@
 		heißen Fermatsche Primzahlen.
 	\end{remark}
 
-	\begin{proof}[Beweis der Notwendigkeit von Gauß Bedinung]
-		Sei $n$ gegeben, so dass das reguläre $n$-Eck konstruierbar ist. $e^{\frac{2\pi i}{n}} \in \operatorname{Kons}(\{ 0, 1 \})$.
+	\begin{proof}[Beweis der Notwendigkeit von Gauß Bedingung]
+		Sei $n$ gegeben, sodass das reguläre $n$-Eck konstruierbar ist. $e^{\frac{2\pi i}{n}} \in \operatorname{Kons}(\{ 0, 1 \})$.
 		
-		Wissen schon: dann ist $\underbrace{[\setQ(\xi): \setQ]}_{\varphi(n)} = 2^m$ für geeignete $m \in \setN$.
+		Wir wissen schon: dann ist $\underbrace{[\setQ(\xi): \setQ]}_{\varphi(n)} = 2^m$ für geeignete $m \in \setN$.
 		
 		Zerlegen $n$ in Primfaktoren:
 		\begin{equation*}
@@ -4618,11 +4635,11 @@
 	Die Hinreichendheit der Gaußschen Bedingung folgt aus diesem Satz:
 	
 	\begin{theorem}
-		Sei $\{ 0,1 \} \subseteq M \subseteq \setC$, sei $k = \setQ(M \cup \overline{M})$, sei $z \in \setC$. Dann die Zahl $z$ ist mit Zirkel und Lineal aus $M$ konstruierbar, wenn der Zerfällungskörper $L/k$ des Minimalpolynoms von $z$ über $k$ Grad $[L:k] = 2^m$ hat.
+		Sei $\{ 0,1 \} \subseteq M \subseteq \setC$, sei $k = \setQ(M \cup \overline{M})$, sei $z \in \setC$. Dann ist die Zahl $z$ mit Zirkel und Lineal aus $M$ konstruierbar, wenn der Zerfällungskörper $L/k$ des Minimalpolynoms von $z$ über $k$ Grad $[L:k] = 2^m$ hat.
 	\end{theorem}
 
 	\begin{proof}
-		$L/k$ ist separabel, normal und endlich, also Galois, $\Gal(L/k) = 2^m$ ist also eine $2$er-Gruppe.
+		$L/k$ ist separabel, normal und endlich, also galois'sch, $\Gal(L/k) = 2^m$ ist also eine $2$er-Gruppe.
 		
 		Sylow $\Rightarrow$ finde Kette von Untergruppen
 		\begin{equation*}
@@ -4637,16 +4654,16 @@
 		\begin{equation*}
 			L = Z_l \supsetneq Z_{l-1} \supsetneq \dots \supsetneq Z_0 = k
 		\end{equation*}
-		so dass für alle $i$: $Z_i/Z_{i-1}$ ist Galoisch mit Gruppe $\setZ/(2)$ also insbesondere $[Z_i : Z_{i-1}] = 2$.
+		sodass für alle $i$: $Z_i/Z_{i-1}$ ist galois'sch mit Gruppe $\setZ/(2)$, also insbesondere $[Z_i : Z_{i-1}] = 2$.
 		
-		$\Rightarrow \forall i: Z_i$ entsteht aus $Z_{i-1}$ durch Adjunktion einer Quadratwurzel. Aber: Quadratwurzeln kann ich mit Zirkel und Lineal konstruieren.
+		$\Rightarrow \forall i: Z_i$ entsteht aus $Z_{i-1}$ durch Adjunktion einer Quadratwurzel. Aber: Quadratwurzeln können wir mit Zirkel und Lineal konstruieren.
 	\end{proof}
 
 	\subsection{Das Quadratische Reziprozitätsgesetz}
 	
-	Sei $p$ eine Primzahl. Sei $a \in \setZ$ kein vielfaches von $p$. Nenne $a$ einen quadratischen Rest modulo $p$ wenn die Gleichung $x^2 \equiv q (\mod p)$ in $\setZ$ eine Lösung hat. Ansonsten nenne $a$ quadratischen Nichtrest $\mod p$.
+	Sei $p$ eine Primzahl. Sei $a \in \setZ$ kein Vielfaches von $p$. Nenne $a$ einen quadratischen Rest modulo $p$ wenn die Gleichung $x^2 \equiv q (\mod p)$ in $\setZ$ eine Lösung hat. Ansonsten nenne $a$ quadratischen Nichtrest $\mod p$.
 	
-	\heading{Frage:} Wie viele quadratische Reste gibt es? Wie kann ich entscheiden, ob gegebener $a \in \setZ$ ein Quadratischer Rest ist.
+	\heading{Frage:} Wie viele quadratische Reste gibt es? Wie können wir entscheiden, ob gegebener $a \in \setZ$ ein Quadratischer Rest ist.
 	
 	\heading{Erste Beobachtung}
 	\begin{itemize}
@@ -4666,9 +4683,9 @@
 	
 	Also ist $\# \operatorname{Im}(q) = \#\mathbb{F}_p^* / \#\ker = \frac{p-1}{2}$
 	
-	Das heißt genau die Hälfte der Elemente in $\mathbb{F}_p^*$ sind Quadrate.
+	Das heißt: genau die Hälfte der Elemente in $\mathbb{F}_p^*$ sind Quadrate.
 	
-	Frage: Ist mein gegebenes $a \in \mathbb{F}_p^*$ jetzt ein Quadrat?
+	Frage: Ist unser gegebenes $a \in \mathbb{F}_p^*$ jetzt ein Quadrat?
 	
 	Antwort 1: Ausprobieren, indem man alle Elemente quadriert. Das macht aber sehr viel Mühe!
 	
